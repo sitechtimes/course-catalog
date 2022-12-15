@@ -34,8 +34,11 @@ export default {
     name: "GlobalNavbar",
     data() {
         return {
-            menuOpen: false,
+            menuOpen: true,
         };
+    },
+    created() {
+      this.menuOpen = false
     },
     methods: {
         toggleMenu() {
