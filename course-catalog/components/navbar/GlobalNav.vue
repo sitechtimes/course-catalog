@@ -8,8 +8,8 @@
     <div
       class="hidden justify-center items-center space-x-10 lg:space-x-12 md:flex"
     >
-      <NuxtLink to="/courses"><p class="text-base">Courses</p></NuxtLink>
-      <NuxtLink to="/builder"><p class="text-base">Schedule Builder</p></NuxtLink>
+      <NuxtLink to="/coursecatalog"><p class="text-base">Courses</p></NuxtLink>
+      <NuxtLink to="/schedulebuilder"><p class="text-base">Schedule Builder</p></NuxtLink>
     </div>
 
     <div
