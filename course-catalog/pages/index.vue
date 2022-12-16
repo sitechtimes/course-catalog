@@ -1,7 +1,7 @@
 <template>
   <div id="landing" class="flex justify-center items-center h-screen px-12">
     <GlobalNav/>
-    <div id="info" class="w-full flex flex-col justify-center items-center space-y-4 max-w-2xl z-10 md:w-2/3">
+    <div id="info" class="w-11/12 flex flex-col justify-center items-center space-y-4 max-w-2xl z-10 lg:w-2/3">
       <h2 class="text-4xl font-semibold">Learn about the courses offered at Staten Island Technical High School.</h2>
       <p class="text-xl font-medium">Learn more about available courses and plan ahead by creating mock schedules.</p>
       <div id="btns" class="w-full flex justify-start items-start space-x-8">
