@@ -8,16 +8,16 @@
     <div
       class="hidden justify-center items-center space-x-10 lg:space-x-12 md:flex"
     >
-      <NuxtLink to="/coursecatalog"><p class="text-base">Courses</p></NuxtLink>
-      <NuxtLink to="/schedulebuilder"><p class="text-base">Schedule Builder</p></NuxtLink>
+      <NuxtLink to="/courses"><p class="text-base">Courses</p></NuxtLink>
+      <NuxtLink to="/builder"><p class="text-base">Schedule Builder</p></NuxtLink>
     </div>
 
     <div
       id="menu-icon"
       class="flex justify-center items-center cursor-pointer z-40 md:hidden"
     >
-      <CloseMenu @menu-click="toggleMenu" v-if="menuOpen" />
-      <MenuIcon @menu-click="toggleMenu" v-else />
+      <CloseMenu @e="toggleMenu" v-if="menuOpen" />
+      <MenuIcon @e="toggleMenu" v-else />
 
 
     </div>

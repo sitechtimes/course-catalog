@@ -5,8 +5,8 @@
       <h2 class="text-4xl font-semibold">Learn about the courses offered at Staten Island Technical High School.</h2>
       <p class="text-xl font-medium">Learn more about available courses and plan ahead by creating mock schedules.</p>
       <div id="btns" class="w-full flex justify-start items-start space-x-8">
-        <NuxtLink to="/coursecatalog"><button class="bg-secondary-s text-white w-40 h-12 rounded">View Courses</button></NuxtLink>
-        <NuxtLink to="/schedulebuilder"><button class="bg-secondary-s text-white w-40 h-12 rounded">Build Schedule</button></NuxtLink>
+        <NuxtLink to="/courses"><button class="bg-secondary-s text-white w-40 h-12 rounded">View Courses</button></NuxtLink>
+        <NuxtLink to="/builder"><button class="bg-secondary-s text-white w-40 h-12 rounded">Build Schedule</button></NuxtLink>
       </div>
     </div>
     <div id="circles" class="-z-10 absolute h-128 w-128  flex justify-center items-center lg:relative">

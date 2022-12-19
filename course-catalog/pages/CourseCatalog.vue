@@ -10,17 +10,22 @@
                     <option value="subject">Subject</option>
                     <option value="grade">Grade</option>
                 </select>
-                <input type="text" placeholder="Search" class="border border-gray-300 rounded w-112 h-10 p-2">
+                <div id="search-bar" class="flex justify-center items-center relative">
+                    <input type="text" placeholder="Search" class="border border-gray-300 rounded w-112 h-10 p-2"/>
+                    <SearchButton class="absolute right-3 text-gray-400 cursor-pointer"/>
+                </div>
+            
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import SearchButton from '~/components/icons/SearchButton.vue';
 import GlobalNav from '~/components/navbar/GlobalNav.vue';
 
 export default {
     name: "CourseCatalog",
-    components: { GlobalNav }
+    components: { GlobalNav, SearchButton }
 }
 </script>
