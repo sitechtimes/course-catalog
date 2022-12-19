@@ -2,7 +2,7 @@
   <nav
     class="fixed w-full h-24 top-0 flex justify-between items-center overflow-visible px-8 md:px-10 lg:px-12"
   >
-    <NuxtLink to="/" @click="toggleMenu" class="z-40"
+    <NuxtLink to="/" class="z-40"
       ><h1 class="text-3xl font-semibold">Course Catalog</h1></NuxtLink
     >
     <div
@@ -16,8 +16,10 @@
       id="menu-icon"
       class="flex justify-center items-center cursor-pointer z-40 md:hidden"
     >
-      <CloseMenu @click="toggleMenu" v-if="menuOpen" />
-      <MenuIcon @click="toggleMenu" v-else />
+      <CloseMenu @menu-click="toggleMenu" v-if="menuOpen" />
+      <MenuIcon @menu-click="toggleMenu" v-else />
+
+
     </div>
 
     <MobileMenu v-if="menuOpen" @e="toggleMenu" />
@@ -34,13 +36,13 @@ export default {
     name: "GlobalNavbar",
     data() {
         return {
-            menuOpen: true,
+            menuOpen: false,
         };
     },
-    created() {
-      this.menuOpen = false
-    },
     methods: {
+      hello() {
+        console.log('hello')
+      },
         toggleMenu() {
             if (!this.menuOpen) {
                 this.menuOpen = true;

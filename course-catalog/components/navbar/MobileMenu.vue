@@ -2,8 +2,9 @@
     <div id="menu" class="fixed inset-0 h-screen w-full  ease-in duration-200 md:hidden">
         <div id="overlay" class="absolute inset-0 w-full h-full bg-white opacity-100 -z-10"></div>
         <div class="h-full absolute left-16 pb-24 flex flex-col justify-center items-start space-y-8 z-10">
-            <NuxtLink @click="$emit('e')" id="link" to="/coursecatalog"><p class="text-4xl">Courses</p></NuxtLink>
-            <NuxtLink @click="$emit('e')" id="link" to="/schedulebuilder"><p class="text-4xl">Schedule Builder</p></NuxtLink>
+            <NuxtLink id="link" to="/"><p @click="$emit('e')" class="text-4xl">Home</p></NuxtLink>
+            <NuxtLink id="link" to="/coursecatalog"><p @click="$emit('e')" class="text-4xl">Courses</p></NuxtLink>
+            <NuxtLink id="link" to="/schedulebuilder"><p @click="$emit('e')" class="text-4xl">Schedule Builder</p></NuxtLink>
         </div>
     </div>
 </template>
