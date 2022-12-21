@@ -2,6 +2,7 @@
 import CloseMenu from '../icons/CloseMenu.vue';
 import MenuIcon from '../icons/MenuIcon.vue'
 import MobileMenu from './MobileMenu.vue';
+import { ref } from 'vue';
 
 let menuOpen = ref(false);
 
