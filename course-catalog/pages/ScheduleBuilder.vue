@@ -11,10 +11,31 @@ const needed = {
   AP: 0,
   educationalPeriods: 0,
 };
+const seniorClasses = [
+    {
+        class: "mathAP",
+        category: "math",
+        AP: true
+    },
+    {
+        class: "englishAP",
+        category: "english",
+        AP: true
+    },
+    {
+        class: "english1",
+        category: "english"
+    },
+    {
+        class: "math1",
+        category: "math",
+    }
+]
 function changeNeeded() {
-  if (document.querySelector(".dropdown").value === "Senior") {
-    console.log(needed);
-  }
+    if (document.querySelector(".dropdown").value === "Senior") {
+        console.log(needed);
+        
+    }
 }
 </script>
 
