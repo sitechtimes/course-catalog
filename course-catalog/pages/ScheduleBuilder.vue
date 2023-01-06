@@ -13,28 +13,60 @@ const needed = {
 };
 const seniorClasses = [
     {
-        class: "mathAP",
+        name: "mathAP",
         category: "math",
         AP: true
     },
     {
-        class: "englishAP",
+        name: "englishAP",
         category: "english",
         AP: true
     },
     {
-        class: "english1",
+        name: "english1",
         category: "english"
     },
     {
-        class: "math1",
+        name: "math1",
         category: "math",
-    }
+    },
+    {
+        name: "scienceAP",
+        category: "science",
+        AP: true
+    },
+    {
+        name: "science1",
+        category: "science"
+    },
+    {
+        name: "historyAP",
+        category: "history",
+        AP: true
+    },
+    {
+        name: "history1",
+        category: "history"
+    },
+    {
+        name:"class5AP",
+        category:"class5",
+        AP: true
+    },
+    {
+        name:"class5",
+        category:"class5"
+    },
 ]
 function changeNeeded() {
     if (document.querySelector(".dropdown").value === "Senior") {
-        console.log(needed);
-        
+      seniorClasses.forEach((object) => document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="button">${object.name}</button>`))
+      document.querySelectorAll(".button").forEach((button) => {
+        button.addEventListener("click", function () {
+          const chosenClass = seniorClasses.find((name) => name === this.textContent)
+          console.log(chosenClass)
+        })
+      })
     }
 }
 </script>
