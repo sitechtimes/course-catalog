@@ -58,16 +58,35 @@ const seniorClasses = [
         category:"class5"
     },
 ]
+const selectedClasses = [
+]
 function changeNeeded() {
-    if (document.querySelector(".dropdown").value === "Senior") {
-      seniorClasses.forEach((object) => document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="button">${object.name}</button>`))
-      document.querySelectorAll(".button").forEach((button) => {
+  document.querySelectorAll(".button").forEach((button) => {
+    button.remove()
+  })
+  if (document.querySelector(".dropdown").value === "Senior") {
+    seniorClasses.forEach((object) => document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="button">${object.name}</button>`))
+    document.querySelectorAll(".button").forEach((button) => {
         button.addEventListener("click", function () {
-          const chosenClass = seniorClasses.find((name) => name === this.textContent)
+          const chosenClass = seniorClasses.find((name) => name.name === this.textContent)
           console.log(chosenClass)
+          if (chosenClass.AP) {
+            if (needed.AP === 4) {
+              console.log("you have too many ap classes")
+              console.log(needed.AP)
+            }
+            else{
+              needed.AP += 1
+              selectedClasses.push(chosenClass)
+              button.remove()
+            }
+          }
+          button.remove()
+          selectedClasses.push(chosenClass)
+          console.log(seniorClasses)
         })
-      })
-    }
+    })
+  }
 }
 </script>
 
