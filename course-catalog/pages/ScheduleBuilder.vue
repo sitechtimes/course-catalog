@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Scheduler from "../components/schedule builder/Scheduler.vue";
+import Courses from "../components/schedule builder/Courses.vue";
 const needed = {
   // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
   english: false,
@@ -114,21 +115,35 @@ function changeNeeded() {
         Year
       </h1>
     </div>
-    <div class="bottom"><Scheduler class=""></Scheduler></div>
+    <div class="page">
+      <div class="bottoml"><Scheduler class=""></Scheduler></div>
+      <div class="bottomr"><Courses></Courses></div>
+    </div>
   </div>
 </template>
 <style scoped>
+.page {
+  display: flex;
+  flex-direction: row;
+}
 .dropdown {
   border: solid 1px grey;
   border-radius: 0.25em;
+  margin-bottom: 1rem;
 }
 h2 {
+  margin-top: 0;
+}
+h1 {
+  width: 30%;
+  margin: 0;
   margin-top: 0;
 }
 #builder {
   display: flex;
   flex-direction: column;
   padding-top: 0;
+  margin-top: 8rem;
 }
 .top {
   margin-top: 2rem;
