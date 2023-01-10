@@ -2,6 +2,7 @@
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     'CatalogSearchComponent': typeof import("../components/catalog-search/SearchComponent.vue")['default']
+    'CourseCard': typeof import("../components/course-cards/CourseCard.vue")['default']
     'IconsCloseMenu': typeof import("../components/icons/CloseMenu.vue")['default']
     'IconsMenuIcon': typeof import("../components/icons/MenuIcon.vue")['default']
     'IconsSearchButton': typeof import("../components/icons/SearchButton.vue")['default']
@@ -26,6 +27,7 @@ declare module '@vue/runtime-core' {
     'Html': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
     'Body': typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
     'LazyCatalogSearchComponent': typeof import("../components/catalog-search/SearchComponent.vue")['default']
+    'LazyCourseCard': typeof import("../components/course-cards/CourseCard.vue")['default']
     'LazyIconsCloseMenu': typeof import("../components/icons/CloseMenu.vue")['default']
     'LazyIconsMenuIcon': typeof import("../components/icons/MenuIcon.vue")['default']
     'LazyIconsSearchButton': typeof import("../components/icons/SearchButton.vue")['default']
@@ -53,6 +55,7 @@ declare module '@vue/runtime-core' {
 }
 
 export const CatalogSearchComponent: typeof import("../components/catalog-search/SearchComponent.vue")['default']
+export const CourseCard: typeof import("../components/course-cards/CourseCard.vue")['default']
 export const IconsCloseMenu: typeof import("../components/icons/CloseMenu.vue")['default']
 export const IconsMenuIcon: typeof import("../components/icons/MenuIcon.vue")['default']
 export const IconsSearchButton: typeof import("../components/icons/SearchButton.vue")['default']
@@ -77,6 +80,7 @@ export const Head: typeof import("../node_modules/nuxt/dist/head/runtime/compone
 export const Html: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Html']
 export const Body: typeof import("../node_modules/nuxt/dist/head/runtime/components")['Body']
 export const LazyCatalogSearchComponent: typeof import("../components/catalog-search/SearchComponent.vue")['default']
+export const LazyCourseCard: typeof import("../components/course-cards/CourseCard.vue")['default']
 export const LazyIconsCloseMenu: typeof import("../components/icons/CloseMenu.vue")['default']
 export const LazyIconsMenuIcon: typeof import("../components/icons/MenuIcon.vue")['default']
 export const LazyIconsSearchButton: typeof import("../components/icons/SearchButton.vue")['default']
