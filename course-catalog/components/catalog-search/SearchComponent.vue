@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SearchButton from '~/icons/SearchButton.vue';
+import SearchButton from '~/components/icons/SearchButton.vue';
 </script>
 
 <template>
