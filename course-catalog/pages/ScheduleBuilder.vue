@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Scheduler from "../components/schedule builder/Scheduler.vue";
 const needed = {
   // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
   english: false,
@@ -12,62 +13,71 @@ const needed = {
   educationalPeriods: 0,
 };
 const seniorClasses = [
-    {
-        name: "mathAP",
-        category: "math",
-        AP: true
-    },
-    {
-        name: "englishAP",
-        category: "english",
-        AP: true
-    },
-    {
-        name: "english1",
-        category: "english"
-    },
-    {
-        name: "math1",
-        category: "math",
-    },
-    {
-        name: "scienceAP",
-        category: "science",
-        AP: true
-    },
-    {
-        name: "science1",
-        category: "science"
-    },
-    {
-        name: "historyAP",
-        category: "history",
-        AP: true
-    },
-    {
-        name: "history1",
-        category: "history"
-    },
-    {
-        name:"class5AP",
-        category:"class5",
-        AP: true
-    },
-    {
-        name:"class5",
-        category:"class5"
-    },
-]
+  {
+    name: "mathAP",
+    category: "math",
+    AP: true,
+  },
+  {
+    name: "englishAP",
+    category: "english",
+    AP: true,
+  },
+  {
+    name: "english1",
+    category: "english",
+  },
+  {
+    name: "math1",
+    category: "math",
+  },
+  {
+    name: "scienceAP",
+    category: "science",
+    AP: true,
+  },
+  {
+    name: "science1",
+    category: "science",
+  },
+  {
+    name: "historyAP",
+    category: "history",
+    AP: true,
+  },
+  {
+    name: "history1",
+    category: "history",
+  },
+  {
+    name: "class5AP",
+    category: "class5",
+    AP: true,
+  },
+  {
+    name: "class5",
+    category: "class5",
+  },
+];
 function changeNeeded() {
-    if (document.querySelector(".dropdown").value === "Senior") {
-      seniorClasses.forEach((object) => document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="button">${object.name}</button>`))
-      document.querySelectorAll(".button").forEach((button) => {
-        button.addEventListener("click", function () {
-          const chosenClass = seniorClasses.find((name) => name === this.textContent)
-          console.log(chosenClass)
-        })
-      })
-    }
+  if (document.querySelector(".dropdown").value === "Senior") {
+    seniorClasses.forEach((object) =>
+      document
+        .querySelector(".top")
+        .insertAdjacentHTML(
+          `beforeend`,
+          `<button class="button">${object.name}</button>`
+        )
+    );
+    document.querySelectorAll(".button").forEach((button) => {
+      button.addEventListener("click", function () {
+        const chosenClass = seniorClasses.find(
+          (name) => name === this.textContent
+        );
+        console.log(chosenClass);
+      });
+    });
+  }
 }
 </script>
 
@@ -87,6 +97,7 @@ function changeNeeded() {
         Year
       </h1>
     </div>
+    <div class="bottom"><Scheduler class=""></Scheduler></div>
   </div>
 </template>
 <style scoped>
