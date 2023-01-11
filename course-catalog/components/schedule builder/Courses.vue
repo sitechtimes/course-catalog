@@ -13,26 +13,45 @@
   </div>
 </template>
 <style scoped>
-h2 {
-  font-weight: bold;
-  font-size: 1.5rem;
+@media only screen and (min-width: 976px) {
+  .file {
+    line-height: 4;
+    width: 70%;
+    margin-left: 35%;
+    background-color: #fff2e2;
+    border-radius: 0.8rem;
+    padding: 2rem;
+    height: 28rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    line-height: 2;
+    font-size: 1rem;
+    width: 85%;
+    margin-top: 1rem;
+  }
 }
-h3 {
-  line-height: 2;
-  font-size: 1rem;
-  width: 85%;
-  margin-top: 1rem;
-}
-.file {
-  line-height: 4;
-  width: 65%;
-  margin-left: 30%;
-  background-color: #fff2e2;
-  border-radius: 0.8rem;
-  padding: 2rem;
-  height: 26rem;
-}
-.landing {
-  display: block;
+@media only screen and (min-width: 1440px) {
+  .file {
+    line-height: 4;
+    width: 75%;
+    margin-left: 40%;
+    background-color: #fff2e2;
+    border-radius: 0.8rem;
+    padding: 3rem;
+    height: 35rem;
+  }
+  .landing {
+    display: block;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 1.7rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
 }
 </style>

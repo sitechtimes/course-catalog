@@ -143,9 +143,15 @@ h1 {
   display: flex;
   flex-direction: column;
   padding-top: 0;
-  margin-top: 8rem;
+  margin-top: 10rem;
 }
 .top {
   margin-top: 2rem;
+}
+@media only screen and (min-width: 976px) {
+  #builder {
+    padding-top: 0;
+    margin-top: 8rem;
+  }
 }
 </style>
