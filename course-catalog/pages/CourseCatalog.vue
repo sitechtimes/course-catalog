@@ -10,6 +10,10 @@ import CourseCard from '~/components/course-cards/CourseCard.vue'
             <SearchComponent />
             <div id="courses" class="flex flex-wrap justify-center items-center">
                 <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
+                <CourseCard />
             </div>
         </div>
     </div>
