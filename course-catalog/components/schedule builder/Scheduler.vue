@@ -1,10 +1,10 @@
 <template>
   <table class="">
     <tr class="">
-      <th class="border-black">Period</th>
-      <th>Class</th>
+      <th class="p-4 py-2">Period</th>
+      <th class="px-20">Class</th>
     </tr>
-    <tr class="">
+    <tr class="border-t-4">
       <td class="">1</td>
       <td>Stuff</td>
     </tr>
@@ -43,12 +43,14 @@
   </table>
 </template>
 <style scoped>
-table,
-th,
-td {
+table {
   border: 4px solid lightgrey;
   border-radius: 0.5rem;
   text-align: center;
+}
+th,
+td {
+  border-right: 4px solid lightgrey;
 }
 table {
   margin-top: 1rem;
