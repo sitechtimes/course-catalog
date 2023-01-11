@@ -12,56 +12,44 @@ const needed = {
   russian: false,
   AP: 0,
   educationalPeriods: 0,
-};
-const seniorClasses = [
-  {
-    name: "mathAP",
-    category: "math",
-    AP: true,
-  },
-  {
-    name: "englishAP",
-    category: "english",
-    AP: true,
-  },
-  {
-    name: "english1",
-    category: "english",
-  },
-  {
-    name: "math1",
-    category: "math",
-  },
-  {
-    name: "scienceAP",
-    category: "science",
-    AP: true,
-  },
-  {
-    name: "science1",
-    category: "science",
-  },
-  {
-    name: "historyAP",
-    category: "history",
-    AP: true,
-  },
-  {
-    name: "history1",
-    category: "history",
-  },
-  {
-    name: "class5AP",
-    category: "class5",
-    AP: true,
-  },
-  {
-    name: "class5",
-    category: "class5",
-  },
-];
-const selectedClasses = [];
-function changeNeeded() {
+  };
+  const schedule = [
+    {
+      period: 1
+    },
+    {
+      period: 2
+    },
+    {
+      period: 3
+    },
+    {
+      period: 4
+    },
+    {
+      name: "Lunch",
+      period: 5
+    },
+    {
+      period: 6
+    },
+    {
+      period: 7
+    },
+    {
+      period: 8
+    },
+    {
+      period: 9
+    },
+  ]
+  schedule.forEach((object) => {
+    if (object.name === undefined || object.name === null) {
+      document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="scheduleButton">empty</button>`)
+    } else {
+      document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="scheduleButton">${object.name}</button>`)
+    }
+  })
   document.querySelectorAll(".button").forEach((button) => {
     button.remove();
   });
@@ -75,27 +63,25 @@ function changeNeeded() {
         )
     );
     document.querySelectorAll(".button").forEach((button) => {
-      button.addEventListener("click", function () {
-        const chosenClass = seniorClasses.find(
-          (name) => name.name === this.textContent
-        );
-        console.log(chosenClass);
-        if (chosenClass.AP) {
-          if (needed.AP === 4) {
-            console.log("you have too many ap classes");
-            console.log(needed.AP);
+        button.addEventListener("click", function () {
+          const chosenClass = seniorClasses.find((name) => name.name === this.textContent)
+          console.log(chosenClass)
+          if (chosenClass.AP) {
+            if (needed.AP === 4) {
+              console.log("you have too many ap classes")
+              console.log(needed.AP)
+            }
+            else{
+              needed.AP += 1
+              button.remove()
+            }
           } else {
-            needed.AP += 1;
-            selectedClasses.push(chosenClass);
-            button.remove();
+            button.remove()
           }
-        }
-        button.remove();
-        selectedClasses.push(chosenClass);
-        console.log(seniorClasses);
-      });
-    });
+        })
+    })
   }
+
 }
 </script>
 
@@ -105,7 +91,7 @@ function changeNeeded() {
     <div class="top">
       <h1>
         Make a Schedule for
-        <select name="dropdown" class="dropdown" @click="changeNeeded()">
+        <select name="dropdown" class="dropdown" @change="changeNeeded()">
           <option value=""></option>
           <option value="Freshman">Freshman</option>
           <option value="Sophomore">Sophomore</option>
