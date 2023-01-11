@@ -1,7 +1,54 @@
 <script setup lang="ts">
 import Scheduler from "../components/schedule builder/Scheduler.vue";
-import Courses from "../components/schedule builder/Courses.vue";
-const needed = {
+const seniorClasses = [
+    {
+        name: "mathAP",
+        category: "math",
+        AP: true
+    },
+    {
+        name: "englishAP",
+        category: "english",
+        AP: true
+    },
+    {
+        name: "english1",
+        category: "english"
+    },
+    {
+        name: "math1",
+        category: "math",
+    },
+    {
+        name: "scienceAP",
+        category: "science",
+        AP: true
+    },
+    {
+        name: "science1",
+        category: "science"
+    },
+    {
+        name: "historyAP",
+        category: "history",
+        AP: true
+    },
+    {
+        name: "history1",
+        category: "history"
+    },
+    {
+        name:"class5AP",
+        category:"class5",
+        AP: true
+    },
+    {
+        name:"class5",
+        category:"class5"
+    },
+]
+function changeNeeded() {
+  const needed = {
   // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
   english: false,
   math: false,
@@ -15,35 +62,35 @@ const needed = {
   };
   const schedule = [
     {
-      period: 1
+      period: 1  
     },
     {
-      period: 2
+      period: 2  
     },
     {
-      period: 3
+      period: 3  
     },
     {
-      period: 4
+      period: 4  
     },
     {
       name: "Lunch",
-      period: 5
+      period: 5  
     },
     {
-      period: 6
+      period: 6  
     },
     {
-      period: 7
+      period: 7  
     },
     {
-      period: 8
+      period: 8  
     },
     {
-      period: 9
+      period: 9  
     },
   ]
-  schedule.forEach((object) => {
+  schedule.forEach((object) => { 
     if (object.name === undefined || object.name === null) {
       document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="scheduleButton">empty</button>`)
     } else {
@@ -64,7 +111,7 @@ const needed = {
     );
     document.querySelectorAll(".button").forEach((button) => {
         button.addEventListener("click", function () {
-          const chosenClass = seniorClasses.find((name) => name.name === this.textContent)
+          const chosenClass = seniorClasses.find((course) => course.name === this.textContent)
           console.log(chosenClass)
           if (chosenClass.AP) {
             if (needed.AP === 4) {
@@ -74,15 +121,19 @@ const needed = {
             else{
               needed.AP += 1
               button.remove()
+              schedule.find((period  => period.name === undefined || period.name === null)).name = chosenClass.name
+              console.log(schedule)
             }
-          } else {
+          } else {          
             button.remove()
+            schedule.find((period  => period.name === undefined || period.name === null)).name = chosenClass.name
+            console.log(schedule)
           }
         })
     })
   }
-
 }
+
 </script>
 
 <template>
@@ -101,35 +152,41 @@ const needed = {
         Year
       </h1>
     </div>
-    <div class="page">
-      <div class="bottoml"><Scheduler class=""></Scheduler></div>
-      <div class="bottomr"><Courses></Courses></div>
-    </div>
+    <div class="bottom">
+      <Scheduler class="">
+        <template v-slot:p1>
+        </template>
+        <template v-slot:p2>
+        </template>
+        <template v-slot:p3>
+        </template>
+        <template v-slot:p4>
+        </template>
+        <template v-slot:p5>
+        </template>
+        <template v-slot:p6>
+        </template>
+        <template v-slot:p7>
+        </template>
+        <template v-slot:p8>
+        </template>
+        <template v-slot:p9>
+        </template>
+      </Scheduler></div>
   </div>
 </template>
 <style scoped>
-.page {
-  display: flex;
-  flex-direction: row;
-}
 .dropdown {
   border: solid 1px grey;
   border-radius: 0.25em;
-  margin-bottom: 1rem;
 }
 h2 {
-  margin-top: 0;
-}
-h1 {
-  width: 30%;
-  margin: 0;
   margin-top: 0;
 }
 #builder {
   display: flex;
   flex-direction: column;
   padding-top: 0;
-  margin-top: 8rem;
 }
 .top {
   margin-top: 2rem;
