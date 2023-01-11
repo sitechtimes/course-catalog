@@ -1,5 +1,25 @@
-<script setup lang="ts">
+<script lang="ts">
 import SearchButton from '~/components/icons/SearchButton.vue';
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+    props: {
+        courses: String,
+        search: String,
+    },
+    mounted(){
+        this.courses
+        this.search
+    }
+})
+
+computed: {
+    function filteredCourses() {
+        return this.courses.filter(c => {
+            return c.name.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
+        })
+    }
+}
 </script>
 
 <template>
