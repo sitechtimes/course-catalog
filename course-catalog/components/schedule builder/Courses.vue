@@ -36,8 +36,8 @@
 @media only screen and (min-width: 1440px) {
   .file {
     line-height: 4;
-    width: 65%;
-    margin-left: 32%;
+    width: 75%;
+    margin-left: 40%;
     background-color: #fff2e2;
     border-radius: 0.8rem;
     padding: 3rem;
@@ -48,10 +48,10 @@
   }
   h2 {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 1.7rem;
   }
   h3 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 </style>
