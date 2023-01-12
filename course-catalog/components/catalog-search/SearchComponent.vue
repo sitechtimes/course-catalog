@@ -7,6 +7,9 @@ export default defineComponent({
         courses: String,
         search: String,
     },
+    components: {
+        SearchButton
+    },
     mounted(){
         this.courses
         this.search
@@ -32,7 +35,7 @@ computed: {
                 </select>
                 <div id="search-bar" class="flex justify-center items-center relative">
                     <input type="text" placeholder="Search" class="border border-gray-300 rounded w-112 h-10 p-2"/>
-                    <SearchButton class="absolute right-3 text-gray-400 cursor-pointer"/>
+                    <SearchButton v:on-click="filteredCourses" class="absolute right-3 text-gray-400 cursor-pointer"/>
                 </div>
             </div>
 </template>
