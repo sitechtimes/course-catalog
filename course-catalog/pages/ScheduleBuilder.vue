@@ -4,7 +4,8 @@ const seniorClasses = [
     {
         name: "mathAP",
         category: "math",
-        AP: true
+        AP: true,
+        periods: 2
     },
     {
         name: "englishAP",
@@ -22,7 +23,8 @@ const seniorClasses = [
     {
         name: "scienceAP",
         category: "science",
-        AP: true
+        AP: true,
+        periods: 2
     },
     {
         name: "science1",
@@ -35,7 +37,8 @@ const seniorClasses = [
     },
     {
         name: "history1",
-        category: "history"
+        category: "history",
+        periods: 2
     },
     {
         name:"class5AP",
@@ -65,7 +68,8 @@ function changeNeeded() {
       period: 1  
     },
     {
-      period: 2  
+      period: 2 , 
+      name: "a"
     },
     {
       period: 3  
@@ -118,7 +122,19 @@ function changeNeeded() {
               console.log("you have too many ap classes")
               console.log(needed.AP)
             }
-            else{
+            else if (chosenClass.periods === 2) {
+              if (schedule.find((period  => period.name === undefined || period.name === null) && (period => schedule[period.period =+ 1].period.name === undefined || schedule[period.period =+ 1].period.name === null ))) {
+              needed.AP += 1
+              button.remove()
+              schedule.find((period  => period.name === undefined || period.name === null)).name = chosenClass.name
+              console.log(schedule)
+              }
+              else {
+                console.log("fucked up")
+              }
+            }
+            else {
+              console.log(chosenClass.periods)
               needed.AP += 1
               button.remove()
               schedule.find((period  => period.name === undefined || period.name === null)).name = chosenClass.name
@@ -133,7 +149,6 @@ function changeNeeded() {
     })
   }
 }
-
 </script>
 
 <template>
