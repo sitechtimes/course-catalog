@@ -48,18 +48,23 @@
   flex-direction: column;
 }
 .tabs {
-  margin-left: 35%;
+  margin-left: 40%;
   display: flex;
   flex-direction: row;
 }
 .tab {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0.5rem;
-  width: 5rem;
+  padding: 0.5rem;
+  width: 5.5rem;
+  font-weight: bold;
   font-size: 1rem;
-  border-top-right-radius: 1rem;
-  border-top-left-radius: 1rem;
+  border-top-right-radius: 0.6rem;
+  border-top-left-radius: 0.6rem;
+  transition: 0.4s;
+}
+.tab:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
 @media only screen and (min-width: 1440px) {
   .file {
