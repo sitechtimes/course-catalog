@@ -9,7 +9,7 @@ export default defineNuxtConfig({
         '/courses': {
             redirect: '/coursecatalog'
         },
-        'schedule': {
+        '/schedule': {
             redirect: '/schedulebuilder'
         },
     },
