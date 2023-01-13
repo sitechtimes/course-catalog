@@ -48,23 +48,28 @@
   flex-direction: column;
 }
 .tabs {
-  margin-left: 35%;
+  margin-left: 25%;
   display: flex;
   flex-direction: row;
 }
 .tab {
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-top: 0.5rem;
-  width: 5rem;
+  padding: 0.5rem;
+  width: 5.5rem;
+  font-weight: bold;
   font-size: 1rem;
-  border-top-right-radius: 1rem;
-  border-top-left-radius: 1rem;
+  border-top-right-radius: 0.6rem;
+  border-top-left-radius: 0.6rem;
+  transition: 0.4s;
+}
+.tab:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
 @media only screen and (min-width: 1440px) {
   .file {
     line-height: 4;
-    width: 75%;
+    width: 80%;
     margin-left: 40%;
     background-color: #fff2e2;
     border-radius: 0.8rem;
@@ -85,8 +90,8 @@
 @media only screen and (min-width: 976px) {
   .file {
     line-height: 4;
-    width: 70%;
-    margin-left: 35%;
+    width: 85%;
+    margin-left: 15%;
     background-color: #fff2e2;
     border-radius: 0.8rem;
     padding: 2rem;
@@ -98,13 +103,17 @@
   h3 {
     line-height: 2;
     font-size: 1rem;
-    width: 85%;
+    width: 88%;
     margin-top: 1rem;
   }
 }
 @media only screen and (min-width: 1440px) {
   .file {
-    margin-left: 30%;
+    margin-left: 15%;
+    height: 30rem;
+  }
+  .tabs {
+    margin-left: 25%;
   }
 }
 </style>
