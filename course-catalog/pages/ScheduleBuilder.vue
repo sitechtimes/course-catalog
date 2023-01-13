@@ -148,8 +148,11 @@ function changeNeeded() {
             console.log(schedule)
           }
         })
-    })
-  }
+        button.remove();
+        selectedClasses.push(chosenClass);
+        console.log(seniorClasses);
+      });
+  };
 }
 </script>
 
@@ -159,7 +162,7 @@ function changeNeeded() {
     <div class="top">
       <h1>
         Make a Schedule for
-        <select name="dropdown" class="dropdown" @change="changeNeeded()">
+        <select name="dropdown" class="dropdown" @click="changeNeeded()">
           <option value=""></option>
           <option value="Freshman">Freshman</option>
           <option value="Sophomore">Sophomore</option>
@@ -204,8 +207,15 @@ h2 {
   display: flex;
   flex-direction: column;
   padding-top: 0;
+  margin-top: 10rem;
 }
 .top {
   margin-top: 2rem;
+}
+@media only screen and (min-width: 976px) {
+  #builder {
+    padding-top: 0;
+    margin-top: 8rem;
+  }
 }
 </style>
