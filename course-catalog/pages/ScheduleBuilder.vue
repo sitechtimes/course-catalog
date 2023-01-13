@@ -123,10 +123,11 @@ function changeNeeded() {
               console.log(needed.AP)
             }
             else if (chosenClass.periods === 2) {
-              if (schedule.find((period  => period.name === undefined || period.name === null) && (period => schedule[period.period =+ 1].period.name === undefined || schedule[period.period =+ 1].period.name === null ))) {
+              if (schedule.find((period  => period.name === undefined && schedule[period.period].name === undefined))) {
               needed.AP += 1
               button.remove()
-              schedule.find((period  => period.name === undefined || period.name === null)).name = chosenClass.name
+              schedule.find((period  => period.name === undefined && schedule[period.period].name === undefined)).name = chosenClass.name
+              schedule[schedule.find((period  => period.name === chosenClass.name)).period].name = chosenClass.name
               console.log(schedule)
               }
               else {
@@ -137,12 +138,13 @@ function changeNeeded() {
               console.log(chosenClass.periods)
               needed.AP += 1
               button.remove()
-              schedule.find((period  => period.name === undefined || period.name === null)).name = chosenClass.name
+              schedule.find((period  => period.name === undefined)).name = chosenClass.name
               console.log(schedule)
             }
           } else {          
             button.remove()
-            schedule.find((period  => period.name === undefined || period.name === null)).name = chosenClass.name
+            console.log(chosenClass.periods)
+            schedule.find((period  => period.name === undefined)).name = chosenClass.name
             console.log(schedule)
           }
         })
