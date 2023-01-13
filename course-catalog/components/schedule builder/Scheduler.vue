@@ -85,4 +85,6 @@ p {
 #last {
   margin-bottom: 1.5rem;
 }
+@media only screen and (min-width: 1440px) {
+}
 </style>

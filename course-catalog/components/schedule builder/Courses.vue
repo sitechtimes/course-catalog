@@ -1,13 +1,13 @@
 <template>
   <div class="folder">
     <div class="tabs">
-      <div class="tab r">Russian</div>
-      <div class="tab g">Gym</div>
-      <div class="tab e">Electives</div>
-      <div class="tab h">History</div>
-      <div class="tab en">English</div>
-      <div class="tab s">Science</div>
-      <div class="tab m">Math</div>
+      <Button class="tab r">Russian</Button>
+      <Button class="tab g">Gym</Button>
+      <Button class="tab e">Electives</Button>
+      <Button class="tab h">History</Button>
+      <Button class="tab en">English</Button>
+      <Button class="tab s">Science</Button>
+      <Button class="tab m">Math</Button>
     </div>
     <div class="file">
       <div class="landing">
