@@ -116,4 +116,12 @@
     margin-left: 25%;
   }
 }
+@media only screen and (min-width: 1700px) {
+  .file {
+    width: 80%;
+  }
+  .tabs {
+    margin-left: 35%;
+  }
+}
 </style>
