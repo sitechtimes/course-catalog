@@ -1,33 +1,5 @@
 <script setup lang="ts">
 
-function query() {
-  console.log("we clicked the button");
-  fetch('http://127.0.0.1:8000/course/', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
-        query getCourses {
-          allCourses{
-            edges{
-              node{
-                id
-                name
-              }
-            }
-          }
-        }
-      `,
-      variables: {
-        now: new Date().toISOString(),
-      },
-    }),
-  })
-    .then((res) => res.json())
-    .then((result) => console.log(result));
-}
 </script>
 
 <template>
@@ -42,8 +14,7 @@ function query() {
             class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded">View
             Courses</button></NuxtLink>
         <!-- <NuxtLink to="/schedulebuilder"><button class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded" @click="query();">Build Schedule</button></NuxtLink> -->
-        <button class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
-          @click="query();">Build Schedule</button>
+        <button class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded">Build Schedule</button>
       </div>
     </div>
     <div id="circles"

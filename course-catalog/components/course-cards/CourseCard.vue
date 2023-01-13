@@ -3,11 +3,15 @@ import CourseType from './CourseType.vue';
 import SubjectType from './SubjectType.vue';
 const type = true
 
+defineProps({
+    course: Object
+})
+
 </script>
 
 <template>
     <div id="card" class="bg-zinc-50 w-80 h-28 m-4 px-4 py-3 rounded-lg shadow-sm">
-        <h2 id="name" class="text-2xl font-semibold">Course Name</h2>
+        <h2 id="name" class="text-2xl font-semibold">Course Name: {{course?.name}}</h2>
         <div id="grade" class="flex justify-start items-start space-x-1 text-sm font-light text-zinc-500">
             <p>Grade:</p>
             <p>9 / 10 / 11</p>

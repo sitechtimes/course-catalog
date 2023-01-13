@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import SearchComponent from '~/components/catalog-search/SearchComponent.vue';
 import CourseCard from '~/components/course-cards/CourseCard.vue'
+import { useCourseStore } from "~~/store/store"
+
+
+
 </script>
 
 <template>
@@ -9,13 +13,11 @@ import CourseCard from '~/components/course-cards/CourseCard.vue'
             <h2 class="text-center text-4xl font-semibold">Courses</h2>
             <SearchComponent />
             <div id="courses" class="flex flex-wrap justify-center items-center bg-red-100 w-full max-w-[100rem]">
-                <CourseCard />
-                <CourseCard />
-                <CourseCard />
-                <CourseCard />
-                <CourseCard />
-                <CourseCard />
-                <CourseCard />
+                <div v-for="x in useCourseStore().courses">
+                    <CourseCard :course="x" />
+                </div>
+                        
+
             </div>
         </div>
     </div>

@@ -1,7 +1,7 @@
 dist
 temp
 coverage
-node_modules
+course-catalog/node_modules
 .DS_Store
 .idea
 .vscode
@@ -12,5 +12,5 @@ debug.log
 *~
 .env
 
-.nuxt
+course-catalog/.nuxt
 .output
