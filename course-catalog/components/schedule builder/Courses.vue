@@ -17,11 +17,41 @@
           Please keep in mind that this may not be your actual schedule that
           year.
         </h3>
+        <div class="holders">
+          <div class="placeholder test"><h4>test</h4></div>
+          <div class="placeholder"></div>
+          <div class="placeholder"></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+.test {
+  background-color: #d6eeff;
+}
+.holders {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  display: grid;
+  grid-column-gap: 10px;
+  justify-content: center;
+  margin: auto;
+}
+h4 {
+  margin-top: 3px;
+  font-weight: bold;
+}
+.placeholder {
+  text-align: center;
+  font-size: 1.2rem;
+  width: 18rem;
+  height: 2.3rem;
+  border: 2px dashed #7d7d7d;
+  border-radius: 15px;
+  margin: 1rem 2rem 0.2rem 2rem;
+}
 .r {
   background-color: #fedcb5;
 }
@@ -53,6 +83,7 @@
   flex-direction: row;
 }
 .tab {
+  text-align: left;
   padding: 0.5rem;
   width: 5.5rem;
   font-weight: bold;
