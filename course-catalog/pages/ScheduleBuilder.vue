@@ -148,11 +148,8 @@ function changeNeeded() {
             console.log(schedule)
           }
         })
-        button.remove();
-        selectedClasses.push(chosenClass);
-        console.log(seniorClasses);
-      });
-  };
+    })
+  }
 }
 </script>
 
