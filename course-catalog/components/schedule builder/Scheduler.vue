@@ -4,43 +4,43 @@ import Placeholder from "../schedule builder/Placeholder.vue";
 <template>
   <table class="">
     <tr class="">
-      <th class="p-4 py-2">Period</th>
+      <th class="p-4 py-2" id="right">Period</th>
       <th class="px-20">Class</th>
     </tr>
     <tr class="border-t-4">
-      <td class=""><p class="">1</p></td>
+      <td class="" id="right"><p class="">1</p></td>
       <td><div class="placeholder" id="first"></div></td>
     </tr>
     <tr class="">
-      <td class=""><p>2</p></td>
+      <td class="" id="right"><p>2</p></td>
       <td><div class="placeholder"></div></td>
     </tr>
     <tr class="">
-      <td class=""><p>3</p></td>
+      <td class="" id="right"><p>3</p></td>
       <td><div class="placeholder"></div></td>
     </tr>
     <tr class="">
-      <td class=""><p>4</p></td>
+      <td class="" id="right"><p>4</p></td>
       <td><div class="placeholder"></div></td>
     </tr>
     <tr class="">
-      <td class=""><p>5</p></td>
+      <td class="" id="right"><p>5</p></td>
       <td><div class="placeholder"></div></td>
     </tr>
     <tr class="">
-      <td class=""><p>6</p></td>
+      <td class="" id="right"><p>6</p></td>
       <td><div class="placeholder"></div></td>
     </tr>
     <tr class="">
-      <td class=""><p>7</p></td>
+      <td class="" id="right"><p>7</p></td>
       <td><div class="placeholder"></div></td>
     </tr>
     <tr class="">
-      <td class=""><p>8</p></td>
+      <td class="" id="right"><p>8</p></td>
       <td><div class="placeholder"></div></td>
     </tr>
     <tr class="">
-      <td class=""><p class="" id="lastnum">9</p></td>
+      <td class="" id="right"><p class="" id="lastnum">9</p></td>
       <td class=""><div class="placeholder" id="last"></div></td>
     </tr>
   </table>
@@ -49,9 +49,15 @@ import Placeholder from "../schedule builder/Placeholder.vue";
 table {
   border: 4px solid lightgrey;
   text-align: center;
+  /* border-collapse: separate;
+  border-spacing: 5rem; */
 }
-th,
+table,
 td {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+#right {
   border-right: 4px solid lightgrey;
 }
 td {
