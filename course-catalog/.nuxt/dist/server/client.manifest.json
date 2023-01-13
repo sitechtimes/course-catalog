@@ -6,10 +6,10 @@
     "module": true,
     "resourceType": "script"
   },
-  "C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/nuxt/dist/app/entry.mjs": {
+  "/Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
     "isEntry": true,
-    "file": "C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/nuxt/dist/app/entry.mjs"
+    "file": "/Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/nuxt/dist/app/entry.mjs"
   }
 }

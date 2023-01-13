@@ -1,27 +1,27 @@
-globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/node-fetch-native/dist/polyfill.mjs';
+globalThis._importMeta_={url:import.meta.url,env:process.env};import 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/node-fetch-native/dist/polyfill.mjs';
 import { Server } from 'http';
 import { tmpdir } from 'os';
 import { join } from 'path';
 import { mkdirSync } from 'fs';
 import { parentPort, threadId } from 'worker_threads';
-import { provider, isWindows } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/std-env/dist/index.mjs';
-import { eventHandler, setHeaders, sendRedirect, defineEventHandler, handleCacheHeaders, createEvent, getRequestHeader, getRequestHeaders, setResponseHeader, createApp, createRouter as createRouter$1, lazyEventHandler, toNodeListener, getQuery, createError } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/h3/dist/index.mjs';
-import { createRenderer } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import devalue from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/@nuxt/devalue/dist/devalue.mjs';
-import { renderToString } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/vue/server-renderer/index.mjs';
-import { parseURL, withQuery, joinURL } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/ufo/dist/index.mjs';
-import destr from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/destr/dist/index.mjs';
-import { snakeCase } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/scule/dist/index.mjs';
-import { createFetch as createFetch$1, Headers } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/ofetch/dist/node.mjs';
-import { createCall, createFetch } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/unenv/runtime/fetch/index.mjs';
-import { createHooks } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/hookable/dist/index.mjs';
-import { hash } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/ohash/dist/index.mjs';
-import { createStorage } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/unstorage/dist/drivers/fs.mjs';
-import defu from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/defu/dist/defu.mjs';
-import { toRouteMatcher, createRouter } from 'file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/radix3/dist/index.mjs';
+import { provider, isWindows } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/std-env/dist/index.mjs';
+import { eventHandler, setHeaders, sendRedirect, defineEventHandler, handleCacheHeaders, createEvent, getRequestHeader, getRequestHeaders, setResponseHeader, createApp, createRouter as createRouter$1, lazyEventHandler, toNodeListener, getQuery, createError } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/h3/dist/index.mjs';
+import { createRenderer } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import devalue from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/@nuxt/devalue/dist/devalue.mjs';
+import { renderToString } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/vue/server-renderer/index.mjs';
+import { parseURL, withQuery, joinURL } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/ufo/dist/index.mjs';
+import destr from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/destr/dist/index.mjs';
+import { snakeCase } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/scule/dist/index.mjs';
+import { createFetch as createFetch$1, Headers } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/ofetch/dist/node.mjs';
+import { createCall, createFetch } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/unenv/runtime/fetch/index.mjs';
+import { createHooks } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/hookable/dist/index.mjs';
+import { hash } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/ohash/dist/index.mjs';
+import { createStorage } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/unstorage/dist/drivers/fs.mjs';
+import defu from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/defu/dist/defu.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/radix3/dist/index.mjs';
 
-const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routeRules":{"/__nuxt_error":{"cache":false}},"envPrefix":"NUXT_"},"public":{}};
+const _runtimeConfig = {"app":{"baseURL":"/","buildAssetsDir":"/_nuxt/","cdnURL":""},"nitro":{"routeRules":{"/__nuxt_error":{"cache":false},"/":{"redirect":{"to":"/landingpage","statusCode":307}},"/courses":{"redirect":{"to":"/coursecatalog","statusCode":307}},"schedule":{"redirect":{"to":"/schedulebuilder","statusCode":307}}},"envPrefix":"NUXT_"},"public":{}};
 const ENV_PREFIX = "NITRO_";
 const ENV_PREFIX_ALT = _runtimeConfig.nitro.envPrefix ?? process.env.NITRO_ENV_PREFIX ?? "_";
 const getEnv = (key) => {
@@ -78,7 +78,7 @@ const timingMiddleware = eventHandler((event) => {
   }.bind(event.res);
 });
 
-const serverAssets = [{"baseName":"server","dir":"C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/Users/m.frid/Documents/GitHub/course-catalog/course-catalog/server/assets"}];
 
 const assets = createStorage();
 
@@ -92,10 +92,10 @@ const useStorage = () => storage;
 
 storage.mount('/assets', assets);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","base":"C:\\Users\\jason.chen\\Documents\\GitHub\\course-catalog\\course-catalog","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","base":"C:\\Users\\jason.chen\\Documents\\GitHub\\course-catalog\\course-catalog\\server","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","base":"C:\\Users\\jason.chen\\Documents\\GitHub\\course-catalog\\course-catalog\\.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","base":"C:\\Users\\jason.chen\\Documents\\GitHub\\course-catalog\\course-catalog\\.nuxt\\cache","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/m.frid/Documents/GitHub/course-catalog/course-catalog","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/m.frid/Documents/GitHub/course-catalog/course-catalog/server","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/m.frid/Documents/GitHub/course-catalog/course-catalog/.nuxt","ignore":["**/node_modules/**","**/.git/**"]}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/m.frid/Documents/GitHub/course-catalog/course-catalog/.nuxt/cache","ignore":["**/node_modules/**","**/.git/**"]}));
 
 function defineRenderHandler(handler) {
   return eventHandler(async (event) => {
@@ -434,7 +434,7 @@ const errorHandler = (async function errorhandler(error, event) {
     redirect: "manual"
   }).catch(() => null) : null;
   if (!res) {
-    const { template } = await import('file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/node_modules/@nuxt/ui-templates/dist/templates/error-dev.mjs') ;
+    const { template } = await import('file:///Users/m.frid/Documents/GitHub/course-catalog/course-catalog/node_modules/@nuxt/ui-templates/dist/templates/error-dev.mjs') ;
     {
       errorObject.description = errorObject.message;
     }
@@ -454,11 +454,11 @@ const errorHandler = (async function errorhandler(error, event) {
   event.node.res.end(await res.text());
 });
 
-const _lazy_QX1rYx = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_PjhXbw = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '/__nuxt_error', handler: _lazy_QX1rYx, lazy: true, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_QX1rYx, lazy: true, middleware: false, method: undefined }
+  { route: '/__nuxt_error', handler: _lazy_PjhXbw, lazy: true, middleware: false, method: undefined },
+  { route: '/**', handler: _lazy_PjhXbw, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -548,9 +548,9 @@ function publicAssetsURL(...path) {
 
 globalThis.__buildAssetsURL = buildAssetsURL;
 globalThis.__publicAssetsURL = publicAssetsURL;
-const getClientManifest = () => import('file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('/Users/m.frid/Documents/GitHub/course-catalog/course-catalog/.nuxt/dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 const getStaticRenderedHead = () => Promise.resolve().then(function () { return _virtual__headStatic$1; }).then((r) => r.default || r);
-const getServerEntry = () => import('file://C:/Users/jason.chen/Documents/GitHub/course-catalog/course-catalog/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
+const getServerEntry = () => import('/Users/m.frid/Documents/GitHub/course-catalog/course-catalog/.nuxt/dist/server/server.mjs').then((r) => r.default || r);
 const getSSRRenderer = lazyCachedFunction(async () => {
   const manifest = await getClientManifest();
   if (!manifest) {
