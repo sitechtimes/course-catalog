@@ -20,6 +20,12 @@ export default function (){
         edges{
             node{
                 name
+                id
+                freshman
+                sophomore
+                junior
+                senior
+                ap
             }
         }
     }}`
