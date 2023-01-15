@@ -9,19 +9,49 @@
       <Button class="tab s">Science</Button>
       <Button class="tab m">Math</Button>
     </div>
-    <div class="file">
-      <div class="landing">
+    <div class="file landing">
+      <div class="content">
         <h2>Instructions</h2>
         <h3>
           Click on subject tabs and drag desired courses to the schedule maker.
           Please keep in mind that this may not be your actual schedule that
           year.
         </h3>
-        <div class="holders">
-          <div class="placeholder test"><h4>test</h4></div>
-          <div class="placeholder"></div>
-          <div class="placeholder"></div>
-        </div>
+      </div>
+    </div>
+    <div class="file russian">
+      <div class="holders">
+        <div class="placeholder russian"><h4>Russian</h4></div>
+      </div>
+    </div>
+    <div class="file gym">
+      <div class="holders">
+        <div class="placeholder gym"><h4>Volleyball</h4></div>
+      </div>
+    </div>
+    <div class="file electives">
+      <div class="holders">
+        <div class="placeholder electives"><h4>APCSP JS</h4></div>
+      </div>
+    </div>
+    <div class="file history">
+      <div class="holders">
+        <div class="placeholder history"><h4>APUSH</h4></div>
+      </div>
+    </div>
+    <div class="file english">
+      <div class="holders">
+        <div class="placeholder english"><h4>AP Lang</h4></div>
+      </div>
+    </div>
+    <div class="file science">
+      <div class="holders">
+        <div class="placeholder science"><h4>AP Psychology</h4></div>
+      </div>
+    </div>
+    <div class="file math">
+      <div class="holders">
+        <div class="placeholder math"><h4>AP Calculus BC</h4></div>
       </div>
     </div>
   </div>
@@ -31,6 +61,9 @@
   background-color: #d6eeff;
 }
 .holders {
+  border-radius: 0.8rem;
+  height: 100%;
+  background-color: white;
   display: grid;
   grid-template-columns: 1fr 1fr;
   overflow: hidden;
@@ -51,26 +84,55 @@ h4 {
   border: 2px dashed #7d7d7d;
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
+  transition: 0.3s;
+}
+.placeholder:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}
+.placeholder:active {
+  background-color: #ededed;
 }
 .r {
+  background-color: #fedcb5;
+}
+.russian {
   background-color: #fedcb5;
 }
 .g {
   background-color: #ffadcb;
 }
+.gym {
+  background-color: #ffadcb;
+}
 .e {
+  background-color: #fffbd6;
+}
+.electives {
   background-color: #fffbd6;
 }
 .h {
   background-color: #e0d6ff;
 }
+.history {
+  background-color: #e0d6ff;
+}
 .en {
+  background-color: #d6eeff;
+}
+.english {
   background-color: #d6eeff;
 }
 .s {
   background-color: #cbf2d4;
 }
+.science {
+  background-color: #cbf2d4;
+}
 .m {
+  background-color: #ffdfdf;
+}
+.math {
   background-color: #ffdfdf;
 }
 .folder {
@@ -97,33 +159,12 @@ h4 {
   cursor: pointer;
   box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
-@media only screen and (min-width: 1440px) {
-  .file {
-    line-height: 4;
-    width: 80%;
-    margin-left: 40%;
-    background-color: #fff2e2;
-    border-radius: 0.8rem;
-    padding: 3rem;
-    height: 35rem;
-  }
-  .landing {
-    display: block;
-  }
-  h2 {
-    font-weight: bold;
-    font-size: 1.7rem;
-  }
-  h3 {
-    font-size: 1.2rem;
-  }
-}
+
 @media only screen and (min-width: 976px) {
   .file {
     line-height: 4;
-    width: 85%;
+    width: 95%;
     margin-left: 15%;
-    background-color: #fff2e2;
     border-radius: 0.8rem;
     padding: 2rem;
     height: 28rem;
@@ -139,12 +180,34 @@ h4 {
   }
 }
 @media only screen and (min-width: 1440px) {
-  .file {
-    margin-left: 15%;
-    height: 30rem;
-  }
   .tabs {
     margin-left: 25%;
+  }
+  .file {
+    line-height: 4;
+    width: 85%;
+    margin-left: 10%;
+    margin-bottom: 1rem;
+    border-radius: 0.8rem;
+    padding: 2rem;
+    height: 30rem;
+  }
+  .landing {
+    display: block;
+    background-color: #fff2e2;
+  }
+  h2 {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  .holders {
+    border-radius: 0.8rem;
+    height: 100%;
+    justify-content: center;
+    margin: auto;
   }
 }
 @media only screen and (min-width: 1700px) {
