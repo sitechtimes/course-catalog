@@ -1,7 +1,8 @@
-<script lang="ts">
+<!-- <script lang="ts">
 import SearchButton from '~/components/icons/SearchButton.vue';
 import { defineComponent } from 'vue'
-import { describe } from 'node:test';
+import { ref } from "vue";
+
 
 export default defineComponent({
     props: {
@@ -37,20 +38,21 @@ export default defineComponent({
             ]
         }
     },
+    methods: {
+    filteredCourses() {
+        let input = ref("");
+        return this.courses.filter((course) => {
+           console.log(course.name.toLowerCase().includes(input.value.toLowerCase()))
+        })
+    }
+},
     mounted(){
         this.courses
         this.search
+        this.filteredCourses
     }
 })
 
-computed: {
-    function filteredCourses() {
-        return this.courses.filter(c => {
-/*             return c.name.toLowerCase().indexOf(this.search.toLowerCase()) != -1; */
-console.log(c.name);
-        })
-    }
-}
 </script>
 
 <template>
@@ -67,7 +69,7 @@ console.log(c.name);
                     <SearchButton @click="filteredCourses()" class="absolute right-3 text-gray-400 cursor-pointer"/>
         </div>
     </div>
-    <div v-for="(course) in courses"
+    <div v-for="(course) in filteredCourses()"
         :key="course.name"
             :name="course.name"
             :desc="course.desc">
@@ -77,4 +79,48 @@ console.log(c.name);
             </div>
     </div>
     </body>
-</template>
+</template> -->
+
+<template>
+    <body>
+    <input type="text" v-model="input" placeholder="Search fruits..." />
+   <div class="item fruit" v-for="fruit in filteredList()" :key="fruit">
+     <p>{{ fruit }}</p>
+   </div>
+   <div class="item error" v-if="input&&!filteredList().length">
+      <p>No results found!</p>
+   </div>
+</body>
+ </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+let input = ref("");
+const fruits =[
+                {
+                    name: "Calculus BC",
+                    desc: "math"
+                },
+                {
+                    name: "Biology",
+                    desc: "science"
+                },
+                {
+                    name: "AP Literature",
+                    desc: "ela"
+                },
+                {
+                    name: "AP Government",
+                    desc: "history"
+                },
+                {
+                    name: "College Russian",
+                    desc: "russian"
+                }
+            ];
+function filteredList() {
+  return fruits.filter((fruit) =>
+    fruit.name.toLowerCase().includes(input.value.toLowerCase())
+  );
+}
+</script>
