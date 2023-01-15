@@ -1,8 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCourseStore } from "~/store/store";
+
+const courseStore = useCourseStore();
+
+function doStuff() {
+  console.log(courseStore.courses);
+}
+</script>
 
 <template>
   <div id="landing" class="flex justify-center items-center h-screen px-12">
-    <title>Home</title>
     <div
       id="info"
       class="w-5/6 flex flex-col justify-center items-center space-y-4 max-w-2xl lg:w-2/3 lg:pl-4"
@@ -25,13 +32,13 @@
             View Courses
           </button></NuxtLink
         >
-        <NuxtLink to="/schedulebuilder"
-          ><button
-            class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
-          >
-            Build Schedule
-          </button></NuxtLink
+        <!-- <NuxtLink to="/schedulebuilder"><button class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded" ">Build Schedule</button></NuxtLink> -->
+        <button
+          class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
+          @click="doStuff()"
         >
+          Build Schedule
+        </button>
       </div>
     </div>
     <div
@@ -40,11 +47,11 @@
     >
       <div
         id="big"
-        class="h-80 w-80 sm:h-96 sm:w-96 bg-tertiary-s right-32 circle"
+        class="h-80 w-80 sm:h-96 sm:w-96 bg-tertiary-s rounded-full right-32"
       ></div>
       <div
         id="small"
-        class="h-32 w-32 sm:h-40 sm:w-40 absolute bottom-4 left-12 bg-primary-s circle"
+        class="h-32 w-32 sm:h-40 sm:w-40 absolute bottom-4 left-12 bg-primary-s rounded-full"
       ></div>
     </div>
   </div>
