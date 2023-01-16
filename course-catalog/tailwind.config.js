@@ -7,6 +7,7 @@ module.exports = {
       md: "768px",
       lg: "976px",
       xl: "1440px",
+      xxl: "1740",
     },
     borderRadius: {
       sm: "0.125rem",

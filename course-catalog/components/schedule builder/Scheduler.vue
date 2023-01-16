@@ -4,7 +4,7 @@ import Placeholder from "../schedule builder/Placeholder.vue";
 <template>
   <table class="">
     <tr class="">
-      <th class="p-4 py-2">Period</th>
+      <th class="p-4 py-2" id="right">Period</th>
       <th class="px-20">Class</th>
     </tr>
     <tr class="border-t-4">
@@ -49,12 +49,24 @@ import Placeholder from "../schedule builder/Placeholder.vue";
 table {
   border: 4px solid lightgrey;
   text-align: center;
+  /* border-collapse: separate;
+  border-spacing: 5rem; */
 }
-th,
+table,
 td {
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+#right {
   border-right: 4px solid lightgrey;
 }
+td {
+  margin-top: 2rem;
+}
 table {
+  margin-top: 1rem;
+}
+p {
   margin-top: 1rem;
 }
 .placeholder {
@@ -64,10 +76,15 @@ table {
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
 }
-#first {
+/* #first {
   margin-top: 1.2rem;
+}*/
+#lastnum {
+  margin-top: 0rem;
 }
 #last {
   margin-bottom: 1.5rem;
+}
+@media only screen and (min-width: 1440px) {
 }
 </style>

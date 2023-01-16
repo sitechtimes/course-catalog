@@ -155,6 +155,7 @@ function changeNeeded() {
 
 <template>
   <div id="builder" class="flex mt-40 h-screen px-12">
+    <title>Schedule Builder</title>
     <h2 class="text-4xl font-semibold">Schedule Builder</h2>
     <div class="top">
       <h1>
