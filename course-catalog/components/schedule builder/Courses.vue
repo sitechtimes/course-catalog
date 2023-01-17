@@ -1,5 +1,5 @@
 <template>
-  <div class="folder">
+  <div>
     <div class="tabs">
       <Button class="tab r">Russian</Button>
       <Button class="tab g">Gym</Button>
@@ -9,54 +9,59 @@
       <Button class="tab s">Science</Button>
       <Button class="tab m">Math</Button>
     </div>
-    <div class="file landing">
-      <div class="content">
-        <h2>Instructions</h2>
-        <h3>
-          Click on subject tabs and drag desired courses to the schedule maker.
-          Please keep in mind that this may not be your actual schedule that
-          year.
-        </h3>
+    <div class="folder">
+      <div class="file landing">
+        <div class="content">
+          <h2>Instructions</h2>
+          <h3>
+            Click on subject tabs and drag desired courses to the schedule
+            maker. Please keep in mind that this may not be your actual schedule
+            that year.
+          </h3>
+        </div>
       </div>
-    </div>
-    <div class="file russian">
-      <div class="holders">
-        <div class="placeholder russian"><h4>Russian</h4></div>
+      <div class="file russian">
+        <div class="holders">
+          <div class="placeholder russian"><h4>Russian</h4></div>
+        </div>
       </div>
-    </div>
-    <div class="file gym">
-      <div class="holders">
-        <div class="placeholder gym"><h4>Volleyball</h4></div>
+      <div class="file gym">
+        <div class="holders">
+          <div class="placeholder gym"><h4>Volleyball</h4></div>
+        </div>
       </div>
-    </div>
-    <div class="file electives">
-      <div class="holders">
-        <div class="placeholder electives"><h4>APCSP JS</h4></div>
+      <div class="file electives">
+        <div class="holders">
+          <div class="placeholder electives"><h4>APCSP JS</h4></div>
+        </div>
       </div>
-    </div>
-    <div class="file history">
-      <div class="holders">
-        <div class="placeholder history"><h4>APUSH</h4></div>
+      <div class="file history">
+        <div class="holders">
+          <div class="placeholder history"><h4>APUSH</h4></div>
+        </div>
       </div>
-    </div>
-    <div class="file english">
-      <div class="holders">
-        <div class="placeholder english"><h4>AP Lang</h4></div>
+      <div class="file english">
+        <div class="holders">
+          <div class="placeholder english"><h4>AP Lang</h4></div>
+        </div>
       </div>
-    </div>
-    <div class="file science">
-      <div class="holders">
-        <div class="placeholder science"><h4>AP Psychology</h4></div>
+      <div class="file science">
+        <div class="holders">
+          <div class="placeholder science"><h4>AP Psychology</h4></div>
+        </div>
       </div>
-    </div>
-    <div class="file math">
-      <div class="holders">
-        <div class="placeholder math"><h4>AP Calculus BC</h4></div>
+      <div class="file math">
+        <div class="holders">
+          <div class="placeholder math"><h4>AP Calculus BC</h4></div>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+.file {
+  position: absolute;
+}
 .test {
   background-color: #d6eeff;
 }
@@ -185,12 +190,12 @@ h4 {
   }
   .file {
     line-height: 4;
-    width: 85%;
-    margin-left: 10%;
+    width: 58%;
+    margin-left: 5%;
     margin-bottom: 1rem;
     border-radius: 0.8rem;
     padding: 2rem;
-    height: 30rem;
+    height: 33rem;
   }
   .landing {
     display: block;

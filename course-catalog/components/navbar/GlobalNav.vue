@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import CloseMenu from '../icons/CloseMenu.vue';
-import MenuIcon from '../icons/MenuIcon.vue'
-import MobileMenu from './MobileMenu.vue';
-import { ref } from 'vue';
+import CloseMenu from "../icons/CloseMenu.vue";
+import MenuIcon from "../icons/MenuIcon.vue";
+import MobileMenu from "./MobileMenu.vue";
+import { ref } from "vue";
 
 let menuOpen = ref(false);
 
@@ -26,7 +26,9 @@ const toggleMenu = () => {
       class="hidden justify-center items-center space-x-10 lg:space-x-12 md:flex"
     >
       <NuxtLink to="/coursecatalog"><p class="text-base">Courses</p></NuxtLink>
-      <NuxtLink to="/schedulebuilder"><p class="text-base">Schedule Builder</p></NuxtLink>
+      <NuxtLink to="/schedulebuilder"
+        ><p class="text-base">Schedule Builder</p></NuxtLink
+      >
     </div>
 
     <div
@@ -35,8 +37,6 @@ const toggleMenu = () => {
     >
       <CloseMenu @e="toggleMenu" v-if="menuOpen" />
       <MenuIcon @e="toggleMenu" v-else />
-
-
     </div>
 
     <MobileMenu v-if="menuOpen" @e="toggleMenu" />
