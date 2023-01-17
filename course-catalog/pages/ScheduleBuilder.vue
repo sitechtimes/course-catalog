@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts">
 import Scheduler from "../components/schedule builder/Scheduler.vue";
 const seniorClasses = [
     {
@@ -50,20 +50,7 @@ const seniorClasses = [
         category:"class5"
     },
 ]
-function changeNeeded() {
-  const needed = {
-  // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-  english: false,
-  math: false,
-  science: false,
-  history: false,
-  gym: false,
-  lunch: false,
-  russian: false,
-  AP: 0,
-  educationalPeriods: 0,
-  };
-  const schedule = [
+const schedule = [
     {
       period: 1  
     },
@@ -93,14 +80,20 @@ function changeNeeded() {
     {
       period: 9  
     },
-  ]
-  schedule.forEach((object) => { 
-    if (object.name === undefined || object.name === null) {
-      document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="scheduleButton">empty</button>`)
-    } else {
-      document.querySelector(".top").insertAdjacentHTML( `beforeend`, `<button class="scheduleButton">${object.name}</button>`)
-    }
-  })
+]
+function changeNeeded() {
+  const needed = {
+  // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
+  english: false,
+  math: false,
+  science: false,
+  history: false,
+  gym: false,
+  lunch: false,
+  russian: false,
+  AP: 0,
+  educationalPeriods: 0,
+  };
   document.querySelectorAll(".button").forEach((button) => {
     button.remove();
   });
@@ -160,7 +153,7 @@ function changeNeeded() {
     <div class="top">
       <h1>
         Make a Schedule for
-        <select name="dropdown" class="dropdown" @click="changeNeeded()">
+        <select name="dropdown" class="dropdown" @change="changeNeeded()">
           <option value=""></option>
           <option value="Freshman">Freshman</option>
           <option value="Sophomore">Sophomore</option>
@@ -193,6 +186,7 @@ function changeNeeded() {
       </Scheduler></div>
   </div>
 </template>
+
 <style scoped>
 .dropdown {
   border: solid 1px grey;

@@ -16,11 +16,7 @@ import { useCourseStore } from "~~/store/store"
                 <div v-for="x in useCourseStore().courses">
                     <CourseCard :course="x" />
                 </div>
-                        
-
             </div>
         </div>
-      </div>
     </div>
-  </div>
 </template>

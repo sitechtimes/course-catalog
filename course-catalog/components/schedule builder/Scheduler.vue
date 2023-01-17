@@ -1,5 +1,14 @@
 <script lang="ts">
 import Placeholder from "../schedule builder/Placeholder.vue";
+export default {
+  name: "Scheduler",
+  props: {
+    schedule: [{
+      period: Number,
+      name: String,
+    }]
+  }
+}
 </script>
 <template>
   <table class="">
@@ -9,39 +18,39 @@ import Placeholder from "../schedule builder/Placeholder.vue";
     </tr>
     <tr class="border-t-4">
       <td class="">1</td>
-      <td><div class="placeholder" id="first"><slot name="p1"></slot></div></td>
+      <td><div class="placeholder" id="first">{{ schedule[0].name }}</div></td>
     </tr>
     <tr class="">
       <td class="">2</td>
-      <td><div class="placeholder"><slot name="p2"></slot></div></td>
+      <td><div class="placeholder">{{ schedule[1].name }}</div></td>
     </tr>
     <tr class="">
       <td class="">3</td>
-      <td><div class="placeholder"><slot name="p3"></slot></div></td>
+      <td><div class="placeholder">{{ schedule[2].name }}</div></td>
     </tr>
     <tr class="">
       <td class="">4</td>
-      <td><div class="placeholder"><slot name="p4"></slot></div></td>
+      <td><div class="placeholder">{{ schedule[3].name }}</div></td>
     </tr>
     <tr class="">
       <td class="">5</td>
-      <td><div class="placeholder"><slot name="p5"></slot></div></td>
+      <td><div class="placeholder">{{ schedule[4].name }}</div></td>
     </tr>
     <tr class="">
       <td class="">6</td>
-      <td><div class="placeholder"><slot name="p6"></slot></div></td>
+      <td><div class="placeholder">{{ schedule[5].name }}</div></td>
     </tr>
     <tr class="">
       <td class="">7</td>
-      <td><div class="placeholder"><slot name="p7"></slot></div></td>
+      <td><div class="placeholder">{{schedule[6].name}}</div></td>
     </tr>
     <tr class="">
       <td class="">8</td>
-      <td><div class="placeholder"><slot name="p8"></slot></div></td>
+      <td><div class="placeholder">{{schedule[7].name}}</div></td>
     </tr>
     <tr class="">
       <td class="">9</td>
-      <td><div class="placeholder" id="last"><slot name="p9"></slot></div></td>
+      <td><div class="placeholder" id="last">{{schedule[8].name}}</div></td>
     </tr>
   </table>
 </template>
