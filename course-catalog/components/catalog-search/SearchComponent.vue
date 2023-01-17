@@ -82,46 +82,16 @@ export default defineComponent({
 </template> -->
 
 <template>
-    <body>
-    <input type="text" v-model="input" placeholder="Search fruits..." />
-   <div class="item fruit" v-for="fruit in filteredList()" :key="fruit">
-     <p>{{ fruit }}</p>
-   </div>
-   <div class="item error" v-if="input&&!filteredList().length">
-      <p>No results found!</p>
-   </div>
-</body>
+        <input
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
  </template>
 
-<script setup lang="ts">
-import { ref } from "vue";
-let input = ref("");
-const fruits =[
-                {
-                    name: "Calculus BC",
-                    desc: "math"
-                },
-                {
-                    name: "Biology",
-                    desc: "science"
-                },
-                {
-                    name: "AP Literature",
-                    desc: "ela"
-                },
-                {
-                    name: "AP Government",
-                    desc: "history"
-                },
-                {
-                    name: "College Russian",
-                    desc: "russian"
-                }
-            ];
-function filteredList() {
-  return fruits.filter((fruit) =>
-    fruit.name.toLowerCase().includes(input.value.toLowerCase())
-  );
+<script lang="ts">
+export default {
+    props: ['modelValue'],
+    emits: ['update:modelValue']
 }
 </script>
 
