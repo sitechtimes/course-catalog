@@ -3,10 +3,7 @@ import Placeholder from "../schedule builder/Placeholder.vue";
 export default {
   name: "Scheduler",
   props: {
-    schedule: [{
-      period: Number,
-      name: String,
-    }]
+    schedule: [Object]
   }
 }
 </script>
