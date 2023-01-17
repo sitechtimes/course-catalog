@@ -1,5 +1,5 @@
 <script lang="ts">
-import SearchResults from '~/components/catalog-search/SearchResults.vue';
+import SearchResults from '../components/catalog-search/SearchResults.vue';
 export default {
     components: {
         SearchResults
