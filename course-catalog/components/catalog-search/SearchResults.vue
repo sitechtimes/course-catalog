@@ -10,7 +10,8 @@ export default defineComponent({
         courses: [
                 {
                     name: "Calculus BC",
-                    desc: "math"
+                    desc: "math",
+                    grade: 11
                 },
                 {
                     name: "Biology",
