@@ -89,6 +89,7 @@ td {
 }
 table {
   margin-top: 1rem;
+  margin-right: 3rem;
 }
 p {
   margin-top: 1rem;

@@ -217,7 +217,7 @@ h4 {
 }
 @media only screen and (min-width: 1700px) {
   .file {
-    width: 80%;
+    width: 55%;
   }
   .tabs {
     margin-left: 35%;
