@@ -3,9 +3,9 @@ import Placeholder from "../schedule builder/Placeholder.vue";
 export default {
   name: "Scheduler",
   props: {
-    schedule: [Object]
-  }
-}
+    schedule: [Object],
+  },
+};
 </script>
 <template>
   <table class="">
@@ -14,40 +14,58 @@ export default {
       <th class="px-20">Class</th>
     </tr>
     <tr class="border-t-4">
-      <td class="">1</td>
-      <td><div class="placeholder" id="first">{{ schedule[0].name }}</div></td>
+      <td class="" id="right">1</td>
+      <td>
+        <div class="placeholder" id="first">{{ schedule[0].name }}</div>
+      </td>
     </tr>
     <tr class="">
-      <td class="">2</td>
-      <td><div class="placeholder">{{ schedule[1].name }}</div></td>
+      <td class="" id="right">2</td>
+      <td>
+        <div class="placeholder">{{ schedule[1].name }}</div>
+      </td>
     </tr>
     <tr class="">
-      <td class="">3</td>
-      <td><div class="placeholder">{{ schedule[2].name }}</div></td>
+      <td class="" id="right">3</td>
+      <td>
+        <div class="placeholder">{{ schedule[2].name }}</div>
+      </td>
     </tr>
     <tr class="">
-      <td class="">4</td>
-      <td><div class="placeholder">{{ schedule[3].name }}</div></td>
+      <td class="" id="right">4</td>
+      <td>
+        <div class="placeholder">{{ schedule[3].name }}</div>
+      </td>
     </tr>
     <tr class="">
-      <td class="">5</td>
-      <td><div class="placeholder">{{ schedule[4].name }}</div></td>
+      <td class="" id="right">5</td>
+      <td>
+        <div class="placeholder">{{ schedule[4].name }}</div>
+      </td>
     </tr>
     <tr class="">
-      <td class="">6</td>
-      <td><div class="placeholder">{{ schedule[5].name }}</div></td>
+      <td class="" id="right">6</td>
+      <td>
+        <div class="placeholder">{{ schedule[5].name }}</div>
+      </td>
     </tr>
     <tr class="">
-      <td class="">7</td>
-      <td><div class="placeholder">{{schedule[6].name}}</div></td>
+      <td class="" id="right">7</td>
+      <td>
+        <div class="placeholder">{{ schedule[6].name }}</div>
+      </td>
     </tr>
     <tr class="">
-      <td class="">8</td>
-      <td><div class="placeholder">{{schedule[7].name}}</div></td>
+      <td class="" id="right">8</td>
+      <td>
+        <div class="placeholder">{{ schedule[7].name }}</div>
+      </td>
     </tr>
     <tr class="">
-      <td class="">9</td>
-      <td><div class="placeholder" id="last">{{schedule[8].name}}</div></td>
+      <td class="" id="right">9</td>
+      <td>
+        <div class="placeholder" id="last">{{ schedule[8].name }}</div>
+      </td>
     </tr>
   </table>
 </template>
@@ -71,6 +89,7 @@ td {
 }
 table {
   margin-top: 1rem;
+  margin-right: 3rem;
 }
 p {
   margin-top: 1rem;
@@ -81,6 +100,7 @@ p {
   border: 2px dashed #7d7d7d;
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
+  padding-top: 0.4rem;
 }
 /* #first {
   margin-top: 1.2rem;
