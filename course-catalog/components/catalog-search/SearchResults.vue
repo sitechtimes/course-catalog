@@ -47,7 +47,7 @@ export default defineComponent({
 
 <template>
 <div>
-    <SearchComponent type="text" v-model="input" placeholder="Search Courses..." />
+    <SearchComponent class="mb-4" type="text" v-model="input" placeholder="Search Courses..." />
     <div class="item fruit" v-for="course in filteredList" :key="course">
      <p>{{ course }}</p>
    </div>
