@@ -10,16 +10,6 @@
       <Button class="tab m">Math</Button>
     </div>
     <div class="folder">
-      <div class="file landing">
-        <div class="content">
-          <h2>Instructions</h2>
-          <h3>
-            Click on subject tabs and drag desired courses to the schedule
-            maker. Please keep in mind that this may not be your actual schedule
-            that year.
-          </h3>
-        </div>
-      </div>
       <div class="file russian">
         <div class="holders">
           <div class="placeholder russian"><h4>Russian</h4></div>
@@ -53,6 +43,16 @@
       <div class="file math">
         <div class="holders">
           <div class="placeholder math"><h4>AP Calculus BC</h4></div>
+        </div>
+      </div>
+      <div class="file landing">
+        <div class="content">
+          <h2>Instructions</h2>
+          <h3>
+            Click on subject tabs and drag desired courses to the schedule
+            maker. Please keep in mind that this may not be your actual schedule
+            that year.
+          </h3>
         </div>
       </div>
     </div>
@@ -151,13 +151,13 @@ h4 {
 }
 .tab {
   text-align: left;
-  padding: 0.5rem;
-  width: 5.5rem;
   font-weight: bold;
   font-size: 1rem;
   border-top-right-radius: 0.6rem;
   border-top-left-radius: 0.6rem;
   transition: 0.4s;
+  padding: 0.5rem;
+  width: 5.5rem;
 }
 .tab:hover {
   opacity: 0.8;
