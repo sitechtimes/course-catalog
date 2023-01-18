@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import SearchComponent from '~/components/catalog-search/SearchComponent.vue';
-import CourseCard from '~/components/course-cards/CourseCard.vue'
 import { useCourseStore } from "~~/store/store"
-
-
-
+import SearchComponent from "../components/catalog-search/SearchComponent.vue";
+import CourseCard from "../components/course-cards/CourseCard.vue";
 </script>
 
 <template>

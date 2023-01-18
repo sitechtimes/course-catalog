@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import BackArrow from '~~/components/icons/BackArrow.vue';
-import CourseType from '~~/components/course-cards/CourseType.vue';
-import SubjectType from '~~/components/course-cards/SubjectType.vue';
-const type = true
+import BackArrow from '../components/icons/BackArrow.vue';
+import SubjectType from '../components/course-cards/SubjectType.vue';
+import CourseType from '../components/course-cards/CourseType.vue';
 </script>
 
 <template>
