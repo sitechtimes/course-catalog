@@ -15,19 +15,23 @@ export default defineComponent({
                 },
                 {
                     name: "Biology",
-                    desc: "science"
+                    desc: "science",
+                    grade: 11,
                 },
                 {
                     name: "AP Literature",
-                    desc: "ela"
+                    desc: "ela",
+                    grade: 12,
                 },
                 {
                     name: "AP Government",
-                    desc: "history"
+                    desc: "history",
+                    grade: 12,
                 },
                 {
                     name: "College Russian",
-                    desc: "russian"
+                    desc: "russian",
+                    grade: 10
                 }
             ],
             input: ref("")
@@ -40,15 +44,36 @@ export default defineComponent({
                 }
             )}
         },
+        methods: {
+        NameSort() {
+            function compare(a, b) {
+      if (a.name < b.name)
+        return -1;
+      if (a.name > b.name)
+        return 1;
+      return 0;
+    }
+    return this.courses.sort(compare);
+  }
+        },
         mounted() {
             this.filteredList
+            this.NameSort
             }
 })
 </script>
 
 <template>
 <div>
+    <div id="search" class="w-full flex justify-start items-center space-x-4">
+    <select name="sort" id="sort" class="w-40 h-10 p-1 border border-gray-300 bg-white text-gray-400 rounded">
+                    <option>Sort by</option>
+                    <option @click="NameSort" value="name">Course Name</option>
+                    <option value="subject">Subject</option>
+                    <option value="grade">Grade</option>
+                </select>
     <SearchComponent class="mb-4" type="text" v-model="input" placeholder="Search Courses..." />
+            </div>
     <div class="item fruit" v-for="course in filteredList" :key="course">
      <p>{{ course }}</p>
    </div>
