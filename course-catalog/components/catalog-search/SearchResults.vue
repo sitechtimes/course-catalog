@@ -2,6 +2,7 @@
 import SearchComponent from './SearchComponent.vue';
 import { defineComponent } from 'vue';
 import { ref } from "vue";
+import { thisTypeAnnotation } from '@babel/types';
 
 export default defineComponent({
   components: { SearchComponent },
@@ -34,7 +35,8 @@ export default defineComponent({
                     grade: 10
                 }
             ],
-            input: ref("")
+            input: ref(""),
+            selected: ''
          }
         },
         computed: {
@@ -45,28 +47,31 @@ export default defineComponent({
             )}
         },
         methods: {
-        NameSort() {
-            function compare(a, b) {
-      if (a.name < b.name)
-        return -1;
-      if (a.name > b.name)
-        return 1;
-      return 0;
-    }
-    return this.courses.sort(compare);
-  }
+            NameSort() {
+                function compare(a, b) {
+                    if (a.name < b.name)
+                        return -1;
+                    if (a.name > b.name)
+                        return 1;
+                        return 0;
+                }
+                return this.courses.sort(compare);
+            },
+            switchSelect(event) {
+                this.selected = event.target.value;
+            }
         },
         mounted() {
             this.filteredList
             this.NameSort
-            }
+        }
 })
 </script>
 
 <template>
 <div>
     <div id="search" class="w-full flex justify-start items-center space-x-4">
-    <select name="sort" id="sort" class="w-40 h-10 p-1 border border-gray-300 bg-white text-gray-400 rounded">
+    <select v-model="selected" name="sort" id="sort" class="w-40 h-10 p-1 border border-gray-300 bg-white text-gray-400 rounded">
                     <option>Sort by</option>
                     <option @click="NameSort" value="name">Course Name</option>
                     <option value="subject">Subject</option>
