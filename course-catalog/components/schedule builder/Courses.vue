@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="tabs">
-      <Button class="tab r">Russian</Button>
-      <Button class="tab g">Gym</Button>
-      <Button class="tab e">Electives</Button>
-      <Button class="tab h">History</Button>
-      <Button class="tab en">English</Button>
-      <Button class="tab s">Science</Button>
-      <Button class="tab m">Math</Button>
+      <button class="tab r">Russian</button>
+      <button class="tab g">Gym</button>
+      <button class="tab e">Electives</button>
+      <button class="tab h">History</button>
+      <button class="tab en">English</button>
+      <button class="tab s">Science</button>
+      <button class="tab m">Math</button>
     </div>
     <div class="folder">
       <div class="file russian">
@@ -157,7 +157,7 @@ h4 {
   border-top-left-radius: 0.6rem;
   transition: 0.4s;
   padding: 0.5rem;
-  width: 5.5rem;
+  width: 7.5rem;
 }
 .tab:hover {
   opacity: 0.8;
@@ -190,12 +190,12 @@ h4 {
   }
   .file {
     line-height: 4;
-    width: 58%;
+    width: 55%;
     margin-left: 5%;
     margin-bottom: 1rem;
     border-radius: 0.8rem;
     padding: 2rem;
-    height: 33rem;
+    height: 32rem;
   }
   .landing {
     display: block;
