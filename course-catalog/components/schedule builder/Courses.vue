@@ -210,8 +210,8 @@ h4 {
   }
   .file {
     line-height: 4;
-    width: 58%;
-    margin-left: 5%;
+    width: 55%;
+    margin-left: 4%;
     margin-bottom: 1rem;
     border-radius: 0.8rem;
     padding: 2rem;
