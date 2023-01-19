@@ -177,7 +177,7 @@ h4 {
   border-top-left-radius: 0.6rem;
   transition: 0.4s;
   padding: 0.5rem;
-  width: 5.5rem;
+  width: 6.5rem;
 }
 .tab:hover {
   opacity: 0.8;
@@ -188,7 +188,7 @@ h4 {
 @media only screen and (min-width: 976px) {
   .file {
     line-height: 4;
-    width: 95%;
+    width: 55%;
     margin-left: 15%;
     border-radius: 0.8rem;
     padding: 2rem;
