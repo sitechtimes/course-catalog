@@ -1,12 +1,19 @@
+
 <script setup lang="ts">
 import CourseType from './CourseType.vue';
 import SubjectType from './SubjectType.vue';
 const type = true
-
-defineProps({
-    course: Object
-})
-
+interface course{
+    name: string
+    freshman: boolean
+    sophomore: boolean
+    junior: boolean
+    senior: boolean
+    ap: boolean
+}
+defineProps<{
+    course:course
+    }>()
 </script>
 
 <template>

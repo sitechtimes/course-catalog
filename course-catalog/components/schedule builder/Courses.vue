@@ -1,50 +1,51 @@
 <template>
+  <button @click="logCourses()">console log</button>
   <div>
     <div class="tabs">
-      <button @click="showrussian = !showrussian" class="tab r">Russian</button>
-      <button @click="showgym = !showgym" class="tab g">Gym</button>
-      <button @click="showelectives = !showelectives" class="tab e">
+      <button @click="switchTabs(`Russian`)" class="tab r">Russian</button>
+      <button @click="showSubjects.showgym = !showSubjects.showgym" class="tab g">Gym</button>
+      <button @click="showSubjects.showelectives = !showSubjects.showelectives" class="tab e">
         Electives
       </button>
-      <button @click="showhistory = !showhistory" class="tab h">History</button>
-      <button @click="showenglish = !showenglish" class="tab en">
+      <button @click="showSubjects.showhistory = !showSubjects.showhistory" class="tab h">History</button>
+      <button @click="showSubjects.showenglish = !showSubjects.showenglish" class="tab en">
         English
       </button>
-      <button @click="showscience = !showscience" class="tab s">Science</button>
-      <button @click="showmath = !showmath" class="tab m">Math</button>
+      <button @click="showSubjects.showscience = !showSubjects.showscience" class="tab s">Science</button>
+      <button @click="showSubjects.showmath = !showSubjects.showmath" class="tab m">Math</button>
     </div>
     <div class="folder">
-      <div v-if="showrussian" class="file russian">
+      <div v-if="showSubjects.showrussian" class="file russian">
         <div class="holders">
           <div class="placeholder russian"><h4>Russian</h4></div>
         </div>
       </div>
-      <div v-if="showgym" class="file gym">
+      <div v-if="showSubjects.showgym" class="file gym">
         <div class="holders">
           <div class="placeholder gym"><h4>Volleyball</h4></div>
         </div>
       </div>
-      <div v-if="showelectives" class="file electives">
+      <div v-if="showSubjects.showelectives" class="file electives">
         <div class="holders">
           <div class="placeholder electives"><h4>APCSP JS</h4></div>
         </div>
       </div>
-      <div v-if="showhistory" class="file history">
+      <div v-if="showSubjects.showhistory" class="file history">
         <div class="holders">
           <div class="placeholder history"><h4>APUSH</h4></div>
         </div>
       </div>
-      <div v-if="showenglish" class="file english">
+      <div v-if="showSubjects.showenglish" class="file english">
         <div class="holders">
           <div class="placeholder english"><h4>AP Lang</h4></div>
         </div>
       </div>
-      <div v-if="showscience" class="file science">
+      <div v-if="showSubjects.showscience" class="file science">
         <div class="holders">
           <div class="placeholder science"><h4>AP Psychology</h4></div>
         </div>
       </div>
-      <div v-if="showmath" class="file math">
+      <div v-if="showSubjects.showmath" class="file math">
         <div class="holders">
           <div class="placeholder math"><h4>AP Calculus BC</h4></div>
         </div>
@@ -63,10 +64,17 @@
   </div>
 </template>
 <script>
+import { useCourseStore } from "~/store/store";
+
 export default {
+  name: "Courses",
+  components: {
+    useCourseStore,
+  },
   data() {
     return {
       /*    showlanding: true, */
+      showSubjects: {
       showrussian: false,
       showgym: false,
       showelectives: false,
@@ -74,8 +82,24 @@ export default {
       showhistory: false,
       showscience: false,
       showmath: false,
+      }
     };
-  },
+  }, methods: {
+    logCourses: function () {
+      console.log(useCourseStore().courses)
+    },
+    switchTabs: function (subject) {
+      this.showSubjects.showrussian = false
+      this.showSubjects.showgym = false
+      this.showSubjects.showelectives = false
+      this.showSubjects.showenglish = false
+      this.showSubjects.showhistory = false
+      this.showSubjects.showscience = false
+      const whatChanged = `show${subject}`
+      this.showSubjectswhatChanged = true
+      console.log(this.showSubjects)
+    }
+  }
 };
 </script>
 <style scoped>

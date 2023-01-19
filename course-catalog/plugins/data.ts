@@ -1,16 +1,8 @@
 import axios from "axios"
 import { useCourseStore } from "~~/store/store"
+import course from '~~/interface/course'
+import courseNode from '~/interface/course'
 
-
-let Courses: course[] = []
-
-
-interface course{
-    name:string
-}
-interface courseNode{
-    node:course
-}
 
 
 
@@ -38,10 +30,8 @@ export default function (){
         },
     }).then((res)=>{
             res.data.data.allCourses.edges.forEach((x:courseNode) => {
-                Courses.push(x.node)
+                useCourseStore().courses.push(x.node)
             });
-            
-            useCourseStore().courses = Courses
             console.log(useCourseStore().courses)
         })
     
