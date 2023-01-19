@@ -1,52 +1,56 @@
 <template>
   <div>
     <div class="tabs">
-      <Button class="tab r">Russian</Button>
-      <Button class="tab g">Gym</Button>
-      <Button class="tab e">Electives</Button>
-      <Button class="tab h">History</Button>
-      <Button class="tab en">English</Button>
-      <Button class="tab s">Science</Button>
-      <Button class="tab m">Math</Button>
+      <button @click="showrussian = !showrussian" class="tab r">Russian</button>
+      <button @click="showgym = !showgym" class="tab g">Gym</button>
+      <button @click="showelectives = !showelectives" class="tab e">
+        Electives
+      </button>
+      <button @click="showhistory = !showhistory" class="tab h">History</button>
+      <button @click="showenglish = !showenglish" class="tab en">
+        English
+      </button>
+      <button @click="showscience = !showscience" class="tab s">Science</button>
+      <button @click="showmath = !showmath" class="tab m">Math</button>
     </div>
     <div class="folder">
-      <div class="file russian">
+      <div v-if="showrussian" class="file russian">
         <div class="holders">
           <div class="placeholder russian"><h4>Russian</h4></div>
         </div>
       </div>
-      <div class="file gym">
+      <div v-if="showgym" class="file gym">
         <div class="holders">
           <div class="placeholder gym"><h4>Volleyball</h4></div>
         </div>
       </div>
-      <div class="file electives">
+      <div v-if="showelectives" class="file electives">
         <div class="holders">
           <div class="placeholder electives"><h4>APCSP JS</h4></div>
         </div>
       </div>
-      <div class="file history">
+      <div v-if="showhistory" class="file history">
         <div class="holders">
           <div class="placeholder history"><h4>APUSH</h4></div>
         </div>
       </div>
-      <div class="file english">
+      <div v-if="showenglish" class="file english">
         <div class="holders">
           <div class="placeholder english"><h4>AP Lang</h4></div>
         </div>
       </div>
-      <div class="file science">
+      <div v-if="showscience" class="file science">
         <div class="holders">
           <div class="placeholder science"><h4>AP Psychology</h4></div>
         </div>
       </div>
-      <div class="file math">
+      <div v-if="showmath" class="file math">
         <div class="holders">
           <div class="placeholder math"><h4>AP Calculus BC</h4></div>
         </div>
       </div>
-      <div class="file landing">
-        <div class="content">
+      <!--  <div class="file landing">
+        <div @load="showlanding = !showlanding" class="content">
           <h2>Instructions</h2>
           <h3>
             Click on subject tabs and drag desired courses to the schedule
@@ -54,10 +58,26 @@
             that year.
           </h3>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      /*    showlanding: true, */
+      showrussian: false,
+      showgym: false,
+      showelectives: false,
+      showenglish: false,
+      showhistory: false,
+      showscience: false,
+      showmath: false,
+    };
+  },
+};
+</script>
 <style scoped>
 .file {
   position: absolute;

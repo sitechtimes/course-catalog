@@ -42,6 +42,7 @@ export default function (){
             });
             
             useCourseStore().courses = Courses
+            console.log(useCourseStore().courses)
         })
     
 
