@@ -9,20 +9,20 @@
         </a>
         </div>
          <div class="sub-menu" v-if="isOpen">
-            <div class="mt-2 w-40 h-10 p-1 border border-gray-300 bg-white text-gray-400 rounded">
-              <button @click="SubjectSort()">Subject</button>
+            <div @click="SubjectSort()" class="mt-2 w-40 h-10 p-1 border border-gray-300 bg-white text-gray-400 rounded">
+              <button>Subject</button>
             </div>
-            <div class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
-             <button @click="IncNameSort()">Course Name (A-Z)</button>
+            <div @click="IncNameSort()" class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
+             <button>Course Name (A-Z)</button>
             </div>
-            <div class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
-             <button @click="DecNameSort()">Course Name (Z-A)</button>
+            <div @click="DecNameSort()" class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
+             <button>Course Name (Z-A)</button>
             </div>
-            <div class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
-              <button @click="IncGradeSort()">Grade (Increasing)</button>
+            <div  @click="IncGradeSort()" class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
+              <button>Grade (Increasing)</button>
             </div>
-            <div class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
-              <button @click="DecGradeSort()">Grade (Decreasing)</button>
+            <div @click="DecGradeSort()" class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
+              <button>Grade (Decreasing)</button>
             </div>
         </div>
     </div>
@@ -45,10 +45,15 @@ export default defineComponent({
     },
     methods: {
         SubjectSort() {
-                return this.courses.filter((course) => {
-                return course.name.toLowerCase().indexOf(this.input.toLowerCase()) != -1;
+                function compare(a, b) {
+                    if (a.desc < b.desc)
+                        return -1;
+                    if (a.desc > b.desc)
+                        return 1;
+                        return 0;
                 }
-            )},
+                return this.courses.sort(compare);
+            },
             IncNameSort() {
                 function compare(a, b) {
                     if (a.name < b.name)
