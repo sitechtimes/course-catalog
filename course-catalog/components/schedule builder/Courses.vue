@@ -2,17 +2,17 @@
   <button @click="logCourses()">console log</button>
   <div>
     <div class="tabs">
-      <button @click="switchTabs(`Russian`)" class="tab r">Russian</button>
-      <button @click="showSubjects.showgym = !showSubjects.showgym" class="tab g">Gym</button>
-      <button @click="showSubjects.showelectives = !showSubjects.showelectives" class="tab e">
+      <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
+      <button @click="switchTabs(`gym`)" class="tab g">Gym</button>
+      <button @click="switchTabs(`electives`)" class="tab e">
         Electives
       </button>
-      <button @click="showSubjects.showhistory = !showSubjects.showhistory" class="tab h">History</button>
-      <button @click="showSubjects.showenglish = !showSubjects.showenglish" class="tab en">
+      <button @click="switchTabs(`history`)" class="tab h">History</button>
+      <button @click="switchTabs(`english`)" class="tab en">
         English
       </button>
-      <button @click="showSubjects.showscience = !showSubjects.showscience" class="tab s">Science</button>
-      <button @click="showSubjects.showmath = !showSubjects.showmath" class="tab m">Math</button>
+      <button @click="switchTabs(`science`)" class="tab s">Science</button>
+      <button @click="switchTabs(`math`)" class="tab m">Math</button>
     </div>
     <div class="folder">
       <div v-if="showSubjects.showrussian" class="file russian">
@@ -82,11 +82,12 @@ export default {
       showhistory: false,
       showscience: false,
       showmath: false,
-      }
+      },
+      courses: useCourseStore().courses
     };
   }, methods: {
     logCourses: function () {
-      console.log(useCourseStore().courses)
+      console.log(this.courses)
     },
     switchTabs: function (subject) {
       this.showSubjects.showrussian = false
@@ -95,9 +96,22 @@ export default {
       this.showSubjects.showenglish = false
       this.showSubjects.showhistory = false
       this.showSubjects.showscience = false
-      const whatChanged = `show${subject}`
-      this.showSubjectswhatChanged = true
-      console.log(this.showSubjects)
+      this.showSubjects.showmath = false
+      if (subject === "russian") {
+        this.showSubjects.showrussian = true
+      } else if (subject === "gym") {
+        this.showSubjects.showgym = true
+      } else if (subject === "electives") {
+        this.showSubjects.showelectives = true
+      } else if (subject === "english") {
+        this.showSubjects.showenglish = true
+      } else if (subject === "history") {
+        this.showSubjects.showhistory = true
+      } else if (subject === "science") {
+        this.showSubjects.showscience = true
+      } else if (subject === "math") {
+        this.showSubjects.showmath = true
+      } 
     }
   }
 };
