@@ -17,7 +17,7 @@ const toggleMenu = () => {
 
 <template>
   <nav
-    class="fixed w-full h-24 top-0 flex justify-between items-center overflow-visible px-8 md:px-10 lg:px-12"
+    class="fixed w-full h-24 top-0 flex justify-between items-center overflow-visible px-8 z-50 md:px-10 lg:px-12"
   >
     <NuxtLink to="/landingpage" class="z-40"
       ><h1 class="text-3xl font-semibold">Course Catalog</h1></NuxtLink

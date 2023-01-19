@@ -3,8 +3,8 @@ import SearchButton from '~/components/icons/SearchButton.vue';
 </script>
 
 <template>
-    <div id="search" class="w-full flex justify-start items-center space-x-4">
-        <select name="sort" id="sort" class="w-40 h-10 p-1 border border-gray-300 bg-white text-gray-400 rounded">
+    <div id="search" class="w-full flex justify-center items-center">
+        <select name="sort" id="sort" class=" hidden w-40 h-10 p-1 border border-gray-300 bg-white text-gray-400 mr-4 rounded md:block">
                     <option>Sort by</option>
                     <option value="name">Course Name</option>
                     <option value="subject">Subject</option>
