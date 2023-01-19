@@ -6315,15 +6315,15 @@ module.exports = {
     "relative": false,
     "files": [
       "./src/**/*.{vue,js,ts,jsx,tsx}",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/components/**/*.{vue,js,ts}",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/layouts/**/*.vue",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/pages/**/*.vue",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/composables/**/*.{js,ts}",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/plugins/**/*.{js,ts}",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/App.{js,ts,vue}",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/app.{js,ts,vue}",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/Error.{js,ts,vue}",
-      "C:/Users/Annie/Documents/course-catalog/course-catalog/error.{js,ts,vue}"
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/components/**/*.{vue,js,ts}",
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/layouts/**/*.vue",
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/pages/**/*.vue",
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/composables/**/*.{js,ts}",
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/plugins/**/*.{js,ts}",
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/App.{js,ts,vue}",
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/app.{js,ts,vue}",
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/Error.{js,ts,vue}",
+      "C:/Users/Agnetha.D Mello/Documents/GitHub/course-catalog/course-catalog/error.{js,ts,vue}"
     ],
     "extract": {},
     "transform": {}

@@ -1,8 +1,8 @@
 <template>
                 <div  class="w-40 h-10 mb-4 relative border border-gray-300 bg-white text-gray-400 rounded" id="sort" @click="isOpen = !isOpen" >
                     <div>
-        <a class="text-lg ml-2 mt-1" href ='#'>
-            {{ title }}
+        <a class="text-lg ml-2 mt-1">
+            {{ selected }}
             <svg class="ml-16 mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10">
             <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path>
         </svg>
@@ -38,7 +38,7 @@ export default defineComponent({
     data() {
         return {
         courses: courses,
-            selected: '',
+            selected: 'Sort By',
             isOpen: false,
             input: ref(""),
          }
