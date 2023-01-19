@@ -1,5 +1,6 @@
 <template>
   <button @click="logCourses()">console log</button>
+  <h1>{{ yearPicked }}</h1>
   <div>
     <div class="tabs">
       <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
@@ -68,6 +69,9 @@ import { useCourseStore } from "~/store/store";
 
 export default {
   name: "Courses",
+  props: {
+    yearPicked: String
+  },
   components: {
     useCourseStore,
   },
@@ -87,7 +91,15 @@ export default {
     };
   }, methods: {
     logCourses: function () {
-      console.log(this.courses)
+      if (this.yearPicked === "Senior") {
+        console.log(this.courses.filter(course => course.senior === true))
+      } else if (this.yearPicked === "Freshman") {
+        console.log(this.courses.filter(course => course.freshman === true))
+      } else if (this.yearPicked === "Sophomore") {
+        console.log(this.courses.filter(course => course.sophomore === true))
+      } else if (this.yearPicked === "Junior") {
+        console.log(this.courses.filter(course => course.junior === true))
+      }
     },
     switchTabs: function (subject) {
       this.showSubjects.showrussian = false

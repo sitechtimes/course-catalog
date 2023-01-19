@@ -40,6 +40,7 @@ export default {
           period: 9,
         },
       ],
+      yearPicked: null
     };
   },
   methods: {
@@ -76,6 +77,7 @@ export default {
           period: 9,
         },
       ];
+      this.yearPicked = document.querySelector(".dropdown").value
       const schedule = this.schedule;
       document.querySelectorAll(".button").forEach((button) => {
         button.remove();
@@ -229,10 +231,8 @@ export default {
       <Scheduler
         class=""
         :schedule="schedule"
-        :period="schedule.period"
-        :name="schedule.name"
       ></Scheduler>
-      <Courses />
+      <Courses :yearPicked="yearPicked"/>
     </div>
   </div>
 </template>
