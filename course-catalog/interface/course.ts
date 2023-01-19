@@ -5,6 +5,7 @@ export default interface course{
     junior: boolean
     senior: boolean
     ap: boolean
+    courseCode: string
 }
 
 export default interface courseNode{

@@ -18,6 +18,7 @@ export default function (){
                 junior
                 senior
                 ap
+                courseCode
             }
         }
     }}`
