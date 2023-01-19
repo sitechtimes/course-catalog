@@ -65,7 +65,7 @@
 <script>
 export default {
   data() {
-    return {
+    return { //Daniel here: issues with overlap (if hit russian and then gym then russian again gym still up). Fix with function that check name of tab and then making everything else false and that one tab true. If this comment is still here it means I have not gotten around to doing that
       /*    showlanding: true, */
       showrussian: false,
       showgym: false,
