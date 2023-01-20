@@ -12,7 +12,14 @@
     <div class="folder">
       <div v-if="showSubjects.showrussian" class="file russian">
         <div class="holders">
-          <div class="placeholder russian"><h4>Russian</h4></div>
+          <!-- <div @click="addCourse" class="placeholder russian">
+            <h4 v-for="(course, i) in courses" :key="i" :name="name">
+              {{ course?.name }}
+            </h4>
+          </div> -->
+          <div @click="addCourse" class="placeholder russian">
+            <h4>Russian</h4>
+          </div>
         </div>
       </div>
       <div v-if="showSubjects.showgym" class="file gym">
@@ -60,7 +67,7 @@
 </template>
 <script>
 import { useCourseStore } from "~/store/store";
-
+import SubjectType from "../course-cards/SubjectType.vue";
 export default {
   name: "Courses",
   components: {
@@ -68,7 +75,6 @@ export default {
   },
   data() {
     return {
-      /*    showlanding: true, */
       showSubjects: {
         showrussian: false,
         showgym: false,
@@ -83,6 +89,9 @@ export default {
     };
   },
   methods: {
+    // logAdded: function () {
+    //   console.log(this.course?.name);
+    // },
     logCourses: function () {
       console.log(this.courses);
     },
@@ -111,6 +120,9 @@ export default {
         this.showSubjects.showmath = true;
       }
     },
+    addCourse: function () {
+      console.log();
+    },
   },
 };
 </script>
@@ -126,8 +138,8 @@ export default {
   height: 100%;
   background-color: white;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
+  grid-template-columns: auto auto;
+  overflow: overflow;
   display: grid;
   grid-column-gap: 10px;
   justify-content: center;

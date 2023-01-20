@@ -15,7 +15,7 @@ export default {
         },
         {
           period: 2,
-          name: "a",
+          name: "",
         },
         {
           period: 3,
@@ -51,7 +51,7 @@ export default {
         },
         {
           period: 2,
-          name: "a",
+          name: "",
         },
         {
           period: 3,

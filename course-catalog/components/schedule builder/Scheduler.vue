@@ -1,5 +1,4 @@
 <script lang="ts">
-import Placeholder from "../schedule builder/Placeholder.vue";
 export default {
   name: "Scheduler",
   props: {
@@ -87,7 +86,7 @@ td {
 td {
   margin-top: 2rem;
   border-right: 4px solid lightgrey;
-  /* font-weight: bold; */
+  font-weight: bold;
 }
 table {
   margin-top: 1rem;
