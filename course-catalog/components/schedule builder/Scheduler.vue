@@ -14,55 +14,55 @@ export default {
       <th class="px-20">Class</th>
     </tr>
     <tr class="border-t-4">
-      <td class="" id="right">1</td>
+      <td class="right" id="">1</td>
       <td>
         <div class="placeholder" id="first">{{ schedule[0].name }}</div>
       </td>
     </tr>
     <tr class="">
-      <td class="" id="right">2</td>
+      <td class="right" id="">2</td>
       <td>
         <div class="placeholder">{{ schedule[1].name }}</div>
       </td>
     </tr>
     <tr class="">
-      <td class="" id="right">3</td>
+      <td class="right" id="">3</td>
       <td>
         <div class="placeholder">{{ schedule[2].name }}</div>
       </td>
     </tr>
     <tr class="">
-      <td class="" id="right">4</td>
+      <td class="right" id="">4</td>
       <td>
         <div class="placeholder">{{ schedule[3].name }}</div>
       </td>
     </tr>
     <tr class="">
-      <td class="" id="right">5</td>
+      <td class="right" id="">5</td>
       <td>
-        <div class="placeholder">{{ schedule[4].name }}</div>
+        <div class="placeholder lunch">{{ schedule[4].name }}</div>
       </td>
     </tr>
     <tr class="">
-      <td class="" id="right">6</td>
+      <td class="right" id="">6</td>
       <td>
         <div class="placeholder">{{ schedule[5].name }}</div>
       </td>
     </tr>
     <tr class="">
-      <td class="" id="right">7</td>
+      <td class="right" id="">7</td>
       <td>
         <div class="placeholder">{{ schedule[6].name }}</div>
       </td>
     </tr>
     <tr class="">
-      <td class="" id="right">8</td>
+      <td class="right" id="">8</td>
       <td>
         <div class="placeholder">{{ schedule[7].name }}</div>
       </td>
     </tr>
     <tr class="">
-      <td class="" id="right">9</td>
+      <td class="right" id="lastnum">9</td>
       <td>
         <div class="placeholder" id="last">{{ schedule[8].name }}</div>
       </td>
@@ -81,11 +81,13 @@ td {
   border-radius: 5px;
   -moz-border-radius: 5px;
 }
-#right {
-  border-right: 4px solid lightgrey;
+.right {
+  padding-top: 0.7rem;
 }
 td {
   margin-top: 2rem;
+  border-right: 4px solid lightgrey;
+  /* font-weight: bold; */
 }
 table {
   margin-top: 1rem;
@@ -102,11 +104,15 @@ p {
   margin: 1rem 2rem 0.2rem 2rem;
   padding-top: 0.4rem;
 }
+.lunch {
+  background-color: #d2fcff;
+}
 /* #first {
   margin-top: 1.2rem;
 }*/
 #lastnum {
-  margin-top: 0rem;
+  padding-top: 0rem;
+  padding-bottom: 0.6rem;
 }
 #last {
   margin-bottom: 1.5rem;
