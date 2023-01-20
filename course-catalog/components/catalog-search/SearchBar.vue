@@ -10,6 +10,9 @@
 <script lang="ts">
 import SearchButton from '~/components/icons/SearchButton.vue';
 export default {
+    components: {
+        SearchButton
+    },
     props: ['modelValue'],
     emits: ['update:modelValue']
 }
