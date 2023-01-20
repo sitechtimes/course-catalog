@@ -82,11 +82,13 @@ td {
 }
 .right {
   padding-top: 0.7rem;
+  color: #606060;
 }
 td {
   margin-top: 2rem;
   border-right: 4px solid lightgrey;
   font-weight: bold;
+  color: #37394f;
 }
 table {
   margin-top: 1rem;
@@ -102,6 +104,8 @@ p {
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
   padding-top: 0.4rem;
+  font-weight: bold;
+  color: #37394f;
 }
 .lunch {
   background-color: #d2fcff;
@@ -117,5 +121,13 @@ p {
   margin-bottom: 1.5rem;
 }
 @media only screen and (min-width: 1740px) {
+  .placeholder {
+    width: 18rem;
+    height: 2.3rem;
+    border: 2px dashed #7d7d7d;
+    border-radius: 15px;
+    margin: 1.4rem 2rem 0.2rem 2rem;
+    padding-top: 0.4rem;
+  }
 }
 </style>

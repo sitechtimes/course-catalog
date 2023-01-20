@@ -165,6 +165,12 @@ h4 {
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
   transition: 0.3s;
+  color: #37394f;
+}
+.landing {
+  display: block;
+  background-color: #fff2e2;
+  color: #37394f;
 }
 .placeholder:hover {
   opacity: 0.5;
@@ -233,6 +239,7 @@ h4 {
   transition: 0.4s;
   padding: 0.5rem;
   width: 6.5rem;
+  color: #37394f;
 }
 .tab:hover {
   opacity: 0.8;
@@ -244,10 +251,10 @@ h4 {
   .file {
     line-height: 4;
     width: 55%;
-    margin-left: 15%;
+    margin-left: 2%;
     border-radius: 0.8rem;
     padding: 2rem;
-    height: 28rem;
+    height: 30rem;
   }
   h2 {
     font-size: 1.5rem;
@@ -261,7 +268,7 @@ h4 {
 }
 @media only screen and (min-width: 1440px) {
   .tabs {
-    margin-left: 25%;
+    margin-left: 15%;
   }
   .file {
     line-height: 4;
@@ -270,11 +277,7 @@ h4 {
     margin-bottom: 1rem;
     border-radius: 0.8rem;
     padding: 2rem;
-    height: 33rem;
-  }
-  .landing {
-    display: block;
-    background-color: #fff2e2;
+    height: 34rem;
   }
   h2 {
     font-weight: bold;
@@ -290,12 +293,17 @@ h4 {
     margin: auto;
   }
 }
-@media only screen and (min-width: 1700px) {
+@media only screen and (min-width: 1740px) {
   .file {
-    width: 55%;
+    width: 53%;
+    height: 69.5%;
+    margin-left: 8rem;
   }
   .tabs {
     margin-left: 35%;
+  }
+  .tab {
+    width: 9rem;
   }
 }
 </style>
