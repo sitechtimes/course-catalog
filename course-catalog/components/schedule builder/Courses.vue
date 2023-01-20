@@ -1,5 +1,5 @@
 <template>
-  <button @click="logCourses()">console log</button>
+  <button @click="changeNeeded">console log</button>
   <h1>{{ yearPicked }}</h1>
   <div>
     <div class="tabs">
@@ -70,7 +70,7 @@ import { useCourseStore } from "~/store/store";
 export default {
   name: "Courses",
   props: {
-    yearPicked: String
+    schedule: [Object]
   },
   components: {
     useCourseStore,
@@ -87,18 +87,19 @@ export default {
       showscience: false,
       showmath: false,
       },
-      courses: useCourseStore().courses
+      courses: useCourseStore().courses,
+      yearPicked: null
     };
   }, methods: {
     logCourses: function () {
       if (this.yearPicked === "Senior") {
-        console.log(this.courses.filter(course => course.senior === true))
+        console.log(this.courses.filter(course => course.senior === true && course.catalog === true))
       } else if (this.yearPicked === "Freshman") {
-        console.log(this.courses.filter(course => course.freshman === true))
+        console.log(this.courses.filter(course => course.freshman === true && course.catalog === true))
       } else if (this.yearPicked === "Sophomore") {
-        console.log(this.courses.filter(course => course.sophomore === true))
+        console.log(this.courses.filter(course => course.sophomore === true && course.catalog === true))
       } else if (this.yearPicked === "Junior") {
-        console.log(this.courses.filter(course => course.junior === true))
+        console.log(this.courses.filter(course => course.junior === true && course.catalog === true))
       }
     },
     switchTabs: function (subject) {
@@ -124,7 +125,63 @@ export default {
       } else if (subject === "math") {
         this.showSubjects.showmath = true
       } 
-    }
+    },
+    changeNeeded: function () { // will be part of switchTabs later
+      console.log(this.schedule)
+      const schedule = this.schedule;
+      document.querySelectorAll(".button").forEach((button) => {
+        button.remove();
+      }); // it's both here and in scheduleBuilder because if it's only here then might cause problems if switch to different year and if only schedule builder it makes copies of existing things
+      if (document.querySelector(".dropdown").value === "Senior") {
+        const seniorClasses = this.courses.filter(course => course.senior === true && course.catalog === true)
+        const needed = {
+          // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
+          english: false,
+          math: false,
+          science: false,
+          history: false,
+          gym: false,
+          lunch: false,
+          russian: false,
+          AP: 0,
+          educationalPeriods: 0,
+        };
+        seniorClasses.forEach((object) =>
+          document.querySelector(".folder").insertAdjacentHTML(`afterend`, `<button class="button">${object.name}</button>`)
+        );
+        document.querySelectorAll(".button").forEach((button) => {
+          button.addEventListener("click", function () {
+            const chosenClass = seniorClasses.find((course) => course.name === this.textContent);
+            console.log(chosenClass);
+            if (chosenClass.ap) {
+              if (needed.AP === 4) {
+                console.log("you have too many ap classes");
+                console.log(needed.AP);
+              } else if (chosenClass.doublePeriod) {
+                if (schedule.find((period) => period.name === undefined && schedule[period.period].name === undefined)) {
+                  needed.AP += 1;
+                  button.remove();
+                  schedule.find((period) => period.name === undefined && schedule[period.period].name === undefined).name = chosenClass.name;
+                  schedule[schedule.find((period) => period.name === chosenClass.name).period].name = chosenClass.name;
+                  console.log(schedule);
+                }
+              } else if (schedule.find((period) => period.name === undefined)) {
+                console.log(chosenClass.periods);
+                needed.AP += 1;
+                button.remove();
+                schedule.find((period) => period.name === undefined).name = chosenClass.name;
+                console.log(schedule);
+              }
+            } else if (schedule.find((period) => period.name === undefined)){
+              button.remove();
+              console.log(chosenClass.periods);
+              schedule.find((period) => period.name === undefined).name = chosenClass.name;
+              console.log(schedule);
+            } //might need something else if there are non-ap classes that are 2 periods
+          });
+        });
+      }
+    },
   }
 };
 </script>
