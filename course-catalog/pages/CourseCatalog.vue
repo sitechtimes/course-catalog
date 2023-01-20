@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useCourseStore } from "~~/store/store"
-import SearchComponent from "../components/catalog-search/SearchComponent.vue";
+import SearchComponent from "../components/catalog-search/SearchBar.vue";
 import CourseCard from "../components/course-cards/CourseCard.vue";
 </script>
 

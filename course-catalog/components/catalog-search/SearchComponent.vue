@@ -1,18 +1,42 @@
-<script setup lang="ts">
-import SearchButton from '~/components/icons/SearchButton.vue';
+<script lang="ts">
+import SearchBar from './SearchBar.vue';
+import SortComponent from './SortComponent.vue';
+import { useCourseStore } from '~~/store/store'
+import { ref } from "vue";
+
+export default {
+  
+  data() {
+    return {
+            courses: useCourseStore().courses,
+            input: ref(""),
+         }
+        },
+        computed: {
+            filteredList() {
+                return this.courses.filter((course) => {
+                return course.name.toLowerCase().indexOf(this.input.toLowerCase()) != -1;
+                }
+            )}
+        },
+        mounted() {
+            this.filteredList
+        }
+}
 </script>
 
 <template>
+<div>
     <div id="search" class="w-full flex justify-center items-center">
-        <select name="sort" id="sort" class=" hidden w-40 h-10 p-1 border border-gray-300 bg-white text-gray-400 mr-4 rounded md:block">
-                    <option>Sort by</option>
-                    <option value="name">Course Name</option>
-                    <option value="subject">Subject</option>
-                    <option value="grade">Grade</option>
-                </select>
-                <div id="search-bar" class="flex justify-center items-center relative">
-                    <input type="text" placeholder="Search" class="border border-gray-300 rounded w-112 h-10 p-2"/>
-                    <SearchButton class="absolute right-3 text-gray-400 cursor-pointer"/>
-                </div>
+        <SortComponent title="Sort By"/>
+    <SearchBar class="mb-4" type="text" v-model="input" placeholder="Search Courses..." />
             </div>
+    <div class="item fruit" v-for="course in filteredList" :key="course">
+     <p>{{ course }}</p>
+   </div>'
+   rtuy'
+   <div class="item error" v-if="input&&!filteredList.length">
+      <p>No results found!</p>
+   </div>
+</div>
 </template>
