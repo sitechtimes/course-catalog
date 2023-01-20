@@ -13,6 +13,7 @@
       <div v-if="showSubjects.showrussian" class="file russian">
         <div class="holders">
           <div class="placeholder russian"><h4>Russian</h4></div>
+          <CourseButtons />
         </div>
       </div>
       <div v-if="showSubjects.showgym" class="file gym">
@@ -120,11 +121,12 @@ export default {
   background-color: #d6eeff;
 }
 .holders {
+  padding-top: 1rem;
   border-radius: 0.8rem;
   height: 100%;
   background-color: white;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto auto;
   overflow: hidden;
   display: grid;
   grid-column-gap: 10px;
