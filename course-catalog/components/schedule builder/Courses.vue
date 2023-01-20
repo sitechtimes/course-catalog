@@ -20,6 +20,9 @@
           <div @click="addCourse" class="placeholder russian">
             <h4>Russian</h4>
           </div>
+          <div class="placeholder russian">
+            <h4>Adv Russian</h4>
+          </div>
         </div>
       </div>
       <div v-if="showSubjects.showgym" class="file gym">
@@ -127,7 +130,7 @@ export default {
       }
     },
     addCourse: function () {
-      console.log();
+      console.log(test);
     },
   },
 };
