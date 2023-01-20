@@ -45,8 +45,8 @@
           <div class="placeholder math"><h4>AP Calculus BC</h4></div>
         </div>
       </div>
-      <!--  <div class="file landing">
-        <div @load="showlanding = !showlanding" class="content">
+      <div v-if="showSubjects.showlanding" class="file landing">
+        <div class="content">
           <h2>Instructions</h2>
           <h3>
             Click on subject tabs and drag desired courses to the schedule
@@ -54,7 +54,7 @@
             that year.
           </h3>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </template>
@@ -77,6 +77,7 @@ export default {
         showhistory: false,
         showscience: false,
         showmath: false,
+        showlanding: true,
       },
       courses: useCourseStore().courses,
     };
@@ -93,6 +94,7 @@ export default {
       this.showSubjects.showhistory = false;
       this.showSubjects.showscience = false;
       this.showSubjects.showmath = false;
+      this.showSubjects.showlanding = false;
       if (subject === "russian") {
         this.showSubjects.showrussian = true;
       } else if (subject === "gym") {
