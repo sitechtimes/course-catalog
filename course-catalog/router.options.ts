@@ -10,7 +10,7 @@ export default <RouterConfig>  {
         {      
             name: 'CourseCatalog',      
             path: '/courses',      
-            component: () => import('~/pages/CourseCatalog.vue')    
+            component: () => import('~~/pages/CourseCatalog/CourseCatalog.vue')    
         },  
         {      
             name: 'ScheduleBuilder',      

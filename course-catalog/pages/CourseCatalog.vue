@@ -9,8 +9,8 @@ import CourseCard from "../components/course-cards/CourseCard.vue";
         <div id="content" class="flex flex-col justify-center items-center w-full mt-28 space-y-6">
             <h2 class="text-center text-4xl font-semibold">Courses</h2>
             <SearchComponent />
-            <div v-for="x in useCourseStore().courses" id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
-                <CourseCard :course="x" />
+            <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
+                <CourseCard v-for="courses in useCourseStore().courses" :course="courses" />
             </div>
         </div>
     </div>
