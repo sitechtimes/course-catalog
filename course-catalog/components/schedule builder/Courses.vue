@@ -1,5 +1,5 @@
 <template>
-  <button @click="changeNeeded">console log</button>
+  <button @click="logCourses">console log</button>
   <h1>{{ yearPicked }}</h1>
   <div>
     <div class="tabs">
@@ -70,7 +70,8 @@ import { useCourseStore } from "~/store/store";
 export default {
   name: "Courses",
   props: {
-    schedule: [Object]
+    schedule: [Object],
+    yearPicked: String
   },
   components: {
     useCourseStore,
@@ -87,19 +88,23 @@ export default {
       showscience: false,
       showmath: false,
       },
-      courses: useCourseStore().courses,
-      yearPicked: null
+      catalogCourses: useCourseStore().courses.filter(course => course.catalog)
     };
   }, methods: {
     logCourses: function () {
       if (this.yearPicked === "Senior") {
-        console.log(this.courses.filter(course => course.senior === true && course.catalog === true))
+        console.log(this.catalogCourses.filter(course => course.senior))
+        console.log(this.catalogCourses)
+        console.log(useCourseStore().courses.filter(course => course.catalog))
+        this.changeNeeded(this.catalogCourses.filter(course => course.senior))
       } else if (this.yearPicked === "Freshman") {
-        console.log(this.courses.filter(course => course.freshman === true && course.catalog === true))
+        this.changeNeeded(this.catalogCourses.filter(course => course.freshman))
       } else if (this.yearPicked === "Sophomore") {
-        console.log(this.courses.filter(course => course.sophomore === true && course.catalog === true))
+        this.changeNeeded(this.catalogCourses.filter(course => course.sophomore))
       } else if (this.yearPicked === "Junior") {
-        console.log(this.courses.filter(course => course.junior === true && course.catalog === true))
+        this.changeNeeded(this.catalogCourses.filter(course => course.junior))
+      } else {
+        console.log(this.yearPicked)
       }
     },
     switchTabs: function (subject) {
@@ -126,14 +131,11 @@ export default {
         this.showSubjects.showmath = true
       } 
     },
-    changeNeeded: function () { // will be part of switchTabs later
-      console.log(this.schedule)
+    changeNeeded: function (shownCourses) { // will be part of switchTabs later
       const schedule = this.schedule;
       document.querySelectorAll(".button").forEach((button) => {
         button.remove();
       }); // it's both here and in scheduleBuilder because if it's only here then might cause problems if switch to different year and if only schedule builder it makes copies of existing things
-      if (document.querySelector(".dropdown").value === "Senior") {
-        const seniorClasses = this.courses.filter(course => course.senior === true && course.catalog === true)
         const needed = {
           // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
           english: false,
@@ -146,12 +148,12 @@ export default {
           AP: 0,
           educationalPeriods: 0,
         };
-        seniorClasses.forEach((object) =>
+        shownCourses.forEach((object) =>
           document.querySelector(".folder").insertAdjacentHTML(`afterend`, `<button class="button">${object.name}</button>`)
         );
         document.querySelectorAll(".button").forEach((button) => {
           button.addEventListener("click", function () {
-            const chosenClass = seniorClasses.find((course) => course.name === this.textContent);
+            const chosenClass = shownCourses.find((course) => course.name === this.textContent);
             console.log(chosenClass);
             if (chosenClass.ap) {
               if (needed.AP === 4) {
@@ -180,12 +182,11 @@ export default {
             } //might need something else if there are non-ap classes that are 2 periods
           });
         });
-      }
     },
   }
 };
 </script>
-<style scoped>
+<style scoped>  
 .file {
   position: absolute;
 }
@@ -350,4 +351,5 @@ h4 {
     margin-left: 35%;
   }
 }
+
 </style>
