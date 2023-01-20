@@ -24,31 +24,37 @@
       </div>
       <div v-if="showSubjects.showgym" class="file gym">
         <div class="holders">
+          <div class="placeholder gym"><h4>Badminton</h4></div>
           <div class="placeholder gym"><h4>Volleyball</h4></div>
         </div>
       </div>
       <div v-if="showSubjects.showelectives" class="file electives">
         <div class="holders">
           <div class="placeholder electives"><h4>APCSP JS</h4></div>
+          <div class="placeholder electives"><h4>APCSP Python</h4></div>
         </div>
       </div>
       <div v-if="showSubjects.showhistory" class="file history">
         <div class="holders">
           <div class="placeholder history"><h4>APUSH</h4></div>
+          <div class="placeholder history"><h4>APUSH Film Art Music</h4></div>
         </div>
       </div>
       <div v-if="showSubjects.showenglish" class="file english">
         <div class="holders">
           <div class="placeholder english"><h4>AP Lang</h4></div>
+          <div class="placeholder english"><h4>English</h4></div>
         </div>
       </div>
       <div v-if="showSubjects.showscience" class="file science">
         <div class="holders">
           <div class="placeholder science"><h4>AP Psychology</h4></div>
+          <div class="placeholder science"><h4>AP Biology</h4></div>
         </div>
       </div>
       <div v-if="showSubjects.showmath" class="file math">
         <div class="holders">
+          <div class="placeholder math"><h4>AP Calculus AB</h4></div>
           <div class="placeholder math"><h4>AP Calculus BC</h4></div>
         </div>
       </div>
@@ -144,6 +150,7 @@ export default {
   grid-column-gap: 10px;
   justify-content: center;
   margin: auto;
+  padding-top: 1.5rem;
 }
 h4 {
   margin-top: 3px;
