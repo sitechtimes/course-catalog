@@ -88,23 +88,17 @@ export default {
       showscience: false,
       showmath: false,
       },
-      catalogCourses: useCourseStore().courses.filter(course => course.catalog)
     };
   }, methods: {
     logCourses: function () {
       if (this.yearPicked === "Senior") {
-        console.log(this.catalogCourses.filter(course => course.senior))
-        console.log(this.catalogCourses)
-        console.log(useCourseStore().courses.filter(course => course.catalog))
-        this.changeNeeded(this.catalogCourses.filter(course => course.senior))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.senior))
       } else if (this.yearPicked === "Freshman") {
-        this.changeNeeded(this.catalogCourses.filter(course => course.freshman))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.freshman))
       } else if (this.yearPicked === "Sophomore") {
-        this.changeNeeded(this.catalogCourses.filter(course => course.sophomore))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.sophomore))
       } else if (this.yearPicked === "Junior") {
-        this.changeNeeded(this.catalogCourses.filter(course => course.junior))
-      } else {
-        console.log(this.yearPicked)
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.junior))
       }
     },
     switchTabs: function (subject) {
