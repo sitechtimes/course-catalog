@@ -5,17 +5,17 @@ export default <RouterConfig>  {
         {      
             name: 'LandingPage',      
             path: '/',      
-            component: () => import('~/pages/LandingPage.vue')    
+            component: () => import('~~/pages/LandingPage.vue')    
         },  
         {      
             name: 'CourseCatalog',      
             path: '/courses',      
-            component: () => import('~~/pages/CourseCatalog/CourseCatalog.vue')    
+            component: () => import('~~/pages/catalog/index.vue')    
         },  
         {      
             name: 'ScheduleBuilder',      
             path: '/builder',      
-            component: () => import('~/pages/ScheduleBuilder.vue')    
+            component: () => import('~~/pages/ScheduleBuilder.vue')    
         },  
     ]
 }

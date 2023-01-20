@@ -26,6 +26,7 @@ export default function (){
                 junior
                 senior
                 ap
+                catalog
             }
         }
     }}`

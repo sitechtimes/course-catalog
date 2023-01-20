@@ -10,7 +10,7 @@ import CourseCard from "../components/course-cards/CourseCard.vue";
             <h2 class="text-center text-4xl font-semibold">Courses</h2>
             <SearchComponent />
             <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
-                <CourseCard v-for="courses in useCourseStore().courses" :course="courses" />
+                <CourseCard v-for="courses in useCourseStore().courses" :course="courses"/>
             </div>
         </div>
     </div>
