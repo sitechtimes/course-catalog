@@ -54,6 +54,7 @@ export default defineComponent({
                 }
                 let sortshow = document.getElementById("sortshow");
                 sortshow.innerHTML = 'Subject  <svg class="ml-16 mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10"> <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path> </svg>'
+                console.log(this.courses.sort(compare));
                 return this.courses.sort(compare);
             },
             IncNameSort() {
