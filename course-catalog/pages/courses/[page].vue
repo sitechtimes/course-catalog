@@ -1,18 +1,8 @@
 <script lang="ts">
 import {useCourseStore} from '~~/store/store'
-import BackArrow from '../components/icons/BackArrow.vue';
-import SubjectType from '../components/course-cards/SubjectType.vue';
-import CourseType from '../components/course-cards/CourseType.vue';
-
-export default {
-    async asyncData({ params }) {
-      const page = params.slug
-      const slug = await useCourseStore().courses?.id
-      return { page }
-    },
-
-  }
-
+import BackArrow from '../../components/icons/BackArrow.vue';
+import SubjectType from '../../components/course-cards/SubjectType.vue';
+import CourseType from '../../components/course-cards/CourseType.vue';
 </script>
 
 <template>
