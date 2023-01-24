@@ -9,13 +9,13 @@ defineProps({
     junior: Boolean,
     senior: Boolean,
     catalog: Boolean,
-    page: Object,
+    id: String,
 })
-
 </script>
 
 <template>
-    <div v-if="course?.catalog == true" :to="`/coursecatalog/${course?.page}`">
+    <div v-if="course?.catalog == true">
+        <NuxtLink :to="`/courses/${course?.id}`">
             <div id="card" class="bg-zinc-50 w-80 h-36 m-4 px-4 py-3 rounded-lg shadow-sm cursor-pointer">
                 <h2 id="name" class="text-2xl font-semibold h-16">{{course?.name}}</h2>
                 <div id="grade" class="flex justify-start items-start space-x-1 text-sm text-zinc-500">
@@ -33,5 +33,6 @@ defineProps({
                     <CourseType v-if="course?.ap == true" :ap="course?.ap" />
                 </div>
             </div>
+        </NuxtLink>
     </div>
 </template>

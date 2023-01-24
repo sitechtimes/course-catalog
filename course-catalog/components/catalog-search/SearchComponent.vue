@@ -1,7 +1,7 @@
 <script lang="ts">
 import SearchBar from './SearchBar.vue';
 import SortComponent from './SortComponent.vue';
-import { useCourseStore } from '~~/store/store';
+import { getCourses } from '~~/store/store';
 import { ref } from "vue";
 
 export default {
@@ -11,7 +11,7 @@ export default {
     },
   data() {
     return {
-            courses: useCourseStore().courses,
+            courses: getCourses().courses,
             input: ref(""),
          }
         },

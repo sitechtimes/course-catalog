@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useCourseStore } from "~/store/store";
+import { getCourses } from "~/store/store";
 
-const courseStore = useCourseStore();
+const courseStore = getCourses();
 
 function doStuff() {
   console.log(courseStore.courses);

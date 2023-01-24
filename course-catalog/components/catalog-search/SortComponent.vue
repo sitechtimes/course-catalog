@@ -31,13 +31,13 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ref } from "vue";
-import { useCourseStore } from '~~/store/store';
+import { getCourses } from '~~/store/store';
 export default defineComponent({
     name: 'courseSort',
   props: ['title'],
     data() {
         return {
-        courses: useCourseStore().courses,
+        courses: getCourses().courses,
             selected: 'Sort By',
             isOpen: false,
             input: ref(""),

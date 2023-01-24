@@ -1,5 +1,5 @@
 import axios from "axios"
-import { useCourseStore } from "~~/store/store"
+import { getCourses } from "~~/store/store"
 
 
 let Courses: course[] = []
@@ -42,8 +42,8 @@ export default function (){
                 Courses.push(x.node)
             });
             
-            useCourseStore().courses = Courses
-            console.log(useCourseStore().courses)
+            getCourses().courses = Courses
+            console.log(getCourses().courses)
         })
     
 

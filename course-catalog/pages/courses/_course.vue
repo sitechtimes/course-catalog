@@ -1,5 +1,5 @@
 <script lang="ts">
-import {useCourseStore} from '~~/store/store'
+import {getCourses} from '~~/store/store'
 import BackArrow from '../../components/icons/BackArrow.vue';
 import SubjectType from '../../components/course-cards/SubjectType.vue';
 import CourseType from '../../components/course-cards/CourseType.vue';
