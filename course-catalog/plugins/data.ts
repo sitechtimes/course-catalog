@@ -18,6 +18,9 @@ export default function (){
                 junior
                 senior
                 ap
+                courseCode
+                doublePeriod
+                catalog
             }
         }
     }}`
