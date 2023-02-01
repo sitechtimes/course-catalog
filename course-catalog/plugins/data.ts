@@ -21,6 +21,7 @@ export default function (){
                 courseCode
                 doublePeriod
                 catalog
+                subject
             }
         }
     }}`

@@ -118,6 +118,7 @@ export default {
       }
     },
     switchTabs: function (subject) {
+      let yearThing = `course.${this.yearPicked.toLowerCase()}`
       this.showSubjects.showrussian = false;
       this.showSubjects.showgym = false;
       this.showSubjects.showelectives = false;
@@ -128,18 +129,25 @@ export default {
       this.showSubjects.showlanding = false;
       if (subject === "russian") {
         this.showSubjects.showrussian = true;
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && yearThing ))
       } else if (subject === "gym") {
         this.showSubjects.showgym = true;
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "PE" && yearThing ))
       } else if (subject === "electives") {
         this.showSubjects.showelectives = true;
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && yearThing )) // idk what electives is
       } else if (subject === "english") {
         this.showSubjects.showenglish = true;
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ENGLISH" && yearThing ))
       } else if (subject === "history") {
         this.showSubjects.showhistory = true;
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SS" && yearThing ))
       } else if (subject === "science") {
         this.showSubjects.showscience = true;
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SCIENCE" && yearThing ))
       } else if (subject === "math") {
         this.showSubjects.showmath = true
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "MATH" && yearThing ))
       } 
     },
     changeNeeded: function (shownCourses) { // will be part of switchTabs later

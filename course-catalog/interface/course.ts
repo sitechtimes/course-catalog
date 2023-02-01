@@ -8,6 +8,7 @@ export default interface course{
     courseCode: string
     doublePeriod: boolean
     catalog: boolean
+    subject: string
 }
 
 export default interface courseNode{
