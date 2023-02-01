@@ -5,7 +5,10 @@
     <div class="tabs">
       <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
       <button @click="switchTabs(`gym`)" class="tab g">Gym</button>
-      <button @click="switchTabs(`electives`)" class="tab e">Electives</button>
+      <button @click="switchTabs(`art`)" class="tab a">Art</button>
+      <button @click="switchTabs(`technology`)" class="tab t">
+        Technology
+      </button>
       <button @click="switchTabs(`history`)" class="tab h">History</button>
       <button @click="switchTabs(`english`)" class="tab en">English</button>
       <button @click="switchTabs(`science`)" class="tab s">Science</button>
@@ -33,10 +36,16 @@
           <div class="placeholder gym"><h4>Volleyball</h4></div>
         </div>
       </div>
-      <div v-if="showSubjects.showelectives" class="file electives">
+      <div v-if="showSubjects.showart" class="file art">
         <div class="holders">
-          <div class="placeholder electives"><h4>APCSP JS</h4></div>
-          <div class="placeholder electives"><h4>APCSP Python</h4></div>
+          <div class="placeholder art"><h4>MakerSpace</h4></div>
+          <div class="placeholder art"><h4>Band</h4></div>
+        </div>
+      </div>
+      <div v-if="showSubjects.showtechnology" class="file technology">
+        <div class="holders">
+          <div class="placeholder technology"><h4>APCSP JS</h4></div>
+          <div class="placeholder technology"><h4>APCSP Python</h4></div>
         </div>
       </div>
       <div v-if="showSubjects.showhistory" class="file history">
@@ -93,7 +102,8 @@ export default {
       showSubjects: {
         showrussian: false,
         showgym: false,
-        showelectives: false,
+        showart: false,
+        showtechnology: false,
         showenglish: false,
         showhistory: false,
         showscience: false,
@@ -136,7 +146,8 @@ export default {
     switchTabs: function (subject) {
       this.showSubjects.showrussian = false;
       this.showSubjects.showgym = false;
-      this.showSubjects.showelectives = false;
+      this.showSubjects.showart = false;
+      this.showSubjects.showtechnology = false;
       this.showSubjects.showenglish = false;
       this.showSubjects.showhistory = false;
       this.showSubjects.showscience = false;
@@ -146,8 +157,10 @@ export default {
         this.showSubjects.showrussian = true;
       } else if (subject === "gym") {
         this.showSubjects.showgym = true;
-      } else if (subject === "electives") {
-        this.showSubjects.showelectives = true;
+      } else if (subject === "art") {
+        this.showSubjects.showart = true;
+      } else if (subject === "technology") {
+        this.showSubjects.showtechnology = true;
       } else if (subject === "english") {
         this.showSubjects.showenglish = true;
       } else if (subject === "history") {
@@ -170,6 +183,7 @@ export default {
         math: false,
         science: false,
         history: false,
+        art: false,
         gym: false,
         lunch: false,
         russian: false,
@@ -291,15 +305,21 @@ h4 {
   background-color: #fedcb5;
 }
 .g {
-  background-color: #ffadcb;
+  background-color: #bebfdf;
 }
 .gym {
+  background-color: #bebfdf;
+}
+.a {
   background-color: #ffadcb;
 }
-.e {
+.art {
+  background-color: #ffadcb;
+}
+.t {
   background-color: #fffbd6;
 }
-.electives {
+.technology {
   background-color: #fffbd6;
 }
 .h {
@@ -331,7 +351,7 @@ h4 {
   flex-direction: column;
 }
 .tabs {
-  margin-left: 25%;
+  margin-left: 15%;
   display: flex;
   flex-direction: row;
 }
@@ -343,7 +363,7 @@ h4 {
   border-top-left-radius: 0.6rem;
   transition: 0.4s;
   padding: 0.5rem;
-  width: 6.5rem;
+  width: 6.2rem;
   color: #37394f;
 }
 .tab:hover {
