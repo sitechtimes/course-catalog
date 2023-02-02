@@ -9,7 +9,7 @@ import CourseCard from "../../components/course-cards/CourseCard.vue";
     <div id="catalog" class="flex justify-center items-start h-screen w-full px-12">
         <div id="content" class="flex flex-col justify-center items-center w-full mt-28 space-y-6">
             <h2 class="text-center text-4xl font-semibold">Courses</h2>
-            <SortComponent/>
+            
             <div id="search" class="w-full flex justify-center items-center">
             <SearchComponent/>
             </div>

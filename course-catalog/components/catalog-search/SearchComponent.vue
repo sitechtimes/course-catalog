@@ -32,7 +32,10 @@ export default {
 
 <template>
 <div>
+    <div class="flex flex-wrap">
+    <SortComponent/>
     <SearchBar class="mb-4" type="text" v-model="input" placeholder="Search Courses..." />
+</div>
     <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
     <CourseCard v-for="courses in this.filteredList" :course="courses"/>
     </div>

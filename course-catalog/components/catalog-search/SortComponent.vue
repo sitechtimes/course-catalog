@@ -1,8 +1,8 @@
 <template>
     <div class="w-40 h-10 mb-4 mr-4 relative border border-gray-300 bg-white text-gray-400 rounded" id="sort" @click="isOpen = !isOpen" >
                     <div>
-        <a id="sortshow" class="ml-2 mt-1">
-            Sort By
+        <a class="ml-2 mt-1">
+            <p id="sortshow">Sort By</p>
             <svg class="mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10">
             <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path>
         </svg>
@@ -53,7 +53,7 @@ export default defineComponent({
                         return 0;
                 }
                 let sortshow = document.getElementById("sortshow");
-                sortshow.innerHTML = 'Subject  <svg class="ml-16 mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10"> <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path> </svg>'
+                sortshow.innerHTML = 'Subject'
                 console.log(this.courses.sort(compare));
                 return this.courses.sort(compare);
             },
@@ -66,7 +66,7 @@ export default defineComponent({
                         return 0;
                 }
                 let sortshow = document.getElementById("sortshow");
-                sortshow.innerHTML = 'Course Name (A-Z)  <svg class="ml-16 mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10"> <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path> </svg>'
+                sortshow.innerHTML = 'Course Name (A-Z)'
                 return this.courses.sort(compare);
             },
             DecNameSort() {
@@ -78,19 +78,19 @@ export default defineComponent({
                         return 0;
                 }
                 let sortshow = document.getElementById("sortshow");
-                sortshow.innerHTML = 'Course Name (Z-A)  <svg class="ml-16 mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10"> <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path> </svg>'
+                sortshow.innerHTML = 'Course Name (Z-A)'
                 return this.courses.sort(compare);
             },
             IncGradeSort() {
                 function compare(a, b) {
-                    if (a.grade < b.grade)
+                    if (a.freshman === true)
                         return -1;
-                    if (a.grade > b.grade)
+                    if (b.sophomore === true)
                         return 1;
                         return 0;
                 }
                 let sortshow = document.getElementById("sortshow");
-                sortshow.innerHTML = 'Grade (Increasing)  <svg class="ml-16 mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10"> <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path> </svg>'
+                sortshow.innerHTML = 'Grade (Increasing)'
                 return this.courses.sort(compare);
             },
             DecGradeSort() {
@@ -102,7 +102,7 @@ export default defineComponent({
                         return 0;
                 }
                 let sortshow = document.getElementById("sortshow");
-                sortshow.innerHTML = 'Grade (Decreasing)  <svg class="ml-16 mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10"> <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path> </svg>'
+                sortshow.innerHTML = 'Grade (Decreasing)'
                 return this.courses.sort(compare);
             },
         }
