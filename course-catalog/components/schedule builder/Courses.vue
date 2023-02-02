@@ -1,11 +1,12 @@
 <template>
-  <button @click="logCourses">console log</button>
-  <h1>{{ yearPicked }}</h1>
   <div>
+    <button @click="logCourses">console log</button>
+    <h1>{{ yearPicked }}</h1>
     <div class="tabs">
       <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
       <button @click="switchTabs(`gym`)" class="tab g">Gym</button>
-      <button @click="switchTabs(`electives`)" class="tab e">Electives</button>
+      <button @click="switchTabs(`art`)" class="tab a">Art</button>
+      <button @click="switchTabs(`technology`)" class="tab t">Technology</button>
       <button @click="switchTabs(`history`)" class="tab h">History</button>
       <button @click="switchTabs(`english`)" class="tab en">English</button>
       <button @click="switchTabs(`science`)" class="tab s">Science</button>
@@ -33,10 +34,16 @@
           <div class="placeholder gym"><h4>Volleyball</h4></div>
         </div>
       </div>
-      <div v-if="showSubjects.showelectives" class="file electives">
+      <div v-if="showSubjects.showart" class="file art">
         <div class="holders">
-          <div class="placeholder electives"><h4>APCSP JS</h4></div>
-          <div class="placeholder electives"><h4>APCSP Python</h4></div>
+          <div class="placeholder art"><h4>MakerSpace</h4></div>
+          <div class="placeholder art"><h4>Band</h4></div>
+        </div>
+      </div>
+      <div v-if="showSubjects.showtechnology" class="file technology">
+        <div class="holders">
+          <div class="placeholder technology"><h4>APCSP JS</h4></div>
+          <div class="placeholder technology"><h4>APCSP Python</h4></div>
         </div>
       </div>
       <div v-if="showSubjects.showhistory" class="file history">
@@ -83,7 +90,7 @@ export default {
   name: "Courses",
   props: {
     schedule: [Object],
-    yearPicked: String
+    yearPicked: String,
   },
   components: {
     useCourseStore,
@@ -93,7 +100,8 @@ export default {
       showSubjects: {
         showrussian: false,
         showgym: false,
-        showelectives: false,
+        showart: false,
+        showtechnology: false,
         showenglish: false,
         showhistory: false,
         showscience: false,
@@ -108,20 +116,37 @@ export default {
     // },
     logCourses: function () {
       if (this.yearPicked === "Senior") {
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.senior))
+        this.changeNeeded(
+          useCourseStore().courses.filter(
+            (course) => course.catalog && course.senior
+          )
+        );
       } else if (this.yearPicked === "Freshman") {
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.freshman))
+        this.changeNeeded(
+          useCourseStore().courses.filter(
+            (course) => course.catalog && course.freshman
+          )
+        );
       } else if (this.yearPicked === "Sophomore") {
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.sophomore))
+        this.changeNeeded(
+          useCourseStore().courses.filter(
+            (course) => course.catalog && course.sophomore
+          )
+        );
       } else if (this.yearPicked === "Junior") {
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.junior))
+        this.changeNeeded(
+          useCourseStore().courses.filter(
+            (course) => course.catalog && course.junior
+          )
+        );
       }
     },
     switchTabs: function (subject) {
       let yearThing = `course.${this.yearPicked.toLowerCase()}`
       this.showSubjects.showrussian = false;
       this.showSubjects.showgym = false;
-      this.showSubjects.showelectives = false;
+      this.showSubjects.showart = false;
+      this.showSubjects.showtechnology = false;
       this.showSubjects.showenglish = false;
       this.showSubjects.showhistory = false;
       this.showSubjects.showscience = false;
@@ -133,9 +158,9 @@ export default {
       } else if (subject === "gym") {
         this.showSubjects.showgym = true;
         this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "PE" && yearThing ))
-      } else if (subject === "electives") {
-        this.showSubjects.showelectives = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && yearThing )) // idk what electives is
+      } else if (subject === "art") {
+        this.showSubjects.showart = true;
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ARTS" && yearThing ))
       } else if (subject === "english") {
         this.showSubjects.showenglish = true;
         this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ENGLISH" && yearThing ))
@@ -148,64 +173,92 @@ export default {
       } else if (subject === "math") {
         this.showSubjects.showmath = true
         this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "MATH" && yearThing ))
+      } else if (subject === "technology") {
+        this.showSubjects.showtechnology = true;
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "TECH" && yearThing ))
       } 
     },
-    changeNeeded: function (shownCourses) { // will be part of switchTabs later
+    changeNeeded: function (shownCourses) {
+      // will be part of switchTabs later
       const schedule = this.schedule;
       document.querySelectorAll(".button").forEach((button) => {
         button.remove();
       }); // it's both here and in scheduleBuilder because if it's only here then might cause problems if switch to different year and if only schedule builder it makes copies of existing things
-        const needed = {
-          // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-          english: false,
-          math: false,
-          science: false,
-          history: false,
-          gym: false,
-          lunch: false,
-          russian: false,
-          AP: 0,
-          educationalPeriods: 0,
-        };
-        shownCourses.forEach((object) =>
-          document.querySelector(".folder").insertAdjacentHTML(`afterend`, `<button class="button">${object.name}</button>`)
-        );
-        document.querySelectorAll(".button").forEach((button) => {
-          button.addEventListener("click", function () {
-            const chosenClass = shownCourses.find((course) => course.name === this.textContent);
-            console.log(chosenClass);
-            if (chosenClass.ap) {
-              if (needed.AP === 4) {
-                console.log("you have too many ap classes");
-                console.log(needed.AP);
-              } else if (chosenClass.doublePeriod) {
-                if (schedule.find((period) => period.name === undefined && schedule[period.period].name === undefined)) {
-                  needed.AP += 1;
-                  button.remove();
-                  schedule.find((period) => period.name === undefined && schedule[period.period].name === undefined).name = chosenClass.name;
-                  schedule[schedule.find((period) => period.name === chosenClass.name).period].name = chosenClass.name;
-                  console.log(schedule);
-                }
-              } else if (schedule.find((period) => period.name === undefined)) {
-                console.log(chosenClass.periods);
+      const needed = {
+        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
+        english: false,
+        math: false,
+        science: false,
+        history: false,
+        art: false,
+        gym: false,
+        lunch: false,
+        russian: false,
+        AP: 0,
+        educationalPeriods: 0,
+      };
+      shownCourses.forEach((object) =>
+        document
+          .querySelector(".folder")
+          .insertAdjacentHTML(
+            `afterend`,
+            `<button class="button">${object.name}</button>`
+          )
+      );
+      document.querySelectorAll(".button").forEach((button) => {
+        button.addEventListener("click", function () {
+          const chosenClass = shownCourses.find(
+            (course) => course.name === this.textContent
+          );
+          console.log(chosenClass);
+          if (chosenClass.ap) {
+            if (needed.AP === 4) {
+              console.log("you have too many ap classes");
+              console.log(needed.AP);
+            } else if (chosenClass.doublePeriod) {
+              if (
+                schedule.find(
+                  (period) =>
+                    period.name === undefined &&
+                    schedule[period.period].name === undefined
+                )
+              ) {
                 needed.AP += 1;
                 button.remove();
-                schedule.find((period) => period.name === undefined).name = chosenClass.name;
+                schedule.find(
+                  (period) =>
+                    period.name === undefined &&
+                    schedule[period.period].name === undefined
+                ).name = chosenClass.name;
+                schedule[
+                  schedule.find(
+                    (period) => period.name === chosenClass.name
+                  ).period
+                ].name = chosenClass.name;
                 console.log(schedule);
               }
-            } else if (schedule.find((period) => period.name === undefined)){
-              button.remove();
+            } else if (schedule.find((period) => period.name === undefined)) {
               console.log(chosenClass.periods);
-              schedule.find((period) => period.name === undefined).name = chosenClass.name;
+              needed.AP += 1;
+              button.remove();
+              schedule.find((period) => period.name === undefined).name =
+                chosenClass.name;
               console.log(schedule);
-            } //might need something else if there are non-ap classes that are 2 periods
-          });
+            }
+          } else if (schedule.find((period) => period.name === undefined)) {
+            button.remove();
+            console.log(chosenClass.periods);
+            schedule.find((period) => period.name === undefined).name =
+              chosenClass.name;
+            console.log(schedule);
+          } //might need something else if there are non-ap classes that are 2 periods
         });
+      });
     },
-  }
+  },
 };
 </script>
-<style scoped>  
+<style scoped>
 .file {
   position: absolute;
 }
@@ -259,15 +312,21 @@ h4 {
   background-color: #fedcb5;
 }
 .g {
-  background-color: #ffadcb;
+  background-color: #bebfdf;
 }
 .gym {
+  background-color: #bebfdf;
+}
+.a {
   background-color: #ffadcb;
 }
-.e {
+.art {
+  background-color: #ffadcb;
+}
+.t {
   background-color: #fffbd6;
 }
-.electives {
+.technology {
   background-color: #fffbd6;
 }
 .h {
@@ -299,7 +358,7 @@ h4 {
   flex-direction: column;
 }
 .tabs {
-  margin-left: 25%;
+  margin-left: 15%;
   display: flex;
   flex-direction: row;
 }
@@ -311,7 +370,7 @@ h4 {
   border-top-left-radius: 0.6rem;
   transition: 0.4s;
   padding: 0.5rem;
-  width: 6.5rem;
+  width: 6.2rem;
   color: #37394f;
 }
 .tab:hover {
@@ -379,5 +438,4 @@ h4 {
     width: 9rem;
   }
 }
-
 </style>
