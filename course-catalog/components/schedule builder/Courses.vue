@@ -164,9 +164,6 @@ export default {
     switchTabs: function (subject) {
       if (this.yearPicked) {
       const yearThing = this.yearPicked.toLowerCase()
-      console.log(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && course[`${yearThing}`]))
-      console.log(useCourseStore().courses.filter(course => course.catalog))
-
       this.showSubjects.showrussian = false;
       this.showSubjects.showgym = false;
       this.showSubjects.showart = false;
@@ -211,14 +208,15 @@ export default {
       document.querySelectorAll(".button").forEach((button) => {
         button.remove();
       });
-      shownCourses.forEach((object) =>
+      shownCourses.forEach((object) => {
+      console.log(document.querySelector(".file"))
         document
           .querySelector(".holders")
           .insertAdjacentHTML(
             `beforeend`,
             `<div class="placeholder ${subject} button"><h4>${object.name}</h4></div>`
           )
-      );
+      });
       document.querySelectorAll(".button").forEach((button) => {
         button.addEventListener("click", function () {
           const chosenClass = shownCourses.find(
