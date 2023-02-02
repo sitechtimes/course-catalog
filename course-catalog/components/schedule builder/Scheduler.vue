@@ -107,9 +107,7 @@ p {
   font-weight: bold;
   color: #37394f;
 }
-.lunch {
-  background-color: #d2fcff;
-}
+
 /* #first {
   margin-top: 1.2rem;
 }*/
