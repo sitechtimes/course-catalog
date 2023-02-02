@@ -12,7 +12,7 @@ defineProps({
         <div v-if="subject == 'ENGLISH'" id="english" class="rounded-full w-28 h-6 flex justify-center items-center bg-blue-200 text-sm">
             <p>English</p>
         </div>
-        <div v-if="subject == 'SCI'" id="science" class="rounded-full w-28 h-6 flex justify-center items-center bg-green-200 text-sm">
+        <div v-if="subject == 'SCIENCE'" id="science" class="rounded-full w-28 h-6 flex justify-center items-center bg-green-200 text-sm">
             <p>Science</p>
         </div>
         <div v-if="subject == 'SS'" id="history" class="rounded-full w-28 h-6 flex justify-center items-center bg-purple-200 text-sm">
