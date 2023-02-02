@@ -111,37 +111,8 @@ export default {
     };
   },
   methods: {
-    // logAdded: function () {
-    //   console.log(this.course?.name);
-    // },
-    logCourses: function () {
-      if (this.yearPicked === "Senior") {
-        this.changeNeeded(
-          useCourseStore().courses.filter(
-            (course) => course.catalog && course.senior
-          )
-        );
-      } else if (this.yearPicked === "Freshman") {
-        this.changeNeeded(
-          useCourseStore().courses.filter(
-            (course) => course.catalog && course.freshman
-          )
-        );
-      } else if (this.yearPicked === "Sophomore") {
-        this.changeNeeded(
-          useCourseStore().courses.filter(
-            (course) => course.catalog && course.sophomore
-          )
-        );
-      } else if (this.yearPicked === "Junior") {
-        this.changeNeeded(
-          useCourseStore().courses.filter(
-            (course) => course.catalog && course.junior
-          )
-        );
-      }
-    },
-    switchTabs: function (subject) {
+    switchTabs: function (subject) { // https://stackoverflow.com/questions/44584292/how-to-listen-for-props-changes for when year change but same tab
+      if (this.yearPicked) {
       let yearThing = `course.${this.yearPicked.toLowerCase()}`
       this.showSubjects.showrussian = false;
       this.showSubjects.showgym = false;
@@ -177,6 +148,9 @@ export default {
         this.showSubjects.showtechnology = true;
         this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "TECH" && yearThing ))
       } 
+      } else {
+        alert("Pick a year from the dropdown")
+      }
     },
     changeNeeded: function (shownCourses) {
       // will be part of switchTabs later
