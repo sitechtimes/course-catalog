@@ -322,6 +322,7 @@ export default {
   border-radius: 1rem;
   color: #37394f;
   width: 50%;
+  margin-left: 60%;
 }
 svg {
   fill: #37394f;
