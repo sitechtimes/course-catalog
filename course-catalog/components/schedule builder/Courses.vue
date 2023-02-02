@@ -213,7 +213,7 @@ export default {
       });
       shownCourses.forEach((object) =>
         document
-          .getElementById("holders")
+          .querySelector(".holders")
           .insertAdjacentHTML(
             `beforeend`,
             `<div class="placeholder ${subject} button"><h4>${object.name}</h4></div>`
