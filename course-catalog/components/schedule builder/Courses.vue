@@ -4,7 +4,9 @@
       <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
       <button @click="switchTabs(`gym`)" class="tab g">Gym</button>
       <button @click="switchTabs(`art`)" class="tab a">Art</button>
-      <button @click="switchTabs(`technology`)" class="tab t">Technology</button>
+      <button @click="switchTabs(`technology`)" class="tab t">
+        Technology
+      </button>
       <button @click="switchTabs(`history`)" class="tab h">History</button>
       <button @click="switchTabs(`english`)" class="tab en">English</button>
       <button @click="switchTabs(`science`)" class="tab s">Science</button>
@@ -84,9 +86,9 @@ export default {
   props: {
     schedule: [Object],
     yearPicked: String,
-  }, 
-  watch : {
-    yearPicked: function() {
+  },
+  watch: {
+    yearPicked: function () {
       this.showSubjects.showrussian = false;
       this.showSubjects.showgym = false;
       this.showSubjects.showart = false;
@@ -109,7 +111,7 @@ export default {
         AP: 0,
         educationalPeriods: 0,
       };
-    }
+    },
   },
   components: {
     useCourseStore,
@@ -145,53 +147,101 @@ export default {
   methods: {
     switchTabs: function (subject) {
       if (this.yearPicked) {
-      let yearThing = `course.${this.yearPicked.toLowerCase()}`
-      this.showSubjects.showrussian = false;
-      this.showSubjects.showgym = false;
-      this.showSubjects.showart = false;
-      this.showSubjects.showtechnology = false;
-      this.showSubjects.showenglish = false;
-      this.showSubjects.showhistory = false;
-      this.showSubjects.showscience = false;
-      this.showSubjects.showmath = false;
-      this.showSubjects.showlanding = false;
-      if (subject === "russian") {
-        this.showSubjects.showrussian = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && yearThing), "russian" )
-      } else if (subject === "gym") {
-        this.showSubjects.showgym = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "PE" && yearThing), "gym" )
-      } else if (subject === "art") {
-        this.showSubjects.showart = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ARTS" && yearThing), "art" )
-      } else if (subject === "english") {
-        this.showSubjects.showenglish = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ENGLISH" && yearThing ), "english")
-      } else if (subject === "history") {
-        this.showSubjects.showhistory = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SS" && yearThing), "history" )
-      } else if (subject === "science") {
-        this.showSubjects.showscience = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SCIENCE" && yearThing), "science" )
-      } else if (subject === "math") {
-        this.showSubjects.showmath = true
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "MATH" && yearThing), "math" )
-      } else if (subject === "technology") {
-        this.showSubjects.showtechnology = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "TECH" && yearThing), "technology")
-      } 
+        let yearThing = `course.${this.yearPicked.toLowerCase()}`;
+        this.showSubjects.showrussian = false;
+        this.showSubjects.showgym = false;
+        this.showSubjects.showart = false;
+        this.showSubjects.showtechnology = false;
+        this.showSubjects.showenglish = false;
+        this.showSubjects.showhistory = false;
+        this.showSubjects.showscience = false;
+        this.showSubjects.showmath = false;
+        this.showSubjects.showlanding = false;
+        if (subject === "russian") {
+          this.showSubjects.showrussian = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "LANG" && yearThing
+            ),
+            "russian"
+          );
+        } else if (subject === "gym") {
+          this.showSubjects.showgym = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) => course.catalog && course.subject === "PE" && yearThing
+            ),
+            "gym"
+          );
+        } else if (subject === "art") {
+          this.showSubjects.showart = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "ARTS" && yearThing
+            ),
+            "art"
+          );
+        } else if (subject === "english") {
+          this.showSubjects.showenglish = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "ENGLISH" && yearThing
+            ),
+            "english"
+          );
+        } else if (subject === "history") {
+          this.showSubjects.showhistory = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) => course.catalog && course.subject === "SS" && yearThing
+            ),
+            "history"
+          );
+        } else if (subject === "science") {
+          this.showSubjects.showscience = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "SCIENCE" && yearThing
+            ),
+            "science"
+          );
+        } else if (subject === "math") {
+          this.showSubjects.showmath = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "MATH" && yearThing
+            ),
+            "math"
+          );
+        } else if (subject === "technology") {
+          this.showSubjects.showtechnology = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "TECH" && yearThing
+            ),
+            "technology"
+          );
+        }
       } else {
-        alert("Pick a year from the dropdown")
+        alert("Pick a year from the dropdown");
       }
     },
     changeNeeded: function (shownCourses, subject) {
       const schedule = this.schedule;
-      const needed = this.needed
+      const needed = this.needed;
       document.querySelectorAll(".button").forEach((button) => {
         button.remove();
       });
       shownCourses.forEach((object) =>
-        document.getElementById("holders").insertAdjacentHTML(
+        document
+          .getElementById("holders")
+          .insertAdjacentHTML(
             `beforeend`,
             `<div class="placeholder ${subject} button"><h4>${object.name}</h4></div>`
           )
@@ -249,7 +299,7 @@ export default {
   },
 };
 </script>
-<style >
+<style>
 .file {
   position: absolute;
 }
@@ -309,10 +359,10 @@ h4 {
   background-color: #bebfdf;
 }
 .a {
-  background-color: #ffadcb;
+  background-color: #ffdfdf;
 }
 .art {
-  background-color: #ffadcb;
+  background-color: #ffdfdf;
 }
 .t {
   background-color: #fffbd6;
@@ -339,10 +389,10 @@ h4 {
   background-color: #cbf2d4;
 }
 .m {
-  background-color: #ffdfdf;
+  background-color: #ffadb2;
 }
 .math {
-  background-color: #ffdfdf;
+  background-color: #ffadb2;
 }
 .folder {
   display: flex;
