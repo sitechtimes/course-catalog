@@ -75,9 +75,6 @@ export default {
         },
       ];
       this.yearPicked = document.querySelector(".dropdown").value
-      document.querySelectorAll(".button").forEach((button) => {
-        button.remove();
-      });
     },
   },
 };

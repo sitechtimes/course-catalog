@@ -1,7 +1,5 @@
 <template>
   <div>
-    <button @click="logCourses">console log</button>
-    <h1>{{ yearPicked }}</h1>
     <div class="tabs">
       <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
       <button @click="switchTabs(`gym`)" class="tab g">Gym</button>
@@ -15,12 +13,7 @@
     <div class="folder">
       <div v-if="showSubjects.showrussian" class="file russian">
         <div class="holders">
-          <!-- <div @click="addCourse" class="placeholder russian">
-            <h4 v-for="(course, i) in courses" :key="i" :name="name">
-              {{ course?.name }}
-            </h4>
-          </div> -->
-          <div @click="addCourse" class="placeholder russian">
+          <div class="placeholder russian">
             <h4>Russian</h4>
           </div>
           <div class="placeholder russian">
@@ -91,6 +84,32 @@ export default {
   props: {
     schedule: [Object],
     yearPicked: String,
+  }, 
+  watch : {
+    yearPicked: function() {
+      this.showSubjects.showrussian = false;
+      this.showSubjects.showgym = false;
+      this.showSubjects.showart = false;
+      this.showSubjects.showtechnology = false;
+      this.showSubjects.showenglish = false;
+      this.showSubjects.showhistory = false;
+      this.showSubjects.showscience = false;
+      this.showSubjects.showmath = false;
+      this.showSubjects.showlanding = true;
+      this.needed = {
+        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
+        english: false,
+        math: false,
+        science: false,
+        history: false,
+        art: false,
+        gym: false,
+        lunch: false,
+        russian: false,
+        AP: 0,
+        educationalPeriods: 0,
+      };
+    }
   },
   components: {
     useCourseStore,
@@ -108,10 +127,23 @@ export default {
         showmath: false,
         showlanding: true,
       },
+      needed: {
+        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
+        english: false,
+        math: false,
+        science: false,
+        history: false,
+        art: false,
+        gym: false,
+        lunch: false,
+        russian: false,
+        AP: 0,
+        educationalPeriods: 0,
+      },
     };
   },
   methods: {
-    switchTabs: function (subject) { // https://stackoverflow.com/questions/44584292/how-to-listen-for-props-changes for when year change but same tab
+    switchTabs: function (subject) {
       if (this.yearPicked) {
       let yearThing = `course.${this.yearPicked.toLowerCase()}`
       this.showSubjects.showrussian = false;
@@ -125,58 +157,43 @@ export default {
       this.showSubjects.showlanding = false;
       if (subject === "russian") {
         this.showSubjects.showrussian = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && yearThing ))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && yearThing), "russian" )
       } else if (subject === "gym") {
         this.showSubjects.showgym = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "PE" && yearThing ))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "PE" && yearThing), "gym" )
       } else if (subject === "art") {
         this.showSubjects.showart = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ARTS" && yearThing ))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ARTS" && yearThing), "art" )
       } else if (subject === "english") {
         this.showSubjects.showenglish = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ENGLISH" && yearThing ))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ENGLISH" && yearThing ), "english")
       } else if (subject === "history") {
         this.showSubjects.showhistory = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SS" && yearThing ))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SS" && yearThing), "history" )
       } else if (subject === "science") {
         this.showSubjects.showscience = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SCIENCE" && yearThing ))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SCIENCE" && yearThing), "science" )
       } else if (subject === "math") {
         this.showSubjects.showmath = true
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "MATH" && yearThing ))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "MATH" && yearThing), "math" )
       } else if (subject === "technology") {
         this.showSubjects.showtechnology = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "TECH" && yearThing ))
+        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "TECH" && yearThing), "technology")
       } 
       } else {
         alert("Pick a year from the dropdown")
       }
     },
-    changeNeeded: function (shownCourses) {
-      // will be part of switchTabs later
+    changeNeeded: function (shownCourses, subject) {
       const schedule = this.schedule;
+      const needed = this.needed
       document.querySelectorAll(".button").forEach((button) => {
         button.remove();
-      }); // it's both here and in scheduleBuilder because if it's only here then might cause problems if switch to different year and if only schedule builder it makes copies of existing things
-      const needed = {
-        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-        english: false,
-        math: false,
-        science: false,
-        history: false,
-        art: false,
-        gym: false,
-        lunch: false,
-        russian: false,
-        AP: 0,
-        educationalPeriods: 0,
-      };
+      });
       shownCourses.forEach((object) =>
-        document
-          .querySelector(".folder")
-          .insertAdjacentHTML(
-            `afterend`,
-            `<button class="button">${object.name}</button>`
+        document.getElementById("holders").insertAdjacentHTML(
+            `beforeend`,
+            `<div class="placeholder ${subject} button"><h4>${object.name}</h4></div>`
           )
       );
       document.querySelectorAll(".button").forEach((button) => {
@@ -232,7 +249,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style >
 .file {
   position: absolute;
 }
