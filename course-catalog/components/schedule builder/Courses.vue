@@ -1,10 +1,27 @@
 <template>
   <div>
+    <svg
+      @click="showr"
+      class="info"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
+      <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+      <path
+        d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"
+      />
+    </svg>
+    <div v-if="!showr" class="require">
+      <h2>Requirements</h2>
+      <h3></h3>
+    </div>
     <div class="tabs">
       <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
       <button @click="switchTabs(`gym`)" class="tab g">Gym</button>
       <button @click="switchTabs(`art`)" class="tab a">Art</button>
-      <button @click="switchTabs(`technology`)" class="tab t">Technology</button>
+      <button @click="switchTabs(`technology`)" class="tab t">
+        Technology
+      </button>
       <button @click="switchTabs(`history`)" class="tab h">History</button>
       <button @click="switchTabs(`english`)" class="tab en">English</button>
       <button @click="switchTabs(`science`)" class="tab s">Science</button>
@@ -84,9 +101,9 @@ export default {
   props: {
     schedule: [Object],
     yearPicked: String,
-  }, 
-  watch : {
-    yearPicked: function() {
+  },
+  watch: {
+    yearPicked: function () {
       this.showSubjects.showrussian = false;
       this.showSubjects.showgym = false;
       this.showSubjects.showart = false;
@@ -109,13 +126,14 @@ export default {
         AP: 0,
         educationalPeriods: 0,
       };
-    }
+    },
   },
   components: {
     useCourseStore,
   },
   data() {
     return {
+      showr: false,
       showSubjects: {
         showrussian: false,
         showgym: false,
@@ -145,53 +163,101 @@ export default {
   methods: {
     switchTabs: function (subject) {
       if (this.yearPicked) {
-      let yearThing = `course.${this.yearPicked.toLowerCase()}`
-      this.showSubjects.showrussian = false;
-      this.showSubjects.showgym = false;
-      this.showSubjects.showart = false;
-      this.showSubjects.showtechnology = false;
-      this.showSubjects.showenglish = false;
-      this.showSubjects.showhistory = false;
-      this.showSubjects.showscience = false;
-      this.showSubjects.showmath = false;
-      this.showSubjects.showlanding = false;
-      if (subject === "russian") {
-        this.showSubjects.showrussian = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && yearThing), "russian" )
-      } else if (subject === "gym") {
-        this.showSubjects.showgym = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "PE" && yearThing), "gym" )
-      } else if (subject === "art") {
-        this.showSubjects.showart = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ARTS" && yearThing), "art" )
-      } else if (subject === "english") {
-        this.showSubjects.showenglish = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ENGLISH" && yearThing ), "english")
-      } else if (subject === "history") {
-        this.showSubjects.showhistory = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SS" && yearThing), "history" )
-      } else if (subject === "science") {
-        this.showSubjects.showscience = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SCIENCE" && yearThing), "science" )
-      } else if (subject === "math") {
-        this.showSubjects.showmath = true
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "MATH" && yearThing), "math" )
-      } else if (subject === "technology") {
-        this.showSubjects.showtechnology = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "TECH" && yearThing), "technology")
-      } 
+        let yearThing = `course.${this.yearPicked.toLowerCase()}`;
+        this.showSubjects.showrussian = false;
+        this.showSubjects.showgym = false;
+        this.showSubjects.showart = false;
+        this.showSubjects.showtechnology = false;
+        this.showSubjects.showenglish = false;
+        this.showSubjects.showhistory = false;
+        this.showSubjects.showscience = false;
+        this.showSubjects.showmath = false;
+        this.showSubjects.showlanding = false;
+        if (subject === "russian") {
+          this.showSubjects.showrussian = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "LANG" && yearThing
+            ),
+            "russian"
+          );
+        } else if (subject === "gym") {
+          this.showSubjects.showgym = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) => course.catalog && course.subject === "PE" && yearThing
+            ),
+            "gym"
+          );
+        } else if (subject === "art") {
+          this.showSubjects.showart = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "ARTS" && yearThing
+            ),
+            "art"
+          );
+        } else if (subject === "english") {
+          this.showSubjects.showenglish = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "ENGLISH" && yearThing
+            ),
+            "english"
+          );
+        } else if (subject === "history") {
+          this.showSubjects.showhistory = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) => course.catalog && course.subject === "SS" && yearThing
+            ),
+            "history"
+          );
+        } else if (subject === "science") {
+          this.showSubjects.showscience = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "SCIENCE" && yearThing
+            ),
+            "science"
+          );
+        } else if (subject === "math") {
+          this.showSubjects.showmath = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "MATH" && yearThing
+            ),
+            "math"
+          );
+        } else if (subject === "technology") {
+          this.showSubjects.showtechnology = true;
+          this.changeNeeded(
+            useCourseStore().courses.filter(
+              (course) =>
+                course.catalog && course.subject === "TECH" && yearThing
+            ),
+            "technology"
+          );
+        }
       } else {
-        alert("Pick a year from the dropdown")
+        alert("Pick a year from the dropdown");
       }
     },
     changeNeeded: function (shownCourses, subject) {
       const schedule = this.schedule;
-      const needed = this.needed
+      const needed = this.needed;
       document.querySelectorAll(".button").forEach((button) => {
         button.remove();
       });
       shownCourses.forEach((object) =>
-        document.getElementById("holders").insertAdjacentHTML(
+        document
+          .getElementById("holders")
+          .insertAdjacentHTML(
             `beforeend`,
             `<div class="placeholder ${subject} button"><h4>${object.name}</h4></div>`
           )
@@ -249,7 +315,21 @@ export default {
   },
 };
 </script>
-<style >
+<style>
+.require {
+  padding: 1rem;
+  border: 2px solid #37394f;
+  border-radius: 1rem;
+  color: #37394f;
+  width: 50%;
+}
+svg {
+  fill: #37394f;
+  transition: 0.3s;
+}
+svg:hover {
+  opacity: 0.8;
+}
 .file {
   position: absolute;
 }
@@ -390,6 +470,10 @@ h4 {
   }
 }
 @media only screen and (min-width: 1440px) {
+  svg {
+    width: 1.5rem;
+    margin-left: 105%;
+  }
   .tabs {
     margin-left: 15%;
   }
@@ -417,6 +501,9 @@ h4 {
   }
 }
 @media only screen and (min-width: 1740px) {
+  svg {
+    width: 1rem;
+  }
   .file {
     width: 53%;
     height: 69.5%;
