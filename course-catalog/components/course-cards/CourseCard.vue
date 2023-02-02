@@ -10,6 +10,7 @@ defineProps({
     senior: Boolean,
     catalog: Boolean,
     subject: String,
+    ap: String,
     id: String,
 })
 </script>
@@ -30,8 +31,8 @@ defineProps({
                     </p>
                 </div>
                 <div class="flex justify-start items-start space-x-2">
-                    <SubjectType />
-                    <CourseType v-if="course?.ap == true" :ap="course?.ap" />
+                    <SubjectType :subject="course?.subject"/>
+                    <CourseType :ap="course?.ap" />
                 </div>
             </div>
         </NuxtLink>

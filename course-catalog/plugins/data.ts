@@ -27,6 +27,7 @@ export default function (){
                 senior
                 ap
                 catalog
+                subject
             }
         }
     }}`
