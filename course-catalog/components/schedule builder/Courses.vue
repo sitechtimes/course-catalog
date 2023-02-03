@@ -28,56 +28,46 @@
       <button @click="switchTabs(`math`)" class="tab m">Math</button>
     </div>
     <div class="folder">
-      <div v-if="showSubjects.showrussian" class="file russian">
+      <div v-if="showSubjects.showrussian" class="file LANG">
         <div class="holders">
-          <div class="placeholder russian">
-            <h4>Russian</h4>
-          </div>
-          <div class="placeholder russian">
-            <h4>Adv Russian</h4>
+          <div class="placeholder LANG" v-for="course in courses.filter(course => course.catalog && course.subject === `LANG` && course[`${this.yearPicked.toLowerCase()}`])" v-on:click="addClass(course)">
+            <h4>{{course.name}}</h4>
           </div>
         </div>
       </div>
-      <div v-if="showSubjects.showgym" class="file gym">
+      <div v-if="showSubjects.showgym" class="file PE">
         <div class="holders">
-          <div class="placeholder gym"><h4>Badminton</h4></div>
-          <div class="placeholder gym"><h4>Volleyball</h4></div>
+          <div class="placeholder PE" v-for="course in courses.filter(course => course.catalog && course.subject === `PE` && course[`${this.yearPicked.toLowerCase()}`])" v-on:click="addClass(course)"><h4>{{course.name}}</h4></div>
         </div>
       </div>
-      <div v-if="showSubjects.showart" class="file art">
+      <div v-if="showSubjects.showart" class="file ARTS">
         <div class="holders">
-          <div class="placeholder art"><h4>MakerSpace</h4></div>
-          <div class="placeholder art"><h4>Band</h4></div>
+          <div class="placeholder ARTS" v-for="course in courses.filter(course => course.catalog && course.subject === `ARTS` && course[`${this.yearPicked.toLowerCase()}`])" v-on:click="addClass(course)"><h4>{{course.name}}</h4></div>
         </div>
       </div>
-      <div v-if="showSubjects.showtechnology" class="file technology">
+      <div v-if="showSubjects.showtechnology" class="file TECH">
         <div class="holders">
-          <div class="placeholder technology"><h4>APCSP JS</h4></div>
-          <div class="placeholder technology"><h4>APCSP Python</h4></div>
+          <div class="placeholder TECH" v-for="course in courses.filter(course => course.catalog && course.subject === `TECH` && course[`${this.yearPicked.toLowerCase()}`])" v-on:click="addClass(course)"><h4>{{course.name}}</h4></div>
         </div>
       </div>
-      <div v-if="showSubjects.showhistory" class="file history">
+      <div v-if="showSubjects.showhistory" class="file SS">
         <div class="holders">
-          <div class="placeholder history"><h4>APUSH</h4></div>
-          <div class="placeholder history"><h4>APUSH Film Art Music</h4></div>
+          <div class="placeholder SS" v-for="course in courses.filter(course => course.catalog && course.subject === `SS` && course[`${this.yearPicked.toLowerCase()}`])" v-on:click="addClass(course)"><h4>{{course.name}}</h4></div>
         </div>
       </div>
-      <div v-if="showSubjects.showenglish" class="file english">
+      <div v-if="showSubjects.showenglish" class="file ENGLISH">
         <div class="holders">
-          <div class="placeholder english"><h4>AP Lang</h4></div>
-          <div class="placeholder english"><h4>English</h4></div>
+          <div class="placeholder ENGLISH" v-for="course in courses.filter(course => course.catalog && course.subject === `ENGLISH` && course[`${this.yearPicked.toLowerCase()}`])" v-on:click="addClass(course)"><h4>{{course.name}}</h4></div>
         </div>
       </div>
-      <div v-if="showSubjects.showscience" class="file science">
+      <div v-if="showSubjects.showscience" class="file SCIENCE">
         <div class="holders">
-          <div class="placeholder science"><h4>AP Psychology</h4></div>
-          <div class="placeholder science"><h4>AP Biology</h4></div>
+          <div class="placeholder SCIENCE" v-for="course in courses.filter(course => course.catalog && course.subject === `SCIENCE` && course[`${this.yearPicked.toLowerCase()}`])" v-on:click="addClass(course)"><h4>{{course.name}}</h4></div>
         </div>
       </div>
-      <div v-if="showSubjects.showmath" class="file math">
+      <div v-if="showSubjects.showmath" class="file MATH">
         <div class="holders">
-          <div class="placeholder math"><h4>AP Calculus AB</h4></div>
-          <div class="placeholder math"><h4>AP Calculus BC</h4></div>
+          <div class="placeholder MATH" v-for="course in courses.filter(course => course.catalog && course.subject === `MATH` && course[`${this.yearPicked.toLowerCase()}`])" v-on:click="addClass(course)"><h4>{{course.name}}</h4></div>
         </div>
       </div>
       <div v-if="showSubjects.showlanding" class="file landing">
@@ -101,6 +91,7 @@ export default {
   props: {
     schedule: [Object],
     yearPicked: String,
+    needed: Object,
   },
   watch: {
     yearPicked: function () {
@@ -113,19 +104,7 @@ export default {
       this.showSubjects.showscience = false;
       this.showSubjects.showmath = false;
       this.showSubjects.showlanding = true;
-      this.needed = {
-        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-        english: false,
-        math: false,
-        science: false,
-        history: false,
-        art: false,
-        gym: false,
-        lunch: false,
-        russian: false,
-        AP: 0,
-        educationalPeriods: 0,
-      };
+
     },
   },
   components: {
@@ -145,28 +124,13 @@ export default {
         showmath: false,
         showlanding: true,
       },
-      needed: {
-        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-        english: false,
-        math: false,
-        science: false,
-        history: false,
-        art: false,
-        gym: false,
-        lunch: false,
-        russian: false,
-        AP: 0,
-        educationalPeriods: 0,
-      },
+
+      courses: useCourseStore().courses,
     };
   },
   methods: {
     switchTabs: function (subject) {
       if (this.yearPicked) {
-      const yearThing = this.yearPicked.toLowerCase()
-      console.log(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && course[`${yearThing}`]))
-      console.log(useCourseStore().courses.filter(course => course.catalog))
-
       this.showSubjects.showrussian = false;
       this.showSubjects.showgym = false;
       this.showSubjects.showart = false;
@@ -178,96 +142,54 @@ export default {
       this.showSubjects.showlanding = false;
       if (subject === "russian") {
         this.showSubjects.showrussian = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "LANG" && course[`${yearThing}`]), "russian" )
       } else if (subject === "gym") {
         this.showSubjects.showgym = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "PE" && course[`${yearThing}`]), "gym" )
       } else if (subject === "art") {
         this.showSubjects.showart = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ARTS" && course[`${yearThing}`]  ), "art" )
       } else if (subject === "english") {
         this.showSubjects.showenglish = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "ENGLISH" && course[`${yearThing}`]   ), "english")
       } else if (subject === "history") {
         this.showSubjects.showhistory = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SS" && course[`${yearThing}`]  ), "history" )
       } else if (subject === "science") {
         this.showSubjects.showscience = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "SCIENCE" && course[`${yearThing}`]  ), "science" )
       } else if (subject === "math") {
         this.showSubjects.showmath = true
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "MATH" && course[`${yearThing}`]), "math" )
       } else if (subject === "technology") {
         this.showSubjects.showtechnology = true;
-        this.changeNeeded(useCourseStore().courses.filter(course => course.catalog && course.subject === "TECH" && course[`${yearThing}`] ), "technology")
       } 
       } else {
         alert("Pick a year from the dropdown");
       }
     },
-    changeNeeded: function (shownCourses, subject) {
+    addClass: function (chosenClass) {
       const schedule = this.schedule;
       const needed = this.needed;
-      document.querySelectorAll(".button").forEach((button) => {
-        button.remove();
-      });
-      shownCourses.forEach((object) =>
-        document
-          .querySelector(".holders")
-          .insertAdjacentHTML(
-            `beforeend`,
-            `<div class="placeholder ${subject} button"><h4>${object.name}</h4></div>`
-          )
-      );
-      document.querySelectorAll(".button").forEach((button) => {
-        button.addEventListener("click", function () {
-          const chosenClass = shownCourses.find(
-            (course) => course.name === this.textContent
-          );
-          console.log(chosenClass);
-          if (chosenClass.ap) {
-            if (needed.AP === 4) {
-              console.log("you have too many ap classes");
-              console.log(needed.AP);
-            } else if (chosenClass.doublePeriod) {
-              if (
-                schedule.find(
-                  (period) =>
-                    period.name === undefined &&
-                    schedule[period.period].name === undefined
-                )
-              ) {
-                needed.AP += 1;
-                button.remove();
-                schedule.find(
-                  (period) =>
-                    period.name === undefined &&
-                    schedule[period.period].name === undefined
-                ).name = chosenClass.name;
-                schedule[
-                  schedule.find(
-                    (period) => period.name === chosenClass.name
-                  ).period
-                ].name = chosenClass.name;
-                console.log(schedule);
-              }
-            } else if (schedule.find((period) => period.name === undefined)) {
-              console.log(chosenClass.periods);
-              needed.AP += 1;
-              button.remove();
-              schedule.find((period) => period.name === undefined).name =
-                chosenClass.name;
-              console.log(schedule);
-            }
-          } else if (schedule.find((period) => period.name === undefined)) {
-            button.remove();
-            console.log(chosenClass.periods);
-            schedule.find((period) => period.name === undefined).name =
-              chosenClass.name;
-            console.log(schedule);
-          } //might need something else if there are non-ap classes that are 2 periods
-        });
-      });
+      console.log(schedule)
+      if (schedule.find((period) => period.name === chosenClass.name)) {
+        alert("You can't have 2 of the same class")
+      } else {
+        if (chosenClass.ap) {
+        if (needed.ap === 4) {
+          alert("You have too many ap classes");
+        } else if (chosenClass.doublePeriod) {
+          if (schedule.find((period) => period.name === undefined && schedule[period.period])) {
+            needed.ap += 1;
+            Object.assign(schedule.find((period) =>period.name === undefined && schedule[period.period].name === undefined), chosenClass);
+            Object.assign(schedule[schedule.find((period) => period.name === chosenClass.name).period], chosenClass);
+          }
+          else {
+            alert("You don't have enough space for another double period")
+          }
+        } else if (schedule.find((period) => period.name === undefined)) {
+          needed.ap += 1;
+          Object.assign(schedule.find((period) => period.name === undefined), chosenClass)
+        }
+      } else if (schedule.find((period) => period.name === undefined)) {
+        Object.assign(schedule.find((period) => period.name === undefined), chosenClass);
+      } else {
+        alert("You don't have enough space for another class")
+      }//might need something else if there are non-ap classes that are 2 periods
+      }
     },
   },
 };
@@ -337,49 +259,49 @@ h4 {
 .r {
   background-color: #fedcb5;
 }
-.russian {
+.LANG {
   background-color: #fedcb5;
 }
 .g {
   background-color: #bebfdf;
 }
-.gym {
+.PE {
   background-color: #bebfdf;
 }
 .a {
   background-color: #ffadcb;
 }
-.art {
+.ARTS {
   background-color: #ffadcb;
 }
 .t {
   background-color: #fffbd6;
 }
-.technology {
+.TECH {
   background-color: #fffbd6;
 }
 .h {
   background-color: #e0d6ff;
 }
-.history {
+.SS {
   background-color: #e0d6ff;
 }
 .en {
   background-color: #d6eeff;
 }
-.english {
+.ENGLISH {
   background-color: #d6eeff;
 }
 .s {
   background-color: #cbf2d4;
 }
-.science {
+.SCIENCE {
   background-color: #cbf2d4;
 }
 .m {
   background-color: #ffdfdf;
 }
-.math {
+.MATH {
   background-color: #ffdfdf;
 }
 .lunch {

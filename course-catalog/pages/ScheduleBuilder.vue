@@ -39,7 +39,20 @@ export default {
           period: 9,
         },
       ],
-      yearPicked: null
+      yearPicked: null,
+      needed: {
+        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
+        english: false,
+        math: false,
+        science: false,
+        history: false,
+        art: false,
+        gym: false,
+        lunch: false,
+        russian: false,
+        ap: 0,
+        educationalPeriods: 0,
+      },
     };
   },
   methods: {
@@ -75,6 +88,19 @@ export default {
         },
       ];
       this.yearPicked = document.querySelector(".dropdown").value
+      this.needed = {
+        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
+        english: false,
+        math: false,
+        science: false,
+        history: false,
+        art: false,
+        gym: false,
+        lunch: false,
+        russian: false,
+        ap: 0,
+        educationalPeriods: 0,
+      };
     },
   },
 };
@@ -100,9 +126,9 @@ export default {
     <div class="bottom">
       <Scheduler
         class=""
-        :schedule="schedule"
+        :schedule="schedule" :needed="needed"
       ></Scheduler>
-      <Courses :yearPicked="yearPicked" :schedule="schedule"/>
+      <Courses :yearPicked="yearPicked" :schedule="schedule" :needed="needed"/>
     </div>
   </div>
 </template>
