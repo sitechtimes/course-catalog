@@ -164,6 +164,27 @@ export default {
     addClass: function (chosenClass) {
       const schedule = this.schedule;
       const needed = this.needed;
+      function neededChange() {
+        if (chosenClass.subject === "LANG" && needed.russian === 0) {
+          needed.russian += 1
+        } else if (chosenClass.subject === "ENGLISH" && needed.english < 2) {
+          needed.english += 1
+        } else if (chosenClass.subject === "ARTS" && needed.art < 2) {
+          needed.art += 1
+        } else if (chosenClass.subject === "SS" && needed.history === 0) {
+          needed.history += 1
+        } else if (chosenClass.subject === "TECH" && needed.technology < 2) {
+          needed.technology += 1
+        } else if (chosenClass.subject === "PE" && needed.gym === 0) {
+          needed.gym += 1
+        } else if (chosenClass.subject === "MATH" && needed.math === 0) {
+          needed.math += 1
+        } else if (chosenClass.subject === "SCIENCE" && needed.science < 2) {
+          needed.science += 1
+        } else {
+          alert("You can not have more of that subject")
+        }
+      }
       console.log(schedule)
       if (schedule.find((period) => period.name === chosenClass.name)) {
         alert("You can't have 2 of the same class")

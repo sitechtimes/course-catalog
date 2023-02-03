@@ -94,6 +94,7 @@ export default {
         math: 0,
         science: 0,
         history: 0,
+        technology: 0,
         art: 0,
         gym: 0,
         lunch: 1,
