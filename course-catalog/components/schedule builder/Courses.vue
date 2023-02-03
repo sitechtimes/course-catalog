@@ -390,10 +390,10 @@ h4 {
   background-color: #bebfdf;
 }
 .a {
-  background-color: #ffadcb;
+  background-color: #ffdfdf;
 }
-.ARTS {
-  background-color: #ffadcb;
+.ART {
+  background-color: #ffdfdf;
 }
 .t {
   background-color: #fffbd6;
@@ -420,10 +420,10 @@ h4 {
   background-color: #cbf2d4;
 }
 .m {
-  background-color: #ffdfdf;
+  background-color: #ffadb2;
 }
 .MATH {
-  background-color: #ffdfdf;
+  background-color: #ffadb2;
 }
 .lunch {
   background-color: #d2fcff;
