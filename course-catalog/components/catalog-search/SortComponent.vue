@@ -83,7 +83,7 @@ export default defineComponent({
             },
             IncGradeSort() {
                 function compare(a, b) {
-                    if (a.freshman === true)
+                    if (a.freshman === false)
                         return -1;
                     if (b.sophomore === true)
                         return 1;
