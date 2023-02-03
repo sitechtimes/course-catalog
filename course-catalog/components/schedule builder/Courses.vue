@@ -165,22 +165,22 @@ export default {
       const schedule = this.schedule;
       const needed = this.needed;
       function neededChange() {
-        if (chosenClass.subject === "LANG" && needed.russian === 0) {
-          needed.russian += 1
-        } else if (chosenClass.subject === "ENGLISH" && needed.english < 2) {
-          needed.english += 1
-        } else if (chosenClass.subject === "ARTS" && needed.art < 2) {
-          needed.art += 1
-        } else if (chosenClass.subject === "SS" && needed.history === 0) {
-          needed.history += 1
-        } else if (chosenClass.subject === "TECH" && needed.technology < 2) {
-          needed.technology += 1
-        } else if (chosenClass.subject === "PE" && needed.gym === 0) {
-          needed.gym += 1
-        } else if (chosenClass.subject === "MATH" && needed.math === 0) {
-          needed.math += 1
-        } else if (chosenClass.subject === "SCIENCE" && needed.science < 2) {
-          needed.science += 1
+        if (chosenClass.subject === "LANG" && needed.LANG === 0) {
+          needed.LANG += 1
+        } else if (chosenClass.subject === "ENGLISH" && needed.ENGLISH < 2) {
+          needed.ENGLISH += 1
+        } else if (chosenClass.subject === "ARTS" && needed.ARTS < 2) {
+          needed.ARTS += 1
+        } else if (chosenClass.subject === "SS" && needed.SS === 0) {
+          needed.SS += 1
+        } else if (chosenClass.subject === "TECH" && needed.TECH < 2) {
+          needed.TECH += 1
+        } else if (chosenClass.subject === "PE" && needed.PE === 0) {
+          needed.PE += 1
+        } else if (chosenClass.subject === "MATH" && needed.MATH === 0) {
+          needed.MATH += 1
+        } else if (chosenClass.subject === "SCIENCE" && needed.SCIENCE < 2) {
+          needed.SCIENCE += 1
         } else {
           alert("You can not have more of that subject")
         }
