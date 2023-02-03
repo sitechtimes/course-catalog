@@ -474,6 +474,12 @@ h4 {
   }
 }
 @media only screen and (min-width: 1440px) {
+  .note {
+    margin-left: 55%;
+    position: absolute;
+    z-index: 6;
+    margin-top: 1rem;
+  }
   svg {
     width: 1.5rem;
     margin-left: 105%;
