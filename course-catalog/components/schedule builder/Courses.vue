@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="requirements">
-      <button class="note" @click="showr">
+      <button class="note" @click="showr = !showr">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
           <path
@@ -9,7 +9,7 @@
           />
         </svg>
       </button>
-      <div class="require">
+      <div v-if="showr" class="require">
         <h3 class="mt-0 font-bold">Requirements</h3>
         <ul>
           <li>English</li>
@@ -21,7 +21,6 @@
           <li>Russian</li>
           <li>7 educational periods (not including lunch)</li>
         </ul>
-        <button @click="" class="font-bold ml-80 mt-3">HIDE</button>
       </div>
     </div>
 
@@ -207,6 +206,7 @@ export default {
   },
   data() {
     return {
+      hider: true,
       showr: false,
       showSubjects: {
         showrussian: false,
@@ -312,6 +312,9 @@ export default {
 };
 </script>
 <style>
+.requirements {
+  margin-bottom: 1rem;
+}
 .require {
   position: absolute;
   z-index: 2;
