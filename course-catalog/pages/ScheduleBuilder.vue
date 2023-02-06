@@ -1,42 +1,36 @@
 <script lang="ts">
 import Courses from "../components/schedule builder/Courses.vue";
 import Scheduler from "../components/schedule builder/Scheduler.vue";
+import { useCourseStore } from "~/store/store";
+import data from "~~/plugins/data";
 export default {
   name: "ScheduleBuilder",
   components: {
     Scheduler,
     Courses,
+    useCourseStore,
   },
   data() {
     return {
       schedule: [
         {
-          period: 1,
         },
         {
-          period: 2,
         },
         {
-          period: 3,
         },
         {
-          period: 4,
         },
         {
           name: "Lunch",
-          period: 5,
         },
         {
-          period: 6,
         },
         {
-          period: 7,
         },
         {
-          period: 8,
         },
         {
-          period: 9,
         },
       ],
       yearPicked: null,
@@ -56,37 +50,6 @@ export default {
   },
   methods: {
     changeProps: function () {
-      this.schedule = [
-        {
-          period: 1,
-        },
-        {
-          period: 2,
-        },
-        {
-          period: 3,
-        },
-        {
-          period: 4,
-        },
-        {
-          name: "Lunch",
-          period: 5,
-        },
-        {
-          period: 6,
-        },
-        {
-          period: 7,
-        },
-        {
-          period: 8,
-        },
-        {
-          period: 9,
-        },
-      ];
-      this.yearPicked = document.querySelector(".dropdown").value
       this.needed = {
         // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
         english: 0,
@@ -101,6 +64,7 @@ export default {
         ap: 0,
         educationalPeriods: 0,
       };
+      this.yearPicked = document.querySelector(".dropdown").value
     },
   },
 };

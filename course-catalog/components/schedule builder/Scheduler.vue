@@ -11,9 +11,6 @@ export default {
       if (this.schedule[period-1].ap) {
         this.needed.ap =- 1
       }
-      this.schedule[period-1] ={
-        period: period
-      }
     }
   },
 };

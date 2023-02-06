@@ -104,7 +104,16 @@ export default {
       this.showSubjects.showscience = false;
       this.showSubjects.showmath = false;
       this.showSubjects.showlanding = true;
+      if (this.yearPicked === "Freshman") {
+        Object.assign(this.schedule[0], this.courses.filter(course => course.name === "Russian T1" && course.catalog));
+        console.log(this.schedule)
+      } else if (this.yearPicked === "Sophomore") {
 
+      } else if (this.yearPicked === "Junior") {
+
+      } else if (this.yearPicked === "Senior") {
+
+      }
     },
   },
   components: {
