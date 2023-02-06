@@ -69,10 +69,10 @@
           </div>
         </div>
       </div>
-      <div v-if="showSubjects.showart" class="file ARTS">
+      <div v-if="showSubjects.showart" class="file a">
         <div class="holders">
           <div
-            class="placeholder ARTS"
+            class="placeholder ART"
             v-for="course in courses.filter(
               (course) =>
                 course.catalog &&
@@ -493,7 +493,7 @@ h4 {
   .file {
     line-height: 4;
     width: 55%;
-    margin-left: 4%;
+    margin-left: 3%;
     margin-bottom: 1rem;
     border-radius: 0.8rem;
     padding: 2rem;
