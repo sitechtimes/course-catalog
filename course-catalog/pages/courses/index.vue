@@ -1,8 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { getCourses } from "~~/store/store"
 import SortComponent from "../../components/catalog-search/SortComponent.vue"
 import SearchBar from "../../components/catalog-search/SearchBar.vue";
 import CourseCard from "../../components/course-cards/CourseCard.vue";
+
+
 
 export default {
     components: {
@@ -23,7 +25,7 @@ export default {
                 }
             )}
         },
-        mounted() {
+        created() {
             this.filteredList
         }
 }
