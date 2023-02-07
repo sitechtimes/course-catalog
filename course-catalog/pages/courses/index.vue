@@ -1,9 +1,17 @@
-<script setup lang="ts">
+<script lang="ts">
 import { getCourses } from "~~/store/store"
 import SortComponent from "../../components/catalog-search/SortComponent.vue"
 import SearchBar from "../../components/catalog-search/SearchBar.vue";
 import CourseCard from "../../components/course-cards/CourseCard.vue";
 
+// const courses = getCourses().courses
+// let input = ref("")
+
+// const filterList = () => {
+//     return courses.filter((course) => {
+//         return course.name.toLowerCase().indexOf(input.toLowerCase()) != -1
+//     })
+// }
 
 
 export default {
@@ -21,9 +29,9 @@ export default {
         computed: {
             filteredList() {
                 return this.courses.filter((course) => {
-                return course.name.toLowerCase().indexOf(this.input.toLowerCase()) != -1;
-                }
-            )}
+                    return course.name.toLowerCase().indexOf(this.input.toLowerCase()) != -1;
+                })
+            }
         },
         created() {
             this.filteredList
@@ -42,7 +50,7 @@ export default {
                     <SearchBar class="mb-4" type="text" v-model="input" placeholder="Search Courses..." />
                 </div>
                 <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
-                    <CourseCard v-for="courses in this.filteredList" :course="courses"/>
+                    <CourseCard v-for="courses in filteredList" :course="courses"/>
                 </div>
                 <div id="error-msg" v-if="input&&!filteredList.length">
                     <p>No results found!</p>
