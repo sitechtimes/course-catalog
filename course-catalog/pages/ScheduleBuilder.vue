@@ -87,7 +87,7 @@ export default {
           period: 9,
         },
       ];
-      this.yearPicked = document.querySelector(".dropdown").value
+      this.yearPicked = document.querySelector(".dropdown").value;
       this.needed = {
         // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
         english: false,
@@ -124,11 +124,8 @@ export default {
       </h1>
     </div>
     <div class="bottom">
-      <Scheduler
-        class=""
-        :schedule="schedule" :needed="needed"
-      ></Scheduler>
-      <Courses :yearPicked="yearPicked" :schedule="schedule" :needed="needed"/>
+      <Scheduler class="" :schedule="schedule" :needed="needed"></Scheduler>
+      <Courses :yearPicked="yearPicked" :schedule="schedule" :needed="needed" />
     </div>
   </div>
 </template>
@@ -149,6 +146,7 @@ h2 {
 }
 .top {
   margin-top: 2rem;
+  width: 30%;
 }
 .bottom {
   display: flex;

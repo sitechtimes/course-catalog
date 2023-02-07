@@ -313,13 +313,15 @@ export default {
 </script>
 <style>
 .requirements {
-  margin-bottom: 1rem;
+  margin-top: -3rem;
+  margin-bottom: 3.5rem;
 }
 .require {
   position: absolute;
   z-index: 2;
   background-color: white;
   padding: 1rem;
+  padding-bottom: 2rem;
   border: 2px solid #37394f;
   border-radius: 1rem;
   color: #37394f;
