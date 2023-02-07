@@ -95,20 +95,79 @@ export default {
   },
   watch: {
     yearPicked: function () {
-      this.showSubjects.showrussian = false;
-      this.showSubjects.showgym = false;
-      this.showSubjects.showart = false;
-      this.showSubjects.showtechnology = false;
-      this.showSubjects.showenglish = false;
-      this.showSubjects.showhistory = false;
-      this.showSubjects.showscience = false;
-      this.showSubjects.showmath = false;
-      this.showSubjects.showlanding = true;
+      this.showSubjects = {
+        showrussian: false,
+        showgym: false,
+        showart: false,
+        showtechnology: false,
+        showenglish: false,
+        showhistory: false,
+        showscience: false,
+        showmath: false,
+        showlanding: true,
+      }
       if (this.yearPicked === "Freshman") {
-        Object.assign(this.schedule[0], this.courses.filter(course => course.name === "Russian T1" && course.catalog));
-        console.log(this.schedule)
+        const russian = this.courses.filter(course => course.name === "Russian T1" && course.catalog)
+        const history = this.courses.filter(course => course.name === "AP World History T1" && course.catalog)
+        const gym = this.courses.filter(course => course.name === "PE T1" && course.catalog)
+        const english = this.courses.filter(course => course.name === "English T1" && course.catalog)
+        const science = this.courses.filter(course => course.name === "Chemistry T1" && course.catalog)
+        const math = this.courses.filter(course => course.name === "Algebra I T1" && course.catalog)
+        russian.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        history.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        gym.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        english.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        science.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        math.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        this.needed.english +=1
+        this.needed.history +=1
+        this.needed.russian +=1
+        this.needed.math +=1
+        this.needed.science +=1
+        this.needed.gym +=1
       } else if (this.yearPicked === "Sophomore") {
-
+        const russian = this.courses.filter(course => course.name === "Russian T1" && course.catalog)
+        const history = this.courses.filter(course => course.name === "AP World History T3" && course.catalog)
+        const gym = this.courses.filter(course => course.name === "PE T1" && course.catalog)
+        const english = this.courses.filter(course => course.name === "English T1" && course.catalog)
+        const science = this.courses.filter(course => course.name === "Chemistry T1" && course.catalog)
+        const math = this.courses.filter(course => course.name === "Algebra I T1" && course.catalog)
+        russian.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        history.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        gym.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        english.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        science.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        math.forEach((period) => {
+          Object.assign(this.schedule.find((period) => period.name === undefined), period)
+        })
+        this.needed.english +=1
+        this.needed.history +=1
+        this.needed.russian +=1
+        this.needed.math +=1
+        this.needed.science +=1
+        this.needed.gym +=1
       } else if (this.yearPicked === "Junior") {
 
       } else if (this.yearPicked === "Senior") {
@@ -194,7 +253,7 @@ export default {
           alert("You can not have more of that subject")
         }
       }
-      console.log(schedule)
+      console.log(chosenClass)
       if (schedule.find((period) => period.name === chosenClass.name)) {
         alert("You can't have 2 of the same class")
       } else {
@@ -205,7 +264,7 @@ export default {
           if (schedule.find((period) => period.name === undefined && schedule[period.period])) {
             needed.ap += 1;
             Object.assign(schedule.find((period) =>period.name === undefined && schedule[period.period].name === undefined), chosenClass);
-            Object.assign(schedule[schedule.find((period) => period.name === chosenClass.name).period], chosenClass);
+            Object.assign(schedule[schedule.find((period) => period.name === chosenClass.name)+1], chosenClass);
           }
           else {
             alert("You don't have enough space for another double period")

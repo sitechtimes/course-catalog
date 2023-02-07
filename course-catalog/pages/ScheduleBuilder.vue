@@ -65,6 +65,27 @@ export default {
         educationalPeriods: 0,
       };
       this.yearPicked = document.querySelector(".dropdown").value
+      this.schedule = [
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+          name: "Lunch",
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+        {
+        },
+      ]
     },
   },
 };
