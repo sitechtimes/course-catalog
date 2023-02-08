@@ -23,6 +23,7 @@ export default {
         },
         {
           name: "Lunch",
+          subject: "lunch"
         },
         {
         },
@@ -51,18 +52,15 @@ export default {
   methods: {
     changeProps: function () {
       this.needed = {
-        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-        english: 0,
-        math: 0,
-        science: 0,
-        history: 0,
-        technology: 0,
-        art: 0,
-        gym: 0,
+        ENGLISH: 0,
+        MATH: 0,
+        SCIENCE: 0,
+        SS: 0,
+        ARTS: 0,
+        PE: 0,
         lunch: 1,
-        russian: 0,
+        LANG: 0,
         ap: 0,
-        educationalPeriods: 0,
       };
       this.yearPicked = document.querySelector(".dropdown").value
       this.schedule = [
@@ -76,6 +74,7 @@ export default {
         },
         {
           name: "Lunch",
+          subject: "lunch"
         },
         {
         },
