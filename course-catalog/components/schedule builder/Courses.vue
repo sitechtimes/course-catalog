@@ -366,7 +366,7 @@ export default {
             }
           }
           else {
-            alert("You don't have enough space for another double period")
+            alert("You don't have 2 consecutive empty spaces")
           }
         } else if (schedule.find((period) => period.name === undefined)) {
           if (neededChange()) {
