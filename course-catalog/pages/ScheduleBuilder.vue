@@ -1,106 +1,90 @@
 <script lang="ts">
 import Courses from "../components/schedule builder/Courses.vue";
 import Scheduler from "../components/schedule builder/Scheduler.vue";
+import { useCourseStore } from "~/store/store";
+import data from "~~/plugins/data";
 export default {
   name: "ScheduleBuilder",
   components: {
     Scheduler,
     Courses,
+    useCourseStore,
   },
   data() {
     return {
       schedule: [
         {
-          period: 1,
         },
         {
-          period: 2,
         },
         {
-          period: 3,
         },
         {
-          period: 4,
         },
         {
           name: "Lunch",
-          period: 5,
+          subject: "lunch"
         },
         {
-          period: 6,
         },
         {
-          period: 7,
         },
         {
-          period: 8,
         },
         {
-          period: 9,
         },
       ],
       yearPicked: null,
       needed: {
         // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-        english: false,
-        math: false,
-        science: false,
-        history: false,
-        art: false,
-        gym: false,
-        lunch: false,
-        russian: false,
+        ENGLISH: 0,
+        MATH: 0,
+        SCIENCE: 0,
+        SS: 0,
+        ARTS: 0,
+        PE: 0,
+        lunch: 1,
+        LANG: 0,
         ap: 0,
-        educationalPeriods: 0,
       },
     };
   },
   methods: {
     changeProps: function () {
+      this.needed = {
+        ENGLISH: 0,
+        MATH: 0,
+        SCIENCE: 0,
+        SS: 0,
+        ARTS: 0,
+        PE: 0,
+        lunch: 1,
+        LANG: 0,
+        ap: 0,
+      };
+      this.yearPicked = document.querySelector(".dropdown").value
       this.schedule = [
         {
-          period: 1,
         },
         {
-          period: 2,
         },
         {
-          period: 3,
         },
         {
-          period: 4,
         },
         {
           name: "Lunch",
-          period: 5,
+          subject: "lunch"
         },
         {
-          period: 6,
         },
         {
-          period: 7,
         },
         {
-          period: 8,
         },
         {
-          period: 9,
         },
-      ];
-      this.yearPicked = document.querySelector(".dropdown").value;
-      this.needed = {
-        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-        english: false,
-        math: false,
-        science: false,
-        history: false,
-        art: false,
-        gym: false,
-        lunch: false,
-        russian: false,
-        ap: 0,
-        educationalPeriods: 0,
-      };
+      ]
     },
   },
 };
