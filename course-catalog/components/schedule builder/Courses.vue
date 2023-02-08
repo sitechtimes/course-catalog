@@ -10,17 +10,28 @@
         </svg>
       </button>
       <div v-if="showr" class="require">
-        <h3 class="mt-0 font-bold">Requirements</h3>
-        <ul>
-          <li>English</li>
-          <li>Math</li>
-          <li>Science</li>
-          <li>History</li>
-          <li>Gym</li>
-          <li>Lunch</li>
-          <li>Russian</li>
-          <li>7 educational periods (not including lunch)</li>
-        </ul>
+        <div class="uncr">
+          <h3 class="mt-0 font-bold">Underclassmen Requirements</h3>
+          <bl>
+            <li>English</li>
+            <li>Math</li>
+            <li>Science</li>
+            <li>History</li>
+            <li>Gym</li>
+            <li>Lunch</li>
+            <li>Russian</li>
+            <li>7 educational periods (not including lunch)</li>
+          </bl>
+        </div>
+        <div class="seniorr">
+          <h3 class="mt-1 font-bold">Senior Requirements</h3>
+          <bl>
+            <li>English</li>
+            <li>Math</li>
+            <li>Gym</li>
+            <li>7 educational periods (not including lunch)</li>
+          </bl>
+        </div>
       </div>
     </div>
 
@@ -72,7 +83,7 @@
       <div v-if="showSubjects.showart" class="file a">
         <div class="holders">
           <div
-            class="placeholder ART"
+            class="placeholder ARTS"
             v-for="course in courses.filter(
               (course) =>
                 course.catalog &&
