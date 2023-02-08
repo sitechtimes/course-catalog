@@ -397,7 +397,7 @@ h4 {
 .a {
   background-color: #ffdfdf;
 }
-.ART {
+.ARTS {
   background-color: #ffdfdf;
 }
 .t {
