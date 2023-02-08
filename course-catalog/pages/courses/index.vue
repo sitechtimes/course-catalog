@@ -7,7 +7,7 @@ import CourseCard from "../../components/course-cards/CourseCard.vue";
 // const courses = getCourses().courses
 // let input = ref("")
 
-// const filterList = () => {
+// const filteredList = () => {
 //     return courses.filter((course) => {
 //         return course.name.toLowerCase().indexOf(input.toLowerCase()) != -1
 //     })
@@ -33,8 +33,17 @@ export default {
                 })
             }
         },
-        created() {
-            this.filteredList
+        setup() {
+            // this.filteredList
+            const courses = getCourses().courses
+            let input = ref("")
+
+            const filteredList = () => {
+                return courses.filter((course) => {
+                    return course.name.toLowerCase().indexOf(input.toLowerCase()) != -1
+                })
+            }
+            
         }
 }
 </script>
