@@ -2,7 +2,7 @@
 import Courses from "../components/schedule builder/Courses.vue";
 import Scheduler from "../components/schedule builder/Scheduler.vue";
 import { useCourseStore } from "~/store/store";
-import data from "~~/plugins/data";
+
 export default {
   name: "ScheduleBuilder",
   components: {
@@ -13,26 +13,18 @@ export default {
   data() {
     return {
       schedule: [
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
+        {},
+        {},
+        {},
+        {},
         {
           name: "Lunch",
-          subject: "lunch"
+          subject: "lunch",
         },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
+        {},
+        {},
+        {},
+        {},
       ],
       yearPicked: null,
       needed: {
@@ -62,29 +54,21 @@ export default {
         LANG: 0,
         ap: 0,
       };
-      this.yearPicked = document.querySelector(".dropdown").value
+      this.yearPicked = document.querySelector(".dropdown").value;
       this.schedule = [
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
+        {},
+        {},
+        {},
+        {},
         {
           name: "Lunch",
-          subject: "lunch"
+          subject: "lunch",
         },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
-      ]
+        {},
+        {},
+        {},
+        {},
+      ];
     },
   },
 };

@@ -7,36 +7,20 @@ import courseNode from '~/interface/course'
 
 
 
-export default function (){
-    const query = `{allCourses{
-        edges{
-            node{
-                name
-                id
-                freshman
-                sophomore
-                junior
-                senior
-                ap
-                courseCode
-                doublePeriod
-                catalog
-                subject
-            }
-        }
-    }}`
+export default async function (){
 
-    axios({
-        url:`http://127.0.0.1:8000/course/?query=${query}`,
+
+    await axios({
+        url:`http://127.0.0.1:8000/course/`,
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
         },
     }).then((res)=>{
-            res.data.data.allCourses.edges.forEach((x:courseNode) => {
-                useCourseStore().courses.push(x.node)
+        console.log(res.data)
+            res.data.forEach((x:any) => {
+                useCourseStore().courses.push(x)
             });
-            console.log(useCourseStore().courses)
         })
     
 

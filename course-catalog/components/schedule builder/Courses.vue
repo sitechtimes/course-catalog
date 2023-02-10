@@ -211,55 +211,166 @@ export default {
         showscience: false,
         showmath: false,
         showlanding: true,
-      }
+      };
       if (this.yearPicked === "Freshman") {
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Russian T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "AP World History T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "PE T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "English T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Chemistry T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Geometry T1" && course.catalog))
-        this.needed.ENGLISH +=1
-        this.needed.SS +=1
-        this.needed.LANG +=1
-        this.needed.MATH +=1
-        this.needed.SCIENCE +=1
-        this.needed.PE +=1
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Russian T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "AP World History T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "PE T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "English T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Chemistry T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Geometry T1" && course.catalog
+          )
+        );
+        this.needed.ENGLISH += 1;
+        this.needed.SS += 1;
+        this.needed.LANG += 1;
+        this.needed.MATH += 1;
+        this.needed.SCIENCE += 1;
+        this.needed.PE += 1;
       } else if (this.yearPicked === "Sophomore") {
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Russian T3" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "AP World History T3" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "PE T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "English T3" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Physics T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Algebra II T1" && course.catalog))
-        this.needed.ENGLISH +=1
-        this.needed.SS +=1
-        this.needed.LANG +=1
-        this.needed.MATH +=1
-        this.needed.SCIENCE +=1
-        this.needed.PE +=1
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Russian T3" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "AP World History T3" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "PE T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "English T3" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Physics T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Algebra II T1" && course.catalog
+          )
+        );
+        this.needed.ENGLISH += 1;
+        this.needed.SS += 1;
+        this.needed.LANG += 1;
+        this.needed.MATH += 1;
+        this.needed.SCIENCE += 1;
+        this.needed.PE += 1;
       } else if (this.yearPicked === "Junior") {
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Russian T5" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "AP US History T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "PE T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "English T5" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Applied Physics T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Pre-Calculus T1" && course.catalog))
-        this.needed.ENGLISH +=1
-        this.needed.SS +=1
-        this.needed.LANG +=1
-        this.needed.MATH +=1
-        this.needed.SCIENCE +=1
-        this.needed.PE +=1
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Russian T5" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "AP US History T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "PE T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "English T5" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Applied Physics T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Pre-Calculus T1" && course.catalog
+          )
+        );
+        this.needed.ENGLISH += 1;
+        this.needed.SS += 1;
+        this.needed.LANG += 1;
+        this.needed.MATH += 1;
+        this.needed.SCIENCE += 1;
+        this.needed.PE += 1;
       } else if (this.yearPicked === "Senior") {
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Economics" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "PE T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "E7 Creative Writing" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Multivariable Calculus T1" && course.catalog))
-        this.needed.ENGLISH +=1
-        this.needed.SS +=1
-        this.needed.MATH +=1
-        this.needed.PE +=1
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Economics" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "PE T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "E7 Creative Writing" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) =>
+              course.name === "Multivariable Calculus T1" && course.catalog
+          )
+        );
+        this.needed.ENGLISH += 1;
+        this.needed.SS += 1;
+        this.needed.MATH += 1;
+        this.needed.PE += 1;
       }
     },
   },
@@ -323,64 +434,87 @@ export default {
       const needed = this.needed;
       function neededChange() {
         if (chosenClass.subject === "LANG" && needed.LANG === 0) {
-          needed.LANG += 1
-          return true
+          needed.LANG += 1;
+          return true;
         } else if (chosenClass.subject === "ENGLISH" && needed.ENGLISH < 2) {
-          needed.ENGLISH += 1
-          return true
+          needed.ENGLISH += 1;
+          return true;
         } else if (chosenClass.subject === "ARTS" && needed.ARTS < 2) {
-          needed.ARTS += 1
-          return true
+          needed.ARTS += 1;
+          return true;
         } else if (chosenClass.subject === "SS" && needed.SS === 0) {
-          needed.SS += 1
-          return true
+          needed.SS += 1;
+          return true;
         } else if (chosenClass.subject === "TECH" && needed.TECH < 2) {
-          needed.TECH += 1
-          return true
+          needed.TECH += 1;
+          return true;
         } else if (chosenClass.subject === "PE" && needed.PE === 0) {
-          needed.PE += 1
-          return true
+          needed.PE += 1;
+          return true;
         } else if (chosenClass.subject === "MATH" && needed.MATH === 0) {
-          needed.MATH += 1
-          return true
+          needed.MATH += 1;
+          return true;
         } else if (chosenClass.subject === "SCIENCE" && needed.SCIENCE < 2) {
-          needed.SCIENCE += 1
-          return true
+          needed.SCIENCE += 1;
+          return true;
         } else {
-          alert("You can not have more of that subject")
+          alert("You can not have more of that subject");
         }
       }
-      console.log(chosenClass)
+      console.log(chosenClass);
       if (schedule.find((period) => period.name === chosenClass.name)) {
         alert("You can't have 2 of the same class");
       } else {
         if (chosenClass.ap) {
-        if (needed.ap === 4) {
-          alert("You have too many ap classes");
-        } else if (chosenClass.doublePeriod) {
-          if (schedule.find((period) => period.name === undefined && schedule[period.period])) {
+          if (needed.ap === 4) {
+            alert("You have too many ap classes");
+          } else if (chosenClass.doublePeriod) {
+            if (
+              schedule.find(
+                (period) => period.name === undefined && schedule[period.period]
+              )
+            ) {
+              if (neededChange()) {
+                needed.ap += 1;
+                Object.assign(
+                  schedule.find(
+                    (period) =>
+                      period.name === undefined &&
+                      schedule[period.period].name === undefined
+                  ),
+                  chosenClass
+                );
+                Object.assign(
+                  schedule[
+                    schedule.find(
+                      (period) => period.name === chosenClass.name
+                    ) + 1
+                  ],
+                  chosenClass
+                );
+              }
+            } else {
+              alert("You don't have enough space for another double period");
+            }
+          } else if (schedule.find((period) => period.name === undefined)) {
             if (neededChange()) {
               needed.ap += 1;
-              Object.assign(schedule.find((period) =>period.name === undefined && schedule[period.period].name === undefined), chosenClass);
-              Object.assign(schedule[schedule.find((period) => period.name === chosenClass.name)+1], chosenClass);
+              Object.assign(
+                schedule.find((period) => period.name === undefined),
+                chosenClass
+              );
             }
-          }
-          else {
-            alert("You don't have enough space for another double period")
           }
         } else if (schedule.find((period) => period.name === undefined)) {
           if (neededChange()) {
-            needed.ap += 1;
-            Object.assign(schedule.find((period) => period.name === undefined), chosenClass)
+            Object.assign(
+              schedule.find((period) => period.name === undefined),
+              chosenClass
+            );
           }
-        }
-      } else if (schedule.find((period) => period.name === undefined)) {
-        if (neededChange()) {
-          Object.assign(schedule.find((period) => period.name === undefined), chosenClass);
-        }
-      } else {
-        alert("You don't have enough space for another class")
-      }//might need something else if there are non-ap classes that are 2 periods
+        } else {
+          alert("You don't have enough space for another class");
+        } //might need something else if there are non-ap classes that are 2 periods
       }
     },
   },
