@@ -23,7 +23,7 @@ export default {
         },
         {
           name: "Lunch",
-          subject: "lunch"
+          subject: "LUNCH"
         },
         {
         },
@@ -43,9 +43,10 @@ export default {
         SS: 0,
         ARTS: 0,
         PE: 0,
-        lunch: 1,
+        LUNCH: 1,
         LANG: 0,
         ap: 0,
+        educationalPeriods: 0,
       },
     };
   },
@@ -58,9 +59,10 @@ export default {
         SS: 0,
         ARTS: 0,
         PE: 0,
-        lunch: 1,
+        LUNCH: 1,
         LANG: 0,
         ap: 0,
+        educationalPeriods: 0,
       };
       this.yearPicked = document.querySelector(".dropdown").value
       this.schedule = [
@@ -74,7 +76,7 @@ export default {
         },
         {
           name: "Lunch",
-          subject: "lunch"
+          subject: "LUNCH"
         },
         {
         },

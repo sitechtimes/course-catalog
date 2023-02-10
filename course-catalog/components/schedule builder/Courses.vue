@@ -11,25 +11,24 @@
       </button>
       <div v-if="showr" class="require">
         <div class="uncr">
-          <h3 class="mt-0 font-bold">Underclassmen Requirements</h3>
+          <h3 class="mt-0 font-bold">Requirements</h3>
           <bl>
-            <li>English</li>
-            <li>Math</li>
-            <li>Science</li>
-            <li>History</li>
-            <li>Gym</li>
-            <li>Lunch</li>
-            <li>Russian</li>
-            <li>7 educational periods (not including lunch)</li>
-          </bl>
-        </div>
-        <div class="seniorr">
-          <h3 class="mt-1 font-bold">Senior Requirements</h3>
-          <bl>
-            <li>English</li>
-            <li>Math</li>
-            <li>Gym</li>
-            <li>7 educational periods (not including lunch)</li>
+            <li v-if="this.needed.ENGLISH === 0">English (not completed)</li>
+            <li v-if="this.needed.MATH === 0">Math (not completed)</li>
+            <li v-if="this.needed.SS === 0">History (not completed)</li>
+            <li v-if="this.needed.PE === 0">Gym (not completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE === 0" >Science (not completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH === 0">Lunch (not completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LANG === 0">Russian (not completed)</li>
+            <li v-if="this.needed.ENGLISH !== 0">English (completed)</li>
+            <li v-if="this.needed.MATH !== 0">Math (completed)</li>
+            <li v-if="this.needed.SS !== 0">History (completed)</li>
+            <li v-if="this.needed.PE !== 0">Gym (completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE !== 0" >Science (completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH !== 0">Lunch (completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LANG !== 0">Russian (completed)</li>
+            <li v-if="this.needed.educationalPeriods < 7">7 educational periods (not including lunch, not completed)</li>
+            <li v-if="this.needed.educationalPeriods >= 7">7 educational periods (not including lunch, completed)</li>
           </bl>
         </div>
       </div>
@@ -225,6 +224,7 @@ export default {
         this.needed.MATH +=1
         this.needed.SCIENCE +=1
         this.needed.PE +=1
+        this.needed.educationalPeriods += 6
       } else if (this.yearPicked === "Sophomore") {
         Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Russian T3" && course.catalog))
         Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "AP World History T3" && course.catalog))
@@ -238,6 +238,7 @@ export default {
         this.needed.MATH +=1
         this.needed.SCIENCE +=1
         this.needed.PE +=1
+        this.needed.educationalPeriods += 6
       } else if (this.yearPicked === "Junior") {
         Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Russian T5" && course.catalog))
         Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "AP US History T1" && course.catalog))
@@ -251,6 +252,7 @@ export default {
         this.needed.MATH +=1
         this.needed.SCIENCE +=1
         this.needed.PE +=1
+        this.needed.educationalPeriods += 1
       } else if (this.yearPicked === "Senior") {
         Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Economics" && course.catalog))
         Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "PE T1" && course.catalog))
@@ -260,6 +262,7 @@ export default {
         this.needed.SS +=1
         this.needed.MATH +=1
         this.needed.PE +=1
+        this.needed.educationalPeriods += 4
       }
     },
   },
@@ -363,6 +366,7 @@ export default {
               needed.ap += 1;
               Object.assign(schedule.find((period) =>period.name === undefined && schedule[period.period].name === undefined), chosenClass);
               Object.assign(schedule[schedule.find((period) => period.name === chosenClass.name)+1], chosenClass);
+              needed.educationalPeriods += 1
             }
           }
           else {
@@ -372,11 +376,13 @@ export default {
           if (neededChange()) {
             needed.ap += 1;
             Object.assign(schedule.find((period) => period.name === undefined), chosenClass)
+            needed.educationalPeriods += 1
           }
         }
       } else if (schedule.find((period) => period.name === undefined)) {
         if (neededChange()) {
           Object.assign(schedule.find((period) => period.name === undefined), chosenClass);
+          needed.educationalPeriods += 1
         }
       } else {
         alert("You don't have enough space for another class")
@@ -505,7 +511,7 @@ h4 {
 .MATH {
   background-color: #ffadb2;
 }
-.lunch {
+.LUNCH {
   background-color: #d2fcff;
 }
 .folder {

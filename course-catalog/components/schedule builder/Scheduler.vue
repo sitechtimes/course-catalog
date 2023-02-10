@@ -26,7 +26,10 @@ export default {
         this.needed.MATH -= 1
       } else if (this.schedule[period].subject === "SCIENCE") {
         this.needed.SCIENCE -= 1
+      } else if (this.schedule[period].subject === "LUNCH") {
+        this.needed.LUNCH -= 1
       }
+      this.needed.educationalPeriods -= 1
       this.schedule[period] ={}
       console.log(this.needed)
     }
