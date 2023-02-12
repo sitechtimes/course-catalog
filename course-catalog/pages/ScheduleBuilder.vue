@@ -2,7 +2,7 @@
 import Courses from "../components/schedule builder/Courses.vue";
 import Scheduler from "../components/schedule builder/Scheduler.vue";
 import { useCourseStore } from "~/store/store";
-import data from "~~/plugins/data";
+
 export default {
   name: "ScheduleBuilder",
   components: {

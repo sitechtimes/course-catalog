@@ -11,22 +11,22 @@
       </button>
       <div v-if="showr" class="require">
         <div class="uncr">
-          <h3 class="mt-0 font-bold">Requirements</h3>
+          <h3 class="mt-0 font-bold">Requirements (different for seniors)</h3>
           <bl>
             <li v-if="this.needed.ENGLISH === 0">English (not completed)</li>
-            <li v-if="this.needed.MATH === 0">Math (not completed)</li>
-            <li v-if="this.needed.SS === 0">History (not completed)</li>
-            <li v-if="this.needed.PE === 0">Gym (not completed)</li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE === 0" >Science (not completed)</li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH === 0">Lunch (not completed)</li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.LANG === 0">Russian (not completed)</li>
             <li v-if="this.needed.ENGLISH !== 0">English (completed)</li>
+            <li v-if="this.needed.MATH === 0">Math (not completed)</li>
             <li v-if="this.needed.MATH !== 0">Math (completed)</li>
+            <li v-if="this.needed.SS === 0">History (not completed)</li>
             <li v-if="this.needed.SS !== 0">History (completed)</li>
+            <li v-if="this.needed.PE === 0">Gym (not completed)</li>
             <li v-if="this.needed.PE !== 0">Gym (completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE === 0" >Science (not completed)</li>
             <li v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE !== 0" >Science (completed)</li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH !== 0">Lunch (completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LANG === 0">Russian (not completed)</li>
             <li v-if="this.yearPicked !== `Senior` && this.needed.LANG !== 0">Russian (completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH !== 0">Lunch (completed)</li>
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH === 0">Lunch (not completed)</li>
             <li v-if="this.needed.educationalPeriods < 7">7 educational periods (not including lunch, not completed)</li>
             <li v-if="this.needed.educationalPeriods >= 7">7 educational periods (not including lunch, completed)</li>
           </bl>
