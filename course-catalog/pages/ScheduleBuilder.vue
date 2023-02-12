@@ -13,26 +13,18 @@ export default {
   data() {
     return {
       schedule: [
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
+        {},
+        {},
+        {},
+        {},
         {
           name: "Lunch",
           subject: "LUNCH"
         },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
+        {},
+        {},
+        {},
+        {},
       ],
       yearPicked: null,
       needed: {
@@ -66,26 +58,18 @@ export default {
       };
       this.yearPicked = document.querySelector(".dropdown").value
       this.schedule = [
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
+        {},
+        {},
+        {},
+        {},
         {
           name: "Lunch",
           subject: "LUNCH"
         },
-        {
-        },
-        {
-        },
-        {
-        },
-        {
-        },
+        {},
+        {},
+        {},
+        {},
       ]
     },
   },
