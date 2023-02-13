@@ -562,7 +562,8 @@ svg:hover {
   grid-column-gap: 10px;
   justify-content: center;
   margin: auto;
-  padding-top: 1.5rem;
+  box-shadow: 2px 0px 2px 0px rgba(0.3, 0.5, 0.3, 0.2);
+  padding-bottom: 1.5rem;
 }
 h4 {
   margin-top: 3px;
@@ -575,7 +576,7 @@ h4 {
   height: 2.3rem;
   border: 2px dashed #7d7d7d;
   border-radius: 15px;
-  margin: 1rem 2rem 0.2rem 2rem;
+  margin: 2rem 2rem 0.2rem 2rem;
   transition: 0.3s;
   color: #37394f;
 }
