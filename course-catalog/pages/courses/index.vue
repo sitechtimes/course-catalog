@@ -33,17 +33,8 @@ export default {
                 })
             }
         },
-        setup() {
-            // this.filteredList
-            const courses = getCourses().courses
-            let input = ref("")
-
-            const filteredList = () => {
-                return courses.filter((course) => {
-                    return course.name.toLowerCase().indexOf(input.toLowerCase()) != -1
-                })
-            }
-            
+        mounted() {
+            this.filteredList
         }
 }
 </script>
@@ -56,14 +47,14 @@ export default {
             <div id="search" class="w-full flex flex-col justify-center items-center">
                 <div id="search-bar" class="flex justify-center items-center">
                     <SortComponent/>
-                    <SearchBar class="mb-4" type="text" v-model="input" placeholder="Search Courses..." />
+                    <SearchBar v-model="input" class="mb-4" type="text"  placeholder="Search Courses..." />
                 </div>
                 <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
-                    <CourseCard v-for="courses in filteredList" :course="courses"/>
+                    <CourseCard v-for="course in filteredList" :course="course"/>
                 </div>
-                <div id="error-msg" v-if="input&&!filteredList.length">
+                <!-- <div id="error-msg" v-if="input&&!filteredList.length">
                     <p>No results found!</p>
-                </div>
+                </div> -->
             </div>
             <!-- <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
                 <CourseCard v-for="courses in getCourses().courses" :course="courses"/>
