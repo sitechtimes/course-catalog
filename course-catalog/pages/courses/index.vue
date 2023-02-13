@@ -1,10 +1,10 @@
-<script lang="ts">
+<script setup lang="ts">
 import { getCourses } from "~~/store/store"
 import SortComponent from "../../components/catalog-search/SortComponent.vue"
 import SearchBar from "../../components/catalog-search/SearchBar.vue";
 import CourseCard from "../../components/course-cards/CourseCard.vue";
 
-// const courses = getCourses().courses
+const courses = getCourses().courses
 // let input = ref("")
 
 // const filteredList = () => {
@@ -14,29 +14,29 @@ import CourseCard from "../../components/course-cards/CourseCard.vue";
 // }
 
 
-export default {
-    components: {
-        SearchBar,
-        SortComponent,
-        CourseCard
-    },
-  data() {
-    return {
-            courses: getCourses().courses,
-            input: ref(""),
-         }
-        },
-        computed: {
-            filteredList() {
-                return this.courses.filter((course) => {
-                    return course.name.toLowerCase().indexOf(this.input.toLowerCase()) != -1;
-                })
-            }
-        },
-        mounted() {
-            this.filteredList
-        }
-}
+// export default {
+//     components: {
+//         SearchBar,
+//         SortComponent,
+//         CourseCard
+//     },
+//   data() {
+//     return {
+//             courses: getCourses().courses,
+//             input: ref(""),
+//          }
+//         },
+//         computed: {
+//             filteredList() {
+//                 return this.courses.filter((course) => {
+//                     return course.name.toLowerCase().indexOf(this.input.toLowerCase()) != -1;
+//                 })
+//             }
+//         },
+//         mounted() {
+//             this.filteredList
+//         }
+// }
 </script>
 
 <template>
@@ -47,10 +47,10 @@ export default {
             <div id="search" class="w-full flex flex-col justify-center items-center">
                 <div id="search-bar" class="flex justify-center items-center">
                     <SortComponent/>
-                    <SearchBar v-model="input" class="mb-4" type="text"  placeholder="Search Courses..." />
+                    <SearchBar  class="mb-4" type="text"  placeholder="Search Courses..." />
                 </div>
                 <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
-                    <CourseCard v-for="course in filteredList" :course="course"/>
+                    <CourseCard v-for="course in getCourses().courses" :course="course"/>``
                 </div>
                 <!-- <div id="error-msg" v-if="input&&!filteredList.length">
                     <p>No results found!</p>
