@@ -557,7 +557,7 @@ svg:hover {
   background-color: white;
   display: grid;
   grid-template-columns: auto auto;
-  overflow: scroll;
+  overflow: auto;
   display: grid;
   grid-column-gap: 10px;
   justify-content: center;
