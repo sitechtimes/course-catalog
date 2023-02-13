@@ -29,9 +29,12 @@ export default {
       } else if (this.schedule[period].subject === "LUNCH") {
         this.needed.LUNCH -= 1
       }
+      if (this.schedule[period].double_period) { 
+        this.schedule[period+1] = {}
+        this.needed.educationalPeriods -= 1
+      }
       this.needed.educationalPeriods -= 1
       this.schedule[period] ={}
-      console.log(this.needed)
     }
   },
 };

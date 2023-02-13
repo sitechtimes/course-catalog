@@ -37,6 +37,7 @@ export default {
         PE: 0,
         LUNCH: 1,
         LANG: 0,
+        TECH: 0,
         ap: 0,
         educationalPeriods: 0,
       },
@@ -53,6 +54,7 @@ export default {
         PE: 0,
         LUNCH: 1,
         LANG: 0,
+        TECH: 0,
         ap: 0,
         educationalPeriods: 0,
       };
