@@ -557,7 +557,8 @@ svg:hover {
   background-color: white;
   display: grid;
   grid-template-columns: auto auto;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: grid;
   grid-column-gap: 10px;
   justify-content: center;
@@ -568,6 +569,11 @@ svg:hover {
 h4 {
   margin-top: 3px;
   font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 .placeholder {
   text-align: center;
@@ -579,6 +585,7 @@ h4 {
   margin: 2rem 2rem 0.2rem 2rem;
   transition: 0.3s;
   color: #37394f;
+  overflow: hidden;
 }
 .landing {
   display: block;
@@ -700,7 +707,10 @@ h4 {
     margin-left: 105%;
   }
   .tabs {
-    margin-left: 15%;
+    margin-left: 20%;
+  }
+  .tab {
+    width: 7.5rem;
   }
   .file {
     line-height: 4;
@@ -727,7 +737,9 @@ h4 {
 }
 @media only screen and (min-width: 1740px) {
   svg {
-    width: 1rem;
+    width: 1.5rem;
+    margin-left: 5rem;
+    margin-bottom: 6rem;
   }
   .file {
     width: 53%;
@@ -735,10 +747,10 @@ h4 {
     margin-left: 8rem;
   }
   .tabs {
-    margin-left: 35%;
+    margin-left: 23%;
   }
   .tab {
-    width: 9rem;
+    width: 8rem;
   }
 }
 </style>
