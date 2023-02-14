@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="whole">
     <div class="requirements">
       <button class="note" @click="showr = !showr">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -676,23 +676,9 @@ h4 {
   box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
 
-@media only screen and (min-width: 976px) {
-  .file {
-    line-height: 4;
-    width: 55%;
-    margin-left: 2%;
-    border-radius: 0.8rem;
-    padding: 2rem;
-    height: 30rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-  }
-  h3 {
-    line-height: 2;
-    font-size: 1rem;
-    width: 88%;
-    margin-top: 1rem;
+@media only screen and (max-width: 1180px) {
+  .whole {
+    display: none;
   }
 }
 @media only screen and (min-width: 1440px) {
