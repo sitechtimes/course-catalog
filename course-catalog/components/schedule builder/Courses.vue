@@ -369,20 +369,25 @@ export default {
           needed.educationalPeriods += 1
           if (chosenClass.name === "PE T1") {
             alert("By picking this class, you acknowledge that next term it will be switched out with Health Education")
-          }
-          if (chosenClass.name === "Health Education") {
+          } else if (chosenClass.name === "Health Education") {
             alert("By picking this class, you acknowledge that next term it will be switched out with PE ")
           }
           if (chosenClass.name === "Engineering Robotics") {
             alert("By picking this class, you acknowledge that next term it will be switched out with A/V Eng & TV Studio OR Comp Sci/Engineering")
-          }
-          if (chosenClass.name === "A/V Eng & TV Studio" || chosenClass.name === "Comp Sci/Engineering T1") {
+          } else if (chosenClass.name === "A/V Eng & TV Studio" ) {
             alert("By picking this class, you acknowledge that next term it will be switched out with Engineering Robotics")
+          } else if (chosenClass.name === "Comp Sci/Engineering T1") {
+            alert("By picking this class, you acknowledge that next term it will be switched out with Engineering Robotics")
+            schedule.find((period) => period.name === chosenClass.name).subject = "TECH"
           }
         }
       } else {
         alert("You don't have enough space for another class")
       }//might need something else if there are non-ap classes that are 2 periods
+      }
+      if (schedule[8].name) {
+        this.showr = true
+        console.log(schedule[8])
       }
     },
   },
