@@ -7,34 +7,43 @@ export default {
   },
   methods: {
     removeClass(period) {
-      if (this.schedule[period].ap) {
+      const pickedClass = this.schedule[period]
+      console.log(pickedClass)
+      if (pickedClass.subject !== "LUNCH") {
+        if (pickedClass.ap) {
         this.needed.ap =- 1
-      }
-      if (this.schedule[period].subject === "LANG") {
+        }
+        if (pickedClass.subject === "LANG") {
         this.needed.LANG -= 1
-      } else if (this.schedule[period].subject === "ENGLISH") {
+        } else if (pickedClass.subject === "ENGLISH") {
         this.needed.ENGLISH -= 1
-      } else if (this.schedule[period].subject === "ARTS") {
+        } else if (pickedClass.subject === "ARTS") {
         this.needed.ARTS -= 1
-      } else if (this.schedule[period].subject === "SS") {
+        } else if (pickedClass.subject === "SS") {
         this.needed.SS -= 1
-      } else if (this.schedule[period].subject === "TECH") {
-        this.needed.TECH -= 1
-      } else if (this.schedule[period].subject === "PE") {
+        } else if (pickedClass.subject === "TECH" || pickedClass.name == `Comp Sci/Engineering T1`) {
+          this.needed.TECH -= 1
+        } else if (pickedClass.subject === "PE") {
         this.needed.PE -= 1
-      } else if (this.schedule[period].subject === "MATH") {
+        } else if (pickedClass.subject === "MATH") {
         this.needed.MATH -= 1
-      } else if (this.schedule[period].subject === "SCIENCE") {
-        this.needed.SCIENCE -= 1
-      } else if (this.schedule[period].subject === "LUNCH") {
-        this.needed.LUNCH -= 1
-      }
-      if (this.schedule[period].double_period) { 
-        this.schedule[period+1] = {}
+        } else if (pickedClass.subject === "SCIENCE" && pickedClass.name !== `Comp Sci/Engineering T1`) {
+          this.needed.SCIENCE -= 1
+        }
+/*         } else if (pickedClass.subject === "LUNCH") {
+          this.needed.LUNCH -= 1 Unsure if lunch should be deleted
+        } */
+        if (pickedClass.double_period) {
+          this.schedule.forEach(scheduledClass => {
+            if (scheduledClass.name === pickedClass.name) {
+              this.schedule[this.schedule.indexOf(scheduledClass)] = {}
+              console.log(scheduledClass)
+            }
+          });
+        }
         this.needed.educationalPeriods -= 1
+        this.schedule[period] = {}
       }
-      this.needed.educationalPeriods -= 1
-      this.schedule[period] ={}
     }
   },
 };

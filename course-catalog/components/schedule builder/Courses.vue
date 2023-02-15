@@ -109,6 +109,18 @@
           >
             <h4>{{ course.name }}</h4>
           </div>
+          <div
+            class="placeholder TECH"
+            v-for="course in courses.filter(
+              (course) =>
+                course.catalog &&
+                course.subject === `SCIENCE` &&
+                course[`${this.yearPicked.toLowerCase()}`] && course.name === `Comp Sci/Engineering T1`
+            )"
+            v-on:click="addClass(course)"
+          >
+            <h4>{{ course.name }}</h4>
+          </div>
         </div>
       </div>
       <div v-if="showSubjects.showhistory" class="file SS">
@@ -151,7 +163,7 @@
               (course) =>
                 course.catalog &&
                 course.subject === `SCIENCE` &&
-                course[`${this.yearPicked.toLowerCase()}`]
+                course[`${this.yearPicked.toLowerCase()}`] && course.name !== `Comp Sci/Engineering T1`
             )"
             v-on:click="addClass(course)"
           >
@@ -289,7 +301,8 @@ export default {
       const schedule = this.schedule;
       const needed = this.needed;
       function neededChange() {
-        if (chosenClass.subject === "LANG" && needed.LANG === 0) {
+        if (chosenClass.name !==`Comp Sci/Engineering T1`) {
+          if (chosenClass.subject === "LANG" && needed.LANG === 0) {
           needed.LANG += 1
           return true
         } else if (chosenClass.subject === "ENGLISH" && needed.ENGLISH < 2) {
@@ -303,7 +316,6 @@ export default {
           return true
         } else if (chosenClass.subject === "TECH" && needed.TECH < 2) {
           needed.TECH += 1
-          console.log(needed)
           return true
         } else if (chosenClass.subject === "PE" && needed.PE === 0) {
           needed.PE += 1
@@ -316,8 +328,14 @@ export default {
           return true
         } else {
           alert("You can not have any more of that subject")
-          console.log(needed)
         }
+        } else if (needed.TECH < 2 ) {
+          needed.TECH += 1
+          return true
+        } else {
+          alert("You can not have any more of that subject")
+        }
+        
       }
       console.log(chosenClass)
       if (schedule.find((period) => period.name === chosenClass.name)) {
