@@ -722,11 +722,11 @@ h4 {
     margin: auto;
   }
 }
-@media only screen and (min-width: 1540px) {
+/* @media only screen and (min-width: 1540px) {
   .tab {
     width: 7.5rem;
   }
-}
+} */
 @media only screen and (min-width: 1740px) {
   svg {
     width: 1.5rem;
@@ -739,7 +739,7 @@ h4 {
     margin-left: 8rem;
   }
   .tabs {
-    margin-left: 23%;
+    margin-left: 17%;
   }
   .tab {
     width: 8rem;
