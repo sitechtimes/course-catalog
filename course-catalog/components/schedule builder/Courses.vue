@@ -693,14 +693,15 @@ h4 {
     margin-left: 105%;
   }
   .tabs {
-    margin-left: 20%;
+    margin-left: 8%;
   }
   .tab {
-    width: 7.5rem;
+    font-size: 1rem;
+    width: 6.4rem;
   }
   .file {
     line-height: 4;
-    width: 55%;
+    width: 56%;
     margin-left: 3%;
     margin-bottom: 1rem;
     border-radius: 0.8rem;
@@ -719,6 +720,11 @@ h4 {
     height: 100%;
     justify-content: center;
     margin: auto;
+  }
+}
+@media only screen and (min-width: 1540px) {
+  .tab {
+    width: 7.5rem;
   }
 }
 @media only screen and (min-width: 1740px) {
