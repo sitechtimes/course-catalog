@@ -15,12 +15,6 @@
             <div @click="DecNameSort()" class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
              <button>Course Name (Z-A)</button>
             </div>
-            <div  @click="IncGradeSort()" class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
-              <button>Grade (Increasing)</button>
-            </div>
-            <div @click="DecGradeSort()" class="w-40 h-10 p-1 border border-t-transparent border-gray-300 bg-white text-gray-400 rounded">
-              <button>Grade (Decreasing)</button>
-            </div>
         </div>
     </div> -->
     <div id="sortComponent" class="flex justify-center items-center w-48 h-10 mr-4">
@@ -53,15 +47,21 @@ export default defineComponent({
     methods: {
         SubjectSort() {
                 function compare(a, b) {
-                    if (a.desc < b.desc)
+                    if (a.subject < b.subject)
                         return -1;
-                    if (a.desc > b.desc)
+                    if (a.subject > b.subject)
                         return 1;
                         return 0;
                 }
+/*                      if (a.subject != "OTHER") {
+                        if (a.subject < b.subject)
+                        return -1;
+                     }
+                    if (a.subject === "OTHER")
+                        return 1;
+                        return 0; */
                 let sortshow = document.getElementById("sortshow");
                 sortshow.innerHTML = 'Subject'
-                console.log(this.courses.sort(compare));
                 return this.courses.sort(compare);
             },
             IncNameSort() {
@@ -86,30 +86,6 @@ export default defineComponent({
                 }
                 let sortshow = document.getElementById("sortshow");
                 sortshow.innerHTML = 'Course Name (Z-A)'
-                return this.courses.sort(compare);
-            },
-            IncGradeSort() {
-                function compare(a, b) {
-                    if (a.freshman === false)
-                        return -1;
-                    if (b.sophomore === true)
-                        return 1;
-                        return 0;
-                }
-                let sortshow = document.getElementById("sortshow");
-                sortshow.innerHTML = 'Grade (Increasing)'
-                return this.courses.sort(compare);
-            },
-            DecGradeSort() {
-                function compare(a, b) {
-                    if (a.grade > b.grade)
-                        return -1;
-                    if (a.grade < b.grade)
-                        return 1;
-                        return 0;
-                }
-                let sortshow = document.getElementById("sortshow");
-                sortshow.innerHTML = 'Grade (Decreasing)'
                 return this.courses.sort(compare);
             },
         }
