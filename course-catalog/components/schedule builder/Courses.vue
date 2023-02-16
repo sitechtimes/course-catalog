@@ -728,22 +728,34 @@ h4 {
   cursor: pointer;
   box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
+.file {
+  line-height: 4;
+  width: 56%;
+  margin-left: 3%;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  height: 33rem;
+}
 svg {
   fill: #f20707;
 }
 .x {
   fill: #f20707;
   margin-left: 1rem;
+  margin-right: 1rem;
   margin-bottom: 0;
   width: 1rem;
 }
 .check {
   fill: #1abd18;
   margin-left: 1rem;
+  margin-right: 1rem;
   margin-bottom: 0;
   width: 1rem;
 }
 li {
+  margin-top: 5px;
   display: flex;
   flex-direction: row;
 }
@@ -770,15 +782,6 @@ li {
     font-size: 1rem;
     width: 6.4rem;
   }
-  .file {
-    line-height: 4;
-    width: 56%;
-    margin-left: 3%;
-    margin-bottom: 1rem;
-    border-radius: 0.8rem;
-    padding: 2rem;
-    height: 34rem;
-  }
   h2 {
     font-weight: bold;
     font-size: 1.5rem;
@@ -793,24 +796,24 @@ li {
     margin: auto;
   }
 }
-/* @media only screen and (min-width: 1540px) {
+@media only screen and (min-width: 1540px) {
   .tab {
     width: 7.5rem;
   }
-} */
+}
 @media only screen and (min-width: 1740px) {
   svg {
     width: 1.5rem;
-    margin-left: 5rem;
+    margin-left: 3rem;
     margin-bottom: 6rem;
   }
   .file {
     width: 53%;
-    height: 69.5%;
+    height: 63%;
     margin-left: 8rem;
   }
   .tabs {
-    margin-left: 17%;
+    margin-left: 23%;
   }
   .tab {
     width: 8rem;
