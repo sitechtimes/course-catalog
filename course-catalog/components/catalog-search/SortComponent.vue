@@ -1,11 +1,8 @@
 <template>
-    <div class="w-40 h-10 mb-4 mr-4 relative border border-gray-300 bg-white text-gray-400 rounded" id="sort" @click="isOpen = !isOpen" >
+    <!-- <div class="w-60 h-10 mb-4 relative border border-gray-300 bg-white text-gray-400 rounded" id="sort" @click="isOpen = !isOpen" >
                     <div>
         <a class="ml-2 mt-1">
             <p id="sortshow">Sort By</p>
-            <svg class="mt-2 inline" id="arrow" viewBox="0 0 1030 638" width="10">
-            <path d="M1017 68L541 626q-11 12-26 12t-26-12L13 68Q-3 49 6 24.5T39 0h952q24 0 33 24.5t-7 43.5z" fill="rgb(156 163 175)"></path>
-        </svg>
         </a>
         </div>
          <div class="sub-menu" v-if="isOpen">
@@ -25,10 +22,20 @@
               <button>Grade (Decreasing)</button>
             </div>
         </div>
+    </div> -->
+    <div id="sortComponent" class="flex justify-center items-center w-48 h-10 mr-4">
+        <select class="w-60 h-10 mb-4 px-2 relative border border-gray-300 bg-white text-gray-400 rounded" name="sort" id="sort">
+            <option value="" disabled selected>Sort By</option>
+            <option @click="SubjectSort()" value="subject">Subject</option>
+            <option @click="IncNameSort()" value="az">Course Name (A-Z)</option>
+            <option @click="DecNameSort()" value="za">Course Name (Z-A)</option>
+        </select>
+        <DownArrow class="absolute right-2 text-gray-400"/>
     </div>
 </template>
 
 <script lang="ts">
+import DownArrow from '../icons/DownArrow.vue'
 import { defineComponent } from 'vue';
 import { ref } from "vue";
 import { getCourses } from '~~/store/store';
@@ -108,3 +115,14 @@ export default defineComponent({
         }
         })
 </script>
+
+<style scoped>
+select {
+	appearance: none;
+}
+
+/* select::-ms-expand {
+    display: none;
+} */
+
+</style>
