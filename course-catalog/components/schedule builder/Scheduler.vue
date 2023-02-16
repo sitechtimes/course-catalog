@@ -21,7 +21,8 @@ export default {
         this.needed.ARTS -= 1
         } else if (pickedClass.subject === "SS") {
         this.needed.SS -= 1
-        } else if (pickedClass.subject === "TECH" || pickedClass.name == `Comp Sci/Engineering T1`) {
+        } else if (pickedClass.subject === "TECH" || pickedClass.name == `Comp Sci/Engineering T1
+        +`) {
           this.needed.TECH -= 1
         } else if (pickedClass.subject === "PE") {
         this.needed.PE -= 1

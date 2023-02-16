@@ -300,8 +300,9 @@ export default {
     addClass: function (chosenClass) {
       const schedule = this.schedule;
       const needed = this.needed;
+      const yearPicked = this.yearPicked
       function neededChange() {
-        if (chosenClass.name !==`Comp Sci/Engineering T1`) {
+        if (chosenClass.name !==`Comp Sci/Engineering T1`) { // to treat comp sci like a science
           if (chosenClass.subject === "LANG" && needed.LANG === 0) {
           needed.LANG += 1
           return true
@@ -314,7 +315,10 @@ export default {
         } else if (chosenClass.subject === "SS" && needed.SS === 0) {
           needed.SS += 1
           return true
-        } else if (chosenClass.subject === "TECH" && needed.TECH < 2) {
+        } else if (chosenClass.subject === "TECH" && yearPicked === "Freshman" && needed.TECH < 1) { // av, stem, comp sci should not be together (they are currently they only choice for freshmen)
+          needed.TECH += 1
+          return true
+        } else if (chosenClass.subject === "TECH" && yearPicked !== "Freshman" && needed.TECH < 2) {
           needed.TECH += 1
           return true
         } else if (chosenClass.subject === "PE" && needed.PE === 0) {
@@ -329,7 +333,7 @@ export default {
         } else {
           alert("You can not have any more of that subject")
         }
-        } else if (needed.TECH < 2 ) {
+        } else if (needed.TECH < 1 ) { // it's a freshman class, and av, stem, comp sci should not be together (they are currently they only choice)
           needed.TECH += 1
           return true
         } else {
