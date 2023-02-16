@@ -705,11 +705,13 @@ svg {
 .x {
   fill: #f20707;
   margin-left: 1rem;
+  margin-bottom: 0;
   width: 1rem;
 }
 .check {
   fill: #1abd18;
   margin-left: 1rem;
+  margin-bottom: 0;
   width: 1rem;
 }
 li {
