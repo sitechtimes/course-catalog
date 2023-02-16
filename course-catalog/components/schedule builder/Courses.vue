@@ -699,6 +699,15 @@ h4 {
   cursor: pointer;
   box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
+.file {
+  line-height: 4;
+  width: 56%;
+  margin-left: 3%;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  height: 33rem;
+}
 svg {
   fill: #f20707;
 }
@@ -739,15 +748,6 @@ li {
     font-size: 1rem;
     width: 6.4rem;
   }
-  .file {
-    line-height: 4;
-    width: 56%;
-    margin-left: 3%;
-    margin-bottom: 1rem;
-    border-radius: 0.8rem;
-    padding: 2rem;
-    height: 34rem;
-  }
   h2 {
     font-weight: bold;
     font-size: 1.5rem;
@@ -775,7 +775,7 @@ li {
   }
   .file {
     width: 53%;
-    height: 69.5%;
+    height: 63%;
     margin-left: 8rem;
   }
   .tabs {
