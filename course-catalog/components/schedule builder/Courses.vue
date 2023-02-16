@@ -890,7 +890,7 @@ li {
 @media only screen and (min-width: 1740px) {
   svg {
     width: 1.5rem;
-    margin-left: 5rem;
+    margin-left: 3rem;
     margin-bottom: 6rem;
   }
   .file {
