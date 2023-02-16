@@ -69,7 +69,7 @@ function filteredList() {
                     <SortComponent/>
                     <SearchBar onkeyup="filteredList()" class="mb-4" type="text"  placeholder="Search Courses..." />
                 </div>
-                <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
+                <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem] mb-12">
                     <CourseCard class="course-cards" v-for="course in getCourses().courses" :course="course"/>
                 </div>
                 <div id="error-msg" v-if="input&&!filteredList.length">
