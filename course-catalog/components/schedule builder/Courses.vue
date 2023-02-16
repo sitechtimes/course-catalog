@@ -13,7 +13,7 @@
         <div class="uncr">
           <h3 class="mt-0 font-bold">Requirements (different for seniors)</h3>
           <bl>
-            <li v-if="this.needed.ENGLISH === 0">English
+            <li v-if="this.needed.ENGLISH === 0">
               <svg
                 class="x"
                 xmlns="http://www.w3.org/2000/svg"
@@ -24,8 +24,9 @@
                   d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              English
             </li>
-            <li v-if="this.needed.ENGLISH !== 0">English
+            <li v-if="this.needed.ENGLISH !== 0">
               <svg
                 class="check"
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,8 +37,9 @@
                   d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              English
             </li>
-            <li v-if="this.needed.MATH === 0">Math
+            <li v-if="this.needed.MATH === 0">
               <svg
                 class="x"
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,8 +50,9 @@
                   d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              Math
             </li>
-            <li v-if="this.needed.MATH !== 0">Math
+            <li v-if="this.needed.MATH !== 0">
               <svg
                 class="check"
                 xmlns="http://www.w3.org/2000/svg"
@@ -60,8 +63,34 @@
                   d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              Math
             </li>
-            <li v-if="this.needed.SS === 0">History
+            <li v-if="this.needed.SS === 0">
+              <svg
+                class="x"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
+                /></svg
+              >History
+            </li>
+            <li v-if="this.needed.SS !== 0">
+              <svg
+                class="check"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
+                />
+              </svg>
+              History
+            </li>
+            <li v-if="this.needed.PE === 0">
               <svg
                 class="x"
                 xmlns="http://www.w3.org/2000/svg"
@@ -72,20 +101,23 @@
                   d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              Gym
             </li>
-            <li v-if="this.needed.SS !== 0">History
+            <li v-if="this.needed.PE !== 0">
               <svg
-                class="check"
+                class="x"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 512 512"
               >
                 <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                 <path
-                  d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
-                />
-              </svg>
+                  d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
+                /></svg
+              >Gym
             </li>
-            <li v-if="this.needed.PE === 0">Gym 
+            <li
+              v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE === 0"
+            >
               <svg
                 class="x"
                 xmlns="http://www.w3.org/2000/svg"
@@ -96,20 +128,11 @@
                   d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              Science
             </li>
-            <li v-if="this.needed.PE !== 0">Gym
-              <svg
-                class="check"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
-                />
-              </svg>
-            </li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE === 0" >Science
+            <li
+              v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE !== 0"
+            >
               <svg
                 class="x"
                 xmlns="http://www.w3.org/2000/svg"
@@ -120,20 +143,9 @@
                   d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              Science
             </li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE !== 0" >Science
-              <svg
-                class="check"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
-                />
-              </svg>
-            </li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.LANG === 0">Russian
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LANG === 0">
               <svg
                 class="x"
                 xmlns="http://www.w3.org/2000/svg"
@@ -144,32 +156,9 @@
                   d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              Russian
             </li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.LANG !== 0">Russian
-              <svg
-                class="check"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
-                />
-              </svg>
-            </li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH !== 0">Lunch
-              <svg
-                class="check"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                <path
-                  d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
-                />
-              </svg>
-            </li>
-            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH === 0">Lunch
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LANG !== 0">
               <svg
                 class="x"
                 xmlns="http://www.w3.org/2000/svg"
@@ -180,8 +169,9 @@
                   d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              Russian
             </li>
-            <li v-if="this.needed.educationalPeriods < 7">7 educational periods (not including lunch)
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH !== 0">
               <svg
                 class="x"
                 xmlns="http://www.w3.org/2000/svg"
@@ -192,8 +182,34 @@
                   d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              Lunch
             </li>
-            <li v-if="this.needed.educationalPeriods >= 7">7 educational periods (not including lunch)
+            <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH === 0">
+              <svg
+                class="x"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
+                />
+              </svg>
+              Lunch
+            </li>
+            <li v-if="this.needed.educationalPeriods < 7">
+              <svg
+                class="x"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+              >
+                <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                <path
+                  d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
+                /></svg
+              >7 educational periods (not including lunch)
+            </li>
+            <li v-if="this.needed.educationalPeriods >= 7">
               <svg
                 class="check"
                 xmlns="http://www.w3.org/2000/svg"
@@ -204,6 +220,7 @@
                   d="M243.8 339.8C232.9 350.7 215.1 350.7 204.2 339.8L140.2 275.8C129.3 264.9 129.3 247.1 140.2 236.2C151.1 225.3 168.9 225.3 179.8 236.2L224 280.4L332.2 172.2C343.1 161.3 360.9 161.3 371.8 172.2C382.7 183.1 382.7 200.9 371.8 211.8L243.8 339.8zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
                 />
               </svg>
+              7 educational periods (not including lunch)
             </li>
           </bl>
         </div>
@@ -291,7 +308,8 @@
               (course) =>
                 course.catalog &&
                 course.subject === `SCIENCE` &&
-                course[`${this.yearPicked.toLowerCase()}`] && course.name === `Comp Sci/Engineering T1`
+                course[`${this.yearPicked.toLowerCase()}`] &&
+                course.name === `Comp Sci/Engineering T1`
             )"
             v-on:click="addClass(course)"
           >
@@ -339,7 +357,8 @@
               (course) =>
                 course.catalog &&
                 course.subject === `SCIENCE` &&
-                course[`${this.yearPicked.toLowerCase()}`] && course.name !== `Comp Sci/Engineering T1`
+                course[`${this.yearPicked.toLowerCase()}`] &&
+                course.name !== `Comp Sci/Engineering T1`
             )"
             v-on:click="addClass(course)"
           >
@@ -398,23 +417,53 @@ export default {
         showscience: false,
         showmath: false,
         showlanding: true,
-      }
+      };
       if (this.yearPicked === "Freshman") {
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Russian T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "AP World History T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "English T1" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "Chemistry T1" && course.catalog))
-        this.needed.ENGLISH +=1
-        this.needed.SS +=1
-        this.needed.LANG +=1
-        this.needed.SCIENCE +=1
-        this.needed.educationalPeriods += 4
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Russian T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "AP World History T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "English T1" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "Chemistry T1" && course.catalog
+          )
+        );
+        this.needed.ENGLISH += 1;
+        this.needed.SS += 1;
+        this.needed.LANG += 1;
+        this.needed.SCIENCE += 1;
+        this.needed.educationalPeriods += 4;
       } else if (this.yearPicked === "Sophomore") {
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "AP World History T3" && course.catalog))
-        Object.assign(this.schedule.find((period) => period.name === undefined), this.courses.find((course) => course.name === "English T3" && course.catalog))
-        this.needed.ENGLISH +=1
-        this.needed.SS +=1
-        this.needed.educationalPeriods += 2
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "AP World History T3" && course.catalog
+          )
+        );
+        Object.assign(
+          this.schedule.find((period) => period.name === undefined),
+          this.courses.find(
+            (course) => course.name === "English T3" && course.catalog
+          )
+        );
+        this.needed.ENGLISH += 1;
+        this.needed.SS += 1;
+        this.needed.educationalPeriods += 2;
       }
     },
   },
@@ -476,98 +525,147 @@ export default {
     addClass: function (chosenClass) {
       const schedule = this.schedule;
       const needed = this.needed;
-      const yearPicked = this.yearPicked
+      const yearPicked = this.yearPicked;
       function neededChange() {
-        if (chosenClass.name !==`Comp Sci/Engineering T1`) { // to treat comp sci like a science
+        if (chosenClass.name !== `Comp Sci/Engineering T1`) {
+          // to treat comp sci like a science
           if (chosenClass.subject === "LANG" && needed.LANG === 0) {
-          needed.LANG += 1
-          return true
-        } else if (chosenClass.subject === "ENGLISH" && needed.ENGLISH < 2) {
-          needed.ENGLISH += 1
-          return true
-        } else if (chosenClass.subject === "ARTS" && needed.ARTS < 2) {
-          needed.ARTS += 1
-          return true
-        } else if (chosenClass.subject === "SS" && needed.SS === 0) {
-          needed.SS += 1
-          return true
-        } else if (chosenClass.subject === "TECH" && yearPicked === "Freshman" && needed.TECH < 1) { // av, stem, comp sci should not be together (they are currently they only choice for freshmen)
-          needed.TECH += 1
-          return true
-        } else if (chosenClass.subject === "TECH" && yearPicked !== "Freshman" && needed.TECH < 2) {
-          needed.TECH += 1
-          return true
-        } else if (chosenClass.subject === "PE" && needed.PE === 0) {
-          needed.PE += 1
-          return true
-        } else if (chosenClass.subject === "MATH" && needed.MATH === 0) {
-          needed.MATH += 1
-          return true
-        } else if (chosenClass.subject === "SCIENCE" && needed.SCIENCE < 2) {
-          needed.SCIENCE += 1
-          return true
+            needed.LANG += 1;
+            return true;
+          } else if (chosenClass.subject === "ENGLISH" && needed.ENGLISH < 2) {
+            needed.ENGLISH += 1;
+            return true;
+          } else if (chosenClass.subject === "ARTS" && needed.ARTS < 2) {
+            needed.ARTS += 1;
+            return true;
+          } else if (chosenClass.subject === "SS" && needed.SS === 0) {
+            needed.SS += 1;
+            return true;
+          } else if (
+            chosenClass.subject === "TECH" &&
+            yearPicked === "Freshman" &&
+            needed.TECH < 1
+          ) {
+            // av, stem, comp sci should not be together (they are currently they only choice for freshmen)
+            needed.TECH += 1;
+            return true;
+          } else if (
+            chosenClass.subject === "TECH" &&
+            yearPicked !== "Freshman" &&
+            needed.TECH < 2
+          ) {
+            needed.TECH += 1;
+            return true;
+          } else if (chosenClass.subject === "PE" && needed.PE === 0) {
+            needed.PE += 1;
+            return true;
+          } else if (chosenClass.subject === "MATH" && needed.MATH === 0) {
+            needed.MATH += 1;
+            return true;
+          } else if (chosenClass.subject === "SCIENCE" && needed.SCIENCE < 2) {
+            needed.SCIENCE += 1;
+            return true;
+          } else {
+            alert("You can not have any more of that subject");
+          }
+        } else if (needed.TECH < 1) {
+          // it's a freshman class, and av, stem, comp sci should not be together (they are currently they only choice)
+          needed.TECH += 1;
+          return true;
         } else {
-          alert("You can not have any more of that subject")
+          alert("You can not have any more of that subject");
         }
-        } else if (needed.TECH < 1 ) { // it's a freshman class, and av, stem, comp sci should not be together (they are currently they only choice)
-          needed.TECH += 1
-          return true
-        } else {
-          alert("You can not have any more of that subject")
-        }
-        
       }
-      console.log(chosenClass)
+      console.log(chosenClass);
       if (schedule.find((period) => period.name === chosenClass.name)) {
         alert("You can't have 2 of the same class");
       } else {
         if (chosenClass.ap) {
-        if (needed.ap === 4) {
-          alert("You have too many ap classes");
-        } else if (chosenClass.double_period) {
-          if (schedule.find((period) => period.name === undefined && schedule[schedule.indexOf(period) +1].name === undefined)) {
+          if (needed.ap === 4) {
+            alert("You have too many ap classes");
+          } else if (chosenClass.double_period) {
+            if (
+              schedule.find(
+                (period) =>
+                  period.name === undefined &&
+                  schedule[schedule.indexOf(period) + 1].name === undefined
+              )
+            ) {
+              if (neededChange()) {
+                needed.ap += 1;
+                Object.assign(
+                  schedule.find(
+                    (period) =>
+                      period.name === undefined &&
+                      schedule[schedule.indexOf(period) + 1].name === undefined
+                  ),
+                  chosenClass
+                );
+                Object.assign(
+                  schedule[
+                    schedule.indexOf(
+                      schedule.find(
+                        (period) => period.name === chosenClass.name
+                      )
+                    ) + 1
+                  ],
+                  chosenClass
+                );
+                needed.educationalPeriods += 2;
+              }
+            } else {
+              alert("You don't have 2 consecutive empty spaces");
+            }
+          } else if (schedule.find((period) => period.name === undefined)) {
             if (neededChange()) {
               needed.ap += 1;
-              Object.assign(schedule.find((period) => period.name === undefined && schedule[schedule.indexOf(period) +1].name === undefined), chosenClass);
-              Object.assign(schedule[schedule.indexOf(schedule.find((period) => period.name === chosenClass.name))+1], chosenClass);
-              needed.educationalPeriods += 2
+              Object.assign(
+                schedule.find((period) => period.name === undefined),
+                chosenClass
+              );
+              needed.educationalPeriods += 1;
             }
-          }
-          else {
-            alert("You don't have 2 consecutive empty spaces")
           }
         } else if (schedule.find((period) => period.name === undefined)) {
           if (neededChange()) {
-            needed.ap += 1;
-            Object.assign(schedule.find((period) => period.name === undefined), chosenClass)
-            needed.educationalPeriods += 1
+            Object.assign(
+              schedule.find((period) => period.name === undefined),
+              chosenClass
+            );
+            needed.educationalPeriods += 1;
+            if (chosenClass.name === "PE T1") {
+              alert(
+                "By picking this class, you acknowledge that next term it will be switched out with Health Education"
+              );
+            } else if (chosenClass.name === "Health Education") {
+              alert(
+                "By picking this class, you acknowledge that next term it will be switched out with PE "
+              );
+            }
+            if (chosenClass.name === "Engineering Robotics") {
+              alert(
+                "By picking this class, you acknowledge that next term it will be switched out with A/V Eng & TV Studio OR Comp Sci/Engineering"
+              );
+            } else if (chosenClass.name === "A/V Eng & TV Studio") {
+              alert(
+                "By picking this class, you acknowledge that next term it will be switched out with Engineering Robotics"
+              );
+            } else if (chosenClass.name === "Comp Sci/Engineering T1") {
+              alert(
+                "By picking this class, you acknowledge that next term it will be switched out with Engineering Robotics"
+              );
+              schedule.find(
+                (period) => period.name === chosenClass.name
+              ).subject = "TECH";
+            }
           }
-        }
-      } else if (schedule.find((period) => period.name === undefined)) {
-        if (neededChange()) {
-          Object.assign(schedule.find((period) => period.name === undefined), chosenClass);
-          needed.educationalPeriods += 1
-          if (chosenClass.name === "PE T1") {
-            alert("By picking this class, you acknowledge that next term it will be switched out with Health Education")
-          } else if (chosenClass.name === "Health Education") {
-            alert("By picking this class, you acknowledge that next term it will be switched out with PE ")
-          }
-          if (chosenClass.name === "Engineering Robotics") {
-            alert("By picking this class, you acknowledge that next term it will be switched out with A/V Eng & TV Studio OR Comp Sci/Engineering")
-          } else if (chosenClass.name === "A/V Eng & TV Studio" ) {
-            alert("By picking this class, you acknowledge that next term it will be switched out with Engineering Robotics")
-          } else if (chosenClass.name === "Comp Sci/Engineering T1") {
-            alert("By picking this class, you acknowledge that next term it will be switched out with Engineering Robotics")
-            schedule.find((period) => period.name === chosenClass.name).subject = "TECH"
-          }
-        }
-      } else {
-        alert("You don't have enough space for another class")
-      }//might need something else if there are non-ap classes that are 2 periods
+        } else {
+          alert("You don't have enough space for another class");
+        } //might need something else if there are non-ap classes that are 2 periods
       }
       if (schedule[8].name) {
-        this.showr = true
-        console.log(schedule[8])
+        this.showr = true;
+        console.log(schedule[8]);
       }
     },
   },
