@@ -35,6 +35,7 @@ export default {
           this.needed.LUNCH -= 1 Unsure if lunch should be deleted
         } */
         if (pickedClass.double_period) {
+          this.needed.educational -=1
           this.schedule.forEach(scheduledClass => {
             if (scheduledClass.name === pickedClass.name) {
               this.schedule[this.schedule.indexOf(scheduledClass)] = {}
