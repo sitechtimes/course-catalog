@@ -6,7 +6,7 @@ import courseNode from '~/interface/course'
 
 
 
-
+const Course:any = []
 export default async function (){
 
 
@@ -19,8 +19,9 @@ export default async function (){
     }).then((res)=>{
         console.log(res.data)
             res.data.forEach((x:any) => {
-                useCourseStore().courses.push(x)
+                Course.push(x)
             });
+        useCourseStore().courses=Course
         })
     
 
