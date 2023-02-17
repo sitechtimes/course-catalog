@@ -1,7 +1,5 @@
 import axios from "axios"
-import { useCourseStore } from "~~/store/store"
-import course from '~~/interface/course'
-import courseNode from '~/interface/course'
+import { getCourses } from "~~/store/store"
 
 
 
@@ -10,18 +8,24 @@ const Course:any = []
 export default async function (){
 
 
-    await axios({
+
+
+export default function (){
+
+
+    axios({
         url:`http://127.0.0.1:8000/course/`,
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
         },
     }).then((res)=>{
-        console.log(res.data)
             res.data.forEach((x:any) => {
-                Course.push(x)
+                Courses.push(x)
             });
-        useCourseStore().courses=Course
+            
+            getCourses().courses = Courses
+            console.log(getCourses().courses)
         })
     
 

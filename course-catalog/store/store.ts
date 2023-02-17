@@ -1,7 +1,10 @@
 import { defineStore } from 'pinia'
 import course from '~~/interface/course'
 
-export const useCourseStore = defineStore('courseData', {
+interface course{
+    name: String
+}
+export const getCourses = defineStore('courseData', {
   state: () =>{
     return{
         courses: [] as course[]
