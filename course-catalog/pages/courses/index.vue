@@ -4,6 +4,7 @@ import { ref } from "vue"
 import SortComponent from "../../components/catalog-search/SortComponent.vue"
 import SearchBar from "../../components/catalog-search/SearchBar.vue";
 import CourseCard from "../../components/course-cards/CourseCard.vue";
+import SearchButton from '../../components/icons/SearchButton.vue';
 
 let input = ref("")
 const AllCourses = getCourses().courses
@@ -26,7 +27,7 @@ if (typeof document !== 'undefined') {
 
             console.log(searchForm.value);
 
-            let value = searchResultList[i].getElementsByTagName('h2')[0];
+            let value = searchResultList[i].getElementsByTagName("h2")[0];
 
             let filterValue = value.textContent || value.innerHTML;
 
@@ -91,8 +92,11 @@ if (typeof document !== 'undefined') {
 
             <div id="search" class="w-full flex flex-col justify-center items-center">
                 <div id="search-section" class="flex justify-center items-center">
-                    <SortComponent />
-                    <SearchBar id="search-bar" class="mb-4" type="text" v-model="input" placeholder="Search Courses..." />
+                    <!-- <SortComponent /> -->
+                    <div class="flex justify-center items-center relative">
+                    <input id="search-bar" class="border border-zinc-300 rounded w-112 h-10 p-2 text-zinc-800 mb-4" type="text" v-model="input" placeholder="Search Courses..." />
+                    <SearchButton class="mb-4 absolute right-3 text-zinc-400 cursor-pointer"/>
+                    </div>
                 </div>
                 <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
                     <CourseCard class="course-cards" v-for="courses in getCourses().courses" :course="courses" />
