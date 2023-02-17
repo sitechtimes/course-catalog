@@ -41,7 +41,7 @@ export default {
                         <SearchBar class="mb-4" type="text" v-model="input" placeholder="Search Courses..." />
 </div>
      <div id="courses" class="flex flex-wrap justify-center items-center max-w-[80rem]">
-    <CourseCard v-for="courses in this.filteredList" :course="courses"/>
+    <CourseCard v-for="courses in filteredList" :course="courses"/>
     </div>
    <div class="item error" v-if="input&&!filteredList.length">
       <p>No results found!</p>
