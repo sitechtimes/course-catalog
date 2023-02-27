@@ -1,10 +1,9 @@
 <script lang="ts">
-import { getCourses } from "~~/store/store"
+import { useCourseStore } from "~~/store/store"
 import { ref } from "vue"
 import SortComponent from "../../components/catalog-search/SortComponent.vue"
 import SearchBar from "../../components/catalog-search/SearchBar.vue";
 import CourseCard from "../../components/course-cards/CourseCard.vue";
-
 export default {
     components: {
         SearchBar,
@@ -13,7 +12,7 @@ export default {
     },
   data() {
     return {
-            courses: getCourses().courses,
+            courses: useCourseStore().courses,
             input: ref(""),
          }
         },

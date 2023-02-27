@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useCourseStore } from "~/store/store";
+const courseStore = useCourseStore();
+function doStuff() {
+  console.log(courseStore.courses);
+}
+</script>
 
 <template>
   <div id="landing" class="flex justify-center items-center h-screen px-12">
@@ -17,21 +23,20 @@
         id="btns"
         class="w-full flex justify-center lg:justify-start items-center space-x-8"
       >
-        <NuxtLink to="/coursecatalog"
+        <NuxtLink to="/courses"
           ><button
             class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
           >
             View Courses
           </button></NuxtLink
         >
-        <!-- <NuxtLink to="/schedulebuilder"><button class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded" ">Build Schedule</button></NuxtLink> -->
-        <NuxtLink to="/schedulebuilder">
-          <button
-            class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
-          >
-            Build Schedule
-          </button></NuxtLink
+        <!-- <NuxtLink to="/builder"><button class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded" ">Build Schedule</button></NuxtLink> -->
+        <button
+          class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
+          @click="doStuff()"
         >
+          Build Schedule
+        </button>
       </div>
     </div>
     <div
@@ -44,19 +49,16 @@
       ></div>
       <div
         id="small"
-        class="h-32 w-32 sm:h-40 sm:w-40 absolute bottom-4 left-12 bg-primary-s"
+        class="h-32 w-32 sm:h-40 sm:w-40 absolute bottom-4 left-12 bg-primary-s rounded-full"
       ></div>
     </div>
   </div>
 </template>
 <style scoped>
 button {
-  border-radius: 0.5rem;
+  border-radius: 5px;
 }
-#small {
-  border-radius: 10rem;
-}
-#big {
-  border-radius: 20rem;
+.circle {
+  border-radius: 50rem;
 }
 </style>
