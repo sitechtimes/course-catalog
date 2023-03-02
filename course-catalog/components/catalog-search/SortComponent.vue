@@ -1,9 +1,12 @@
 <template>
   <div
-    class="w-60 h-10 mb-4 relative border border-zinc-300 bg-white text-zinc-400 rounded"
+    class="w-64 h-10 mb-4 relative border border-zinc-300 bg-white text-zinc-400 rounded cursor-pointer"
     id="sort"
     @click="isOpen = !isOpen"
   >
+    <DownArrow
+      class="absolute fill-zinc-400 right-2 top-[0.6rem] text-zinc-400 z-0 cursor-pointer"
+    />
     <div class="w-40">
       <a class="flex justify-left mt-2 ml-3">
         <p class="font-bold" id="sortshow">Sort By</p>
@@ -108,6 +111,9 @@ select {
 }
 .sub-menu {
   margin-top: 0.6rem;
+}
+#sort {
+  border-radius: 0.5rem;
 }
 /* select::-ms-expand {
     display: none;
