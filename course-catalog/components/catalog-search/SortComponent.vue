@@ -44,65 +44,81 @@
     </div> -->
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import DownArrow from "../icons/DownArrow.vue";
-import { defineComponent } from "vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { useCourseStore } from "~~/store/store";
-export default defineComponent({
-  name: "courseSort",
-  components: {
-    DownArrow,
-  },
-  props: ["title"],
-  data() {
-    return {
-      courses: useCourseStore().courses,
-      selected: "Sort By",
-      isOpen: false,
-      input: ref(""),
-    };
-  },
-  methods: {
-    SubjectSort() {
-      function compare(a, b) {
-        if (a.subject < b.subject) return -1;
-        if (a.subject > b.subject) return 1;
-        return 0;
-      }
-      /*                      if (a.subject != "OTHER") {
+const name = ref("courseSort");
+const input = ref("");
+const props = ["title"];
+const state = ref({
+  courses: useCourseStore().courses,
+  selected: "Sort By",
+});
+const isOpen = ref(false);
+// state.value.isOpen = false;
+// components: {
+//   DownArrow,
+// },
+// props: ["title"],
+// data() {
+//   return {
+//     // name: "courseSort",
+//     courses: useCourseStore().courses,
+//     selected: "Sort By",
+//     isOpen: false,
+//     input: ref(""),
+//   };
+// },
+
+function SubjectSort() {
+  function compare(a, b) {
+    if (a.subject < b.subject) return -1;
+    if (a.subject > b.subject) return 1;
+    return 0;
+  }
+  /*                      if (a.subject != "OTHER") {
                         if (a.subject < b.subject)
                         return -1;
                      }
                     if (a.subject === "OTHER")
                         return 1;
                         return 0; */
-      let sortshow = document.getElementById("sortshow");
-      sortshow.innerHTML = "Subject";
-      return this.courses.sort(compare);
-    },
-    IncNameSort() {
-      function compare(a, b) {
-        if (a.name < b.name) return -1;
-        if (a.name > b.name) return 1;
-        return 0;
-      }
-      let sortshow = document.getElementById("sortshow");
-      sortshow.innerHTML = "Course Name (A-Z)";
-      return this.courses.sort(compare);
-    },
-    DecNameSort() {
-      function compare(a, b) {
-        if (a.name > b.name) return -1;
-        if (a.name < b.name) return 1;
-        return 0;
-      }
-      let sortshow = document.getElementById("sortshow");
-      sortshow.innerHTML = "Course Name (Z-A)";
-      return this.courses.sort(compare);
-    },
-  },
-});
+  let sortshow = document.getElementById("sortshow");
+  sortshow.innerHTML = "Subject";
+  return this.courses.sort(compare);
+}
+
+function IncNameSort() {
+  function compare(a, b) {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  }
+  let sortshow = document.getElementById("sortshow");
+  sortshow.innerHTML = "Course Name (A-Z)";
+  return this.courses.sort(compare);
+}
+function DecNameSort() {
+  function compare(a, b) {
+    if (a.name > b.name) return -1;
+    if (a.name < b.name) return 1;
+    return 0;
+  }
+  let sortshow = document.getElementById("sortshow");
+  sortshow.innerHTML = "Course Name (Z-A)";
+  return this.courses.sort(compare);
+}
+function show() {
+  onMounted(() => {
+    return {
+      name,
+      input,
+      props,
+      isOpen,
+    };
+  });
+}
 </script>
 
 <style scoped>
