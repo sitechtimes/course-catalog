@@ -2,8 +2,6 @@
 import { useCourseStore } from "~~/store/store";
 import SubjectType from "../../components/course-cards/SubjectType.vue";
 import CourseType from "../../components/course-cards/CourseType.vue";
-const id = $route.params.id;
-const course = useCourseStore().courses;
 </script>
 
 <template>
@@ -39,7 +37,7 @@ const course = useCourseStore().courses;
         class="w-full h-auto flex flex-col justify-start items-start pb-6 px-4 border-b border-solid border-zinc-200 relative"
       >
         <h2 id="name" class="text-3xl font-semibold pb-2 sm:text-4xl">
-          {{ id }}
+          test
         </h2>
         <div
           id="grade"
