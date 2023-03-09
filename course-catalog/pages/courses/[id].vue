@@ -8,36 +8,30 @@ import CourseType from "../../components/course-cards/CourseType.vue";
   <div id="course" class="h-full w-full flex justify-center items-center">
     <div
       id="content"
-      class="bg-white w-11/12 max-w-4xl h-auto mt-28 mb-8 pb-6 px-8 flex flex-col justify-start items-center space-y-4 shadow-md"
+      class="bg-white w-11/12 max-w-4xl h-auto mt-28 mb-8 pb-6 px-8 flex flex-col justify-start space-y-4 shadow-md"
     >
-      <div
-        id="back"
-        class="w-full h-12 flex justify-end items-center z-20 border-b border-solid border-zinc-200"
-      >
+      <div class="mt-3" id="button">
         <NuxtLink to="/courses">
-          <div class="flex justify-center items-center space-x-0.5 mr-3">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              class="w-6 h-6"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            <p class="text-sm font-medium">Back to Courses</p>
-          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
+            <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+            <path
+              d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"
+            />
+          </svg>
+          <h3>Back to Courses</h3>
         </NuxtLink>
       </div>
+
+      <div
+        id="back"
+        class="w-full h-5 flex justify-end items-center z-20 border-b border-solid border-zinc-200"
+      ></div>
       <div
         id="title"
         class="w-full h-auto flex flex-col justify-start items-start pb-6 px-4 border-b border-solid border-zinc-200 relative"
       >
         <h2 id="name" class="text-3xl font-semibold pb-2 sm:text-4xl">
-          test
+          {{ $route.params.id }}
         </h2>
         <div
           id="grade"
@@ -72,3 +66,31 @@ import CourseType from "../../components/course-cards/CourseType.vue";
     </div>
   </div>
 </template>
+<style scoped>
+#button {
+  margin-top: 2rem;
+  transition: 0.4s;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+}
+#button:hover {
+  opacity: 0.4;
+}
+svg {
+  margin: 0;
+  margin-left: 5px;
+  align-self: left;
+  display: flex;
+  z-index: 100;
+  width: 12px;
+  fill: #37394f;
+}
+h3 {
+  margin-top: -1.5rem;
+  margin-left: 2rem;
+  color: #37394f;
+  font-size: 1rem;
+}
+</style>
