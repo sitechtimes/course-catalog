@@ -776,7 +776,6 @@ li {
   svg {
     width: 1.5rem;
     margin-left: 3rem;
-    margin-bottom: 6rem;
   }
   .file {
     width: 53%;
