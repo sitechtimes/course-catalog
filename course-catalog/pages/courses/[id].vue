@@ -79,17 +79,20 @@ import CourseType from "../../components/course-cards/CourseType.vue";
   opacity: 0.4;
 }
 svg {
+  position: absolute;
+  margin-top: 1rem;
   margin: 0;
   margin-left: 5px;
   align-self: left;
   display: flex;
   z-index: 100;
-  width: 12px;
+  width: 10px;
   fill: #37394f;
 }
 h3 {
-  margin-top: -1.5rem;
-  margin-left: 2rem;
+  font-weight: bold;
+  position: absolute;
+  margin-left: 1.5rem;
   color: #37394f;
   font-size: 1rem;
 }
