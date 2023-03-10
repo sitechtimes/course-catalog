@@ -46,17 +46,14 @@
 
 <script setup lang="ts">
 import DownArrow from "../icons/DownArrow.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useCourseStore } from "~~/store/store";
 const name = ref("courseSort");
 const input = ref("");
 const props = ["title"];
-const state = ref({
-  courses: useCourseStore().courses,
-  selected: "Sort By",
-});
+const courses = ref(useCourseStore().courses);
+const selected = ref("Sort By");
 const isOpen = ref(false);
-// state.value.isOpen = false;
 // components: {
 //   DownArrow,
 // },
