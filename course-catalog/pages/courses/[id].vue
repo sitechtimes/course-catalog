@@ -8,7 +8,7 @@ import CourseType from "../../components/course-cards/CourseType.vue";
   <div id="course" class="h-full w-full flex justify-center items-center">
     <div
       id="content"
-      class="bg-white w-11/12 max-w-4xl h-auto mt-28 mb-8 pb-6 px-8 flex flex-col justify-start space-y-4 shadow-md"
+      class="w-11/12 max-w-4xl h-auto mt-28 mb-8 pb-6 px-8 flex flex-col justify-start space-y-4 shadow-md test"
     >
       <div class="mt-3" id="button">
         <NuxtLink to="/courses">
@@ -67,6 +67,12 @@ import CourseType from "../../components/course-cards/CourseType.vue";
   </div>
 </template>
 <style scoped>
+.test {
+  border: solid 1px rgba(20, 20, 20, 0.034);
+  border-radius: 5px;
+  background: white;
+  box-shadow: 2px 2px 2px 2px rgba(20, 20, 20, 0.132);
+}
 #button {
   margin-top: 2rem;
   transition: 0.4s;
