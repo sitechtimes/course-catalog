@@ -6,21 +6,21 @@ import CourseType from "../../components/course-cards/CourseType.vue";
 export default {
   data() {
     return {
-            courses: useCourseStore().courses,
-            course: Object
-         }
-        },
-        computed: {
-            getCourse() {
-                return this.courses.find((course) => {
-                  return course.id == this.$route.params.id
-                }
-            )}
-        },
-        mounted() {
-          this.course = this.getCourse
-        }
-}
+      courses: useCourseStore().courses,
+      course: Object,
+    };
+  },
+  computed: {
+    getCourse() {
+      return this.courses.find((course) => {
+        return course.id == this.$route.params.id;
+      });
+    },
+  },
+  mounted() {
+    this.course = this.getCourse;
+  },
+};
 </script>
 
 <template>
@@ -56,8 +56,13 @@ export default {
           id="grade"
           class="flex justify-start items-start space-x-1 text-base font-light"
         >
-          <p class="text-zinc-500">Grade:</p>
-          <p class="text-zinc-500">9 / 10 / 11</p>
+          <p class="text-zinc-500 font-bold">Grade :</p>
+          <p class="text-zinc-500 font-bold space-x-1">
+            <span v-if="course?.freshman == true">9 </span>
+            <span v-if="course?.sophomore == true">10 </span>
+            <span v-if="course?.junior == true">11 </span>
+            <span v-if="course?.senior == true">12 </span>
+          </p>
         </div>
         <div class="flex justify-start items-start space-x-2 px-1">
           <SubjectType />
