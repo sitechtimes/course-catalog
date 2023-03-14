@@ -64,9 +64,9 @@ export default {
             <span v-if="course?.senior == true">12 </span>
           </p>
         </div>
-        <div class="flex justify-start items-start space-x-2 px-1">
-          <SubjectType />
-          <CourseType />
+        <div class="flex mt-2 justify-start items-start">
+          <SubjectType :subject="course?.subject" />
+          <CourseType :ap="course?.ap" />
         </div>
       </div>
       <div
