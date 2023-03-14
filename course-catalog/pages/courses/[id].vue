@@ -2,6 +2,25 @@
 import { useCourseStore } from "~~/store/store";
 import SubjectType from "../../components/course-cards/SubjectType.vue";
 import CourseType from "../../components/course-cards/CourseType.vue";
+
+export default {
+  data() {
+    return {
+            courses: useCourseStore().courses,
+            course: Object
+         }
+        },
+        computed: {
+            getCourse() {
+                return this.courses.find((course) => {
+                  return course.id == this.$route.params.id
+                }
+            )}
+        },
+        mounted() {
+          this.course = this.getCourse
+        }
+}
 </script>
 
 <template>
@@ -31,7 +50,7 @@ import CourseType from "../../components/course-cards/CourseType.vue";
         class="w-full h-auto flex flex-col justify-start items-start pb-6 px-4 border-b border-solid border-zinc-200 relative"
       >
         <h2 id="name" class="text-3xl font-semibold pb-2 sm:text-4xl">
-          {{ $route.params.id }}
+          {{ course.name }}
         </h2>
         <div
           id="grade"
