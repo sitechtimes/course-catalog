@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-64 h-10 mb-4 relative border border-zinc-300 bg-white text-zinc-400 rounded cursor-pointer"
+    class="w-72 h-10 mb-4 relative border border-zinc-300 bg-white text-zinc-400 rounded cursor-pointer"
     id="sort"
     @click="isOpen = !isOpen"
   >
@@ -127,8 +127,19 @@ select {
 }
 #sort {
   border-radius: 0.5rem;
+  margin-left: 5rem;
 }
 /* select::-ms-expand {
     display: none;
 } */
+@media only screen and (max-width: 800px) {
+  #sort {
+    width: 19rem;
+  }
+}
+@media only screen and (max-width: 604px) {
+  #sort {
+    margin-left: 0;
+  }
+}
 </style>
