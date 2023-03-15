@@ -4,6 +4,10 @@ import SubjectType from "../../components/course-cards/SubjectType.vue";
 import CourseType from "../../components/course-cards/CourseType.vue";
 
 export default {
+  components: {
+    SubjectType,
+    CourseType,
+  },
   data() {
     return {
       courses: useCourseStore().courses,
@@ -19,6 +23,7 @@ export default {
   },
   mounted() {
     this.course = this.getCourse;
+    console.log(course);
   },
 };
 </script>
@@ -66,7 +71,7 @@ export default {
         </div>
         <div class="flex mt-2 justify-start items-start">
           <SubjectType :subject="course?.subject" />
-          <CourseType :ap="course?.ap" />
+          <CourseType class="ml-4" :ap="course?.ap" />
         </div>
       </div>
       <div
