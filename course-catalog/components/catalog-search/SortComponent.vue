@@ -132,13 +132,20 @@ select {
 /* select::-ms-expand {
     display: none;
 } */
+@media only screen and (max-width: 1180px) {
+  #sort {
+    margin-left: 6rem;
+  }
+}
 @media only screen and (max-width: 800px) {
   #sort {
-    width: 19rem;
+    width: 20rem;
+    margin-left: 8rem;
   }
 }
 @media only screen and (max-width: 604px) {
   #sort {
+    width: 15rem;
     margin-left: 0;
   }
 }

@@ -26,7 +26,7 @@ const emits = ref(["update:modelValue"]);
 <style scoped>
 #search-input {
   border-radius: 0.5rem;
-  margin-left: 0.8rem;
+  margin-left: 1.5rem;
 }
 #search-icon {
   right: 6.5rem;
@@ -42,10 +42,7 @@ const emits = ref(["update:modelValue"]);
     margin-left: 1rem;
   }
   #search-icon {
-    right: 6.2rem;
-  }
-  #search-section {
-    margin-left: 5rem;
+    right: 8.5rem;
   }
 }
 @media only screen and (max-width: 670px) {
