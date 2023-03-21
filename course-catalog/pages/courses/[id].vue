@@ -2,8 +2,6 @@
 import { useCourseStore } from '~~/store/store'
 import SubjectType from '../../components/course-cards/SubjectType.vue';
 import CourseType from '../../components/course-cards/CourseType.vue';
-const id = $route.params.id
-const course = useCourseStore().courses
 </script>
 
 <template>
@@ -20,7 +18,7 @@ const course = useCourseStore().courses
                 </NuxtLink>
             </div>
             <div id="title" class="w-full h-auto flex flex-col justify-start items-start pb-6 px-4 border-b border-solid border-zinc-200 relative">
-                <h2 id="name" class="text-3xl font-semibold pb-2 sm:text-4xl">{{ id }}</h2>
+                <h2 id="name" class="text-3xl font-semibold pb-2 sm:text-4xl">{{ $route.params.id }}</h2>
                 <div id="grade" class="flex justify-start items-start space-x-1 text-base font-light">
                     <p class="text-zinc-500">Grade:</p>
                     <p class="text-zinc-500">9 / 10 / 11</p>
