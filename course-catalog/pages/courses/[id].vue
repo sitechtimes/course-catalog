@@ -82,14 +82,7 @@ export default {
           class="w-full h-auto flex flex-col justify-start items-start px-4 space-y-1 pb-2"
         >
           <h5 class="text-xl font-semibold">Description</h5>
-          <p class="text-base text-zinc-600 whitespace-pre-wrap">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda
-            illo accusantium tenetur sequi quas quis. Ipsum dignissimos
-            corporis, similique beatae ad quaerat neque accusantium dicta eos ex
-            maiores porro nesciunt qui perferendis minima facilis animi dolore
-            quia quis consequatur nulla exercitationem. Porro minima totam
-            dolore aperiam deleniti perferendis, dicta blanditiis.
-          </p>
+          <p class="text-base text-zinc-600 whitespace-pre-wrap" v-html="course.course_description"></p>
         </div>
       </div>
     </div>
