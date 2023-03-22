@@ -1,4 +1,5 @@
 <template>
+
   <div
     class="w-72 h-10 mb-4 relative border border-zinc-300 bg-white text-zinc-400 rounded cursor-pointer"
     id="sort"
@@ -116,6 +117,7 @@ function show() {
     };
   });
 }
+
 </script>
 
 <style scoped>
