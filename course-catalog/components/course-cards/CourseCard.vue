@@ -44,18 +44,3 @@ defineProps({
     </NuxtLink>
   </div>
 </template>
-<style scoped>
-@media only screen and (max-width: 800px) {
-  #card {
-    width: 16rem;
-  }
-  #name {
-    font-size: 1.3rem;
-  }
-}
-@media only screen and (max-width: 670px) {
-  #card {
-    width: 14rem;
-  }
-}
-</style>

@@ -83,7 +83,6 @@ export default {
         >
           <h5 class="text-xl font-semibold">Description</h5>
           <p class="text-base text-zinc-600 whitespace-pre-wrap" v-html="course.course_description"></p>
-
         </div>
       </div>
     </div>
