@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <!-- <div class="w-60 h-10 mb-4 relative border border-zinc-300 bg-white text-zinc-400 rounded" id="sort" @click="isOpen = !isOpen" >
                     <div>
         <a class="ml-2 mt-1">
@@ -17,6 +18,8 @@
             </div>
         </div>
     </div> -->
+=======
+>>>>>>> parent of 39dc9a23... Merge pull request #25 from sitechtimes/17-course-catalog-dynamic-routes
   <div
     id="sortComponent"
     class="mr-4 justify-center items-center relative hidden lg:flex"
@@ -68,6 +71,7 @@ export default defineComponent({
                     if (a.subject === "OTHER")
                         return 1;
                         return 0; */
+<<<<<<< HEAD
       let sortshow = document.getElementById("sortshow");
       sortshow.innerHTML = "Subject";
       return this.courses.sort(compare);
@@ -94,6 +98,43 @@ export default defineComponent({
     },
   },
 });
+=======
+  let sortshow = document.getElementById("sortshow");
+  sortshow.innerHTML = "Subject";
+  return this.courses.sort(compare);
+}
+
+function IncNameSort() {
+  function compare(a, b) {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  }
+  let sortshow = document.getElementById("sortshow");
+  sortshow.innerHTML = "Course Name (A-Z)";
+  return this.courses.sort(compare);
+}
+function DecNameSort() {
+  function compare(a, b) {
+    if (a.name > b.name) return -1;
+    if (a.name < b.name) return 1;
+    return 0;
+  }
+  let sortshow = document.getElementById("sortshow");
+  sortshow.innerHTML = "Course Name (Z-A)";
+  return this.courses.sort(compare);
+}
+function show() {
+  onMounted(() => {
+    return {
+      name,
+      input,
+      props,
+      isOpen,
+    };
+  });
+}
+>>>>>>> parent of 39dc9a23... Merge pull request #25 from sitechtimes/17-course-catalog-dynamic-routes
 </script>
 
 <style scoped>
