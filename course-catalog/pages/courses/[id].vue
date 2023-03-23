@@ -1,7 +1,30 @@
 <script lang="ts">
-import { useCourseStore } from '~~/store/store'
-import SubjectType from '../../components/course-cards/SubjectType.vue';
-import CourseType from '../../components/course-cards/CourseType.vue';
+import { useCourseStore } from "~~/store/store";
+import SubjectType from "../../components/course-cards/SubjectType.vue";
+import CourseType from "../../components/course-cards/CourseType.vue";
+export default {
+  components: {
+    SubjectType,
+    CourseType,
+  },
+  data() {
+    return {
+      courses: useCourseStore().courses,
+      course: Object,
+    };
+  },
+  computed: {
+    getCourse() {
+      return this.courses.find((course) => {
+        return course.id == this.$route.params.id;
+      });
+    },
+  },
+  mounted() {
+    this.course = this.getCourse;
+    console.log(course);
+  },
+};
 </script>
 
 <template>
@@ -21,7 +44,7 @@ import CourseType from '../../components/course-cards/CourseType.vue';
           <h3>Back to Courses</h3>
         </NuxtLink>
       </div>
-      </div>
+
       <div
         id="back"
         class="w-full h-5 flex justify-end items-center z-20 border-b border-solid border-zinc-200"
@@ -58,8 +81,47 @@ import CourseType from '../../components/course-cards/CourseType.vue';
           class="w-full h-auto flex flex-col justify-start items-start px-4 space-y-1 pb-2"
         >
           <h5 class="text-xl font-semibold">Description</h5>
-          <p class="text-base text-zinc-600 whitespace-pre-wrap" v-html="course.course_description"></p>
+          <p class="text-base text-zinc-600 whitespace-pre-wrap" v-html="course.course_description">
+          </p>
         </div>
+      </div>
     </div>
   </div>
 </template>
+<style scoped>
+.test {
+  border: solid 1px rgba(20, 20, 20, 0.034);
+  border-radius: 5px;
+  background: white;
+  box-shadow: 2px 2px 2px 2px rgba(20, 20, 20, 0.132);
+}
+#button {
+  margin-top: 2rem;
+  transition: 0.4s;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+}
+#button:hover {
+  opacity: 0.4;
+}
+svg {
+  position: absolute;
+  margin-top: 1rem;
+  margin: 0;
+  margin-left: 5px;
+  align-self: left;
+  display: flex;
+  z-index: 100;
+  width: 10px;
+  fill: #37394f;
+}
+h3 {
+  font-weight: bold;
+  position: absolute;
+  margin-left: 1.5rem;
+  color: #37394f;
+  font-size: 1rem;
+}
+</style>
