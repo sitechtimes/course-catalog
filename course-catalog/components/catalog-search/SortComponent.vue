@@ -5,7 +5,7 @@
     @click="isOpen = !isOpen"
   >
     <DownArrow
-      class="absolute fill-zinc-400 right-2 top-[0.6rem] text-zinc-400 z-0 cursor-pointer"
+      class="absolutke fill-zinc-400 right-2 top-[0.6rem] text-zinc-400 z-0 cursor-pointer"
     />
     <div class="w-40">
       <a class="flex justify-left mt-2 ml-3">
@@ -44,11 +44,28 @@
         </select>
         <DownArrow class="absolute right-2 top-[0.6rem] text-zinc-400 z-0"/>
     </div> -->
+  <!-- <div
+    id="sortComponent"
+    class="mr-4 justify-center items-center relative hidden lg:flex"
+  >
+    <select
+      class="px-2 h-10 w-48 mb-4 relative border border-zinc-300 bg-white text-zinc-400 rounded cursor-pointer font-semibold"
+      name="sort"
+      id="sort"
+    >
+      <option value="" disabled selected>Sort By</option>
+      <option @click="SubjectSort()" value="subject">Subject</option>
+      <option @click="IncNameSort()" value="az">Course Name (A-Z)</option>
+      <option @click="DecNameSort()" value="za">Course Name (Z-A)</option>
+    </select>
+    <DownArrow class="color absolute right-2 top-[0.6rem] text-zinc-400 z-0" />
+  </div> -->
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import DownArrow from "../icons/DownArrow.vue";
-import { ref, onMounted, computed } from "vue";
+import { defineComponent } from "vue";
+import { ref } from "vue";
 import { useCourseStore } from "~~/store/store";
 const name = ref("courseSort");
 const input = ref("");
@@ -127,11 +144,8 @@ function show() {
 select {
   appearance: none;
 }
-.sub-menu {
-  margin-top: 0.6rem;
-}
-#sort {
-  border-radius: 0.5rem;
+.color {
+  fill: grey;
 }
 /* select::-ms-expand {
     display: none;
