@@ -9,7 +9,7 @@
     />
     <div class="w-40">
       <a class="flex justify-left mt-2 ml-3">
-        <p class="font-bold" id="sortshow">Sort By</p>
+        <p class="font-bold" id="sortshow">{{ selected }}</p>
       </a>
     </div>
     <div class="sub-menu" v-if="isOpen">
@@ -17,19 +17,21 @@
         @click="SubjectSort()"
         class="flex justify-left h-10 p-1 border border-zinc-300 bg-white text-zinc-400"
       >
-        <button class="ml-2">Subject</button>
+        <button class="ml-2">
+          {{ subject }}
+        </button>
       </div>
       <div
         @click="IncNameSort()"
         class="flex justify-left h-10 p-1 border border-t-transparent border-zinc-300 bg-white text-zinc-400"
       >
-        <button class="ml-2">Course Name (A-Z)</button>
+        <button class="ml-2">{{ atoz }}</button>
       </div>
       <div
         @click="DecNameSort()"
         class="flex justify-left h-10 p-1 border border-t-transparent border-zinc-300 bg-white text-zinc-400"
       >
-        <button class="ml-2">Course Name (Z-A)</button>
+        <button class="ml-2">{{ ztoa }}</button>
       </div>
     </div>
   </div>
@@ -54,6 +56,9 @@ const props = ["title"];
 const courses = ref(useCourseStore().courses);
 const selected = ref("Sort By");
 const isOpen = ref(false);
+const subject = ref("Subject");
+const atoz = ref("Course Name (A-Z)");
+const ztoa = ref("Course Name (Z-A)");
 // components: {
 //   DownArrow,
 // },
@@ -68,7 +73,7 @@ const isOpen = ref(false);
 //   };
 // },
 
-function SubjectSort() {
+const SubjectSort = computed(() => {
   function compare(a, b) {
     if (a.subject < b.subject) return -1;
     if (a.subject > b.subject) return 1;
@@ -83,10 +88,10 @@ function SubjectSort() {
                         return 0; */
   let sortshow = document.getElementById("sortshow");
   sortshow.innerHTML = "Subject";
-  return this.courses.sort(compare);
-}
+  return courses.value.sort(compare);
+});
 
-function IncNameSort() {
+const IncNameSort = computed(() => {
   function compare(a, b) {
     if (a.name < b.name) return -1;
     if (a.name > b.name) return 1;
@@ -94,9 +99,9 @@ function IncNameSort() {
   }
   let sortshow = document.getElementById("sortshow");
   sortshow.innerHTML = "Course Name (A-Z)";
-  return this.courses.sort(compare);
-}
-function DecNameSort() {
+  return courses.value.sort(compare);
+});
+const DecNameSort = computed(() => {
   function compare(a, b) {
     if (a.name > b.name) return -1;
     if (a.name < b.name) return 1;
@@ -104,8 +109,8 @@ function DecNameSort() {
   }
   let sortshow = document.getElementById("sortshow");
   sortshow.innerHTML = "Course Name (Z-A)";
-  return this.courses.sort(compare);
-}
+  return courses.value.sort(compare);
+});
 function show() {
   onMounted(() => {
     return {
