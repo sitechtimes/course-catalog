@@ -5,7 +5,7 @@
     @click="isOpen = !isOpen"
   >
     <DownArrow
-      class="absolutke fill-zinc-400 right-2 top-[0.6rem] text-zinc-400 z-0 cursor-pointer"
+      class="absolute fill-zinc-400 right-2 top-[0.6rem] text-zinc-400 z-0 cursor-pointer"
     />
     <div class="w-40">
       <a class="flex justify-left mt-2 ml-3">
@@ -62,7 +62,7 @@
   </div> -->
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import DownArrow from "../icons/DownArrow.vue";
 import { defineComponent } from "vue";
 import { ref } from "vue";
