@@ -15,12 +15,12 @@ defineProps({
 </script>
 
 <template>
-  <div v-if="course?.catalog == true">
-    <NuxtLink :to="`/courses/${course?.id}`">
-      <div
+    <div :to="`/courses/${course?.id}`"
         id="card"
         class="bg-white w-80 h-36 m-4 px-4 py-[0.6rem] rounded-lg shadow cursor-pointer"
       >
+
+      <!--! v-if="course?.catalog == true" -->
         <h2 id="name" class="course-name text-2xl font-semibold h-[4.4rem]">
           {{ course?.name }}
         </h2>
@@ -41,6 +41,4 @@ defineProps({
           <CourseType :ap="course?.ap" />
         </div>
       </div>
-    </NuxtLink>
-  </div>
 </template>
