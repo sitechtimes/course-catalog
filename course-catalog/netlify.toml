@@ -1,0 +1,7 @@
+[build.environment]
+  NODE_OPTIONS = "--max_old_space_size=4096"
+
+[build]
+  command = "npm run generate"
+  publish = "dist/"
+  timeout = 1800 # Set the maximum build time to 30 minutes (1800 seconds)

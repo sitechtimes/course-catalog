@@ -1,4 +1,4 @@
-# dist
+dist
 temp
 coverage
 node_modules
@@ -13,4 +13,4 @@ debug.log
 .env
 
 .nuxt
-# .output
+.output
