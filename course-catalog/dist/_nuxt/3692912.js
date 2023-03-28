@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[2],{264:function(e,n,t){"use strict";t.r(n);var l={name:"LandingPage"},o=t(61),component=Object(o.a)(l,(function(){return(0,this._self._c)("h2",{staticClass:"text-3xl"},[this._v("Learn more about the courses offered at Staten Island Technical High School")])}),[],!1,null,null,null);n.default=component.exports}}]);

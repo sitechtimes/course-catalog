@@ -1,0 +1,6 @@
+const Scheduler_vue_vue_type_style_index_0_scoped_a112acfe_lang = "table[data-v-a112acfe]{border:4px solid #d3d3d3;text-align:center}table[data-v-a112acfe],td[data-v-a112acfe]{border-radius:5px;-moz-border-radius:5px}.right[data-v-a112acfe]{color:#606060;padding-top:.7rem}td[data-v-a112acfe]{border-right:4px solid #d3d3d3;color:#37394f;font-weight:700;margin-top:2rem}table[data-v-a112acfe]{margin-right:3rem}p[data-v-a112acfe],table[data-v-a112acfe]{margin-top:1rem}.placeholder[data-v-a112acfe]{border:2px dashed #7d7d7d;border-radius:15px;color:#37394f;font-weight:700;height:2.3rem;margin:1rem 2rem .2rem;padding-top:.3rem;width:18rem}#lastnum[data-v-a112acfe]{padding-bottom:.6rem;padding-top:0}#last[data-v-a112acfe]{margin-bottom:1.5rem}@media only screen and (max-width:1180px){.whole[data-v-a112acfe]{display:none}}@media only screen and (min-width:1740px){.placeholder[data-v-a112acfe]{border:2px dashed #7d7d7d;border-radius:15px;height:2.3rem;margin:1.4rem 2rem .2rem;padding-top:.4rem;width:18rem}}";
+
+const SchedulerStyles_241fa3e3 = [Scheduler_vue_vue_type_style_index_0_scoped_a112acfe_lang];
+
+export { SchedulerStyles_241fa3e3 as default };
+//# sourceMappingURL=Scheduler-styles.241fa3e3.mjs.map
