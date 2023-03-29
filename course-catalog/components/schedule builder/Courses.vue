@@ -671,7 +671,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .requirements {
   margin-top: -3rem;
   margin-bottom: 3.5rem;
