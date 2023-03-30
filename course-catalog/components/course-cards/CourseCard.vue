@@ -57,5 +57,8 @@ defineProps({
   #card {
     width: 14rem;
   }
+  #name {
+    font-size: 1.1rem;
+  }
 }
 </style>
