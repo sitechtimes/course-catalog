@@ -208,6 +208,58 @@ p {
   color: #37394f;
 }
 
+.r {
+  background-color: #fedcb5;
+}
+.LANG {
+  background-color: #fedcb5;
+}
+.g {
+  background-color: #bebfdf;
+}
+.PE {
+  background-color: #bebfdf;
+}
+.a {
+  background-color: #ffdfdf;
+}
+.ARTS {
+  background-color: #ffdfdf;
+}
+.t {
+  background-color: #fffbd6;
+}
+.TECH {
+  background-color: #fffbd6;
+}
+.h {
+  background-color: #e0d6ff;
+}
+.SS {
+  background-color: #e0d6ff;
+}
+.en {
+  background-color: #d6eeff;
+}
+.ENGLISH {
+  background-color: #d6eeff;
+}
+.s {
+  background-color: #cbf2d4;
+}
+.SCIENCE {
+  background-color: #cbf2d4;
+}
+.m {
+  background-color: #ffadb2;
+}
+.MATH {
+  background-color: #ffadb2;
+}
+.LUNCH {
+  background-color: #d2fcff;
+}
+
 /* #first {
   margin-top: 1.2rem;
 }*/
