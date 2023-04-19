@@ -2,7 +2,7 @@ const client_manifest = {
   "node_modules/nuxt/dist/app/entry.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "entry.e35a551f.js",
+    "file": "entry.fcffa48e.js",
     "src": "node_modules/nuxt/dist/app/entry.mjs",
     "isEntry": true,
     "dynamicImports": [
@@ -19,7 +19,7 @@ const client_manifest = {
   "virtual:nuxt:C:/Users/michael.frid/Documents/GitHub/course-catalog/course-catalog/.nuxt/error-component.mjs": {
     "resourceType": "script",
     "module": true,
-    "file": "error-component.5093c200.js",
+    "file": "error-component.4f8b838c.js",
     "src": "virtual:nuxt:C:/Users/michael.frid/Documents/GitHub/course-catalog/course-catalog/.nuxt/error-component.mjs",
     "isDynamicEntry": true,
     "imports": [
@@ -33,7 +33,7 @@ const client_manifest = {
   "pages/builder.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "builder.27045d80.js",
+    "file": "builder.fb373941.js",
     "src": "pages/builder.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -41,8 +41,8 @@ const client_manifest = {
     ],
     "css": []
   },
-  "builder.5ced9678.css": {
-    "file": "builder.5ced9678.css",
+  "builder.31e031ff.css": {
+    "file": "builder.31e031ff.css",
     "resourceType": "style"
   },
   "SubjectType.3d9c9e03.css": {
@@ -52,12 +52,12 @@ const client_manifest = {
   "pages/courses/[id].vue": {
     "resourceType": "script",
     "module": true,
-    "file": "_id_.ea49fbf7.js",
+    "file": "_id_.3718f086.js",
     "src": "pages/courses/[id].vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_CourseType.4353c471.js"
+      "_CourseType.ba157a70.js"
     ],
     "css": []
   },
@@ -65,10 +65,10 @@ const client_manifest = {
     "file": "_id_.620d8f34.css",
     "resourceType": "style"
   },
-  "_CourseType.4353c471.js": {
+  "_CourseType.ba157a70.js": {
     "resourceType": "script",
     "module": true,
-    "file": "CourseType.4353c471.js",
+    "file": "CourseType.ba157a70.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ],
@@ -84,12 +84,12 @@ const client_manifest = {
   "pages/courses/index.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "index.25b1acdd.js",
+    "file": "index.2f88c17f.js",
     "src": "pages/courses/index.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_CourseType.4353c471.js"
+      "_CourseType.ba157a70.js"
     ],
     "css": []
   },
@@ -100,7 +100,7 @@ const client_manifest = {
   "pages/index.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "index.d87d7790.js",
+    "file": "index.a5b5d3d0.js",
     "src": "pages/index.vue",
     "isDynamicEntry": true,
     "imports": [
@@ -115,12 +115,12 @@ const client_manifest = {
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-404.b2901a40.js",
+    "file": "error-404.08032367.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.vue",
     "isDynamicEntry": true,
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs",
-      "_composables.6e0e0d44.js"
+      "_composables.4cf3cceb.js"
     ],
     "css": []
   },
@@ -128,10 +128,10 @@ const client_manifest = {
     "file": "error-404.23f2309d.css",
     "resourceType": "style"
   },
-  "_composables.6e0e0d44.js": {
+  "_composables.4cf3cceb.js": {
     "resourceType": "script",
     "module": true,
-    "file": "composables.6e0e0d44.js",
+    "file": "composables.4cf3cceb.js",
     "imports": [
       "node_modules/nuxt/dist/app/entry.mjs"
     ]
@@ -139,11 +139,11 @@ const client_manifest = {
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue": {
     "resourceType": "script",
     "module": true,
-    "file": "error-500.40a36d3f.js",
+    "file": "error-500.2852bee1.js",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.vue",
     "isDynamicEntry": true,
     "imports": [
-      "_composables.6e0e0d44.js",
+      "_composables.4cf3cceb.js",
       "node_modules/nuxt/dist/app/entry.mjs"
     ],
     "css": []
@@ -154,43 +154,43 @@ const client_manifest = {
   },
   "pages/builder.css": {
     "resourceType": "style",
-    "file": "builder.5ced9678.css",
+    "file": "builder.31e031ff.css",
     "src": "pages/builder.css"
-  },
-  "pages/courses/index.css": {
-    "resourceType": "style",
-    "file": "index.996ef009.css",
-    "src": "pages/courses/index.css"
-  },
-  "pages/index.css": {
-    "resourceType": "style",
-    "file": "index.a86282d1.css",
-    "src": "pages/index.css"
-  },
-  "pages/courses/[id].css": {
-    "resourceType": "style",
-    "file": "_id_.620d8f34.css",
-    "src": "pages/courses/[id].css"
   },
   "CourseType.css": {
     "resourceType": "style",
     "file": "CourseType.0c39e7ed.css",
     "src": "CourseType.css"
   },
-  "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
+  "pages/index.css": {
     "resourceType": "style",
-    "file": "error-404.23f2309d.css",
-    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
+    "file": "index.a86282d1.css",
+    "src": "pages/index.css"
   },
   "SubjectType.css": {
     "resourceType": "style",
     "file": "SubjectType.3d9c9e03.css",
     "src": "SubjectType.css"
   },
+  "pages/courses/[id].css": {
+    "resourceType": "style",
+    "file": "_id_.620d8f34.css",
+    "src": "pages/courses/[id].css"
+  },
   "node_modules/@nuxt/ui-templates/dist/templates/error-500.css": {
     "resourceType": "style",
     "file": "error-500.aa16ed4d.css",
     "src": "node_modules/@nuxt/ui-templates/dist/templates/error-500.css"
+  },
+  "pages/courses/index.css": {
+    "resourceType": "style",
+    "file": "index.996ef009.css",
+    "src": "pages/courses/index.css"
+  },
+  "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
+    "resourceType": "style",
+    "file": "error-404.23f2309d.css",
+    "src": "node_modules/@nuxt/ui-templates/dist/templates/error-404.css"
   },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
