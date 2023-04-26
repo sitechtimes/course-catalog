@@ -200,7 +200,7 @@ p {
 .placeholder {
   width: 18rem;
   height: 2.3rem;
-  border: 2px dashed #7d7d7d;
+  border: 2px solid #7d7d7d;
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
   padding-top: 0.3rem;
@@ -280,7 +280,7 @@ p {
   .placeholder {
     width: 18rem;
     height: 2.3rem;
-    border: 2px dashed #7d7d7d;
+    border: 2px solid #7d7d7d;
     border-radius: 15px;
     margin: 1.4rem 2rem 0.2rem 2rem;
     padding-top: 0.4rem;

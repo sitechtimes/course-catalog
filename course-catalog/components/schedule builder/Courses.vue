@@ -2,7 +2,19 @@
   <div class="whole">
     <div class="requirements">
       <button class="note" @click="showr = !showr">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <svg v-if="this.needed.ENGLISH !== 0 && this.needed.MATH !== 0 && this.needed.SS !== 0 && this.needed.PE !== 0 && this.needed.SCIENCE !== 0 || this.yearPicked === `Senior` && this.yearPicked !== `Senior` && this.needed.LANG !== 0 && this.needed.LUNCH !== 0 && this.needed.educationalPeriods >= 7"  class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"
+          />
+        </svg>
+        <svg v-else-if="this.needed.ENGLISH !== 0 && this.needed.MATH !== 0 && this.needed.SS !== 0 && this.needed.PE !== 0 && this.needed.SCIENCE !== 0 || this.yearPicked === `Senior` && this.yearPicked !== `Senior` && this.needed.LANG !== 0 && this.needed.LUNCH !== 0 && this.needed.educationalPeriods >= 7 && this.yearPicked === `Freshman` && this.needed.TECH !== 0"  class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"
+          />
+        </svg>
+        <svg v-else class="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
           <path
             d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"
@@ -46,18 +58,14 @@
               <h5>Gym</h5>
             </li>
             <li
-              v-if="this.yearPicked !== `Senior` && this.needed.SCIENCE === 0"
+              v-if="this.needed.SCIENCE === 0"
             >
               <Xmark/>
               <h5>Science</h5>
             </li>
-            <li v-if="this.needed.SCIENCE !== 0">
+            <li v-if="this.needed.SCIENCE !== 0 || this.yearPicked === `Senior`">
               <Checkmark/>
               <h5>Science</h5>
-            </li>
-            <li v-if="this.yearPicked === `Senior`">
-              <Checkmark/>
-              <h5>Science</h5>            
             </li>
             <li v-if="this.yearPicked !== `Senior` && this.needed.LANG === 0">
               <Xmark/>
@@ -549,6 +557,14 @@ export default {
   margin-top: -3rem;
   margin-bottom: 3.5rem;
 }
+
+.green{
+  fill: #1abd18;
+}
+
+.red{
+  fill: #f20707;
+}
 .require {
   position: absolute;
   z-index: 2;
@@ -731,6 +747,7 @@ li {
   display: flex;
   flex-direction: row;
 }
+
 @media only screen and (max-width: 1180px) {
   .whole {
     display: none;
