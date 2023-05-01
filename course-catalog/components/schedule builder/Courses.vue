@@ -2,19 +2,50 @@
   <div class="whole">
     <div class="requirements">
       <button class="note" @click="showr = !showr">
-        <svg v-if="this.needed.ENGLISH !== 0 && this.needed.MATH !== 0 && this.needed.SS !== 0 && this.needed.PE !== 0 && this.needed.SCIENCE !== 0 || this.yearPicked === `Senior` && this.yearPicked !== `Senior` && this.needed.LANG !== 0 && this.needed.LUNCH !== 0 && this.needed.educationalPeriods >= 7"  class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <svg
+          v-if="
+            (this.yearpicked === 'Senior' &&
+              this.needed.ENGLISH !== 0 &&
+              this.needed.MATH !== 0 &&
+              this.needed.SS !== 0 &&
+              this.needed.PE !== 0 &&
+              this.needed.SCIENCE !== 0 &&
+              this.needed.educationalPeriods >= 0) ||
+            (this.yearPicked !== `Senior` &&
+              this.needed.ENGLISH !== 0 &&
+              this.needed.MATH !== 0 &&
+              this.needed.SS !== 0 &&
+              this.needed.PE !== 0 &&
+              this.needed.SCIENCE !== 0 &&
+              this.needed.LANG !== 0 &&
+              this.needed.LUNCH !== 0 &&
+              this.needed.educationalPeriods >= 7) ||
+            (this.yearPicked !== 'Freshman' &&
+              this.needed.ENGLISH !== 0 &&
+              this.needed.MATH !== 0 &&
+              this.needed.SS !== 0 &&
+              this.needed.PE !== 0 &&
+              this.needed.SCIENCE !== 0 &&
+              this.needed.LANG !== 0 &&
+              this.needed.LUNCH !== 0 &&
+              this.needed.this.yearPicked === `Freshman` &&
+              this.needed.TECH !== 0)
+          "
+          class="green"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
           <path
             d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"
           />
         </svg>
-        <svg v-else-if="this.needed.ENGLISH !== 0 && this.needed.MATH !== 0 && this.needed.SS !== 0 && this.needed.PE !== 0 && this.needed.SCIENCE !== 0 || this.yearPicked === `Senior` && this.yearPicked !== `Senior` && this.needed.LANG !== 0 && this.needed.LUNCH !== 0 && this.needed.educationalPeriods >= 7 && this.yearPicked === `Freshman` && this.needed.TECH !== 0"  class="green" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-          <path
-            d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"
-          />
-        </svg>
-        <svg v-else class="red" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <svg
+          v-else
+          class="red"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 512 512"
+        >
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
           <path
             d="M256 512c141.4 0 256-114.6 256-256S397.4 0 256 0S0 114.6 0 256S114.6 512 256 512zm0-384c13.3 0 24 10.7 24 24V264c0 13.3-10.7 24-24 24s-24-10.7-24-24V152c0-13.3 10.7-24 24-24zm32 224c0 17.7-14.3 32-32 32s-32-14.3-32-32s14.3-32 32-32s32 14.3 32 32z"
@@ -26,77 +57,77 @@
           <h3 class="mt-0 font-bold">Requirements</h3>
           <bl>
             <li v-if="this.needed.ENGLISH === 0">
-              <Xmark/>
+              <Xmark />
               <h5>English</h5>
             </li>
             <li v-if="this.needed.ENGLISH !== 0">
-              <Checkmark/>
+              <Checkmark />
               <h5>English</h5>
             </li>
             <li v-if="this.needed.MATH === 0">
-              <Xmark/>
+              <Xmark />
               <h5>Math</h5>
             </li>
             <li v-if="this.needed.MATH !== 0">
-              <Checkmark/>
+              <Checkmark />
               <h5>Math</h5>
             </li>
             <li v-if="this.needed.SS === 0">
-              <Xmark/>
+              <Xmark />
               <h5>History</h5>
             </li>
             <li v-if="this.needed.SS !== 0">
-              <Checkmark/>
+              <Checkmark />
               <h5>History</h5>
             </li>
             <li v-if="this.needed.PE === 0">
-              <Xmark/>
-              <h5>Gym</h5>
+              <Xmark />
+              <h5>Physical Education</h5>
             </li>
             <li v-if="this.needed.PE !== 0">
-              <Checkmark/>
-              <h5>Gym</h5>
+              <Checkmark />
+              <h5>Physical Education</h5>
             </li>
-            <li
-              v-if="this.needed.SCIENCE === 0"
-            >
-              <Xmark/>
+            <li v-if="this.needed.SCIENCE === 0">
+              <Xmark />
               <h5>Science</h5>
             </li>
-            <li v-if="this.needed.SCIENCE !== 0 || this.yearPicked === `Senior`">
-              <Checkmark/>
+            <li
+              v-if="this.needed.SCIENCE !== 0 || this.yearPicked === `Senior`"
+            >
+              <Checkmark />
               <h5>Science</h5>
             </li>
             <li v-if="this.yearPicked !== `Senior` && this.needed.LANG === 0">
-              <Xmark/>
+              <Xmark />
               <h5>Russian</h5>
             </li>
             <li v-if="this.yearPicked !== `Senior` && this.needed.LANG !== 0">
-              <Checkmark/>
+              <Checkmark />
               <h5>Russian</h5>
             </li>
             <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH !== 0">
-              <Checkmark/>
+              <Checkmark />
               <h5>Lunch</h5>
             </li>
             <li v-if="this.yearPicked !== `Senior` && this.needed.LUNCH === 0">
-              <Xmark/>
+              <Xmark />
               <h5>Lunch</h5>
             </li>
             <li v-if="this.yearPicked === `Freshman` && this.needed.TECH === 0">
-              <Xmark/>
+              <Xmark />
               <h5>Technology Elective</h5>
             </li>
             <li v-if="this.yearPicked === `Freshman` && this.needed.TECH !== 0">
-              <Checkmark/>
+              <Checkmark />
               <h5>Technology Elective</h5>
             </li>
             <li v-if="this.needed.educationalPeriods < 7">
-              <Xmark/>
+              <Xmark />
               <h5>7 educational periods</h5>
             </li>
             <li v-if="this.needed.educationalPeriods >= 7">
-              <Checkmark/>
+              <Checkmark />
               <h5>7 educational periods</h5>
             </li>
           </bl>
@@ -106,7 +137,7 @@
 
     <div class="tabs">
       <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
-      <button @click="switchTabs(`gym`)" class="tab g">Gym</button>
+      <button @click="switchTabs(`gym`)" class="tab g">Phys. Ed</button>
       <button @click="switchTabs(`art`)" class="tab a">Art</button>
       <button @click="switchTabs(`technology`)" class="tab t">
         Technology
@@ -274,8 +305,8 @@
 </template>
 <script>
 import { useCourseStore } from "~/store/store";
-import Xmark from "~/components/icons/Xmark.vue"
-import Checkmark from "~/components/icons/Checkmark.vue"
+import Xmark from "~/components/icons/Xmark.vue";
+import Checkmark from "~/components/icons/Checkmark.vue";
 import SubjectType from "../course-cards/SubjectType.vue";
 export default {
   name: "Courses",
@@ -370,6 +401,9 @@ export default {
       courses: useCourseStore().courses,
     };
   },
+  mounted() {
+    this.killMathTeam();
+  },
   methods: {
     switchTabs: function (subject) {
       if (this.yearPicked) {
@@ -402,6 +436,28 @@ export default {
       } else {
         alert("Pick a year from the dropdown");
       }
+    },
+    killMathTeam: function (courses) {
+      if (courses == null) {
+        setTimeout(() => {
+          courses.forEach((element) => {
+            if (course.name == "Math Team A") {
+              console.log("math team sucks");
+            } else if (course.name == "Math Team B") {
+              console.log("math team sucks");
+            } else {
+            }
+          });
+        }, 15000);
+      } else {
+        if (course.name == "Math Team A") {
+          console.log("math team sucks");
+        } else if (course.name == "Math Team B") {
+          console.log("math team sucks");
+        } else {
+        }
+      }
+      console.log("math team sucks");
     },
     addClass: function (chosenClass) {
       const schedule = this.schedule;
@@ -558,11 +614,11 @@ export default {
   margin-bottom: 3.5rem;
 }
 
-.green{
-  fill: #1abd18;
+.green {
+  fill: #28ad25;
 }
 
-.red{
+.red {
   fill: #f20707;
 }
 .require {
