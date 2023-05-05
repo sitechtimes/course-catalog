@@ -438,7 +438,7 @@ export default {
       }
     },
     killMathTeam: function (courses) {
-      if (courses == null) {
+      if (courses == undefined) {
         setTimeout(() => {
           courses.forEach((element) => {
             if (course.name == "Math Team A") {
@@ -499,7 +499,13 @@ export default {
           } else if (chosenClass.subject === "MATH" && needed.MATH === 0) {
             needed.MATH += 1;
             return true;
-          } else if (chosenClass.subject === "SCIENCE" && needed.SCIENCE < 2) {
+          } else if (
+            (chosenClass.subject === "SCIENCE" && needed.SCIENCE < 1) ||
+            (chosenClass.subject === "SCIENCE" &&
+              yearPicked !== "Freshman" &&
+              yearPicked !== "Sophomore" &&
+              needed.SCIENCE < 2)
+          ) {
             needed.SCIENCE += 1;
             return true;
           } else {
