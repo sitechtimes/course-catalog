@@ -687,7 +687,7 @@ export default {
   color: #37394f;
   width: 30%;
   margin-left: 30%;
-  margin-bottom: 1rem;
+  margin-top: -1rem;
 }
 svg {
   fill: #37394f;
@@ -862,12 +862,61 @@ li {
     display: none;
   }
 }
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 1200px) {
+  .tabs {
+    margin-left: 6%;
+  }
+  svg {
+    width: 1.5rem;
+    margin-left: 47rem;
+  }
+  .tab {
+    width: 4.85rem;
+    font-size: 0.8rem;
+  }
+  .file {
+    width: 52%;
+  }
   .note {
-    margin-left: 55%;
+    position: absolute;
+    z-index: 3;
+    right: 7rem;
+  }
+  .require {
+    margin-left: 24%;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .tabs {
+    margin-left: 10%;
+  }
+  .tab {
+    width: 5rem;
+  }
+  .note {
+    position: absolute;
+    z-index: 3;
+    right: 10rem;
+  }
+  .require {
+    margin-left: 24%;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .whole {
+    margin-left: 3rem;
+  }
+  .requirements {
+    margin-bottom: 3rem;
+  }
+  .note {
+    right: 12rem;
     position: absolute;
     z-index: 6;
-    margin-top: 1rem;
+  }
+  .require {
+    margin-left: 25%;
   }
   svg {
     width: 1.5rem;
@@ -894,15 +943,15 @@ li {
     margin: auto;
   }
 }
-@media only screen and (min-width: 1540px) {
-  .tab {
-    width: 7.5rem;
+@media only screen and (min-width: 1600px) {
+  .note {
+    right: 14rem;
   }
 }
 @media only screen and (min-width: 1740px) {
   svg {
     width: 1.5rem;
-    margin-left: 3rem;
+    margin-left: 8.5rem;
     margin-bottom: 6rem;
   }
   .file {
@@ -915,6 +964,13 @@ li {
   }
   .tab {
     width: 8rem;
+  }
+  .note {
+    margin-top: 0;
+    right: 12rem;
+  }
+  .require {
+    margin-left: 30%;
   }
 }
 </style>
