@@ -7,46 +7,53 @@ export default {
   },
   methods: {
     removeClass(period) {
-      const pickedClass = this.schedule[period]
-      console.log(pickedClass)
+      const pickedClass = this.schedule[period];
+      console.log(pickedClass);
       if (pickedClass.subject !== "LUNCH") {
         if (pickedClass.ap) {
-        this.needed.ap =- 1
+          this.needed.ap = -1;
         }
         if (pickedClass.subject === "LANG") {
-        this.needed.LANG -= 1
+          this.needed.LANG -= 1;
         } else if (pickedClass.subject === "ENGLISH") {
-        this.needed.ENGLISH -= 1
+          this.needed.ENGLISH -= 1;
         } else if (pickedClass.subject === "ARTS") {
-        this.needed.ARTS -= 1
+          this.needed.ARTS -= 1;
         } else if (pickedClass.subject === "SS") {
-        this.needed.SS -= 1
-        } else if (pickedClass.subject === "TECH" || pickedClass.name == `Comp Sci/Engineering T1
-        +`) {
-          this.needed.TECH -= 1
+          this.needed.SS -= 1;
+        } else if (
+          pickedClass.subject === "TECH" ||
+          pickedClass.name ==
+            `Comp Sci/Engineering T1
+        +`
+        ) {
+          this.needed.TECH -= 1;
         } else if (pickedClass.subject === "PE") {
-        this.needed.PE -= 1
+          this.needed.PE -= 1;
         } else if (pickedClass.subject === "MATH") {
-        this.needed.MATH -= 1
-        } else if (pickedClass.subject === "SCIENCE" && pickedClass.name !== `Comp Sci/Engineering T1`) {
-          this.needed.SCIENCE -= 1
+          this.needed.MATH -= 1;
+        } else if (
+          pickedClass.subject === "SCIENCE" &&
+          pickedClass.name !== `Comp Sci/Engineering T1`
+        ) {
+          this.needed.SCIENCE -= 1;
         }
-/*         } else if (pickedClass.subject === "LUNCH") {
+        /*         } else if (pickedClass.subject === "LUNCH") {
           this.needed.LUNCH -= 1 Unsure if lunch should be deleted
         } */
         if (pickedClass.double_period) {
-          this.needed.educational -=1
-          this.schedule.forEach(scheduledClass => {
+          this.needed.educational -= 1;
+          this.schedule.forEach((scheduledClass) => {
             if (scheduledClass.name === pickedClass.name) {
-              this.schedule[this.schedule.indexOf(scheduledClass)] = {}
-              console.log(scheduledClass)
+              this.schedule[this.schedule.indexOf(scheduledClass)] = {};
+              console.log(scheduledClass);
             }
           });
         }
-        this.needed.educationalPeriods -= 1
-        this.schedule[period] = {}
+        this.needed.educationalPeriods -= 1;
+        this.schedule[period] = {};
       }
-    }
+    },
   },
 };
 </script>
@@ -169,16 +176,18 @@ export default {
   </table>
 </template>
 <style scoped>
-table {
-  border: 4px solid lightgrey;
-  text-align: center;
-  /* border-collapse: separate;
-  border-spacing: 5rem; */
-}
 table,
 td {
   border-radius: 5px;
   -moz-border-radius: 5px;
+}
+table {
+  border: 4px solid lightgrey;
+  text-align: center;
+  margin-top: 1rem;
+  margin-right: 2rem;
+  /* border-collapse: separate;
+  border-spacing: 5rem; */
 }
 .right {
   padding-top: 0.7rem;
@@ -189,10 +198,6 @@ td {
   border-right: 4px solid lightgrey;
   font-weight: bold;
   color: #37394f;
-}
-table {
-  margin-top: 1rem;
-  margin-right: 3rem;
 }
 p {
   margin-top: 1rem;
@@ -224,7 +229,17 @@ p {
     display: none;
   }
 }
-@media only screen and (min-width: 1740px) {
+/* @media only screen and (max-width: 1200px) {
+} */
+@media screen and (max-width: 1420px) {
+  table {
+    margin-right: 1rem;
+  }
+  .placeholder {
+    width: 16rem;
+  }
+}
+/* @media only screen and (min-width: 1740px) {
   .placeholder {
     width: 18rem;
     height: 2.3rem;
@@ -233,5 +248,5 @@ p {
     margin: 1.4rem 2rem 0.2rem 2rem;
     padding-top: 0.4rem;
   }
-}
+} */
 </style>

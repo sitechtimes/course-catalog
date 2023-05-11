@@ -241,144 +241,160 @@
     </div>
     <div class="folder">
       <div v-if="showSubjects.showrussian" class="file LANG">
-        <div class="holders">
-          <div
-            class="placeholder LANG"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `LANG` &&
-                course[`${this.yearPicked.toLowerCase()}`]
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
+        <div class="holdersBg">
+          <div class="holders">
+            <div
+              class="placeholder LANG"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `LANG` &&
+                  course[`${this.yearPicked.toLowerCase()}`]
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
           </div>
         </div>
       </div>
       <div v-if="showSubjects.showgym" class="file PE">
-        <div class="holders">
-          <div
-            class="placeholder PE"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `PE` &&
-                course[`${this.yearPicked.toLowerCase()}`]
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
+        <div class="holdersBg">
+          <div class="holders">
+            <div
+              class="placeholder PE"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `PE` &&
+                  course[`${this.yearPicked.toLowerCase()}`]
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
           </div>
         </div>
       </div>
       <div v-if="showSubjects.showart" class="file a">
-        <div class="holders">
-          <div
-            class="placeholder ARTS"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `ARTS` &&
-                course[`${this.yearPicked.toLowerCase()}`]
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
+        <div class="holdersBg">
+          <div class="holders">
+            <div
+              class="placeholder ARTS"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `ARTS` &&
+                  course[`${this.yearPicked.toLowerCase()}`]
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
           </div>
         </div>
       </div>
       <div v-if="showSubjects.showtechnology" class="file TECH">
-        <div class="holders">
-          <div
-            class="placeholder TECH"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `TECH` &&
-                course[`${this.yearPicked.toLowerCase()}`]
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
-          </div>
-          <div
-            class="placeholder TECH"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `SCIENCE` &&
-                course[`${this.yearPicked.toLowerCase()}`] &&
-                course.name === `Comp Sci/Engineering T1`
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
+        <div class="holdersBg">
+          <div class="holders">
+            <div
+              class="placeholder TECH"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `TECH` &&
+                  course[`${this.yearPicked.toLowerCase()}`]
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
+            <div
+              class="placeholder TECH"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `SCIENCE` &&
+                  course[`${this.yearPicked.toLowerCase()}`] &&
+                  course.name === `Comp Sci/Engineering T1`
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
           </div>
         </div>
       </div>
       <div v-if="showSubjects.showhistory" class="file SS">
-        <div class="holders">
-          <div
-            class="placeholder SS"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `SS` &&
-                course[`${this.yearPicked.toLowerCase()}`]
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
+        <div class="holdersBg">
+          <div class="holders">
+            <div
+              class="placeholder SS"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `SS` &&
+                  course[`${this.yearPicked.toLowerCase()}`]
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
           </div>
         </div>
       </div>
       <div v-if="showSubjects.showenglish" class="file ENGLISH">
-        <div class="holders">
-          <div
-            class="placeholder ENGLISH"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `ENGLISH` &&
-                course[`${this.yearPicked.toLowerCase()}`]
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
+        <div class="holdersBg">
+          <div class="holders">
+            <div
+              class="placeholder ENGLISH"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `ENGLISH` &&
+                  course[`${this.yearPicked.toLowerCase()}`]
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
           </div>
         </div>
       </div>
       <div v-if="showSubjects.showscience" class="file SCIENCE">
-        <div class="holders">
-          <div
-            class="placeholder SCIENCE"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `SCIENCE` &&
-                course[`${this.yearPicked.toLowerCase()}`] &&
-                course.name !== `Comp Sci/Engineering T1`
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
+        <div class="holdersBg">
+          <div class="holders">
+            <div
+              class="placeholder SCIENCE"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `SCIENCE` &&
+                  course[`${this.yearPicked.toLowerCase()}`] &&
+                  course.name !== `Comp Sci/Engineering T1`
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
           </div>
         </div>
       </div>
       <div v-if="showSubjects.showmath" class="file MATH">
-        <div class="holders">
-          <div
-            class="placeholder MATH"
-            v-for="course in courses.filter(
-              (course) =>
-                course.catalog &&
-                course.subject === `MATH` &&
-                course[`${this.yearPicked.toLowerCase()}`]
-            )"
-            v-on:click="addClass(course)"
-          >
-            <h4>{{ course.name }}</h4>
+        <div class="holdersBg">
+          <div class="holders">
+            <div
+              class="placeholder MATH"
+              v-for="course in courses.filter(
+                (course) =>
+                  course.catalog &&
+                  course.subject === `MATH` &&
+                  course[`${this.yearPicked.toLowerCase()}`]
+              )"
+              v-on:click="addClass(course)"
+            >
+              <h4>{{ course.name }}</h4>
+            </div>
           </div>
         </div>
       </div>
@@ -672,6 +688,9 @@ export default {
 };
 </script>
 <style scoped>
+.whole {
+  overflow: hidden;
+}
 .requirements {
   margin-top: -3rem;
   margin-bottom: 3.5rem;
@@ -689,8 +708,14 @@ export default {
   margin-left: 30%;
   margin-top: -1rem;
 }
+.note {
+  position: absolute;
+  z-index: 3;
+  width: 1.5rem;
+  margin-left: 57%;
+}
 svg {
-  fill: #37394f;
+  fill: #f20707;
   transition: 0.3s;
 }
 svg:hover {
@@ -698,13 +723,23 @@ svg:hover {
 }
 .file {
   position: absolute;
+  line-height: 4;
+  width: 56%;
+  margin-left: 3%;
+  margin-bottom: 1rem;
+  border-radius: 0.8rem;
+  padding: 2rem;
+  height: 34rem;
 }
-.test {
-  background-color: #d6eeff;
-}
-.holders {
+.holdersBg {
+  background-color: white;
   border-radius: 0.8rem;
   height: 100%;
+}
+.holders {
+  position: relative;
+  z-index: 3;
+  border-radius: 0.8rem;
   background-color: white;
   display: grid;
   grid-template-columns: auto auto;
@@ -714,7 +749,6 @@ svg:hover {
   grid-column-gap: 10px;
   justify-content: center;
   margin: auto;
-  box-shadow: 2px 0px 2px 0px rgba(0.3, 0.5, 0.3, 0.2);
   padding-bottom: 1.5rem;
 }
 h4 {
@@ -826,18 +860,6 @@ h4 {
   cursor: pointer;
   box-shadow: 2px 0px 2px 0px rgba(0, 0, 0, 0.3);
 }
-.file {
-  line-height: 4;
-  width: 56%;
-  margin-left: 3%;
-  margin-bottom: 1rem;
-  border-radius: 0.8rem;
-  padding: 2rem;
-  height: 33rem;
-}
-svg {
-  fill: #f20707;
-}
 .x {
   fill: #f20707;
   margin-left: 1rem;
@@ -857,120 +879,24 @@ li {
   display: flex;
   flex-direction: row;
 }
-@media only screen and (max-width: 1180px) {
-  .whole {
-    display: none;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .tabs {
-    margin-left: 6%;
-  }
-  svg {
-    width: 1.5rem;
-    margin-left: 47rem;
-  }
-  .tab {
-    width: 4.85rem;
-    font-size: 0.8rem;
-  }
-  .file {
-    width: 52%;
-  }
-  .note {
-    position: absolute;
-    z-index: 3;
-    right: 7rem;
-  }
-  .require {
-    margin-left: 24%;
-  }
-}
-@media only screen and (min-width: 1400px) {
-  .tabs {
-    margin-left: 10%;
-  }
-  .tab {
-    width: 5rem;
-  }
-  .note {
-    position: absolute;
-    z-index: 3;
-    right: 10rem;
-  }
-  .require {
-    margin-left: 24%;
-  }
-}
-
-@media only screen and (min-width: 1500px) {
-  .whole {
-    margin-left: 3rem;
-  }
-  .requirements {
-    margin-bottom: 3rem;
-  }
-  .note {
-    right: 12rem;
-    position: absolute;
-    z-index: 6;
-  }
-  .require {
-    margin-left: 25%;
-  }
-  svg {
-    width: 1.5rem;
-    margin-left: 105%;
-  }
-  .tabs {
-    margin-left: 8%;
-  }
-  .tab {
+@media screen and (max-width: 1420px) {
+  .placeholder {
     font-size: 1rem;
-    width: 6.4rem;
+    width: 16rem;
+    margin: 2rem 1rem 0.2rem 1rem;
   }
-  h2 {
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  h3 {
-    font-size: 1.1rem;
-  }
-  .holders {
-    border-radius: 0.8rem;
-    height: 100%;
-    justify-content: center;
-    margin: auto;
-  }
-}
-@media only screen and (min-width: 1600px) {
-  .note {
-    right: 14rem;
-  }
-}
-@media only screen and (min-width: 1740px) {
-  svg {
-    width: 1.5rem;
-    margin-left: 8.5rem;
-    margin-bottom: 6rem;
-  }
-  .file {
-    width: 53%;
-    height: 63%;
-    margin-left: 8rem;
+  h4 {
+    margin-top: 0.4rem;
   }
   .tabs {
-    margin-left: 23%;
+    margin-left: 9%;
   }
   .tab {
-    width: 8rem;
+    font-size: 0.8rem;
+    width: 5.2rem;
   }
-  .note {
-    margin-top: 0;
-    right: 12rem;
-  }
-  .require {
-    margin-left: 30%;
+  .file {
+    margin-left: 1.5%;
   }
 }
 </style>
