@@ -493,6 +493,13 @@ export default {
           ) {
             needed.TECH += 1;
             return true;
+          } else if (
+            chosenClass.name === "Adv Sci Eng Res T3" ||
+            chosenClass.name === "Adv Sci Eng Res T5" ||
+            chosenClass.name === "Forensic Sci Seminar" ||
+            chosenClass.name === "Modern Physics Seminar"
+          ) {
+            alert("This class will take the place of your lunch class");
           } else if (chosenClass.subject === "PE" && needed.PE === 0) {
             needed.PE += 1;
             return true;

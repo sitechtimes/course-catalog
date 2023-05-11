@@ -1,11 +1,28 @@
 <script lang="ts">
+import { storeToRefs } from "pinia";
+import { useMockSchedule } from "~/store/store";
+
 export default {
   name: "Scheduler",
   props: {
     schedule: [Object],
     needed: Object,
   },
+  data() {
+    return {
+      mockSchedule: useMockSchedule,
+    };
+  },
   methods: {
+    test() {
+      console.log(this.mockSchedule.schedule.length);
+    },
+    save() {
+      //console.log(this.schedule);
+      //const mockSchedule = useMockSchedule;
+      this.mockSchedule.schedule = this.schedule;
+      console.log(this.mockSchedule.schedule);
+    },
     removeClass(period) {
       const pickedClass = this.schedule[period];
       console.log(pickedClass);
@@ -61,118 +78,130 @@ export default {
   <table class="whole">
     <tr class="">
       <th class="p-4 py-2" id="right">Period</th>
-      <th class="px-20">Class</th>
-    </tr>
-    <tr class="border-t-4">
-      <td class="right" id="">1</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[0].subject"
-          id="first"
-          v-on:click="removeClass(0)"
+      <th class="px-15">
+        Class
+        <button @click="test()">test</button>
+        <button
+          class="pr-0 pl-[12.5rem] text-red-800 font-bold text-[1.25rem];"
+          @click="save()"
         >
-          {{ schedule[0].name }}
-        </div>
-      </td>
+          Save
+        </button>
+      </th>
     </tr>
-    <tr class="">
-      <td class="right" id="">2</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[1].subject"
-          v-on:click="removeClass(1)"
-        >
-          {{ schedule[1].name }}
-        </div>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="right" id="">3</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[2].subject"
-          v-on:click="removeClass(2)"
-        >
-          {{ schedule[2].name }}
-        </div>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="right" id="">4</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[3].subject"
-          v-on:click="removeClass(3)"
-        >
-          {{ schedule[3].name }}
-        </div>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="right" id="">5</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[4].subject"
-          v-on:click="removeClass(4)"
-        >
-          {{ schedule[4].name }}
-        </div>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="right" id="">6</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[5].subject"
-          v-on:click="removeClass(5)"
-        >
-          {{ schedule[5].name }}
-        </div>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="right" id="">7</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[6].subject"
-          v-on:click="removeClass(6)"
-        >
-          {{ schedule[6].name }}
-        </div>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="right" id="">8</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[7].subject"
-          v-on:click="removeClass(7)"
-        >
-          {{ schedule[7].name }}
-        </div>
-      </td>
-    </tr>
-    <tr class="">
-      <td class="right" id="lastnum">9</td>
-      <td>
-        <div
-          class="placeholder"
-          :class="schedule[8].subject"
-          id="last"
-          v-on:click="removeClass(8)"
-        >
-          {{ schedule[8].name }}
-        </div>
-      </td>
-    </tr>
+    <section v-if="this.mockSchedule.schedule.length == 9"></section>
+    <section v-else>
+      <tr class="border-t-4">
+        <td class="right" id="">1</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[0].subject"
+            id="first"
+            v-on:click="removeClass(0)"
+          >
+            {{ schedule[0].name }}
+          </div>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="right" id="">2</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[1].subject"
+            v-on:click="removeClass(1)"
+          >
+            {{ schedule[1].name }}
+          </div>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="right" id="">3</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[2].subject"
+            v-on:click="removeClass(2)"
+          >
+            {{ schedule[2].name }}
+          </div>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="right" id="">4</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[3].subject"
+            v-on:click="removeClass(3)"
+          >
+            {{ schedule[3].name }}
+          </div>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="right" id="">5</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[4].subject"
+            v-on:click="removeClass(4)"
+          >
+            {{ schedule[4].name }}
+          </div>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="right" id="">6</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[5].subject"
+            v-on:click="removeClass(5)"
+          >
+            {{ schedule[5].name }}
+          </div>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="right" id="">7</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[6].subject"
+            v-on:click="removeClass(6)"
+          >
+            {{ schedule[6].name }}
+          </div>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="right" id="">8</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[7].subject"
+            v-on:click="removeClass(7)"
+          >
+            {{ schedule[7].name }}
+          </div>
+        </td>
+      </tr>
+      <tr class="">
+        <td class="right" id="lastnum">9</td>
+        <td>
+          <div
+            class="placeholder"
+            :class="schedule[8].subject"
+            id="last"
+            v-on:click="removeClass(8)"
+          >
+            {{ schedule[8].name }}
+          </div>
+        </td>
+      </tr>
+    </section>
   </table>
 </template>
 <style scoped>
