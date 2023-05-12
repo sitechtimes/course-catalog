@@ -690,6 +690,7 @@ export default {
 <style scoped>
 .whole {
   overflow: hidden;
+  margin-left: 5rem;
 }
 .requirements {
   margin-top: -3rem;
@@ -697,7 +698,7 @@ export default {
 }
 .require {
   position: absolute;
-  z-index: 2;
+  z-index: 5;
   background-color: white;
   padding: 1rem;
   padding-bottom: 2rem;
@@ -710,7 +711,7 @@ export default {
 }
 .note {
   position: absolute;
-  z-index: 3;
+  z-index: 6;
   width: 1.5rem;
   margin-left: 57%;
 }
@@ -724,7 +725,7 @@ svg:hover {
 .file {
   position: absolute;
   line-height: 4;
-  width: 56%;
+  width: 53%;
   margin-left: 3%;
   margin-bottom: 1rem;
   border-radius: 0.8rem;
@@ -752,7 +753,7 @@ svg:hover {
   padding-bottom: 1.5rem;
 }
 h4 {
-  margin-top: 3px;
+  margin-top: 4px;
   font-weight: bold;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -852,7 +853,7 @@ h4 {
   border-top-left-radius: 0.6rem;
   transition: 0.4s;
   padding: 0.5rem;
-  width: 6.2rem;
+  width: 7rem;
   color: #37394f;
 }
 .tab:hover {
@@ -879,6 +880,32 @@ li {
   display: flex;
   flex-direction: row;
 }
+@media screen and (max-width: 1660px) {
+  .tabs {
+    margin-left: 10%;
+  }
+  .tab {
+    width: 6.5rem;
+  }
+  .file {
+    margin-left: 1.8%;
+  }
+}
+@media screen and (max-width: 1560px) {
+  .require {
+    margin-left: 26%;
+  }
+  .note {
+    margin-left: 52%;
+  }
+  .tabs {
+    margin-left: 8%;
+  }
+  .tab {
+    width: 6rem;
+  }
+}
+
 @media screen and (max-width: 1420px) {
   .placeholder {
     font-size: 1rem;
@@ -889,14 +916,20 @@ li {
     margin-top: 0.4rem;
   }
   .tabs {
-    margin-left: 9%;
+    margin-left: 3.5%;
   }
   .tab {
     font-size: 0.8rem;
     width: 5.2rem;
   }
+  .require {
+    margin-left: 24%;
+  }
+  .note {
+    margin-left: 50%;
+  }
   .file {
-    margin-left: 1.5%;
+    margin-left: 0%;
   }
 }
 </style>

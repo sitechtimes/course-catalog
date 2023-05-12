@@ -208,11 +208,11 @@ p {
   border: 2px dashed #7d7d7d;
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
-  padding-top: 0.3rem;
+  padding-top: 4px;
   font-weight: bold;
+  font-size: 1.2rem;
   color: #37394f;
 }
-
 /* #first {
   margin-top: 1.2rem;
 }*/
@@ -237,6 +237,8 @@ p {
   }
   .placeholder {
     width: 16rem;
+    font-size: 1rem;
+    padding-top: 6px;
   }
 }
 /* @media only screen and (min-width: 1740px) {
