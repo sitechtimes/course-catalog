@@ -1,6 +1,5 @@
 <script lang="ts">
 import { storeToRefs } from "pinia";
-import { useMockSchedule } from "~/store/store";
 
 export default {
   name: "Scheduler",
@@ -8,21 +7,7 @@ export default {
     schedule: [Object],
     needed: Object,
   },
-  data() {
-    return {
-      mockSchedule: useMockSchedule,
-    };
-  },
   methods: {
-    test() {
-      console.log(this.mockSchedule.schedule.length);
-    },
-    save() {
-      //console.log(this.schedule);
-      //const mockSchedule = useMockSchedule;
-      this.mockSchedule.schedule = this.schedule;
-      console.log(this.mockSchedule.schedule);
-    },
     removeClass(period) {
       const pickedClass = this.schedule[period];
       console.log(pickedClass);
@@ -78,19 +63,9 @@ export default {
   <table class="whole">
     <tr class="">
       <th class="p-4 py-2" id="right">Period</th>
-      <th class="px-15">
-        Class
-        <button @click="test()">test</button>
-        <button
-          class="pr-0 pl-[12.5rem] text-red-800 font-bold text-[1.25rem];"
-          @click="save()"
-        >
-          Save
-        </button>
-      </th>
+      <th>Class</th>
     </tr>
-    <section v-if="this.mockSchedule.schedule.length == 9"></section>
-    <section v-else>
+    <section>
       <tr class="border-t-4">
         <td class="right" id="">1</td>
         <td>
