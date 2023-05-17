@@ -12,7 +12,7 @@ export const useCourseStore = defineStore("courseData", {
 export const useMockSchedule = defineStore("schedule", {
   state: () => {
     return {
-      schedules: [] as schedule[],
+      schedule: [] as schedule[],
     };
   },
 });
