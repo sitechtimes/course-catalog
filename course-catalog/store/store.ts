@@ -8,3 +8,12 @@ export const useCourseStore = defineStore("courseData", {
     };
   },
 });
+
+export const useMockSchedule = defineStore("schedule", {
+  state: () => {
+    return {
+      schedule: [] as schedule[],
+      year: null,
+    };
+  },
+});
