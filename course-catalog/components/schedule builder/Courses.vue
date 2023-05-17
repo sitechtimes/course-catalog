@@ -88,7 +88,9 @@
               <Checkmark />
               <h5>Physical Education</h5>
             </li>
-            <li v-if="this.needed.SCIENCE === 0">
+            <li
+              v-if="this.needed.SCIENCE === 0 && this.yearPicked !== 'Senior'"
+            >
               <Xmark />
               <h5>Science</h5>
             </li>
