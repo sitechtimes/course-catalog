@@ -7,6 +7,7 @@ export default {
   props: {
     schedule: [Object],
     needed: Object,
+    yearPicked: String,
   },
   data() {
     return {
@@ -14,13 +15,9 @@ export default {
     };
   },
   methods: {
-    test() {
-      console.log(this.mockSchedule.schedule);
-    },
     save() {
-      console.log(this.mockSchedule.schedule);
       this.mockSchedule.schedule = this.schedule;
-      console.log(this.mockSchedule.schedule);
+      this.mockSchedule.year = this.yearPicked;
     },
     removeClass(period) {
       const pickedClass = this.schedule[period];
@@ -80,7 +77,6 @@ export default {
       <th>
         Class
         <button @click="save()">Save Schedule</button>
-        <button @click="test()">test</button>
       </th>
     </tr>
     <section v-if="this.mockSchedule.schedule === undefined">
@@ -201,11 +197,11 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[0].subject"
+            :class="schedule[0].subject"
             id="first"
             v-on:click="removeClass(0)"
           >
-            {{ mockSchedule.schedule[0].name }}
+            {{ schedule[0].name }}
           </div>
         </td>
       </tr>
@@ -214,10 +210,10 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[1].subject"
+            :class="schedule[1].subject"
             v-on:click="removeClass(1)"
           >
-            {{ mockSchedule.schedule[1].name }}
+            {{ schedule[1].name }}
           </div>
         </td>
       </tr>
@@ -226,10 +222,10 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[2].subject"
+            :class="schedule[2].subject"
             v-on:click="removeClass(2)"
           >
-            {{ mockSchedule.schedule[2].name }}
+            {{ schedule[2].name }}
           </div>
         </td>
       </tr>
@@ -238,10 +234,10 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[3].subject"
+            :class="schedule[3].subject"
             v-on:click="removeClass(3)"
           >
-            {{ mockSchedule.schedule[3].name }}
+            {{ schedule[3].name }}
           </div>
         </td>
       </tr>
@@ -250,10 +246,10 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[4].subject"
+            :class="schedule[4].subject"
             v-on:click="removeClass(4)"
           >
-            {{ mockSchedule.schedule[4].name }}
+            {{ schedule[4].name }}
           </div>
         </td>
       </tr>
@@ -262,10 +258,10 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[5].subject"
+            :class="schedule[5].subject"
             v-on:click="removeClass(5)"
           >
-            {{ mockSchedule.schedule[5].name }}
+            {{ schedule[5].name }}
           </div>
         </td>
       </tr>
@@ -274,10 +270,10 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[6].subject"
+            :class="schedule[6].subject"
             v-on:click="removeClass(6)"
           >
-            {{ mockSchedule.schedule[6].name }}
+            {{ schedule[6].name }}
           </div>
         </td>
       </tr>
@@ -286,10 +282,10 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[7].subject"
+            :class="schedule[7].subject"
             v-on:click="removeClass(7)"
           >
-            {{ mockSchedule.schedule[7].name }}
+            {{ schedule[7].name }}
           </div>
         </td>
       </tr>
@@ -298,11 +294,11 @@ export default {
         <td>
           <div
             class="placeholder"
-            :class="mockSchedule.schedule[8].subject"
+            :class="schedule[8].subject"
             id="last"
             v-on:click="removeClass(8)"
           >
-            {{ mockSchedule.schedule[8].name }}
+            {{ schedule[8].name }}
           </div>
         </td>
       </tr>

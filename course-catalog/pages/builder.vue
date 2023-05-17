@@ -2,6 +2,7 @@
 import Courses from "../components/schedule builder/Courses.vue";
 import Scheduler from "../components/schedule builder/Scheduler.vue";
 import { useCourseStore } from "~/store/store";
+import { useMockSchedule } from "~/store/store";
 
 export default {
   name: "ScheduleBuilder",
@@ -19,7 +20,7 @@ export default {
         {},
         {
           name: "Lunch",
-          subject: "LUNCH"
+          subject: "LUNCH",
         },
         {},
         {},
@@ -44,6 +45,18 @@ export default {
     };
   },
   methods: {
+    checkStore() {
+      const mockSchedule = useMockSchedule.schedule;
+      const mockScheduleYear = useMockSchedule.year;
+      if (mockSchedule === undefined) {
+        console.log("happy in the hive");
+      } else {
+        console.log("sad in the drag");
+        this.schedule = mockSchedule;
+        this.yearPicked = mockScheduleYear;
+        console.log(this.yearPicked);
+      }
+    },
     changeProps: function () {
       this.needed = {
         ENGLISH: 0,
@@ -58,7 +71,7 @@ export default {
         ap: 0,
         educationalPeriods: 0,
       };
-      this.yearPicked = document.querySelector(".dropdown").value
+      this.yearPicked = document.querySelector(".dropdown").value;
       this.schedule = [
         {},
         {},
@@ -66,14 +79,17 @@ export default {
         {},
         {
           name: "Lunch",
-          subject: "LUNCH"
+          subject: "LUNCH",
         },
         {},
         {},
         {},
         {},
-      ]
+      ];
     },
+  },
+  created() {
+    this.checkStore();
   },
 };
 </script>
@@ -86,18 +102,34 @@ export default {
       <div class="top">
         <h1>
           Make a Schedule for
-          <select name="dropdown" class="dropdown" @change="changeProps()">
-            <option value=""></option>
-            <option value="Freshman">Freshman</option>
-            <option value="Sophomore">Sophomore</option>
-            <option value="Junior">Junior</option>
-            <option value="Senior">Senior</option>
-          </select>
+          <section v-if="this.yearPicked === null">
+            <select name="dropdown" class="dropdown" @change="changeProps()">
+              <option value=""></option>
+              <option value="Freshman">Freshman</option>
+              <option value="Sophomore">Sophomore</option>
+              <option value="Junior">Junior</option>
+              <option value="Senior">Senior</option>
+            </select>
+          </section>
+          <section v-else>
+            <select name="dropdown" class="dropdown" @change="changeProps()">
+              <option value="">{{ yearPicked }}</option>
+              <option value="Freshman">Freshman</option>
+              <option value="Sophomore">Sophomore</option>
+              <option value="Junior">Junior</option>
+              <option value="Senior">Senior</option>
+            </select>
+          </section>
           Year
         </h1>
       </div>
       <div class="bottom">
-        <Scheduler class="" :schedule="schedule" :needed="needed"></Scheduler>
+        <Scheduler
+          class=""
+          :yearPicked="yearPicked"
+          :schedule="schedule"
+          :needed="needed"
+        ></Scheduler>
         <Courses
           :yearPicked="yearPicked"
           :schedule="schedule"
