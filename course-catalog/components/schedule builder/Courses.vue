@@ -403,8 +403,8 @@ export default {
       courses: useCourseStore().courses,
     };
   },
-  mounted() {
-    this.killMathTeam();
+  created() {
+    this.removeMathTeam();
   },
   methods: {
     switchTabs: function (subject) {
@@ -439,27 +439,8 @@ export default {
         alert("Pick a year from the dropdown");
       }
     },
-    killMathTeam: function (courses) {
-      if (courses == undefined) {
-        setTimeout(() => {
-          courses.forEach((element) => {
-            if (course.name == "Math Team A") {
-              console.log("math team sucks");
-            } else if (course.name == "Math Team B") {
-              console.log("math team sucks");
-            } else {
-            }
-          });
-        }, 15000);
-      } else {
-        if (course.name == "Math Team A") {
-          console.log("math team sucks");
-        } else if (course.name == "Math Team B") {
-          console.log("math team sucks");
-        } else {
-        }
-      }
-      console.log("math team sucks");
+    removeMathTeam() {
+      this.courses.splice(49, 2);
     },
     addClass: function (chosenClass) {
       const schedule = this.schedule;
