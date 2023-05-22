@@ -26,7 +26,7 @@ export default {
     removeClass(period) {
       const pickedClass = this.schedule[period];
       console.log(pickedClass);
-      if (this.yearPicked !== "Senior" && pickedClass.name !== "Lunch") {
+      if (this.yearPicked === "Senior" && pickedClass.name === "Lunch") {
         if (pickedClass.ap) {
           this.needed.ap = -1;
         }
@@ -69,6 +69,8 @@ export default {
         }
         this.needed.educationalPeriods -= 1;
         this.schedule[period] = {};
+      } else if (this.yearPicked !== "Senior" && pickedClass.name === "Lunch") {
+        alert("You are not allowed to remove Lunch");
       } else {
         if (pickedClass.ap) {
           this.needed.ap = -1;
@@ -123,8 +125,9 @@ export default {
       <th class="p-4 py-2" id="right">Period</th>
       <th>
         Class
-        <button @click="save()">Save Schedule</button>
-        <button @click="returnLunch()">LUNCH</button>
+        <button v-show="this.yearPicked === 'Senior'" @click="returnLunch()">
+          LUNCH
+        </button>
       </th>
     </tr>
     <section v-if="this.mockSchedule.schedule === undefined">
@@ -352,18 +355,21 @@ export default {
       </tr>
     </section>
   </table>
+  <button @click="save()">Save Schedule</button>
 </template>
 <style scoped>
-table {
-  border: 4px solid lightgrey;
-  text-align: center;
-  /* border-collapse: separate;
-  border-spacing: 5rem; */
-}
 table,
 td {
   border-radius: 5px;
   -moz-border-radius: 5px;
+}
+table {
+  border: 4px solid lightgrey;
+  text-align: center;
+  margin-top: 1rem;
+  margin-right: 2rem;
+  /* border-collapse: separate;
+  border-spacing: 5rem; */
 }
 .right {
   padding-top: 0.7rem;
@@ -375,10 +381,6 @@ td {
   font-weight: bold;
   color: #37394f;
 }
-table {
-  margin-top: 1rem;
-  margin-right: 3rem;
-}
 p {
   margin-top: 1rem;
 }
@@ -388,8 +390,9 @@ p {
   border: 2px solid #7d7d7d;
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
-  padding-top: 0.3rem;
+  padding-top: 4px;
   font-weight: bold;
+  font-size: 1.2rem;
   color: #37394f;
 }
 
@@ -444,10 +447,6 @@ p {
 .LUNCH {
   background-color: #d2fcff;
 }
-
-/* #first {
-  margin-top: 1.2rem;
-}*/
 #lastnum {
   padding-top: 0rem;
   padding-bottom: 0.6rem;
@@ -461,14 +460,14 @@ p {
     display: none;
   }
 }
-@media only screen and (min-width: 1740px) {
+@media screen and (max-width: 1420px) {
+  table {
+    margin-right: 1rem;
+  }
   .placeholder {
-    width: 18rem;
-    height: 2.3rem;
-    border: 2px solid #7d7d7d;
-    border-radius: 15px;
-    margin: 1.4rem 2rem 0.2rem 2rem;
-    padding-top: 0.4rem;
+    width: 16rem;
+    font-size: 1rem;
+    padding-top: 6px;
   }
 }
 </style>
