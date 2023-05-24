@@ -123,14 +123,9 @@ export default {
   <table class="whole">
     <tr class="">
       <th class="p-4 py-2" id="right">Period</th>
-      <th>
-        Class
-        <button v-show="this.yearPicked === 'Senior'" @click="returnLunch()">
-          LUNCH
-        </button>
-      </th>
+      <th class="px-20">Class</th>
     </tr>
-    <section v-if="this.mockSchedule.schedule === undefined">
+    <div v-if="this.mockSchedule.schedule === undefined">
       <tr class="border-t-4">
         <td class="right" id="">1</td>
         <td>
@@ -241,8 +236,8 @@ export default {
           </div>
         </td>
       </tr>
-    </section>
-    <section v-else>
+    </div>
+    <div v-else>
       <tr class="border-t-4">
         <td class="right" id="">1</td>
         <td>
@@ -353,9 +348,12 @@ export default {
           </div>
         </td>
       </tr>
-    </section>
+    </div>
   </table>
   <button @click="save()">Save Schedule</button>
+  <button v-show="this.yearPicked === 'Senior'" @click="returnLunch()">
+    LUNCH
+  </button>
 </template>
 <style scoped>
 table,

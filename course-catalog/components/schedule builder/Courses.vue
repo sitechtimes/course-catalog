@@ -139,7 +139,7 @@
 
     <div class="tabs">
       <button @click="switchTabs(`russian`)" class="tab r">Russian</button>
-      <button @click="switchTabs(`gym`)" class="tab g">Phys. Ed</button>
+      <button @click="switchTabs(`gym`)" class="tab g">PE</button>
       <button @click="switchTabs(`art`)" class="tab a">Art</button>
       <button @click="switchTabs(`technology`)" class="tab t">
         Technology
