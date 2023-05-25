@@ -120,12 +120,13 @@ export default {
 };
 </script>
 <template>
-  <table class="whole">
-    <tr class="">
-      <th class="p-4 py-2" id="right">Period</th>
-      <th class="px-20">Class</th>
-    </tr>
-    <div v-if="this.mockSchedule.schedule === undefined">
+  <div>
+    <table class="table" v-if="this.mockSchedule.schedule === undefined">
+      <tr class="">
+        <th class="p-4 py-2" id="right">Period</th>
+        <th class="px-20">Class</th>
+      </tr>
+      <!-- <div v-if="this.mockSchedule.schedule === undefined"> -->
       <tr class="border-t-4">
         <td class="right" id="">1</td>
         <td>
@@ -236,8 +237,14 @@ export default {
           </div>
         </td>
       </tr>
-    </div>
-    <div v-else>
+    </table>
+    <!-- </div> -->
+    <!-- <div v-else> -->
+    <table class="table" v-else>
+      <tr class="">
+        <th class="p-4 py-2" id="right">Period</th>
+        <th class="px-20">Class</th>
+      </tr>
       <tr class="border-t-4">
         <td class="right" id="">1</td>
         <td>
@@ -348,11 +355,16 @@ export default {
           </div>
         </td>
       </tr>
-    </div>
-  </table>
-  <button @click="save()">Save Schedule</button>
-  <button v-show="this.yearPicked === 'Senior'" @click="returnLunch()">
-    LUNCH
+    </table>
+    <button class="mt-4" @click="save()">Save Schedule</button>
+  </div>
+  <!-- Put if lunch removed, then show button -->
+  <button
+    class="addLunch absolute"
+    v-show="this.yearPicked === 'Senior'"
+    @click="returnLunch()"
+  >
+    +
   </button>
 </template>
 <style scoped>
@@ -393,7 +405,11 @@ p {
   font-size: 1.2rem;
   color: #37394f;
 }
-
+.addLunch {
+  top: 32.35rem;
+  left: 26rem;
+  font-size: 2rem;
+}
 .r {
   background-color: #fedcb5;
 }
@@ -454,7 +470,7 @@ p {
 }
 
 @media only screen and (max-width: 1180px) {
-  .whole {
+  .table {
     display: none;
   }
 }
@@ -466,6 +482,10 @@ p {
     width: 16rem;
     font-size: 1rem;
     padding-top: 6px;
+  }
+  .addLunch {
+    top: 31.25rem;
+    left: 22rem;
   }
 }
 </style>

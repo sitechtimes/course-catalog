@@ -111,7 +111,7 @@ export default {
               <option value="Senior">Senior</option>
             </select>
           </section>
-          <section v-else>
+          <section class="mx-2" v-else>
             <select name="dropdown" class="dropdown" @change="changeProps()">
               <option value="">{{ yearPicked }}</option>
               <option value="Freshman">Freshman</option>
