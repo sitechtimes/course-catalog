@@ -310,12 +310,18 @@
       </div>
       <div v-if="showSubjects.showlanding" class="file landing">
         <div class="content">
-          <h2>Instructions</h2>
-          <h3>
-            Click on subject tabs and drag desired courses to the schedule
-            maker. Please keep in mind that this may not be your actual schedule
-            that year.
-          </h3>
+          <h2 class="font-bold text-lg">Instructions</h2>
+          <div class="mt-2">
+            <h3 class="mt-4">
+              ○ Click on subject tabs and drag desired courses to the schedule
+              maker. Please keep in mind that this may not be your actual
+              schedule that year.
+            </h3>
+            <h3 class="mt-4">
+              ○ Period 5 Lunch is default for this scheduler, not your actual
+              schedule. For Seniors, press + to add your lunch back.
+            </h3>
+          </div>
         </div>
       </div>
     </div>
@@ -658,8 +664,8 @@ svg:hover {
 .file {
   position: absolute;
   line-height: 4;
-  width: 53%;
-  margin-left: 3%;
+  width: 50%;
+  margin-left: 5%;
   margin-bottom: 1rem;
   border-radius: 0.8rem;
   padding: 2rem;
@@ -710,6 +716,10 @@ h4 {
   display: block;
   background-color: #fff2e2;
   color: #37394f;
+}
+.content {
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 .placeholder:hover {
   opacity: 0.5;
@@ -822,6 +832,7 @@ li {
   }
   .file {
     margin-left: 1.8%;
+    width: 53%;
   }
 }
 @media screen and (max-width: 1560px) {
@@ -863,6 +874,11 @@ li {
   }
   .file {
     margin-left: 0%;
+    width: 53%;
+  }
+  .content {
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 }
 </style>

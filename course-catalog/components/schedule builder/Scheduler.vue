@@ -358,7 +358,7 @@ export default {
     </table>
     <button class="mt-4" @click="save()">Save Schedule</button>
   </div>
-  <!-- Put if lunch removed, then show button -->
+  <!-- Put if lunch removed, then show button and note when select senior -->
   <button
     class="addLunch absolute"
     v-show="this.yearPicked === 'Senior'"
@@ -484,8 +484,12 @@ p {
     padding-top: 6px;
   }
   .addLunch {
-    top: 31.25rem;
-    left: 22rem;
+    left: 24rem;
+  }
+}
+@media screen and (max-width: 1480px) {
+  .addLunch {
+    top: 30.4rem;
   }
 }
 </style>
