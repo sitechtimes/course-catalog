@@ -356,7 +356,28 @@ export default {
         </td>
       </tr>
     </table>
-    <button class="mt-4" @click="save()">Save Schedule</button>
+    <button
+      class="mt-4"
+      id="save"
+      @click="
+        save();
+        saveAnimation();
+      "
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="1em"
+        viewBox="0 0 448 512"
+        id="saveIcon"
+        class="fill-white mr-2"
+      >
+        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path
+          d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V173.3c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32H64zm0 96c0-17.7 14.3-32 32-32H288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
+        />
+      </svg>
+      Save Schedule
+    </button>
   </div>
   <!-- Put if lunch removed, then show button and note when select senior -->
   <button
@@ -467,6 +488,41 @@ p {
 }
 #last {
   margin-bottom: 1.5rem;
+}
+#save {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  border-style: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  background-color: #37394f;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  height: 50px;
+  line-height: 1.5;
+  padding: 14px 22px;
+  text-align: center;
+  text-decoration: none;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.3s;
+}
+
+#save:hover {
+  background-color: #4d506e;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0.35s;
+}
+#saveIcon {
+  margin-top: 0.2rem;
+}
+@media (min-width: 768px) {
+  .button-65 {
+    padding: 14px 22px;
+    width: 176px;
+  }
 }
 
 @media only screen and (max-width: 1180px) {
