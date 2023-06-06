@@ -12,12 +12,19 @@ export default {
   data() {
     return {
       mockSchedule: useMockSchedule,
+      disabled: false,
     };
   },
   methods: {
     save() {
       this.mockSchedule.schedule = this.schedule;
       this.mockSchedule.year = this.yearPicked;
+    },
+    saveDisabled() {
+      this.disabled = true;
+      setTimeout(() => {
+        this.disabled = false;
+      }, 2000);
     },
     returnLunch() {
       this.removeClass(4);
@@ -361,7 +368,7 @@ export default {
       id="save"
       @click="
         save();
-        saveAnimation();
+        saveDisabled();
       "
     >
       <svg
@@ -370,13 +377,15 @@ export default {
         viewBox="0 0 448 512"
         id="saveIcon"
         class="fill-white mr-2"
+        :class="{ bounce: disabled }"
       >
         <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
         <path
           d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V173.3c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32H64zm0 96c0-17.7 14.3-32 32-32H288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
         />
       </svg>
-      Save Schedule
+      <span v-if="disabled">Schedule Saved!</span
+      ><span v-else>Save Schedule</span>
     </button>
   </div>
   <!-- Put if lunch removed, then show button and note when select senior -->
@@ -517,6 +526,24 @@ p {
 }
 #saveIcon {
   margin-top: 0.2rem;
+}
+.bounce {
+  animation: bounce 2s ease infinite;
+}
+@keyframes bounce {
+  0%,
+  30%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }
 @media (min-width: 768px) {
   .button-65 {
