@@ -502,19 +502,13 @@ p {
   display: flex;
   flex-direction: row;
   border-radius: 10px;
-  border-style: none;
-  box-shadow: none;
-  box-sizing: border-box;
   background-color: #37394f;
   color: #fff;
   cursor: pointer;
-  font-size: 15px;
-  height: 50px;
+  font-size: 0.9rem;
   line-height: 1.5;
   padding: 14px 22px;
   text-align: center;
-  text-decoration: none;
-  transform: translate3d(0, 0, 0);
   transition: all 0.3s;
 }
 
@@ -545,13 +539,6 @@ p {
     transform: translateY(-5px);
   }
 }
-@media (min-width: 768px) {
-  .button-65 {
-    padding: 14px 22px;
-    width: 176px;
-  }
-}
-
 @media only screen and (max-width: 1180px) {
   .table {
     display: none;
@@ -568,6 +555,13 @@ p {
   }
   .addLunch {
     left: 24rem;
+  }
+  #saveIcon {
+    margin-top: 0.15rem;
+  }
+  #save {
+    font-size: 0.8rem;
+    padding: 13px 18px;
   }
 }
 @media screen and (max-width: 1480px) {

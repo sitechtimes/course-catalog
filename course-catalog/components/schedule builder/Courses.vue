@@ -55,7 +55,7 @@
       <div v-if="showr" class="require">
         <div class="uncr">
           <h3 class="mt-0 font-bold">Requirements</h3>
-          <bl>
+          <bl class="">
             <li v-if="this.needed.ENGLISH === 0">
               <Xmark />
               <h5>English</h5>
