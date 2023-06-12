@@ -54,7 +54,7 @@
       </button>
       <div v-if="showr" class="require">
         <div class="uncr">
-          <h3 class="mt-0 font-bold">Requirements</h3>
+          <h3 class="mt-0 mb-3 font-bold">Requirements</h3>
           <bl class="">
             <li v-if="this.needed.ENGLISH === 0">
               <Xmark />
@@ -640,7 +640,7 @@ export default {
   z-index: 5;
   background-color: white;
   padding: 1rem;
-  padding-bottom: 2rem;
+  padding-bottom: 1.5rem;
   border: 2px solid #37394f;
   border-radius: 1rem;
   color: #37394f;
