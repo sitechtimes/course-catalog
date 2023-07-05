@@ -100,9 +100,9 @@ export default {
       <title>Schedule Builder</title>
       <h2 class="text-4xl font-semibold">Schedule Builder</h2>
       <div class="top">
-        <h1>
+        <h1 class="inline-flex">
           Make a Schedule for
-          <section v-if="this.yearPicked === null">
+          <section class="mx-2" v-if="this.yearPicked === null">
             <select name="dropdown" class="dropdown" @change="changeProps()">
               <option value=""></option>
               <option value="Freshman">Freshman</option>
@@ -111,7 +111,7 @@ export default {
               <option value="Senior">Senior</option>
             </select>
           </section>
-          <section v-else>
+          <section class="mx-2" v-else>
             <select name="dropdown" class="dropdown" @change="changeProps()">
               <option value="">{{ yearPicked }}</option>
               <option value="Freshman">Freshman</option>

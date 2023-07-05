@@ -12,12 +12,19 @@ export default {
   data() {
     return {
       mockSchedule: useMockSchedule,
+      disabled: false,
     };
   },
   methods: {
     save() {
       this.mockSchedule.schedule = this.schedule;
       this.mockSchedule.year = this.yearPicked;
+    },
+    saveDisabled() {
+      this.disabled = true;
+      setTimeout(() => {
+        this.disabled = false;
+      }, 2000);
     },
     returnLunch() {
       this.removeClass(4);
@@ -26,7 +33,7 @@ export default {
     removeClass(period) {
       const pickedClass = this.schedule[period];
       console.log(pickedClass);
-      if (this.yearPicked !== "Senior" && pickedClass.name !== "Lunch") {
+      if (this.yearPicked === "Senior" && pickedClass.name === "Lunch") {
         if (pickedClass.ap) {
           this.needed.ap = -1;
         }
@@ -69,6 +76,8 @@ export default {
         }
         this.needed.educationalPeriods -= 1;
         this.schedule[period] = {};
+      } else if (this.yearPicked !== "Senior" && pickedClass.name === "Lunch") {
+        alert("You are not allowed to remove Lunch");
       } else {
         if (pickedClass.ap) {
           this.needed.ap = -1;
@@ -118,16 +127,13 @@ export default {
 };
 </script>
 <template>
-  <table class="whole">
-    <tr class="">
-      <th class="p-4 py-2" id="right">Period</th>
-      <th>
-        Class
-        <button @click="save()">Save Schedule</button>
-        <button @click="returnLunch()">LUNCH</button>
-      </th>
-    </tr>
-    <section v-if="this.mockSchedule.schedule === undefined">
+  <div>
+    <table class="table" v-if="this.mockSchedule.schedule === undefined">
+      <tr class="">
+        <th class="p-4 py-2" id="right">Period</th>
+        <th class="px-20">Class</th>
+      </tr>
+      <!-- <div v-if="this.mockSchedule.schedule === undefined"> -->
       <tr class="border-t-4">
         <td class="right" id="">1</td>
         <td>
@@ -238,8 +244,14 @@ export default {
           </div>
         </td>
       </tr>
-    </section>
-    <section v-else>
+    </table>
+    <!-- </div> -->
+    <!-- <div v-else> -->
+    <table class="table" v-else>
+      <tr class="">
+        <th class="p-4 py-2" id="right">Period</th>
+        <th class="px-20">Class</th>
+      </tr>
       <tr class="border-t-4">
         <td class="right" id="">1</td>
         <td>
@@ -350,20 +362,54 @@ export default {
           </div>
         </td>
       </tr>
-    </section>
-  </table>
+    </table>
+    <button
+      class="mt-4"
+      id="save"
+      @click="
+        save();
+        saveDisabled();
+      "
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="1em"
+        viewBox="0 0 448 512"
+        id="saveIcon"
+        class="fill-white mr-2"
+        :class="{ bounce: disabled }"
+      >
+        <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+        <path
+          d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V173.3c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32H64zm0 96c0-17.7 14.3-32 32-32H288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
+        />
+      </svg>
+      <span v-if="disabled">Schedule Saved!</span
+      ><span v-else>Save Schedule</span>
+    </button>
+  </div>
+  <!-- Put if lunch removed, then show button and note when select senior -->
+  <button
+    class="addLunch absolute"
+    v-show="this.yearPicked === 'Senior'"
+    @click="returnLunch()"
+  >
+    +
+  </button>
 </template>
 <style scoped>
-table {
-  border: 4px solid lightgrey;
-  text-align: center;
-  /* border-collapse: separate;
-  border-spacing: 5rem; */
-}
 table,
 td {
   border-radius: 5px;
   -moz-border-radius: 5px;
+}
+table {
+  border: 4px solid lightgrey;
+  text-align: center;
+  margin-top: 1rem;
+  margin-right: 2rem;
+  /* border-collapse: separate;
+  border-spacing: 5rem; */
 }
 .right {
   padding-top: 0.7rem;
@@ -375,10 +421,6 @@ td {
   font-weight: bold;
   color: #37394f;
 }
-table {
-  margin-top: 1rem;
-  margin-right: 3rem;
-}
 p {
   margin-top: 1rem;
 }
@@ -388,11 +430,16 @@ p {
   border: 2px solid #7d7d7d;
   border-radius: 15px;
   margin: 1rem 2rem 0.2rem 2rem;
-  padding-top: 0.3rem;
+  padding-top: 4px;
   font-weight: bold;
+  font-size: 1.2rem;
   color: #37394f;
 }
-
+.addLunch {
+  top: 32.35rem;
+  left: 26rem;
+  font-size: 2rem;
+}
 .r {
   background-color: #fedcb5;
 }
@@ -444,10 +491,6 @@ p {
 .LUNCH {
   background-color: #d2fcff;
 }
-
-/* #first {
-  margin-top: 1.2rem;
-}*/
 #lastnum {
   padding-top: 0rem;
   padding-bottom: 0.6rem;
@@ -455,20 +498,75 @@ p {
 #last {
   margin-bottom: 1.5rem;
 }
+#save {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  background-color: #37394f;
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding: 14px 22px;
+  text-align: center;
+  transition: all 0.3s;
+}
 
+#save:hover {
+  background-color: #4d506e;
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0.35s;
+}
+#saveIcon {
+  margin-top: 0.2rem;
+}
+.bounce {
+  animation: bounce 2s ease infinite;
+}
+@keyframes bounce {
+  0%,
+  30%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
 @media only screen and (max-width: 1180px) {
-  .whole {
+  .table {
     display: none;
   }
 }
-@media only screen and (min-width: 1740px) {
+@media screen and (max-width: 1420px) {
+  table {
+    margin-right: 1rem;
+  }
   .placeholder {
-    width: 18rem;
-    height: 2.3rem;
-    border: 2px solid #7d7d7d;
-    border-radius: 15px;
-    margin: 1.4rem 2rem 0.2rem 2rem;
-    padding-top: 0.4rem;
+    width: 16rem;
+    font-size: 1rem;
+    padding-top: 6px;
+  }
+  .addLunch {
+    left: 24rem;
+  }
+  #saveIcon {
+    margin-top: 0.15rem;
+  }
+  #save {
+    font-size: 0.8rem;
+    padding: 13px 18px;
+  }
+}
+@media screen and (max-width: 1480px) {
+  .addLunch {
+    top: 30.4rem;
   }
 }
 </style>
