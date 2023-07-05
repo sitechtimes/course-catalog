@@ -11,7 +11,7 @@ export default async function (){
 
 
     await axios({
-        url:`https://api.siths.dev/course/`,
+        url:`10.94.168.231:8000/course/`,
         method: 'get',
         headers: {
             'Content-Type': 'application/json',
