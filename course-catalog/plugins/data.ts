@@ -2,10 +2,6 @@ import axios from "axios"
 import { useCourseStore } from "~~/store/store"
 import course from '~~/interface/course'
 import courseNode from '~/interface/course'
-
-
-
-
 const Course:any = []
 export default async function (){
 
