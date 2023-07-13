@@ -28,7 +28,7 @@
               this.needed.SCIENCE !== 0 &&
               this.needed.LANG !== 0 &&
               this.needed.LUNCH !== 0 &&
-              this.needed.this.yearPicked === `Freshman` &&
+              // this.needed.this.yearPicked === `Freshman` &&
               this.needed.TECH !== 0)
           "
           class="green"
