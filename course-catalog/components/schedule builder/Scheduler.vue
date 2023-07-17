@@ -19,6 +19,8 @@ export default {
     save() {
       this.mockSchedule.schedule = this.schedule;
       this.mockSchedule.year = this.yearPicked;
+      this.mockSchedule.needed = this.needed
+      console.log(this.mockSchedule.needed)
     },
     saveDisabled() {
       this.disabled = true;

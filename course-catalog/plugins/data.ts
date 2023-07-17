@@ -6,7 +6,7 @@ import courseNode from "~/interface/course";
 export default async function () {
 
   const { data, pending, error, refresh } = await useAsyncData("course", () =>
-    $fetch("http://10.94.168.231:8000/course")
+    $fetch("https://b5ac-165-155-162-19.ngrok-free.app/course")
   );
   useCourseStore().courses = data;
   

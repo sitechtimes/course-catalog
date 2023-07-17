@@ -48,13 +48,15 @@ export default {
     checkStore() {
       const mockSchedule = useMockSchedule.schedule;
       const mockScheduleYear = useMockSchedule.year;
+      const mockNeeded = useMockSchedule.needed
       if (mockSchedule === undefined) {
         console.log("happy in the hive");
       } else {
         console.log("sad in the drag");
         this.schedule = mockSchedule;
         this.yearPicked = mockScheduleYear;
-        console.log(this.yearPicked);
+        this.needed = mockNeeded
+        console.log(this.needed);
       }
     },
     changeProps: function () {
