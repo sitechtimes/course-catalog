@@ -54,7 +54,8 @@ export default {
         console.log("sad in the drag");
         this.schedule = mockSchedule;
         this.yearPicked = mockScheduleYear;
-        console.log(this.yearPicked);
+        this.needed = mockNeeded
+        console.log(this.needed);
       }
     },
     changeProps: function () {
