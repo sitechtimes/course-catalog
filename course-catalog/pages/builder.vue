@@ -48,6 +48,7 @@ export default {
     checkStore() {
       const mockSchedule = useMockSchedule.schedule;
       const mockScheduleYear = useMockSchedule.year;
+      const mockNeeded = useMockSchedule.needed
       if (mockSchedule === undefined) {
         console.log("happy in the hive");
       } else {

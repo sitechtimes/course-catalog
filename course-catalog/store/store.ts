@@ -14,6 +14,7 @@ export const useMockSchedule = defineStore("schedule", {
     return {
       schedule: [] as schedule[],
       year: null,
+      needed: null,
     };
   },
 });
