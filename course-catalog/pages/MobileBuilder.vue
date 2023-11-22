@@ -2,7 +2,10 @@
 import YearPicked from '~/components/mobile-builder/YearPicker.vue'
 import Schedule from '~/components/mobile-builder/Schedule.vue'
 import CoursesModal from '~/components/mobile-builder/CoursesModal.vue'
+import ErrorToast from '~/components/mobile-builder/ErrorToast.vue'
 import course from "~~/interface/course";
+import { useCourseStore } from "~/store/store";
+
 
 
 export default {
@@ -10,44 +13,85 @@ export default {
         YearPicked,
         Schedule,
         CoursesModal,
+        ErrorToast,
     },
     data() {
         return {
             yearPicked: "",
             showCourseModal: false,
-            scheduleCourses: [
+            schedule: [
+                {},
+                {},
+                {},
+                {},
+                {},
                 {
-
+                    "name": "Lunch",
+                    "subject": "LUNCH"
                 },
-            ]
+                {},
+                {},
+                {}
+            ],
+            errorMessage: "",
+            courses: useCourseStore().courses,
         }
     },
     methods: {
         updateYear(year: any) {
             this.yearPicked = year
+            if (year == "Freshman") {
+                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "Russian T1"))
+                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "AP World History T1"))
+                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "English T1"))
+                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "Chemistry T1"))
+            } else if (year == "Sophomore") {
+                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "English T3"))
+                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "AP World History T3"))
+            }
+            
         },
         showCoursesModal() {
             this.showCourseModal = !this.showCourseModal
         },
         addCourse(x) {
             this.showCourseModal = !this.showCourseModal
-            this.scheduleCourses.push(x)
+            if (!this.schedule.find((period) => period.name == undefined)) {
+                return this.errorMessage = "No More Space"
+            } else if (this.schedule.find((period) => period.name == x.name)){
+                return this.errorMessage = "Class is already in the schedule"
+            } else if (x.double_period) {
+                Object.assign(this.schedule.find((period) => period.name == undefined), x)
+            }
+
+            Object.assign(this.schedule.find((period) => period.name == undefined), x)
+        },
+        removeCourse(x) {
+            if (x.name == "Lunch") {
+                return this.errorMessage = "Can't remove lunch"
+            }
+
+            if (this.yearPicked == "Freshman" && ["Russian T1", "AP World History T1", "English T1", "Chemistry T1"].includes(x.name)) {
+                return this.errorMessage = "Can't remove mandatory classes"
+            } else if (this.yearPicked == "Sophomore" && ["AP World History T3", "English T3"].includes(x.name)) {
+                return this.errorMessage = "Can't remove mandatory classes"
+            }
+
+            Object.assign(this.schedule.find((period) => period.name == x.name), {"name": undefined})
+        },
+        closeError() {
+            this.errorMessage = ""
         }
     },
-    watch: {
-        scheduleCourses(newValue, oldValue) {
-        console.log("someData changed!");
-        },
-  },
 }
 </script>
 
 <template>
     <div>
         <YearPicked v-if="yearPicked.length == 0" @updateYear="updateYear($event)" />
-        <div v-else class="flex flex-col mt-20 h-4/5 px-8 justify-center place-content-center">
-            <h1 class="text-4xl">Schedule Builder</h1>
-            <div class="flex w-full justify-between">
+        <div v-else class="flex flex-col mt-20 h-4/5 px-4 justify-center place-content-center">
+            <h1 class="text-4xl mb-[12px]">Schedule Builder</h1>
+            <div class="flex w-full justify-between mb-[20px]">
                 <p>{{ yearPicked }} Year Schedule</p>
                 <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -61,17 +105,48 @@ export default {
                     </defs>
                 </svg>
             </div>
-            <div class="flex w-full justify-between">
-                <button class="bg-indigo-200 px-4 py-1 font-medium" @click="showCoursesModal">
+            <div class="flex w-full justify-between mb-[20px]">
+                <button class="flex justify-center items-center text-white bg-[#37394F] w-[164px] h-[37px] rounded-[15px] font-medium" @click="showCoursesModal">
                     Add Courses
                 </button>
-                <button class="bg-indigo-200 px-4 py-1 font-medium">
+                <button class="flex justify-center items-center text-white bg-[#37394F] w-[164px] h-[37px] rounded-[15px] font-medium">
                     Save Schedule
                 </button>
             </div>
-            <CoursesModal :year=yearPicked @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal"/> 
-            <Schedule />
+            <ErrorToast :errorMessage="errorMessage" @closeError="closeError" />
+            <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal"/> 
+            <Schedule :schedule="schedule" @removeCourse="removeCourse"/>
         </div>
 
     </div>
 </template>
+
+<style>
+#LANG, #Russian {
+  background-color: #fedcb5;
+}
+#PE {
+  background-color: #bebfdf;
+}
+#ARTS, #Arts {
+  background-color: #ffdfdf;
+}
+#TECH, #Technology {
+  background-color: #fffbd6;
+}
+#SS, #History {
+  background-color: #e0d6ff;
+}
+#ENGLISH, #English {
+  background-color: #d6eeff;
+}
+#SCIENCE, #Science {
+  background-color: #cbf2d4;
+}
+#MATH, #Math {
+  background-color: #ffadb2;
+}
+#LUNCH {
+  background-color: #d2fcff;
+}
+</style>
