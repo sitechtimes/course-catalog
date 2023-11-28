@@ -9,6 +9,6 @@ export default {
 <template>
     <div v-if="errorMessage" class="bg-red-600">
         <h1>{{ errorMessage }}</h1>
-        <button @click="this.$emit('closeError')">close</button>
+        <button @click="this.$emit('close')">close</button>
     </div>
 </template>

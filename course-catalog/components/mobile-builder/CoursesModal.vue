@@ -55,7 +55,7 @@ export default {
 
                 </div>
                 
-                <div class="flex flex-col space-y-[12px] justify-center">
+                <div class="flex flex-col space-y-[12px]">
                     <div v-for="subject in subjects" @click="updateSubject(subject)" class="flex w-[287px] h-[44px] rounded-[15px] font-bold border-1 border-black justify-center items-center" :id="subject">
                         {{ subject }}
                     </div>
@@ -67,13 +67,13 @@ export default {
         </div>
     </div>
     <div v-else class="fixed inset-0 flex items-center justify-center z-[51]">
-        <div class="bg-white text-black rounded-[12px] ">
+        <div class="bg-white text-black rounded-[12px]">
             <div class="p-4 h-[544px] w-[335px] overflow-scroll">
                 <div class="flex justify-between">
                     <h2 class="text-lg font-semibold">{{ pickedSubject }}</h2>
                     <button @click="goBack">Go Back</button>
                 </div>
-                <div class="flex flex-col justify-content space-y-[12px]">
+                <div class="flex flex-col justify-center space-y-[12px]">
                     <div v-for="course in subjectCourses" @click="this.$emit('addCourse',course)" class="flex h-[44px] w-[287px] align-middle rounded-[15px] font-bold  border-1 border-black justify-center items-center" :id="course.subject">{{course.name}}</div>
                 </div>
             </div>

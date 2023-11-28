@@ -19,8 +19,8 @@ export default {
 <template>
     <div class="flex flex-col mt-20 h-4/5 px-8 justify-center place-content-center">
         <h1 class="text-3xl align-middle">Pick your Year</h1>
-        <div class="flex flex-col gap-2">
-            <button v-for="year in years" type="button" @click="yearPicked(year)" class="flex bg-indigo-200 rounded-[15px] my-1.5 font-bold justify-center items-center h-[44px]">
+        <div class="flex flex-col gap-2 my-10">
+            <button v-for="year in years" type="button" @click="yearPicked(year)" class="flex rounded-[15px] my-1.5 h-[44px]  justify-center items-center text-white bg-[#37394F] font-medium">
                 {{year}}
             </button>
         </div>

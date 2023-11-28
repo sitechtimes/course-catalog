@@ -2,6 +2,7 @@
 import YearPicked from '~/components/mobile-builder/YearPicker.vue'
 import Schedule from '~/components/mobile-builder/Schedule.vue'
 import CoursesModal from '~/components/mobile-builder/CoursesModal.vue'
+import RequirementsModal from '~/components/mobile-builder/RequirementsModal.vue'
 import ErrorToast from '~/components/mobile-builder/ErrorToast.vue'
 import course from "~~/interface/course";
 import { useCourseStore } from "~/store/store";
@@ -14,11 +15,13 @@ export default {
         Schedule,
         CoursesModal,
         ErrorToast,
+        RequirementsModal,
     },
     data() {
         return {
             yearPicked: "",
             showCourseModal: false,
+            showRequirementsModal: false,
             schedule: [
                 {},
                 {},
@@ -53,6 +56,9 @@ export default {
         },
         showCoursesModal() {
             this.showCourseModal = !this.showCourseModal
+        },
+        showRequirementModal() {
+            this.showRequirementsModal = !this.showRequirementsModal
         },
         addCourse(x) {
             this.showCourseModal = !this.showCourseModal
@@ -93,7 +99,7 @@ export default {
             <h1 class="text-4xl mb-[12px]">Schedule Builder</h1>
             <div class="flex w-full justify-between mb-[20px]">
                 <p>{{ yearPicked }} Year Schedule</p>
-                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg"
+                <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" 
                     xmlns:xlink="http://www.w3.org/1999/xlink">
                     <rect width="19.44" height="18" fill="url(#pattern0)" />
                     <defs>
@@ -113,7 +119,7 @@ export default {
                     Save Schedule
                 </button>
             </div>
-            <ErrorToast :errorMessage="errorMessage" @closeError="closeError" />
+            <ErrorToast :errorMessage="errorMessage" @close="closeError" />
             <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal"/> 
             <Schedule :schedule="schedule" @removeCourse="removeCourse"/>
         </div>

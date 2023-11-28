@@ -16,7 +16,8 @@
     "@nuxtjs/axios": "^5.13.6",
     "@pinia/nuxt": "^0.4.6",
     "axios": "^1.2.2",
-    "pinia": "^2.0.28"
+    "pinia": "^2.0.28",
+    "vuedraggable": "^2.24.3"
   },
   "overrides": {
     "vue": "latest"
