@@ -34,7 +34,9 @@ export default {
                 {},
                 {},
                 {}
-            ],
+            ]
+            ,
+            requirements: {},
             errorMessage: "",
             courses: useCourseStore().courses,
         }
@@ -43,15 +45,47 @@ export default {
         updateYear(year: any) {
             this.yearPicked = year
             if (year == "Freshman") {
-                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "Russian T1"))
-                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "AP World History T1"))
-                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "English T1"))
-                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "Chemistry T1"))
+                ["Russian T1", "AP World History T1", "English T1", "Chemistry T1"].forEach((x) => {
+                    Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == x))
+                })
             } else if (year == "Sophomore") {
-                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "English T3"))
-                Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == "AP World History T3"))
+                ["English T3", "AP World History T3"].forEach((x) => {
+                    Object.assign(this.schedule.find((period) => period.name == undefined), this.courses.find((course) => course.name == x))
+
+                    this.requirements = {
+                        "7 Academic Periods": false,
+                        "English": true,
+                        "AP Global": true,
+                        "Math": false,
+                        "Physics": false,
+                        "Russian": false,
+                        "CAD": false,
+                        "Physical Education": false,
+                        "Lunch": true,
+                    }
+                })
+            } else if (year == "Junior") {
+                this.requirements = {
+                    "7 Academic Periods": false,
+                    "English": false,
+                    "AP US History": false,
+                    "Science": false,
+                    "Math": false,
+                    "Russian": false,
+                    "Physical Education": false,
+                    "Lunch": true,
+                }
+            } else {
+                this.requirements = {
+                    "7 Academic Periods:": false,
+                    "English": false,
+                    "Social Studies": false,
+                    "Math": false,
+                    "Physical Education": false,
+                    "Lunch": false,
+                }
             }
-            
+
         },
         showCoursesModal() {
             this.showCourseModal = !this.showCourseModal
@@ -60,13 +94,15 @@ export default {
             this.showCourseModal = !this.showCourseModal
             if (!this.schedule.find((period) => period.name == undefined)) {
                 return this.errorMessage = "No More Space"
-            } else if (this.schedule.find((period) => period.name == x.name)){
+            } else if (this.schedule.find((period) => period.name == x.name)) {
                 return this.errorMessage = "Class is already in the schedule"
             } else if (x.double_period) {
                 Object.assign(this.schedule.find((period) => period.name == undefined), x)
             }
 
             Object.assign(this.schedule.find((period) => period.name == undefined), x)
+
+            this.updateRequirements(x, "add")
         },
         removeCourse(x) {
             if (x.name == "Lunch") {
@@ -79,10 +115,35 @@ export default {
                 return this.errorMessage = "Can't remove mandatory classes"
             }
 
-            Object.assign(this.schedule.find((period) => period.name == x.name), {"name": undefined})
+            Object.assign(this.schedule.find((period) => period.name == x.name), { "name": undefined })
+
+            this.updateRequirements(x, "remove")
         },
         closeError() {
             this.errorMessage = ""
+        },
+        updateRequirements(x, func) {
+
+            let status = true
+            let subject = x.subject.toLowerCase().charAt(0).toUpperCase() + x.subject.toLowerCase().slice(1)
+
+            if (x.subject == "LANG") {
+                subject = "Russian"
+            } else if (x.subject == "SS") {
+                subject = "History"
+            } else if (x.subject == "PE") {
+                subject = "Physical Education"
+            }
+
+            if (x.subject == "TECH" || x.subject == "ARTS") {
+                return
+            }
+
+            if (func == "remove") {
+                status = false
+            }
+
+            this.requirements[subject] = status
         }
     },
 }
@@ -99,14 +160,14 @@ export default {
 
             <div class="mx-4">
                 <h1 class="text-4xl mb-[12px]">Schedule Builder</h1>
-            <div class="flex w-full justify-between mb-[20px]">
-                <p>{{ yearPicked }} Year Schedule</p>
-            </div>
+                <div class="flex w-full justify-between mb-[20px]">
+                    <p>{{ yearPicked }} Year Schedule</p>
+                </div>
             </div>
 
-            <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal"/> 
-            <CourseRequirements :yearPicked="yearPicked"/>
-            <Schedule :schedule="schedule" @removeCourse="removeCourse" @showCoursesModal="showCoursesModal"/>
+            <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal" />
+            <CourseRequirements :yearPicked="yearPicked" :requirements="requirements" />
+            <Schedule :schedule="schedule" @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" />
         </div>
 
     </div>
