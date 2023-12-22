@@ -4,6 +4,7 @@ const courseStore = useCourseStore();
 function doStuff() {
   console.log(courseStore.courses);
 }
+
 </script>
 
 <template>

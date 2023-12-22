@@ -9,6 +9,7 @@ export default interface course{
     doublePeriod: boolean
     catalog: boolean
     subject: string
+    id: string
 }
 
 export default interface courseNode{
