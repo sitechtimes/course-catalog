@@ -136,7 +136,7 @@ export default {
           <div v-if="filteredCourses.length" v-for="course in filteredCourses" @click="$emit('addCourse', course)"
             class="flex flex-col w-full my-1 rounded-[15px] border-1 border-black justify-start items-start">
             <h2 class="font-bold text-lg">{{ course.name }}</h2>     
-            <NuxtLink :to="`courses/${course.id}`">More Info</NuxtLink>
+            <NuxtLink :to="`courses/${course.id}`" class="text-sm">More Info</NuxtLink>
           </div>
           <div v-else>No Courses Found</div>
         </div>

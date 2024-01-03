@@ -2,7 +2,7 @@
 
 export default {
     name: 'Schedule',
-    props: ['schedule'],
+    props: ['schedule', 'year'],
     data () {
         return {
             emojis: [{
@@ -25,9 +25,10 @@ export default {
 
 <template>
     <div class="mx-4">
+        <h1 class="text-lg font-bold">Schedule</h1>
         <div v-for="(n, index) in schedule.length" class="flex flex-col py-1">
         <div v-if="schedule[index].name == undefined"
-            class="flex justify-between bg-gray-100 items-center px-3 py-2 rounded-[16px] gap-x-4">
+            class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4">
             <p class="text-lg font-semibold">Period {{ index + 1 }}</p>
             <div class="flex" @click="this.$emit('showCoursesModal')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20">
@@ -37,8 +38,8 @@ export default {
             </div>
         </div>
 
-        <div v-else class="flex justify-between bg-gray-100 items-center px-3 py-2 rounded-[16px] gap-x-4">
-            <img class="w-12 h-10" :src="emojis[0][schedule[index].subject]">
+        <div v-else class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4">
+            <img class="w-12 h-9" :src="emojis[0][schedule[index].subject]">
             <div class="flex flex-col items-start w-full">
                 <p class="text-lg font-bold">{{ schedule[index].name }}</p>
                 <p class="text-sm">Period {{ index + 1 }}</p>
