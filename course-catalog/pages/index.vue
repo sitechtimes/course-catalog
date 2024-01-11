@@ -62,4 +62,41 @@ button {
 .circle {
   border-radius: 50rem;
 }
+#big{
+  border-radius: 50rem;
+}
+#small{
+  border-radius: 50rem;
+}
+@media only screen and (max-width: 500px) {
+  h2{
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  p{
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+#big{
+  border-radius: 50rem;
+  width: 18rem;
+  height: 18rem;
+margin: auto;
+margin-left: 3.5rem;
+}
+#small{
+  border-radius: 50rem;
+    width: 6rem;
+  height: 6rem;
+  margin-bottom: 2rem;
+}
+button{
+  width: 7rem;
+  margin: auto;
+}
+#btns{
+  margin-left: 0;
+}
+}
 </style>
