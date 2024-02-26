@@ -11,3 +11,11 @@
         </div>
     </div>
 </template>
+<style scoped>
+@media only screen and (max-width: 565px){
+
+#link{
+font-size: 1.5rem;
+}
+}
+</style>

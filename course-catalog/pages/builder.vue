@@ -190,6 +190,9 @@ h2 {
     display: none;
   }
 }
+@media only screen and (max-width: 565px){
+
+}
 @media only screen and (max-width: 500px) {
   .alert {
     margin-top: 40%;

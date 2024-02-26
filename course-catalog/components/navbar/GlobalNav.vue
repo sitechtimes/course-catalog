@@ -40,3 +40,13 @@ const toggleMenu = () => {
     <MobileMenu v-if="menuOpen" @e="toggleMenu" />
   </nav>
 </template>
+<style scoped>
+@media only screen and (max-width: 565px){
+h1{
+  font-size: 1.2rem;
+}
+#menu-icon{
+  margin-right:2rem;
+}
+}
+</style>
