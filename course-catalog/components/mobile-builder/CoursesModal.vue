@@ -95,8 +95,8 @@ export default {
 </script>
 
 <template>
+  <body>
   <div class="fixed inset-0 bg-gray-900 opacity-40 h-screen z-50"></div>
-
   <div class="fixed inset-0 flex items-center justify-center z-[51] rounded-lg">
     <div
       class="flex bg-white text-black rounded-t-lg justify-center absolute inset-x-0 bottom-0 h-[500px] overflow-scroll">
@@ -143,6 +143,7 @@ export default {
       </div>
     </div>
   </div>
+</body>
 </template>
 
 <style scoped>
