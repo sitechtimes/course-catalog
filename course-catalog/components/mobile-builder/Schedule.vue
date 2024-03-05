@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-    <div class="mx-4">
+    <div class="mx-4 md:w-[50%]">
         <h1 class="text-lg font-bold">Schedule</h1>
         <div v-for="(n, index) in schedule.length" class="flex flex-col py-1">
         <div v-if="schedule[index].name == undefined"

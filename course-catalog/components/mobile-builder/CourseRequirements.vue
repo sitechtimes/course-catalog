@@ -16,7 +16,7 @@ export default {
 </script>
 
 <template>
-    <div class="flex flex-col rounded-lg mb-5 mx-4 ">
+    <div class="flex flex-col rounded-lg mb-5 mx-4 md:w-[20%]">
         <div class="flex flex-col justify-start items-center">
             <div class="flex w-full justify-between items-center">
                 <h1 class="text-lg font-bold">

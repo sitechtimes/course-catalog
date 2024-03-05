@@ -1,225 +1,248 @@
 <script lang="ts">
-import Courses from "../components/schedule builder/Courses.vue";
-import Scheduler from "../components/schedule builder/Scheduler.vue";
+import YearPicked from "~/components/mobile-builder/YearPicker.vue";
+import Schedule from "~/components/mobile-builder/Schedule.vue";
+import CoursesModal from "~/components/mobile-builder/CoursesModal.vue";
+import ErrorToast from "~/components/mobile-builder/ErrorToast.vue";
+import CourseRequirements from "~/components/mobile-builder/CourseRequirements.vue";
+import course from "~~/interface/course";
 import { useCourseStore } from "~/store/store";
 
 export default {
-  name: "ScheduleBuilder",
-  components: {
-    Scheduler,
-    Courses,
-    useCourseStore,
-  },
-  data() {
-    return {
-      schedule: [
-        {},
-        {},
-        {},
-        {},
-        {
-          name: "Lunch",
-          subject: "LUNCH"
-        },
-        {},
-        {},
-        {},
-        {},
-      ],
-      yearPicked: null,
-      needed: {
-        // use the other false/true stuff to check if duplicate classes (2 science 2 english etc). idk which classes can and cant have duplicates
-        ENGLISH: 0,
-        MATH: 0,
-        SCIENCE: 0,
-        SS: 0,
-        ARTS: 0,
-        PE: 0,
-        LUNCH: 1,
-        LANG: 0,
-        TECH: 0,
-        ap: 0,
-        educationalPeriods: 0,
-      },
-    };
-  },
-  methods: {
-    changeProps: function () {
-      this.needed = {
-        ENGLISH: 0,
-        MATH: 0,
-        SCIENCE: 0,
-        SS: 0,
-        ARTS: 0,
-        PE: 0,
-        LUNCH: 1,
-        LANG: 0,
-        TECH: 0,
-        ap: 0,
-        educationalPeriods: 0,
-      };
-      this.yearPicked = document.querySelector(".dropdown").value
-      this.schedule = [
-        {},
-        {},
-        {},
-        {},
-        {
-          name: "Lunch",
-          subject: "LUNCH"
-        },
-        {},
-        {},
-        {},
-        {},
-      ]
+    components: {
+        YearPicked,
+        Schedule,
+        CoursesModal,
+        ErrorToast,
+        CourseRequirements,
     },
-  },
-  created () {
-    if( screen.width <= 760 ) {
-      this.$router.push('/MobileBuilder')
+    data() {
+        return {
+            yearPicked: "",
+            isYearPicked: false,
+            showCourseModal: false,
+            schedule: [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                { name: "Lunch", subject: "LUNCH" },
+                {},
+                {},
+            ],
+            requirements: {},
+            errorMessage: "",
+            courses: useCourseStore().courses,
+        };
+    },
+    methods: {
+        updateYear(year: any) {
+            this.yearPicked = year;
+            if (year == "Freshman") {
+                [
+                    "Russian T1",
+                    "AP World History T1",
+                    "English T1",
+                    "Chemistry T1",
+                ].forEach((x) => {
+                    Object.assign(
+                        this.schedule.find((period) => period.name == undefined),
+                        this.courses.find((course) => course.name == x)
+                    );
+                });
+            } else if (year == "Sophomore") {
+                ["English T3", "AP World History T3"].forEach((x) => {
+                    Object.assign(
+                        this.schedule.find((period) => period.name == undefined),
+                        this.courses.find((course) => course.name == x)
+                    );
+
+                    this.requirements = {
+                        "7 Academic Periods": false,
+                        English: true,
+                        "AP Global": true,
+                        Math: false,
+                        Physics: false,
+                        Russian: false,
+                        CAD: false,
+                        "Physical Education": false,
+                        Lunch: true,
+                    };
+                });
+            } else if (year == "Junior") {
+                this.requirements = {
+                    "7 Academic Periods": false,
+                    English: false,
+                    "AP US History": false,
+                    Science: false,
+                    Math: false,
+                    Russian: false,
+                    "Physical Education": false,
+                    Lunch: true,
+                };
+            } else {
+                this.requirements = {
+                    "7 Academic Periods:": false,
+                    English: false,
+                    "Social Studies": false,
+                    Math: false,
+                    "Physical Education": false,
+                };
+            }
+
+            this.isYearPicked = true
+
+        },
+        showCoursesModal() {
+            this.showCourseModal = !this.showCourseModal;
+        },
+        addCourse(x) {
+            this.showCourseModal = !this.showCourseModal;
+            if (this.schedule.find((period) => period.name == x.name)) {
+                return (this.errorMessage = "Class is already in the schedule.");
+            } else if (x.double_period) {
+                Object.assign(
+                    this.schedule.find((period) => period.name == undefined),
+                    x
+                );
+            }
+
+            Object.assign(
+                this.schedule.find((period) => period.name == undefined),
+                x
+            );
+
+            this.updateRequirements(x, "add");
+        },
+        removeCourse(x) {
+            if (x.name == "Lunch" && this.yearPicked != "Senior") {
+                return (this.errorMessage = "Lunch is a required period.");
+            }
+
+            if (
+                this.yearPicked == "Freshman" &&
+                [
+                    "Russian T1",
+                    "AP World History T1",
+                    "English T1",
+                    "Chemistry T1",
+                ].includes(x.name)
+            ) {
+                return (this.errorMessage = x.name + " is a mandatory class.");
+            } else if (
+                this.yearPicked == "Sophomore" &&
+                ["AP World History T3", "English T3"].includes(x.name)
+            ) {
+                return (this.errorMessage = x.name + " is a mandatory class.");
+            }
+
+            Object.assign(
+                this.schedule.find((period) => period.name == x.name),
+                { name: undefined }
+            );
+
+            this.updateRequirements(x, "remove");
+        },
+        closeError() {
+            this.errorMessage = "";
+        },
+        updateRequirements(x, func) {
+            let status = true;
+            let subject =
+                x.subject.toLowerCase().charAt(0).toUpperCase() +
+                x.subject.toLowerCase().slice(1);
+
+            if (x.subject == "LANG") {
+                subject = "Russian";
+            } else if (x.subject == "SS") {
+                subject = "History";
+            } else if (x.subject == "PE") {
+                subject = "Physical Education";
+            }
+
+            if (x.subject == "TECH" || x.subject == "ARTS") {
+                return;
+            }
+
+            if (func == "remove") {
+                status = false;
+            }
+
+            console.log(this.schedule.find((period) => period.name == undefined));
+
+            this.requirements[subject] = status;
+        },
+        switchYear() {
+            this.isYearPicked = false;
+            this.schedule = [
+                {},
+                {},
+                {},
+                {},
+                {},
+                {},
+                { name: "Lunch", subject: "LUNCH" },
+                {},
+                {},
+            ]
+        }
+    },
+    mounted() {
+
+        this.isYearPicked = JSON.parse(sessionStorage.getItem('isYearPicked'));
+        this.yearPicked = JSON.parse(sessionStorage.getItem('yearPicked'));
+        this.schedule = JSON.parse(sessionStorage.getItem('schedule'));
+
+    },
+    beforeMount() {
+        if (JSON.parse(sessionStorage.getItem('isYearPicked')) && JSON.parse(sessionStorage.getItem('yearPicked'))) {
+            this.updateYear(JSON.parse(sessionStorage.getItem('yearPicked')))
+        }
+
+        if (JSON.parse(sessionStorage.getItem('schedule')) === null) {
+            sessionStorage.setItem('schedule', JSON.stringify(this.schedule))
+        } else if (JSON.parse(sessionStorage.getItem('schedule')) !== null) {
+            this.schedule = JSON.parse(sessionStorage.getItem('schedule'))
+        }
+
+    },
+    watch: {
+        isYearPicked() {
+            sessionStorage.setItem("isYearPicked", JSON.stringify(this.isYearPicked));
+        },
+        yearPicked() {
+            sessionStorage.setItem("yearPicked", JSON.stringify(this.yearPicked))
+        },
+        schedule: {
+            handler: function() {
+                sessionStorage.setItem("schedule", JSON.stringify(this.schedule))
+            }, deep: true
+        }
     }
-  }
 };
 </script>
 
 <template>
-  <div>
-    <div id="builder" class="flex mt-40 h-screen px-12">
-      <title>Schedule Builder</title>
-      <h2 class="text-4xl font-semibold">Schedule Builder</h2>
-      <div class="top">
-        <h1>
-          Make a Schedule for
-          <select name="dropdown" class="dropdown" @change="changeProps()">
-            <option value=""></option>
-            <option value="Freshman">Freshman</option>
-            <option value="Sophomore">Sophomore</option>
-            <option value="Junior">Junior</option>
-            <option value="Senior">Senior</option>
-          </select>
-          Year
-        </h1>
-      </div>
-      <div class="bottom">
-        <Scheduler class="" :schedule="schedule" :needed="needed"></Scheduler>
-        <Courses
-          :yearPicked="yearPicked"
-          :schedule="schedule"
-          :needed="needed"
-        />
-      </div>
+    <div class="overflow-hidden">
+        <YearPicked v-if="!isYearPicked" @updateYear="updateYear($event)" />
+        <div v-else class="flex flex-col mt-20 h-4/5 justify-start">
+            <div class="flex items-center w-full">
+                <ErrorToast :errorMessage="errorMessage" @close="closeError" />
+            </div>
+
+            <div class="mx-4">
+                <h1 class="text-4xl mb-[12px]">Schedule Builder</h1>
+                <div class="flex flex-col w-full justify-start mb-[8px]">
+                    <h1 class="text-2xl font-bold">{{ yearPicked }} Year Schedule</h1>
+                    <p @click="switchYear">Switch Year</p>
+                </div>
+            </div>
+            <div class="md:flex md:flex-row">
+                <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal"/>
+                <CourseRequirements class="md:mr-[10%] md:ml-[10%] md:mt-[2rem]" :yearPicked="yearPicked" :requirements="requirements" />
+                <Schedule class="md:mr-[10%] md:mt-[2rem]" :schedule="schedule" :year="yearPicked" @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" />
+            </div>
+        </div>
     </div>
-    <div class="alert">
-      <svg
-        class="icon"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 512 512"
-      >
-        <!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-        <path
-          d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"
-        />
-      </svg>
-      <h3 class="font-bold">Sorry :(</h3>
-      <h4 class="font-light">
-        This feature is not avaliable on this device, you many access this on a
-        computer or laptop.
-      </h4>
-    </div>
-  </div>
 </template>
-
-<style scoped>
-.alert {
-  display: none;
-}
-.dropdown {
-  border: solid 1px grey;
-  border-radius: 0.25em;
-}
-h2 {
-  margin-top: 0;
-}
-#builder {
-  display: flex;
-  flex-direction: column;
-  padding-top: 0;
-  margin-top: 8rem;
-}
-.top {
-  margin-top: 2rem;
-  width: 30%;
-}
-.bottom {
-  display: flex;
-  flex-direction: row;
-}
-@media only screen and (max-width: 1480px) {
-  #builder {
-    margin-top: 6rem;
-  }
-}
-@media only screen and (max-width: 1180px) {
-  .alert {
-    overflow: visible;
-    display: block;
-    margin: auto;
-    margin-top: 20%;
-    color: #37394f;
-    padding: 2rem;
-    padding-top: 1.5rem;
-    width: 40%;
-    border-radius: 1rem;
-    border: #37394f 2px solid;
-  }
-  h3 {
-    font-size: 1.2rem;
-  }
-  h3,
-  h4 {
-    text-align: center;
-  }
-  .icon {
-    margin: auto;
-    margin-bottom: 1rem;
-    width: 4rem;
-    fill: #37394f;
-  }
-  #builder {
-    display: none;
-  }
-}
-@media only screen and (max-width: 565px){
-
-}
-@media only screen and (max-width: 500px) {
-  .alert {
-    margin-top: 40%;
-    color: #37394f;
-    width: 70%;
-    padding: 1rem;
-  }
-  h3 {
-    font-size: 1rem;
-  }
-  h4 {
-    font-size: 0.8rem;
-  }
-  h3,
-  h4 {
-    text-align: center;
-  }
-  .icon {
-    margin: auto;
-    margin-bottom: 0.5rem;
-    width: 3rem;
-    fill: #37394f;
-  }
-}
-@media only screen and (max-width: 300px) {
-  .alert {
-    padding: 1rem;
-  }
-}
-</style>
