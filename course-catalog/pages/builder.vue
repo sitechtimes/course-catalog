@@ -238,10 +238,10 @@ export default {
                     <p @click="switchYear">Switch Year</p>
                 </div>
             </div>
-            <div class="md:flex md:flex-row">
+            <div class="lg:flex lg:flex-row">
                 <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal"/>
-                <CourseRequirements class="md:mr-[10%] md:ml-[10%] md:mt-[2rem]" :yearPicked="yearPicked" :requirements="requirements" />
-                <Schedule class="md:mr-[10%] md:mt-[2rem]" :schedule="schedule" :year="yearPicked" @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" />
+                <CourseRequirements class="lg:mr-[10%] lg:ml-[10%] lg:mt-[2rem]" :yearPicked="yearPicked" :requirements="requirements" />
+                <Schedule class="lg:mr-[10%] lg:mt-[2rem]" :schedule="schedule" :year="yearPicked" @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" />
             </div>
         </div>
     </div>
