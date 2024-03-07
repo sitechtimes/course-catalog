@@ -235,7 +235,7 @@ export default {
                 <h1 class="text-4xl mb-[12px]">Schedule Builder</h1>
                 <div class="flex flex-col w-full justify-start mb-[8px]">
                     <h1 class="text-2xl font-bold">{{ yearPicked }} Year Schedule</h1>
-                    <p @click="switchYear">Switch Year</p>
+                    <p class="hover:drop-shadow-lg hover:scale-105 transition duration-150 ease-in-out lg:bg-primary-s lg:drop-shadow-md lg:p-2 lg:w-[6%] lg:text-center" @click="switchYear">Switch Year</p>
                 </div>
             </div>
             <div class="lg:flex lg:flex-row">

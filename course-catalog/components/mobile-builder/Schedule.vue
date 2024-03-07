@@ -24,13 +24,13 @@ export default {
 </script>
 
 <template>
-    <div class="mx-4 lg:w-[50%]">
+    <div class="mx-4 lg:w-[50%] lg:border-black lg:rounded-lg lg:border-2 lg:p-3">
         <h1 class="text-lg font-bold">Schedule</h1>
         <div v-for="(n, index) in schedule.length" class="flex flex-col py-1">
         <div v-if="schedule[index].name == undefined"
             class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4">
             <p class="text-lg font-semibold">Period {{ index + 1 }}</p>
-            <div class="flex" @click="this.$emit('showCoursesModal')">
+            <div class="flex bg-primary-g p-1 rounded-lg hover:scale-110 transition duration-150 ease-in-out" @click="this.$emit('showCoursesModal')">
                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20">
                     <path d="M16 9h-5V4H9v5H4v2h5v5h2v-5h5V9z" />
                 </svg>
@@ -44,7 +44,7 @@ export default {
                 <p class="text-lg font-bold">{{ schedule[index].name }}</p>
                 <p class="text-sm">Period {{ index + 1 }}</p>
             </div>
-            <svg @click="this.$emit('removeCourse', schedule[index])" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0 0 24 24">
+            <svg class="bg-[#EFABAC] p-1 rounded-lg hover:scale-110 transition duration-150 ease-in-out" @click="this.$emit('removeCourse', schedule[index])" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0 0 24 24">
                 <path
                     d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z">
                 </path>
