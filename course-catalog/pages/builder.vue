@@ -232,10 +232,10 @@ export default {
             </div>
 
             <div class="mx-4">
-                <h1 class="text-4xl mb-[12px]">Schedule Builder</h1>
-                <div class="flex flex-col w-full justify-start mb-[8px]">
-                    <h1 class="text-2xl font-bold">{{ yearPicked }} Year Schedule</h1>
-                    <p class="hover:drop-shadow-lg hover:scale-105 transition duration-150 ease-in-out lg:bg-primary-s lg:drop-shadow-md lg:p-2 lg:w-[6%] lg:text-center" @click="switchYear">Switch Year</p>
+                <h1 class="text-4xl mb-[12px] ml-[1%]">Schedule Builder</h1>
+                <div class="flex flex-col w-full justify-start mb-[8px] ml-[1%]">
+                    <h1 class="text-2xl font-bold mt-2 mb-2">{{ yearPicked }} Year Schedule</h1>
+                    <p class="rounded-md mb-3 hover:drop-shadow-lg hover:scale-105 transition duration-150 ease-in-out lg:bg-primary-s lg:drop-shadow-md lg:p-2 lg:w-[6%] lg:text-center" @click="switchYear">Switch Year</p>
                 </div>
             </div>
             <div class="lg:flex lg:flex-row">
