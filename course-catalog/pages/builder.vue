@@ -139,8 +139,15 @@ export default {
 
             Object.assign(
                 this.schedule.find((period) => period.name == x.name),
-                { name: undefined }
+                { name: undefined },
             );
+
+/*         (for a double period)
+            if (scheduledClass.name === pickedClass.name) {
+              this.schedule[this.schedule.indexOf(scheduledClass)] = {}
+              console.log(scheduledClass)
+            }
+          }); */
 
             this.updateRequirements(x, "remove");
         },
