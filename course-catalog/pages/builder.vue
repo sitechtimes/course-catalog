@@ -6,6 +6,9 @@ import ErrorToast from "~/components/mobile-builder/ErrorToast.vue";
 import CourseRequirements from "~/components/mobile-builder/CourseRequirements.vue";
 import course from "~~/interface/course";
 import { useCourseStore } from "~/store/store";
+import draggable from 'vuedraggable'
+import { reactive } from 'vue'
+
 
 export default {
     components: {
@@ -41,10 +44,10 @@ export default {
             this.yearPicked = year;
             if (year == "Freshman") {
                 [
-                    "Russian T1",
-                    "AP World History T1",
-                    "English T1",
-                    "Chemistry T1",
+                    "Russian",
+                    "AP World History",
+                    "English",
+                    "Chemistry",
                 ].forEach((x) => {
                     Object.assign(
                         this.schedule.find((period) => period.name == undefined),
@@ -52,7 +55,7 @@ export default {
                     );
                 });
             } else if (year == "Sophomore") {
-                ["English T3", "AP World History T3"].forEach((x) => {
+                ["English", "AP World History"].forEach((x) => {
                     Object.assign(
                         this.schedule.find((period) => period.name == undefined),
                         this.courses.find((course) => course.name == x)
@@ -91,8 +94,7 @@ export default {
                 };
             }
 
-            this.isYearPicked = true
-
+            this.isYearPicked = true;
         },
         showCoursesModal() {
             this.showCourseModal = !this.showCourseModal;
@@ -101,17 +103,17 @@ export default {
             this.showCourseModal = !this.showCourseModal;
             if (this.schedule.find((period) => period.name == x.name)) {
                 return (this.errorMessage = "Class is already in the schedule.");
-            } else if (x.double_period) {
-                Object.assign(
-                    this.schedule.find((period) => period.name == undefined),
-                    x
-                );
             }
 
             Object.assign(
                 this.schedule.find((period) => period.name == undefined),
                 x
             );
+
+            if (x.double_period) {
+                let empty = this.schedule.findIndex(obj => obj.name === undefined)
+                this.schedule.splice(empty, 1)
+            }
 
             this.updateRequirements(x, "add");
         },
@@ -137,10 +139,16 @@ export default {
                 return (this.errorMessage = x.name + " is a mandatory class.");
             }
 
+            let index = this.schedule.indexOf(x)
+
             Object.assign(
                 this.schedule.find((period) => period.name == x.name),
                 { name: undefined }
             );
+
+            if (x.double_period) {
+                this.schedule.splice(index, 0, {})
+            }
 
             this.updateRequirements(x, "remove");
         },
@@ -185,41 +193,44 @@ export default {
                 { name: "Lunch", subject: "LUNCH" },
                 {},
                 {},
-            ]
+            ];
         }
+
     },
     mounted() {
-
-        this.isYearPicked = JSON.parse(sessionStorage.getItem('isYearPicked'));
-        this.yearPicked = JSON.parse(sessionStorage.getItem('yearPicked'));
-        this.schedule = JSON.parse(sessionStorage.getItem('schedule'));
-
+        this.isYearPicked = JSON.parse(sessionStorage.getItem("isYearPicked"));
+        this.yearPicked = JSON.parse(sessionStorage.getItem("yearPicked"));
+        this.schedule = JSON.parse(sessionStorage.getItem("schedule"));
+        console.log(this.schedule);
     },
     beforeMount() {
-        if (JSON.parse(sessionStorage.getItem('isYearPicked')) && JSON.parse(sessionStorage.getItem('yearPicked'))) {
-            this.updateYear(JSON.parse(sessionStorage.getItem('yearPicked')))
+        if (
+            JSON.parse(sessionStorage.getItem("isYearPicked")) &&
+            JSON.parse(sessionStorage.getItem("yearPicked"))
+        ) {
+            this.updateYear(JSON.parse(sessionStorage.getItem("yearPicked")));
         }
 
-        if (JSON.parse(sessionStorage.getItem('schedule')) === null) {
-            sessionStorage.setItem('schedule', JSON.stringify(this.schedule))
-        } else if (JSON.parse(sessionStorage.getItem('schedule')) !== null) {
-            this.schedule = JSON.parse(sessionStorage.getItem('schedule'))
+        if (JSON.parse(sessionStorage.getItem("schedule")) === null) {
+            sessionStorage.setItem("schedule", JSON.stringify(this.schedule));
+        } else if (JSON.parse(sessionStorage.getItem("schedule")) !== null) {
+            this.schedule = JSON.parse(sessionStorage.getItem("schedule"));
         }
-
     },
     watch: {
         isYearPicked() {
             sessionStorage.setItem("isYearPicked", JSON.stringify(this.isYearPicked));
         },
         yearPicked() {
-            sessionStorage.setItem("yearPicked", JSON.stringify(this.yearPicked))
+            sessionStorage.setItem("yearPicked", JSON.stringify(this.yearPicked));
         },
         schedule: {
-            handler: function() {
-                sessionStorage.setItem("schedule", JSON.stringify(this.schedule))
-            }, deep: true
-        }
-    }
+            handler: function () {
+                sessionStorage.setItem("schedule", JSON.stringify(this.schedule));
+            },
+            deep: true,
+        },
+    },
 };
 </script>
 
@@ -239,9 +250,15 @@ export default {
                 </div>
             </div>
             <div class="md:flex md:flex-row">
-                <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal"/>
-                <CourseRequirements class="md:mr-[10%] md:ml-[10%] md:mt-[2rem]" :yearPicked="yearPicked" :requirements="requirements" />
-                <Schedule class="md:mr-[10%] md:mt-[2rem]" :schedule="schedule" :year="yearPicked" @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" />
+                <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal" />
+                <CourseRequirements class="md:mr-[10%] md:ml-[10%] md:mt-[2rem]" :yearPicked="yearPicked"
+                    :requirements="requirements" />
+
+                <Schedule class="md:mr-[10%] md:mt-[2rem]" :schedule="schedule" :year="yearPicked"
+                    @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" />
+
+
+
             </div>
         </div>
     </div>
