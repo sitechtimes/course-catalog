@@ -41,6 +41,14 @@ export default {
     touchStart(index) {
       this.dragIndex = index;
       this.initialY = event.touches[0].clientY;
+      this.$emit('scrolling-disabled', true)
+    },
+    touchEnd() {
+      if (this.dragIndex !== null) {
+        this.dragIndex = null;
+        this.translateY = 0;
+        this.$emit('scrolling-disabled', false)
+      }
     },
     touchMove(event) {
       if (this.dragIndex !== null) {
@@ -67,12 +75,6 @@ export default {
         }
       }
     },
-    touchEnd() {
-      if (this.dragIndex !== null) {
-        this.dragIndex = null;
-        this.translateY = 0;
-      }
-    },
     handleDrop(index) {
       if (this.draggingIndex !== -1 && this.dropIndex !== -1) {
         const draggedItem = this.schedule[this.draggingIndex];
@@ -83,6 +85,14 @@ export default {
         this.dropIndex = -1;
       }
     },
+    preventDefault(e) {
+      e = e || window.event;
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+
+      e.returnValue = false;
+    }
   },
   mounted() {
     document.addEventListener("touchmove", this.touchMove, {
@@ -94,7 +104,7 @@ export default {
     document.removeEventListener("touchmove", this.touchMove, {
       capture: true,
     });
-  },
+  }
 };
 </script>
 

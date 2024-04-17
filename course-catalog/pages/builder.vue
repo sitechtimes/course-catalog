@@ -125,16 +125,16 @@ export default {
             if (
                 this.yearPicked == "Freshman" &&
                 [
-                    "Russian T1",
-                    "AP World History T1",
-                    "English T1",
-                    "Chemistry T1",
+                    "Russian",
+                    "AP World History",
+                    "English",
+                    "Chemistry",
                 ].includes(x.name)
             ) {
                 return (this.errorMessage = x.name + " is a mandatory class.");
             } else if (
                 this.yearPicked == "Sophomore" &&
-                ["AP World History T3", "English T3"].includes(x.name)
+                ["AP World History", "English"].includes(x.name)
             ) {
                 return (this.errorMessage = x.name + " is a mandatory class.");
             }
@@ -194,6 +194,14 @@ export default {
                 {},
                 {},
             ];
+        },
+        handleScrollingDisabled(disabled) {
+            if (disabled) {
+                document.body.classList.add('no-scroll')
+                console.log('test')
+            } else {
+                document.body.classList.remove('no-scroll')
+            }
         }
 
     },
@@ -255,7 +263,7 @@ export default {
                     :requirements="requirements" />
 
                 <Schedule class="md:mr-[10%] md:mt-[2rem]" :schedule="schedule" :year="yearPicked"
-                    @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" />
+                    @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" @scrolling-disabled="handleScrollingDisabled" />
 
 
 
@@ -263,3 +271,9 @@ export default {
         </div>
     </div>
 </template>
+
+<style>
+.no-scroll {
+    overflow:hidden
+}
+</style>
