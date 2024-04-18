@@ -197,10 +197,9 @@ export default {
         },
         handleScrollingDisabled(disabled) {
             if (disabled) {
-                document.body.classList.add('no-scroll')
-                console.log('test')
+                document.documentElement.style.overflow = 'hidden'
             } else {
-                document.body.classList.remove('no-scroll')
+                document.documentElement.style.overflow = ''
             }
         }
 
@@ -271,9 +270,3 @@ export default {
         </div>
     </div>
 </template>
-
-<style>
-.no-scroll {
-    overflow:hidden
-}
-</style>
