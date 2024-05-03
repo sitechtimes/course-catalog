@@ -8,7 +8,6 @@ export default {
   data() {
     return {
       subjects: [
-        
         "History",
         "English",
         "Science",
@@ -120,7 +119,7 @@ export default {
         <div class="flex flex-col w-full items-center">
           <input class="border w-full px-4 py-2 rounded-lg" type="text" v-model="search"
             placeholder="Search for a course name" />
-          <ul class="flex mt-2 w-full gap-4 flex-nowrap justify-between overflow-x-auto no-scrollbar">
+          <ul class="flex mt-2 w-full gap-4 flex-nowrap justify-between overflow-x-auto no-scrollbar cursor-pointer">
             <li class="active" @click="updateFilter(''); updateTab(0)" v-bind:class="{'font-normal': openTab !== 0, 'font-bold underline': openTab === 0}">
               All
             </li>

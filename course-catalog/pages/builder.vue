@@ -6,8 +6,6 @@ import ErrorToast from "~/components/mobile-builder/ErrorToast.vue";
 import CourseRequirements from "~/components/mobile-builder/CourseRequirements.vue";
 import course from "~~/interface/course";
 import { useCourseStore } from "~/store/store";
-import draggable from 'vuedraggable'
-import { reactive } from 'vue'
 
 
 export default {
@@ -37,6 +35,7 @@ export default {
             requirements: {},
             errorMessage: "",
             courses: useCourseStore().courses,
+            index: 0
         };
     },
     methods: {
@@ -96,7 +95,8 @@ export default {
 
             this.isYearPicked = true;
         },
-        showCoursesModal() {
+        showCoursesModal(index) {
+            this.index = index;
             this.showCourseModal = !this.showCourseModal;
         },
         addCourse(x) {
@@ -106,7 +106,7 @@ export default {
             }
 
             Object.assign(
-                this.schedule.find((period) => period.name == undefined),
+                this.schedule[this.index],
                 x
             );
 
@@ -195,12 +195,9 @@ export default {
                 {},
             ];
         },
-        handleScrollingDisabled(disabled) {
-            if (disabled) {
-                document.documentElement.style.overflow = 'hidden'
-            } else {
-                document.documentElement.style.overflow = ''
-            }
+        updateSchedule(index, draggedIndex, draggedItem) {
+            this.schedule.splice(draggedIndex, 1);
+            this.schedule.splice(index, 0, draggedItem);
         }
 
     },
@@ -262,10 +259,7 @@ export default {
                     :requirements="requirements" />
 
                 <Schedule class="md:mr-[10%] md:mt-[2rem]" :schedule="schedule" :year="yearPicked"
-                    @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" @scrolling-disabled="handleScrollingDisabled" />
-
-
-
+                    @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" @updateSchedule="updateSchedule" />
             </div>
         </div>
     </div>
