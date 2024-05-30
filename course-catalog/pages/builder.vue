@@ -178,7 +178,7 @@ export default {
 
 <template>
     <div class="h-screen w-full px-8">
-        <YearPicked v-if="!isYearPicked" @updateYear="updateYear($event)" />
+        <YearPicked v-if="!isYearPicked" :window="window" @updateYear="updateYear($event)" />
         <div v-else class="flex flex-col mt-20 h-4/5 justify-start">
             <div class="flex items-center w-full">
                 <ErrorToast :errorMessage="errorMessage" @close="closeError" />
