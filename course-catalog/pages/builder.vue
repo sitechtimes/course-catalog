@@ -177,7 +177,7 @@ export default {
 </script>
 
 <template>
-    <div class="h-screen w-full px-8">
+    <div class="h-screen w-full px-8" :class="[showCourseModal ? 'overflow-hidden' : '']">
         <YearPicked v-if="!isYearPicked" :window="window" @updateYear="updateYear($event)" />
         <div v-else class="flex flex-col mt-20 h-4/5 justify-start">
             <div class="flex items-center w-full">
