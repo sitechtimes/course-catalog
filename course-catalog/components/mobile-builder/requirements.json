@@ -1,0 +1,94 @@
+{
+    "freshman": {
+        "Math": {
+            "status": false,
+            "courses": ["Algebra I", "Geometry", "Algebra II"]
+        },
+        "History": {
+            "status": false,
+            "courses": ["AP World History"]
+        },
+        "English": {
+            "status": false,
+            "courses": ["English"]
+        },
+        "Science": {
+            "status": false,
+            "courses": ["Chemistry"]
+        },
+        "PE": {
+            "status": false,
+            "courses": ["PE Fitness","PE Weight Training","PE Dance","PE Team PE","PE Badminton","PE Basketball","PE Marching Band","PE Volleyball","PE Adv Volleyball"]
+        }
+    },
+    "sophomore": {
+        "Math": {
+            "status": false,
+            "courses": ["Geometry", "Algebra II", "Pre-Calculus"]
+        },
+        "History": {
+            "status": false,
+            "courses": ["AP World History"]
+        },
+        "English": {
+            "status": false,
+            "courses": ["English"]
+        },
+        "Science": {
+            "status": false,
+            "courses": ["Chemistry", "Physics", "AP Physics 1"]
+        },
+        "Language": {
+            "status": false,
+            "courses": ["Russian", "Heritage Russian", "Advanced Russian", "Adv Heritage Russian"]
+        },
+        "PE": {
+            "status": false,
+            "courses": ["PE Fitness","PE Weight Training","PE Dance","PE Team PE","PE Badminton","PE Basketball","PE Marching Band","PE Volleyball","PE Adv Volleyball"]
+        }
+    },  
+    "junior": {
+        "Math": {
+            "status": false,
+            "courses": ["Algebra II", "Pre-Calculus", "AP Calculus BC"]
+        },
+        "History": {
+            "status": false,
+            "courses": ["AP US History", "AP US History Arts"]
+        },
+        "English": {
+            "status": false,
+            "courses": ["AP Eng Language"]
+        },
+        "Science": {
+            "status": false,
+            "courses": ["AP Biology","AP Chemistry","Applied Physics","AP Environ Sci","Forensic Science","AP Physics 2","Anatomy & Physiology","AP Psychology", "Biology"]
+        },
+        "PE": {
+            "status": false,
+            "courses": ["PE Fitness","PE Weight Training","PE Dance","PE Team PE","PE Badminton","PE Basketball","PE Marching Band","PE Volleyball","PE Adv Volleyball"]
+        }
+    },
+    "senior": {
+        "Math": {
+            "status": false,
+            "courses": ["Calculus", "AP Calculus AB", "AP Calculus BC", "Pre-Calculus"]
+        },
+        "History": {
+            "status": false,
+            "courses": ["Economics","Participation in Government","AP Macroeconomics", "AP US Gov & Politics"]
+        },
+        "English": {
+            "status": false,
+            "courses": ["AP Eng Literature","E7 Creative Writing","Publications","Modern Mythology","Public Speaking"]
+        },
+        "Science": {
+            "status": false,
+            "courses": ["AP Biology","AP Chemistry","Applied Physics","AP Environ Sci","Forensic Science","AP Physics 2","Anatomy & Physiology","AP Psychology"]
+        },
+        "PE": {
+            "status": false,
+            "courses": ["PE Fitness","PE Weight Training","PE Dance","PE Team PE","PE Badminton","PE Basketball","PE Marching Band","PE Volleyball","PE Adv Volleyball"]
+        }
+    }
+}

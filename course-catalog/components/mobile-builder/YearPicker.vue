@@ -8,7 +8,7 @@ export default {
         }
     },
     methods: {
-        yearPicked(year:String) {
+        handleYearSelection(year:String) {
             this.$emit('updateYear', year)
         }
     }
@@ -17,12 +17,10 @@ export default {
 </script>
 
 <template>
-    <div class="flex flex-col mt-20 h-4/5 px-8 justify-center place-content-center">
-        <h1 class="text-3xl align-start">Pick your Year</h1>
-        <div class="flex flex-col gap-2 my-10">
-            <button v-for="year in years" type="button" @click="yearPicked(year)" class="flex rounded-[15px] my-1.5 h-[44px]  justify-center items-center text-white bg-[#37394F] font-medium">
-                {{year}}
-            </button>
+    <div class="flex flex-wrap mt-20 gap-x-6 items-center justify-center h-5/6">
+        <h1 class="text-5xl mb-[12px] w-1/4 text-start">Which year do you want to build a schedule for?</h1>
+        <div class="flex flex-col w-1/6 gap-y-2">
+            <button class="bg-sky-500 py-2 px-4 text-white" v-for="year in years" @click="handleYearSelection(year)">{{ year }}</button>
         </div>
-    </div>
+    </div>        
 </template>

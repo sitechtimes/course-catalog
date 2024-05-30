@@ -4,8 +4,11 @@ import Schedule from "~/components/mobile-builder/Schedule.vue";
 import CoursesModal from "~/components/mobile-builder/CoursesModal.vue";
 import ErrorToast from "~/components/mobile-builder/ErrorToast.vue";
 import CourseRequirements from "~/components/mobile-builder/CourseRequirements.vue";
+import Requirements from "~/components/mobile-builder/Requirements.vue";
+import CourseCatalog from "~/components/mobile-builder/CourseCatalog.vue"
 import course from "~~/interface/course";
 import { useCourseStore } from "~/store/store";
+import * as requirements from '../components/mobile-builder/requirements.json'
 
 
 export default {
@@ -15,6 +18,8 @@ export default {
         CoursesModal,
         ErrorToast,
         CourseRequirements,
+        Requirements,
+        CourseCatalog,
     },
     data() {
         return {
@@ -32,81 +37,33 @@ export default {
                 {},
                 {},
             ],
-            requirements: {},
+            requirements: requirements,
+            userRequirement: null,
             errorMessage: "",
             courses: useCourseStore().courses,
-            index: 0
+            index: 0,
+            window: {
+                width: 0,
+                height: 0,
+            }
         };
     },
     methods: {
         updateYear(year: any) {
             this.yearPicked = year;
-            if (year == "Freshman") {
-                [
-                    "Russian",
-                    "AP World History",
-                    "English",
-                    "Chemistry",
-                ].forEach((x) => {
-                    Object.assign(
-                        this.schedule.find((period) => period.name == undefined),
-                        this.courses.find((course) => course.name == x)
-                    );
-                });
-            } else if (year == "Sophomore") {
-                ["English", "AP World History"].forEach((x) => {
-                    Object.assign(
-                        this.schedule.find((period) => period.name == undefined),
-                        this.courses.find((course) => course.name == x)
-                    );
-
-                    this.requirements = {
-                        "7 Academic Periods": false,
-                        English: true,
-                        "AP Global": true,
-                        Math: false,
-                        Physics: false,
-                        Russian: false,
-                        CAD: false,
-                        "Physical Education": false,
-                        Lunch: true,
-                    };
-                });
-            } else if (year == "Junior") {
-                this.requirements = {
-                    "7 Academic Periods": false,
-                    English: false,
-                    "AP US History": false,
-                    Science: false,
-                    Math: false,
-                    Russian: false,
-                    "Physical Education": false,
-                    Lunch: true,
-                };
-            } else {
-                this.requirements = {
-                    "7 Academic Periods:": false,
-                    English: false,
-                    "Social Studies": false,
-                    Math: false,
-                    "Physical Education": false,
-                };
-            }
-
+            this.userRequirement = this.requirements[year.toLowerCase()]
             this.isYearPicked = true;
         },
-        showCoursesModal(index) {
-            this.index = index;
+        showCoursesModal() {
             this.showCourseModal = !this.showCourseModal;
         },
         addCourse(x) {
-            this.showCourseModal = !this.showCourseModal;
             if (this.schedule.find((period) => period.name == x.name)) {
                 return (this.errorMessage = "Class is already in the schedule.");
             }
 
             Object.assign(
-                this.schedule[this.index],
+                this.schedule.find((course) => course.name == undefined),
                 x
             );
 
@@ -115,28 +72,20 @@ export default {
                 this.schedule.splice(empty, 1)
             }
 
-            this.updateRequirements(x, "add");
+            for (const requirement in this.userRequirement) {
+                if (this.userRequirement[requirement].courses.includes(x.name)) {
+                    this.userRequirement[requirement].status = true
+                }
+            }
         },
         removeCourse(x) {
+            for (const requirement in this.userRequirement) {
+                if (this.userRequirement[requirement].courses.includes(x.name)) {
+                    this.userRequirement[requirement].status = false
+                }
+            }
             if (x.name == "Lunch" && this.yearPicked != "Senior") {
                 return (this.errorMessage = "Lunch is a required period.");
-            }
-
-            if (
-                this.yearPicked == "Freshman" &&
-                [
-                    "Russian",
-                    "AP World History",
-                    "English",
-                    "Chemistry",
-                ].includes(x.name)
-            ) {
-                return (this.errorMessage = x.name + " is a mandatory class.");
-            } else if (
-                this.yearPicked == "Sophomore" &&
-                ["AP World History", "English"].includes(x.name)
-            ) {
-                return (this.errorMessage = x.name + " is a mandatory class.");
             }
 
             let index = this.schedule.indexOf(x)
@@ -149,37 +98,9 @@ export default {
             if (x.double_period) {
                 this.schedule.splice(index, 0, {})
             }
-
-            this.updateRequirements(x, "remove");
         },
         closeError() {
             this.errorMessage = "";
-        },
-        updateRequirements(x, func) {
-            let status = true;
-            let subject =
-                x.subject.toLowerCase().charAt(0).toUpperCase() +
-                x.subject.toLowerCase().slice(1);
-
-            if (x.subject == "LANG") {
-                subject = "Russian";
-            } else if (x.subject == "SS") {
-                subject = "History";
-            } else if (x.subject == "PE") {
-                subject = "Physical Education";
-            }
-
-            if (x.subject == "TECH" || x.subject == "ARTS") {
-                return;
-            }
-
-            if (func == "remove") {
-                status = false;
-            }
-
-            console.log(this.schedule.find((period) => period.name == undefined));
-
-            this.requirements[subject] = status;
         },
         switchYear() {
             this.isYearPicked = false;
@@ -198,6 +119,10 @@ export default {
         updateSchedule(index, draggedIndex, draggedItem) {
             this.schedule.splice(draggedIndex, 1);
             this.schedule.splice(index, 0, draggedItem);
+        },
+        handleResize() {
+            this.window.width = window.innerWidth;
+            this.window.height = window.innerHeight;
         }
 
     },
@@ -205,7 +130,14 @@ export default {
         this.isYearPicked = JSON.parse(sessionStorage.getItem("isYearPicked"));
         this.yearPicked = JSON.parse(sessionStorage.getItem("yearPicked"));
         this.schedule = JSON.parse(sessionStorage.getItem("schedule"));
-        console.log(this.schedule);
+        this.userRequirement = JSON.parse(sessionStorage.getItem("userRequirement"))
+    },
+    created() {
+        window.addEventListener('resize', this.handleResize);
+        this.handleResize();
+    },
+    destroyed() {
+        window.removeEventListener('resize', this.handleResize);
     },
     beforeMount() {
         if (
@@ -234,32 +166,47 @@ export default {
             },
             deep: true,
         },
+        userRequirement: {
+            handler: function () {
+                sessionStorage.setItem("userRequirement", JSON.stringify(this.userRequirement))
+            },
+            deep: true,
+        }
     },
 };
 </script>
 
 <template>
-    <div class="overflow-hidden">
+    <div class="h-screen w-full px-8">
         <YearPicked v-if="!isYearPicked" @updateYear="updateYear($event)" />
         <div v-else class="flex flex-col mt-20 h-4/5 justify-start">
             <div class="flex items-center w-full">
                 <ErrorToast :errorMessage="errorMessage" @close="closeError" />
             </div>
 
-            <div class="mx-4">
+            <div >
                 <h1 class="text-4xl mb-[12px]">Schedule Builder</h1>
-                <div class="flex flex-col w-full justify-start mb-[8px]">
-                    <h1 class="text-2xl font-bold">{{ yearPicked }} Year Schedule</h1>
-                    <p @click="switchYear">Switch Year</p>
+                <div class="flex flex-row justify-between mb-[8px]">
+                    <h1 class="text-2xl font-semibold">{{ yearPicked }} Year Schedule</h1>
+                    <button class="flex justify-center bg-sky-500 px-4 py-2 text-white font-medium" @click="switchYear">Go Back</button>
                 </div>
             </div>
-            <div class="md:flex md:flex-row">
-                <CoursesModal :year="yearPicked" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal" />
-                <CourseRequirements class="md:mr-[10%] md:ml-[10%] md:mt-[2rem]" :yearPicked="yearPicked"
-                    :requirements="requirements" />
+            <div v-if="userRequirement" class="md:flex md:flex-row">
+                <CoursesModal :year="yearPicked" :requirements="userRequirement" @close="showCoursesModal" @addCourse="addCourse" v-if="showCourseModal" />
 
-                <Schedule class="md:mr-[10%] md:mt-[2rem]" :schedule="schedule" :year="yearPicked"
+                <div v-if="window.width <= 1100" class="w-full flex flex-col gap-y-4 mb-4">
+                    <Schedule :schedule="schedule" :year="yearPicked" :window="window"
                     @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" @updateSchedule="updateSchedule" />
+                </div>
+                <div v-else class="w-full flex">
+                    <Requirements :year="yearPicked" :requirements="userRequirement" class="w-[25%]" @addCourse="addCourse"/>
+
+                    <Schedule class="w-[35%] mx-4" :schedule="schedule" :year="yearPicked" :window="window"
+                    @removeCourse="removeCourse" @showCoursesModal="showCoursesModal" @updateSchedule="updateSchedule" />
+                    
+                    <CourseCatalog @addCourse="addCourse" class="w-[40%]" :year="yearPicked"/>
+                </div>
+                
             </div>
         </div>
     </div>

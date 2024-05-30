@@ -2,9 +2,15 @@
 import { xml } from "cheerio";
 import { useCourseStore } from "~/store/store";
 import course from "~~/interface/course";
+import Requirements from "~/components/mobile-builder/Requirements.vue";
+import CourseCatalog from "~/components/mobile-builder/CourseCatalog.vue"
 
 export default {
   name: "CoursesModal",
+  components: {
+    Requirements,
+    CourseCatalog,
+  },
   data() {
     return {
       subjects: [
@@ -20,22 +26,6 @@ export default {
         "Other",
     ],
       courses: useCourseStore().courses,
-      emojis: [
-        {
-          LANG: "https://em-content.zobj.net/source/apple/354/flag-russia_1f1f7-1f1fa.png",
-          PE: "https://em-content.zobj.net/source/apple/354/person-lifting-weights_1f3cb-fe0f.png",
-          ARTS: "https://em-content.zobj.net/source/apple/354/performing-arts_1f3ad.png",
-          TECH: "https://em-content.zobj.net/source/apple/354/laptop_1f4bb.png",
-          SS: "https://em-content.zobj.net/source/apple/354/scroll_1f4dc.png",
-          ENGLISH:
-            "https://em-content.zobj.net/source/apple/354/books_1f4da.png",
-          SCIENCE:
-            "https://em-content.zobj.net/source/apple/354/atom-symbol_269b-fe0f.png",
-          MATH: "https://em-content.zobj.net/source/apple/354/abacus_1f9ee.png",
-          LUNCH:
-            "https://em-content.zobj.net/source/apple/354/fork-and-knife-with-plate_1f37d-fe0f.png",
-        },
-      ],
       search: "",
       currentFilter: "",
       filteredCourses: useCourseStore().courses,
@@ -75,10 +65,14 @@ export default {
     },
     updateTab(tab) {
       return this.openTab = tab
+    },
+    addCourses(course) {
+      this.$emit('addCourse', course)
+      this.$emit('close')
     }
 
   },
-  props: ["year"],
+  props: ["year", "requirements"],
   watch: {
     search(val) {
       if (val.length == 0) {
@@ -101,7 +95,7 @@ export default {
       class="flex bg-white text-black rounded-t-lg justify-center absolute inset-x-0 bottom-0 h-[500px] overflow-scroll">
       <div class="p-4 w-full space-y-[16px]">
         <div class="flex justify-between items-center">
-          <h2 class="text-2xl font-semibold">Course Catalog</h2>
+          <h2 class="font-semibold text-xl">Courses and Requirements</h2>
           <svg @click="$emit('close')" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256">
             <g fill-opacity="0.78039" fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1"
               stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray=""
@@ -116,29 +110,8 @@ export default {
           </svg>
         </div>
 
-        <div class="flex flex-col w-full items-center">
-          <input class="border w-full px-4 py-2 rounded-lg" type="text" v-model="search"
-            placeholder="Search for a course name" />
-          <ul class="flex mt-2 w-full gap-4 flex-nowrap justify-between overflow-x-auto no-scrollbar cursor-pointer">
-            <li class="active" @click="updateFilter(''); updateTab(0)" v-bind:class="{'font-normal': openTab !== 0, 'font-bold underline': openTab === 0}">
-              All
-            </li>
-            <li v-for="subject in subjects" @click="updateFilter(subject); updateTab(subjects.indexOf(subject) + 1)" v-bind:class="{'font-normal': openTab !== subjects.indexOf(subject) + 1, 'font-bold underline': openTab === subjects.indexOf(subject) + 1}">
-              {{ subject }}
-            </li>
-          </ul>
-        </div>
-
-
-
-        <div class="flex flex-col w-full justify-center items-center overflow-y-scroll">
-          <div v-if="filteredCourses.length" v-for="course in filteredCourses" @click="$emit('addCourse', course)"
-            class="flex flex-col w-full my-1 rounded-[15px] border-1 border-black justify-start items-start">
-            <h2 class="font-bold text-lg">{{ course.name }}</h2>     
-            <NuxtLink :to="`courses/${course.id}`" class="text-sm">More Info</NuxtLink>
-          </div>
-          <div v-else>No Courses Found</div>
-        </div>
+        <Requirements :year="year" :requirements="requirements" @addCourse="addCourses"/>
+        <CourseCatalog @addCourse="addCourses" :year="year"/>
       </div>
     </div>
   </div>

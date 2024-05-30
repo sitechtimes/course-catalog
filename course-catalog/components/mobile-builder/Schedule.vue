@@ -1,23 +1,21 @@
 <script lang="ts">
 export default {
   name: "Schedule",
-  props: ["schedule", "year"],
+  props: ["schedule", "year", "window"],
   data() {
     return {
       emojis: [
         {
-          LANG: "https://img.icons8.com/3d-fluency/28/language.png",
-          PE: "https://em-content.zobj.net/source/apple/354/person-lifting-weights_1f3cb-fe0f.png",
-          ARTS: "https://em-content.zobj.net/source/apple/354/performing-arts_1f3ad.png",
-          TECH: "https://em-content.zobj.net/source/apple/354/laptop_1f4bb.png",
-          SS: "https://em-content.zobj.net/source/apple/354/scroll_1f4dc.png",
-          ENGLISH:
-            "https://em-content.zobj.net/source/apple/354/books_1f4da.png",
-          SCIENCE:
-            "https://em-content.zobj.net/source/apple/354/atom-symbol_269b-fe0f.png",
-          MATH: "https://em-content.zobj.net/source/apple/354/abacus_1f9ee.png",
-          LUNCH:
-            "https://em-content.zobj.net/source/apple/354/fork-and-knife-with-plate_1f37d-fe0f.png",
+          LANG: "https://img.icons8.com/color/48/russian-federation.png",
+          PE: "https://img.icons8.com/color/48/dumbbell.png",
+          ARTS: "https://img.icons8.com/color/48/paint-palette-with-brush.png",
+          TECH: "https://img.icons8.com/color/48/laptop--v1.png",
+          SS: "https://img.icons8.com/color/48/history-book.png",
+          ENGLISH: "https://img.icons8.com/color/48/courses.png",
+          SCIENCE: "https://img.icons8.com/color/48/physics.png",
+          MATH: "https://img.icons8.com/color/48/formula-fx.png",
+          LUNCH: "https://img.icons8.com/color/48/hamburger.png",
+          OTHER: "https://img.icons8.com/color/48/support.png",
         },
       ],
       touchStartX: 0 as number,
@@ -39,13 +37,10 @@ export default {
 
       const element = e.target as HTMLElement
   
-      if (['P', 'svg'].includes(element.nodeName)) {
-        if (element.innerHTML === "Add" || element.classList.contains('add-course')) {
-          this.$emit('showCoursesModal', index)
-          console.log('yes')
-        } else if(element.classList.contains('remove-course')) {
-          this.$emit('removeCourse', this.schedule[index])
-        }
+      if (['svg'].includes(element.nodeName)) {
+        this.$emit('removeCourse', this.schedule[index])
+      } else if (element.nodeName == 'BUTTON') {
+        this.$emit('showCoursesModal')
       }
 
       const touch = e.touches[0]
@@ -92,8 +87,8 @@ export default {
 </script>
 
 <template>
-  <div class="mx-4 md:w-[50%]">
-    <h1 class="text-lg font-bold">Schedule</h1>
+  <div class="w-full">
+    <h2 class="font-bold text-xl mb-4">Schedule</h2>
     <div class="flex">
       <div class="flex flex-col mr-2">
         <div v-for="(n, index) in 9" class="py-1">
@@ -110,28 +105,20 @@ export default {
           @touchmove.prevent="(e: TouchEvent) => handleTouchMove(e)"
           @touchend.prevent="(e: TouchEvent) => handleTouchEnd(e)">
           <div v-if="course.name" >
-            <div class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4 h-[50px] border" :class="{ double: course.double_period }">
+            <div class="flex justify-between items-center px-3 py-2 gap-x-4 h-[50px] border" :class="{ double: course.double_period }">
               <div class="flex items-center gap-x-2" @touchmove.prevent="(e: TouchEvent) => { e.preventDefault(); e.stopPropagation() }">
                 <img height="28" width="28" :src="emojis[0][course.subject]" />
                 <p class="text-lg font-semibold">{{ course.name }}</p>
               </div>
-              <svg class="cursor-pointer remove-course" @click="this.$emit('removeCourse', schedule[index])" @touchmove.prevent="(e: TouchEvent) => { e.preventDefault(); e.stopPropagation() }"
-                xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="22" height="22" viewBox="0 0 24 24">
-                <path
-                  d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z">
-                </path>
-              </svg>
+              <button class="p-1" @click="$emit('removeCourse', schedule[index])" @touchmove.prevent="(e: TouchEvent) => { e.preventDefault(); e.stopPropagation() }">
+                <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256" style="fill:#000000;"> <g fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M9.15625,6.3125l-2.84375,2.84375l15.84375,15.84375l-15.9375,15.96875l2.8125,2.8125l15.96875,-15.9375l15.9375,15.9375l2.84375,-2.84375l-15.9375,-15.9375l15.84375,-15.84375l-2.84375,-2.84375l-15.84375,15.84375z"></path></g></g> </svg>
+            </button>
             </div>
           </div>
           <div v-else>
-            <div class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4 h-[50px] border">
+            <div class="flex justify-between items-center px-3 py-2 gap-x-4 h-[50px] border">
               <p class="text-lg font-semibold" @touchmove.prevent="(e: TouchEvent) => { e.preventDefault(); e.stopPropagation() }">Free Period</p>
-              <div class="flex cursor-pointer" @touchmove.prevent="(e: TouchEvent) => { e.preventDefault(); e.stopPropagation() }">
-                <svg class="add-course" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 20 20">
-                  <path d="M16 9h-5V4H9v5H4v2h5v5h2v-5h5V9z" />
-                </svg>
-                <p>Add</p>
-              </div>
+              <button v-if="window.width <= 1200" @touchmove.prevent="(e: TouchEvent) => { e.preventDefault(); e.stopPropagation() }">Add</button>
             </div>
           </div>
         </div>
