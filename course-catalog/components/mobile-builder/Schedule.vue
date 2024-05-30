@@ -110,9 +110,7 @@ export default {
                 <img height="28" width="28" :src="emojis[0][course.subject]" />
                 <p class="text-lg font-semibold">{{ course.name }}</p>
               </div>
-              <button class="p-1" @click="$emit('removeCourse', schedule[index])" @touchmove.prevent="(e: TouchEvent) => { e.preventDefault(); e.stopPropagation() }">
                 <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256" style="fill:#000000;"> <g fill="#000000" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.12,5.12)"><path d="M9.15625,6.3125l-2.84375,2.84375l15.84375,15.84375l-15.9375,15.96875l2.8125,2.8125l15.96875,-15.9375l15.9375,15.9375l2.84375,-2.84375l-15.9375,-15.9375l15.84375,-15.84375l-2.84375,-2.84375l-15.84375,15.84375z"></path></g></g> </svg>
-            </button>
             </div>
           </div>
           <div v-else>
