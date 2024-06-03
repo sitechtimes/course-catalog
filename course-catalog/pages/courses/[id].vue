@@ -16,13 +16,12 @@ export default {
   computed: {
     getCourse() {
       return this.courses.find((course) => {
-        return course.id == this.$route.params.id;
+        return course.uuid == this.$route.params.id;
       });
     },
   },
   mounted() {
     this.course = this.getCourse;
-    console.log(course);
   },
 };
 </script>
@@ -81,7 +80,7 @@ export default {
           class="w-full h-auto flex flex-col justify-start items-start px-4 space-y-1 pb-2"
         >
           <h5 class="text-xl font-semibold">Description</h5>
-          <p class="text-base text-zinc-600 whitespace-pre-wrap" v-html="course.course_description">
+          <p class="text-base text-zinc-600 whitespace-pre-wrap"> {{ course.course_description }}
           </p>
         </div>
       </div>

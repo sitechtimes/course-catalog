@@ -26,14 +26,14 @@ function doStuff() {
       >
         <NuxtLink to="/courses"
           ><button
-            class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
+            class="bg-sky-500 text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
           >
             View Courses
           </button></NuxtLink
         >
         <NuxtLink to="/builder"
           ><button
-            class="bg-secondary-s text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
+            class="bg-sky-500 text-white text-sm sm:text-base w-32 h-10 sm:w-40 sm:h-12 rounded"
           >
             Build Schedule
           </button></NuxtLink

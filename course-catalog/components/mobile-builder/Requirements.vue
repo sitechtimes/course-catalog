@@ -28,9 +28,8 @@
 
             <div class="flex flex-col gap-y-2 px-4">
               <div v-for="course in index.courses" class="flex justify-between items-center">
-                <div class="flex flex-col">
+                <div class="flex">
                   <p class="text-lg font-medium">{{ course }}</p>
-                  <p class="text-sm text-slate-500 font-medium">More Info</p>
                 </div>
                 <button class="bg-sky-500 text-white py-2 px-3" @click="$emit('addCourse', courses.find((x) => x.name == course))">Add</button>
               </div>
