@@ -27,6 +27,7 @@ export default {
   },
   mounted() {
     this.filteredList;
+    console.log(this.filteredList);
   },
 };
 </script>

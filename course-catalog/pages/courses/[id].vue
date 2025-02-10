@@ -16,7 +16,7 @@ export default {
   computed: {
     getCourse() {
       return this.courses.find((course) => {
-        return course.uuid == this.$route.params.id;
+        return course.codes == this.$route.params.id;
       });
     },
   },
@@ -80,7 +80,8 @@ export default {
           class="w-full h-auto flex flex-col justify-start items-start px-4 space-y-1 pb-2"
         >
           <h5 class="text-xl font-semibold">Description</h5>
-          <p class="text-base text-zinc-600 whitespace-pre-wrap"> {{ course.course_description }}
+          <p class="text-base text-zinc-600 whitespace-pre-wrap">
+            {{ course.description }}
           </p>
         </div>
       </div>

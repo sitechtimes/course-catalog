@@ -15,8 +15,8 @@ defineProps({
 </script>
 
 <template>
-  <div v-if="course?.catalog == true">
-    <NuxtLink :to="`/courses/${course?.uuid}`">
+  <div>
+    <NuxtLink :to="`/courses/${course?.codes}`">
       <div
         id="card"
         class="bg-white w-80 h-36 m-4 px-4 py-[0.6rem] rounded-lg shadow cursor-pointer"
