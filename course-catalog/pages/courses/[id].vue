@@ -81,8 +81,10 @@ export default {
           class="w-full h-auto flex flex-col justify-start items-start px-4 space-y-1 pb-2"
         >
           <h5 class="text-xl font-semibold">Description</h5>
-          <p class="text-base text-zinc-600 whitespace-pre-wrap" v-html="course.course_description">
-          </p>
+          <p
+            class="text-base text-zinc-600 whitespace-pre-wrap"
+            v-html="course.description"
+          ></p>
         </div>
       </div>
     </div>

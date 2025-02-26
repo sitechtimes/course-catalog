@@ -15,7 +15,7 @@ defineProps({
 </script>
 
 <template>
-  <div v-if="course?.catalog == true">
+  <div>
     <NuxtLink :to="`/courses/${course?.id}`">
       <div
         id="card"
