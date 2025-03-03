@@ -22,7 +22,6 @@ export default {
   },
   mounted() {
     this.course = this.getCourse;
-    console.log(course);
   },
 };
 </script>
