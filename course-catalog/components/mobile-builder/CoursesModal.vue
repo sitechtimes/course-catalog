@@ -43,7 +43,7 @@ export default {
     };
   },
   methods: {
-    updateFilter(filter: String) {
+    updateFilter(filter: string) {
       if (filter == "Russian") {
         this.currentFilter = "LANG";
       } else if (filter == "Technology") {
@@ -173,10 +173,10 @@ export default {
           </div>
 
           <div
+            v-if="filteredCourses.length"
             class="flex flex-col w-full justify-center items-center overflow-y-scroll"
           >
             <div
-              v-if="filteredCourses.length"
               v-for="course in filteredCourses"
               @click="$emit('addCourse', course)"
               class="flex flex-col w-full my-1 rounded-[15px] border-1 border-black justify-start items-start"
@@ -186,8 +186,8 @@ export default {
                 >More Info</NuxtLink
               >
             </div>
-            <div v-else>No Courses Found</div>
           </div>
+          <div v-else>No Courses Found</div>
         </div>
       </div>
     </div>

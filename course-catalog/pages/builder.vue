@@ -210,7 +210,6 @@ export default defineComponent({
     this.isYearPicked = JSON.parse(sessionStorage.getItem("isYearPicked"));
     this.yearPicked = JSON.parse(sessionStorage.getItem("yearPicked"));
     this.schedule = JSON.parse(sessionStorage.getItem("schedule"));
-    console.log(this.schedule);
   },
   beforeMount() {
     if (

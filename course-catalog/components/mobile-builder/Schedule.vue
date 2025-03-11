@@ -22,23 +22,23 @@ export default {
       ],
       draggingIndex: -1,
       dropIndex: -1,
-      dragIndex: null,
+      dragIndex: null as null | number,
       initialY: 0,
       translateY: 0,
     };
   },
   methods: {
-    dragStart(index) {
+    dragStart(index: number) {
       this.draggingIndex = index;
     },
-    dragEnter(index) {
+    dragEnter(index: number) {
       this.dropIndex = index;
     },
     dragEnd() {
       this.draggingIndex = -1;
       this.dropIndex = -1;
     },
-    touchStart(index) {
+    touchStart(index: number) {
       this.dragIndex = index;
       this.initialY = event.touches[0].clientY;
     },
@@ -73,7 +73,7 @@ export default {
         this.translateY = 0;
       }
     },
-    handleDrop(index) {
+    handleDrop(index: number) {
       if (this.draggingIndex !== -1 && this.dropIndex !== -1) {
         const draggedItem = this.schedule[this.draggingIndex];
         this.schedule.splice(this.draggingIndex, 1);
