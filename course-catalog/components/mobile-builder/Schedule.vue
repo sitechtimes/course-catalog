@@ -130,7 +130,7 @@ export default {
           >
             <div
               class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4 h-[50px] border"
-              :id="course.double_period"
+              :id="course.doublePeriod"
             >
               <div class="flex items-center gap-x-2">
                 <img
