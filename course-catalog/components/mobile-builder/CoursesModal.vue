@@ -2,7 +2,9 @@
 import { xml } from "cheerio";
 import { useCourseStore } from "~/store/store";
 import course from "~~/interface/course";
-
+interface Emojis {
+  [key: string]: string;
+}
 export default {
   name: "CoursesModal",
   data() {
@@ -18,7 +20,7 @@ export default {
         "Technology",
         "Career",
         "Other",
-      ],
+      ] as string[],
       courses: useCourseStore().courses,
       emojis: [
         {
@@ -34,7 +36,7 @@ export default {
           MATH: "https://em-content.zobj.net/source/apple/354/abacus_1f9ee.png",
           LUNCH:
             "https://em-content.zobj.net/source/apple/354/fork-and-knife-with-plate_1f37d-fe0f.png",
-        },
+        } as Emojis,
       ],
       search: "",
       currentFilter: "",
@@ -66,7 +68,7 @@ export default {
         );
       });
     },
-    updateTab(tab) {
+    updateTab(tab: number) {
       return (this.openTab = tab);
     },
   },
@@ -157,6 +159,7 @@ export default {
               </li>
               <li
                 v-for="subject in subjects"
+                :key="subject"
                 @click="
                   updateFilter(subject);
                   updateTab(subjects.indexOf(subject) + 1);
@@ -178,6 +181,7 @@ export default {
           >
             <div
               v-for="course in filteredCourses"
+              :key="course.name"
               @click="$emit('addCourse', course)"
               class="flex flex-col w-full my-1 rounded-[15px] border-1 border-black justify-start items-start"
             >

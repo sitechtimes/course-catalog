@@ -1,4 +1,7 @@
 <script lang="ts">
+interface Emojis {
+  [key: string]: string;
+}
 export default {
   name: "Schedule",
   props: ["schedule", "year"],
@@ -18,7 +21,7 @@ export default {
           MATH: "https://em-content.zobj.net/source/apple/354/abacus_1f9ee.png",
           LUNCH:
             "https://em-content.zobj.net/source/apple/354/fork-and-knife-with-plate_1f37d-fe0f.png",
-        },
+        } as Emojis,
       ],
       draggingIndex: -1,
       dropIndex: -1,
@@ -103,7 +106,7 @@ export default {
     <h1 class="text-lg font-bold">Schedule</h1>
     <div class="flex">
       <div class="flex flex-col mr-2">
-        <div v-for="(n, index) in 9" class="py-1">
+        <div v-for="(n, index) in 9" :key="index" class="py-1">
           <div
             class="flex justify-between items-center px-3 py-2 rounded-[16px] font-bold gap-x-4 h-[50px]"
           >
@@ -114,6 +117,7 @@ export default {
       <div class="flex flex-col w-full">
         <div
           v-for="(course, index) in schedule"
+          :key="course"
           class="flex flex-col py-1"
           :draggable="true"
           @dragstart="dragStart(index)"

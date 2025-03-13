@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import CourseType from "./CourseType.vue";
-import SubjectType from "./SubjectType.vue";
 defineProps({
   course: Object,
   freshman: Boolean,
