@@ -1,5 +1,4 @@
 <script lang="ts">
-import { xml } from "cheerio";
 import { useCourseStore } from "~/store/store";
 import course from "~~/interface/course";
 interface Emojis {

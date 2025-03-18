@@ -1,38 +1,8 @@
 <script lang="ts">
-import YearPicked from "~/components/mobile-builder/YearPicker.vue";
-import Schedule from "~/components/mobile-builder/Schedule.vue";
-import CoursesModal from "~/components/mobile-builder/CoursesModal.vue";
-import ErrorToast from "~/components/mobile-builder/ErrorToast.vue";
-import CourseRequirements from "~/components/mobile-builder/CourseRequirements.vue";
 import course from "~~/interface/course";
 import { useCourseStore } from "~/store/store";
-import draggable from "vuedraggable";
-import { reactive } from "vue";
 
-interface Course {
-  ap: boolean;
-  codes: string[];
-  description: string;
-  doublePeriod: boolean;
-  freshman: boolean;
-  honors: boolean;
-  id: number;
-  incompatible: number[];
-  junior: boolean;
-  mandatoryCourse: boolean;
-  name: string;
-  senior: boolean;
-  sophomore: boolean;
-  subject: string;
-}
-export default defineComponent({
-  components: {
-    YearPicked,
-    Schedule,
-    CoursesModal,
-    ErrorToast,
-    CourseRequirements,
-  },
+export default {
   data() {
     return {
       yearPicked: "",
@@ -48,7 +18,7 @@ export default defineComponent({
         { name: "Lunch", subject: "LUNCH" },
         {},
         {},
-      ] as (Course | { name: string; subject: string })[],
+      ] as (course | { name: string; subject: string })[],
       requirements: {},
       errorMessage: "",
       courses: useCourseStore().courses,
@@ -203,27 +173,25 @@ export default defineComponent({
         { name: "Lunch", subject: "LUNCH" },
         {},
         {},
-      ] as (Course | { name: string; subject: string })[];
+      ] as (course | { name: string; subject: string })[];
     },
   },
-  mounted() {
-    this.isYearPicked = JSON.parse(sessionStorage.getItem("isYearPicked"));
-    this.yearPicked = JSON.parse(sessionStorage.getItem("yearPicked"));
-    this.schedule = JSON.parse(sessionStorage.getItem("schedule"));
-  },
   beforeMount() {
-    if (
-      JSON.parse(sessionStorage.getItem("isYearPicked")) &&
-      JSON.parse(sessionStorage.getItem("yearPicked"))
-    ) {
-      this.updateYear(JSON.parse(sessionStorage.getItem("yearPicked")));
-    }
+    this.updateYear =
+      sessionStorage.getItem("isYearPicked") &&
+      sessionStorage.getItem("yearPicked")
+        ? JSON.parse(sessionStorage.getItem("yearPicked"))
+        : "";
 
     if (JSON.parse(sessionStorage.getItem("schedule")) === null) {
       sessionStorage.setItem("schedule", JSON.stringify(this.schedule));
     } else if (JSON.parse(sessionStorage.getItem("schedule")) !== null) {
       this.schedule = JSON.parse(sessionStorage.getItem("schedule"));
     }
+  },
+  mounted() {
+    this.isYearPicked = JSON.parse(sessionStorage.getItem("isYearPicked"));
+    this.yearPicked = JSON.parse(sessionStorage.getItem("yearPicked"));
   },
   watch: {
     isYearPicked() {
@@ -239,15 +207,21 @@ export default defineComponent({
       deep: true,
     },
   },
-});
+};
 </script>
 
 <template>
   <div class="overflow-hidden">
-    <YearPicked v-if="!isYearPicked" @updateYear="updateYear($event)" />
+    <MobileBuilderYearPicker
+      v-if="!isYearPicked"
+      @updateYear="updateYear($event)"
+    />
     <div v-else class="flex flex-col mt-20 h-4/5 justify-start">
       <div class="flex items-center w-full">
-        <ErrorToast :errorMessage="errorMessage" @close="closeError" />
+        <MobileBuilderErrorToast
+          :errorMessage="errorMessage"
+          @close="closeError"
+        />
       </div>
 
       <div class="mx-4">
@@ -258,19 +232,19 @@ export default defineComponent({
         </div>
       </div>
       <div class="md:flex md:flex-row">
-        <CoursesModal
+        <MobileBuilderCoursesModal
           :year="yearPicked"
           @close="showCoursesModal"
           @addCourse="addCourse"
           v-if="showCourseModal"
         />
-        <CourseRequirements
+        <MobileBuilderCourseRequirements
           class="md:mr-[10%] md:ml-[10%] md:mt-[2rem]"
           :yearPicked="yearPicked"
           :requirements="requirements"
         />
 
-        <Schedule
+        <MobileBuilderSchedule
           class="md:mr-[10%] md:mt-[2rem]"
           :schedule="schedule"
           :year="yearPicked"
