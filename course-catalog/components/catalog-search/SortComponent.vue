@@ -4,7 +4,7 @@
     id="sort"
     @click="isOpen = !isOpen"
   >
-    <DownArrow
+    <LazyIconsDownArrow
       class="absolute fill-zinc-400 right-2 top-[0.6rem] text-zinc-400 z-0 cursor-pointer"
     />
     <div class="w-40">
@@ -63,9 +63,6 @@
 </template>
 
 <script setup lang="ts">
-import DownArrow from "../icons/DownArrow.vue";
-import { defineComponent } from "vue";
-import { ref } from "vue";
 import { useCourseStore } from "~~/store/store";
 const name = ref("courseSort");
 const input = ref("");

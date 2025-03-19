@@ -8,7 +8,7 @@
         class="border border-zinc-300 rounded w-112 h-10 p-2 text-zinc-800"
         id="search-input"
       />
-      <SearchButton
+      <LazyIconsSearchButton
         class="absolute text-zinc-400 cursor-pointer"
         id="search-icon"
       />
@@ -17,11 +17,7 @@
 </template>
 
 <script lang="ts">
-import SearchButton from "~/components/icons/SearchButton.vue";
 export default {
-  components: {
-    SearchButton,
-  },
   props: ["modelValue"],
   emits: ["update:modelValue"],
 };

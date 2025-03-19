@@ -5,7 +5,7 @@ import { useCourseStore } from "~/store/store";
 export default {
   data() {
     return {
-      yearPicked: "",
+      yearPicked: null as string | null,
       isYearPicked: false,
       showCourseModal: false,
       schedule: [
@@ -20,7 +20,7 @@ export default {
         {},
       ] as (course | { name: string; subject: string })[],
       requirements: {},
-      errorMessage: "",
+      errorMessage: null as string | null,
       courses: useCourseStore().courses,
     };
   },
@@ -177,11 +177,12 @@ export default {
     },
   },
   beforeMount() {
-    this.updateYear =
-      sessionStorage.getItem("isYearPicked") &&
-      sessionStorage.getItem("yearPicked")
-        ? JSON.parse(sessionStorage.getItem("yearPicked"))
-        : "";
+    if (
+      JSON.parse(sessionStorage.getItem("isYearPicked")) &&
+      JSON.parse(sessionStorage.getItem("yearPicked"))
+    ) {
+      this.updateYear(JSON.parse(sessionStorage.getItem("yearPicked")));
+    }
 
     if (JSON.parse(sessionStorage.getItem("schedule")) === null) {
       sessionStorage.setItem("schedule", JSON.stringify(this.schedule));
@@ -192,6 +193,7 @@ export default {
   mounted() {
     this.isYearPicked = JSON.parse(sessionStorage.getItem("isYearPicked"));
     this.yearPicked = JSON.parse(sessionStorage.getItem("yearPicked"));
+    this.schedule = JSON.parse(sessionStorage.getItem("schedule"));
   },
   watch: {
     isYearPicked() {
@@ -214,7 +216,7 @@ export default {
   <div class="overflow-hidden">
     <MobileBuilderYearPicker
       v-if="!isYearPicked"
-      @updateYear="updateYear($event)"
+      @update-year="updateYear($event)"
     />
     <div v-else class="flex flex-col mt-20 h-4/5 justify-start">
       <div class="flex items-center w-full">
