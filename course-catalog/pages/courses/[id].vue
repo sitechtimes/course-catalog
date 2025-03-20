@@ -1,12 +1,6 @@
 <script lang="ts">
 import { useCourseStore } from "~~/store/store";
-import SubjectType from "../../components/course-cards/SubjectType.vue";
-import CourseType from "../../components/course-cards/CourseType.vue";
 export default {
-  components: {
-    SubjectType,
-    CourseType,
-  },
   data() {
     return {
       courses: useCourseStore().courses,
@@ -68,7 +62,7 @@ export default {
           </p>
         </div>
         <div class="flex mt-2 justify-start items-start">
-          <SubjectType :subject="course?.subject" />
+          <LazyCourseCardsSubjectType :subject="course?.subject" />
           <CourseType class="ml-4" :ap="course?.ap" />
         </div>
       </div>

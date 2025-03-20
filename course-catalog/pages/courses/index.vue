@@ -1,15 +1,7 @@
 <script lang="ts">
 import { useCourseStore } from "~~/store/store";
 import { ref } from "vue";
-import SortComponent from "../../components/catalog-search/SortComponent.vue";
-import SearchBar from "../../components/catalog-search/SearchBar.vue";
-import CourseCard from "../../components/course-cards/CourseCard.vue";
 export default {
-  components: {
-    SearchBar,
-    SortComponent,
-    CourseCard,
-  },
   data() {
     return {
       courses: useCourseStore().courses,
@@ -44,8 +36,8 @@ export default {
 
       <div id="search" class="w-full flex flex-col justify-center items-center">
         <div id="search-section" class="flex justify-center items-center">
-          <SortComponent />
-          <SearchBar
+          <CatalogSearchSortComponent />
+          <LazyCatalogSearchBar
             class="mb-4"
             type="text"
             v-model="input"

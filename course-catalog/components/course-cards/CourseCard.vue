@@ -35,7 +35,7 @@ defineProps({
           </p>
         </div>
         <div class="flex justify-start items-start space-x-2">
-          <SubjectType :subject="course?.subject" />
+          <LazyCourseCardsSubjectType :subject="course?.subject" />
           <CourseType :ap="course?.ap" />
         </div>
       </div>
