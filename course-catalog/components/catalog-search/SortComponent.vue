@@ -63,10 +63,6 @@
 </template>
 
 <script setup lang="ts">
-import DownArrow from "../icons/DownArrow.vue";
-import { defineComponent } from "vue";
-import { ref } from "vue";
-import { useCourseStore } from "~~/store/store";
 const name = ref("courseSort");
 const input = ref("");
 const props = ["title"];
