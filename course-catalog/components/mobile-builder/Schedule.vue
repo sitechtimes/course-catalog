@@ -140,6 +140,7 @@ export default {
                 <p class="text-lg font-semibold">{{ course.name }}</p>
               </div>
               <svg
+                class="cursor-pointer"
                 @click="this.$emit('removeCourse', schedule[index])"
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -162,7 +163,10 @@ export default {
               class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4 h-[50px] border"
             >
               <p class="text-lg font-semibold">Free Period</p>
-              <div class="flex" @click="this.$emit('showCoursesModal')">
+              <div
+                class="flex cursor-pointer"
+                @click="this.$emit('showCoursesModal')"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="22"
