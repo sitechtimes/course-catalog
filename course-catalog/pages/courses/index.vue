@@ -54,7 +54,7 @@ export default {
         </div>
         <div
           id="courses"
-          class="flex flex-wrap justify-center items-center max-w-[80rem]"
+          class="flex flex-wrap justify-center items-center max-w-screen-xl"
         >
           <CourseCard v-for="course in filteredList" :course="course" />
         </div>

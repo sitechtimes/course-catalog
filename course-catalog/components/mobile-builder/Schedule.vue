@@ -99,14 +99,12 @@ export default {
 </script>
 
 <template>
-  <div class="mx-4 md:w-[50%]">
-    <h1 class="text-lg font-bold">Schedule</h1>
+  <div class="mx-4 md:w-3/5">
+    <h1 class="text-xl font-bold mb-3 text-secondary-s">Schedule</h1>
     <div class="flex">
       <div class="flex flex-col mr-2">
         <div v-for="(n, index) in 9" class="py-1">
-          <div
-            class="flex justify-between items-center px-3 py-2 rounded-[16px] font-bold gap-x-4 h-[50px]"
-          >
+          <div class="period-number">
             {{ index + 1 }}
           </div>
         </div>
@@ -128,55 +126,43 @@ export default {
             v-if="course.name"
             :class="{ dragged: dragIndex === index || draggingIndex === index }"
           >
-            <div
-              class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4 h-[50px] border"
-              :id="course.double_period"
-            >
+            <div class="card-course" :id="course.double_period">
               <div class="flex items-center gap-x-2">
                 <img
-                  class="object-contain h-5 w-5"
+                  class="object-contain h-6 w-6"
                   :src="emojis[0][course.subject]"
                 />
-                <p class="text-lg font-semibold">{{ course.name }}</p>
+                <p class="text-base font-semibold text-gray-800">
+                  {{ course.name }}
+                </p>
               </div>
-              <svg
-                class="cursor-pointer"
+              <img
+                src="/icons/close.svg"
+                alt="Remove"
+                class="w-7 h-7 cursor-pointer hover:bg-red-50 rounded-full p-1 transition-all duration-200 hover:scale-110"
                 @click="this.$emit('removeCourse', schedule[index])"
-                xmlns="http://www.w3.org/2000/svg"
-                x="0px"
-                y="0px"
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z"
-                ></path>
-              </svg>
+                style="
+                  filter: invert(34%) sepia(95%) saturate(3567%)
+                    hue-rotate(344deg) brightness(97%) contrast(90%);
+                "
+              />
             </div>
           </div>
           <div
             v-else
             :class="{ dragged: dragIndex === index || draggingIndex === index }"
           >
-            <div
-              class="flex justify-between items-center px-3 py-2 rounded-[16px] gap-x-4 h-[50px] border"
-            >
-              <p class="text-lg font-semibold">Free Period</p>
-              <div
-                class="flex cursor-pointer"
-                @click="this.$emit('showCoursesModal')"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="22"
-                  height="22"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M16 9h-5V4H9v5H4v2h5v5h2v-5h5V9z" />
-                </svg>
-                <p>Add</p>
-              </div>
+            <div class="card-free">
+              <p class="text-base font-semibold text-gray-500">Free Period</p>
+              <button class="btn-add" @click="this.$emit('showCoursesModal')">
+                <img
+                  src="/icons/add.svg"
+                  alt="Add"
+                  class="w-4 h-4"
+                  style="filter: brightness(0) invert(1)"
+                />
+                <span>Add</span>
+              </button>
             </div>
           </div>
         </div>
@@ -191,8 +177,11 @@ export default {
 }
 
 .dragged {
-  border-width: 2px;
+  border-width: 3px;
   border-radius: 16px;
-  border-color: black;
+  border-color: #a3c2df;
+  box-shadow: 0 4px 12px rgba(163, 194, 223, 0.4);
+  transform: scale(1.02);
+  transition: all 0.2s ease;
 }
 </style>

@@ -1,9 +1,9 @@
-@import 'tailwind.css';
-@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import "tailwind.css";
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
   /* fonts */
-  --font-main: 'Kumbh Sans', sans-serif;
+  --font-main: "Kumbh Sans", sans-serif;
   --weight: 500;
 
   /* colors */
@@ -32,11 +32,11 @@ body {
   background-color: var(--bg-color);
 }
 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
+h1,
+h2,
+h3,
+h4,
+h5,
 p,
 a,
 li,
@@ -50,4 +50,31 @@ textarea {
   line-height: 1.25;
   text-decoration: none;
   overflow: visible;
+}
+
+/* Custom Button Classes */
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 bg-secondary-s text-white rounded-lg hover:bg-secondary-light transition-all duration-300 shadow-md hover:shadow-lg font-semibold transform hover:scale-[1.02];
+  }
+
+  .btn-add {
+    @apply flex items-center gap-1 cursor-pointer px-3 py-1.5 bg-secondary-s text-white rounded-lg hover:bg-secondary-light transition-all duration-200 shadow-sm hover:shadow-md font-semibold transform hover:scale-[1.02];
+  }
+
+  .btn-year {
+    @apply flex rounded-xl h-14 justify-center items-center text-white bg-secondary-s font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 hover:bg-secondary-light;
+  }
+
+  .card-course {
+    @apply flex justify-between items-center px-3 py-2 rounded-2xl gap-x-4 h-12 border-2 border-gray-200 bg-white shadow-sm hover:shadow-md transition-all duration-200 hover:border-primary-s;
+  }
+
+  .card-free {
+    @apply flex justify-between items-center px-3 py-2 rounded-2xl gap-x-4 h-12 border-2 border-dashed border-gray-300 bg-gray-50 hover:border-primary-s hover:bg-tertiary-s transition-all duration-200;
+  }
+
+  .period-number {
+    @apply flex justify-between items-center px-3 py-2 rounded-2xl font-bold gap-x-4 h-12 text-gray-500;
+  }
 }
