@@ -1,11 +1,4 @@
-<script setup lang="ts">
-import { useCourseStore } from "~/store/store";
-const courseStore = useCourseStore();
-function doStuff() {
-  console.log(courseStore.courses);
-}
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div id="landing" class="flex justify-center items-center h-screen px-12">

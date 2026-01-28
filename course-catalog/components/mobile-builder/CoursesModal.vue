@@ -74,10 +74,17 @@ export default {
     search(val) {
       if (val.length == 0) {
         this.filterCourses();
+        return;
       }
 
-      this.filteredCourses = this.filteredCourses.filter((course) => {
-        return course.name.toLowerCase().includes(val.toLowerCase());
+      let year: keyof course = this.year.toLowerCase();
+
+      this.filteredCourses = this.courses.filter((course) => {
+        return (
+          course.subject.includes(this.currentFilter.toUpperCase()) &&
+          course[year] &&
+          course.name.toLowerCase().includes(val.toLowerCase())
+        );
       });
     },
   },
@@ -94,9 +101,11 @@ export default {
       class="fixed inset-0 flex items-center justify-center z-[51] rounded-lg pointer-events-none"
     >
       <div
-        class="flex bg-white text-black rounded-t-lg justify-center absolute inset-x-0 bottom-0 h-128 overflow-scroll pointer-events-auto"
+        class="flex flex-col bg-white text-black rounded-t-lg justify-center absolute inset-x-0 bottom-0 h-128 overflow-hidden pointer-events-auto"
       >
-        <div class="p-4 w-full space-y-4">
+        <div
+          class="sticky top-0 bg-white z-10 p-4 pb-2 border-b border-gray-200 space-y-4"
+        >
           <div class="flex justify-between items-center">
             <h2 class="text-2xl font-semibold">Course Catalog</h2>
             <img
@@ -149,17 +158,17 @@ export default {
               </li>
             </ul>
           </div>
+        </div>
 
-          <div
-            class="flex flex-col w-full justify-center items-center overflow-y-scroll"
-          >
+        <div class="overflow-y-auto p-4 pt-2">
+          <div class="flex flex-col w-full justify-center items-center">
             <!-- Lunch Option -->
             <div
               @click="
                 $emit('addCourse', {
                   name: 'Lunch',
                   subject: 'LUNCH',
-                  double_period: false,
+                  doublePeriod: false,
                 })
               "
               class="flex items-center w-full mb-3 p-4 rounded-xl border-2 border-yellow-300 bg-yellow-50 justify-between cursor-pointer hover:border-yellow-400 hover:shadow-md transition-all duration-200 transform hover:scale-[1.005]"

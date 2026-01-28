@@ -17,7 +17,7 @@ export default {
 
 <template>
   <div
-    class="flex flex-col rounded-lg mb-5 mx-4 md:w-1/5 bg-white shadow-lg border-2 border-gray-200 p-5"
+    class="flex flex-col rounded-lg mb-5 mx-4 md:w-1/5 bg-white border-2 border-gray-200 p-5"
   >
     <div class="flex flex-col justify-start items-center">
       <div class="flex w-full justify-between items-center mb-4">

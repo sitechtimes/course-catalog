@@ -126,7 +126,7 @@ export default {
             v-if="course.name"
             :class="{ dragged: dragIndex === index || draggingIndex === index }"
           >
-            <div class="card-course" :id="course.double_period">
+            <div class="card-course" :class="{ 'h-24': course.doublePeriod }">
               <div class="flex items-center gap-x-2">
                 <img
                   class="object-contain h-6 w-6"
@@ -136,16 +136,20 @@ export default {
                   {{ course.name }}
                 </p>
               </div>
-              <img
-                src="/icons/close.svg"
-                alt="Remove"
-                class="w-7 h-7 cursor-pointer hover:bg-red-50 rounded-full p-1 transition-all duration-200 hover:scale-110"
+              <div
+                class="cursor-pointer rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-gray-500/50"
                 @click="this.$emit('removeCourse', schedule[index])"
-                style="
-                  filter: invert(34%) sepia(95%) saturate(3567%)
-                    hue-rotate(344deg) brightness(97%) contrast(90%);
-                "
-              />
+              >
+                <img
+                  src="/icons/close.svg"
+                  alt="Remove"
+                  class="w-7 h-7 p-1.5"
+                  style="
+                    filter: invert(34%) sepia(95%) saturate(3567%)
+                      hue-rotate(344deg) brightness(97%) contrast(90%);
+                  "
+                />
+              </div>
             </div>
           </div>
           <div

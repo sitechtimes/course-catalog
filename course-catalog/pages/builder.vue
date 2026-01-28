@@ -98,17 +98,47 @@ export default {
         return (this.errorMessage = "Class is already in the schedule.");
       }
 
-      Object.assign(
-        this.schedule.find((period) => period.name == undefined),
-        x,
+      // Count current academic periods, counting double period courses as 2
+      let academicPeriods = 0;
+      this.schedule.forEach((period) => {
+        if (period.name && period.subject !== "LUNCH") {
+          academicPeriods += period.doublePeriod ? 2 : 1;
+        }
+      });
+
+      const periodsToAdd = x.doublePeriod ? 2 : 1;
+      if (academicPeriods + periodsToAdd > 8) {
+        return (this.errorMessage = "Cannot exceed 8 academic periods.");
+      }
+
+      const emptyIndex = this.schedule.findIndex(
+        (period) => period.name == undefined,
       );
 
-      if (x.double_period) {
-        let empty = this.schedule.findIndex((obj) => obj.name === undefined);
-        this.schedule.splice(empty, 1);
+      if (emptyIndex === -1) {
+        return (this.errorMessage = "No free periods available.");
+      }
+
+      if (x.doublePeriod) {
+        if (emptyIndex >= this.schedule.length - 1) {
+          return (this.errorMessage =
+            "Not enough consecutive periods for this double-period class.");
+        }
+
+        if (this.schedule[emptyIndex + 1].name !== undefined) {
+          return (this.errorMessage =
+            "The next period is already taken. Cannot add double-period class.");
+        }
+      }
+
+      Object.assign(this.schedule[emptyIndex], x);
+
+      if (x.doublePeriod) {
+        this.schedule.splice(emptyIndex + 1, 1);
       }
 
       this.updateRequirements(x, "add");
+      this.checkAcademicPeriods();
     },
     removeCourse(x) {
       if (x.name == "Lunch" && this.yearPicked != "Senior") {
@@ -132,18 +162,28 @@ export default {
         return (this.errorMessage = x.name + " is a mandatory class.");
       }
 
-      let index = this.schedule.indexOf(x);
-
-      Object.assign(
-        this.schedule.find((period) => period.name == x.name),
-        { name: undefined },
-      );
-
-      if (x.double_period) {
-        this.schedule.splice(index, 0, {});
+      // If it's a double period course, add back the empty slot we removed
+      if (x.doublePeriod) {
+        const index = this.schedule.indexOf(x);
+        if (index !== -1) {
+          Object.assign(this.schedule[index], {
+            name: undefined,
+            subject: undefined,
+          });
+          this.schedule.splice(index + 1, 0, {});
+        }
+      } else {
+        const index = this.schedule.indexOf(x);
+        if (index !== -1) {
+          Object.assign(this.schedule[index], {
+            name: undefined,
+            subject: undefined,
+          });
+        }
       }
 
       this.updateRequirements(x, "remove");
+      this.checkAcademicPeriods();
     },
     closeError() {
       this.errorMessage = "";
@@ -170,9 +210,26 @@ export default {
         status = false;
       }
 
-      console.log(this.schedule.find((period) => period.name == undefined));
+      // console.log(this.schedule.find((period) => period.name == undefined));
 
       this.requirements[subject] = status;
+    },
+    checkAcademicPeriods() {
+      let academicPeriods = 0;
+      this.schedule.forEach((period) => {
+        if (period.name && period.subject !== "LUNCH") {
+          academicPeriods += period.doublePeriod ? 2 : 1;
+        }
+      });
+
+      if (this.requirements["7 Academic Periods"] !== undefined) {
+        this.requirements["7 Academic Periods"] =
+          academicPeriods >= 7 && academicPeriods <= 8;
+      }
+      if (this.requirements["7 Academic Periods:"] !== undefined) {
+        this.requirements["7 Academic Periods:"] =
+          academicPeriods >= 7 && academicPeriods <= 8;
+      }
     },
     switchYear() {
       this.isYearPicked = false;
@@ -189,67 +246,22 @@ export default {
       ];
     },
   },
-  mounted() {
-    const storedIsYearPicked = localStorage.getItem("isYearPicked");
-    const storedYearPicked = localStorage.getItem("yearPicked");
-    const storedSchedule = localStorage.getItem("schedule");
-
-    if (storedIsYearPicked) {
-      this.isYearPicked = JSON.parse(storedIsYearPicked);
-    }
-    if (storedYearPicked) {
-      this.yearPicked = JSON.parse(storedYearPicked);
-    }
-    if (storedSchedule) {
-      this.schedule = JSON.parse(storedSchedule);
-    }
-    console.log(this.schedule);
-  },
-  beforeMount() {
-    const storedIsYearPicked = localStorage.getItem("isYearPicked");
-    const storedYearPicked = localStorage.getItem("yearPicked");
-
-    if (storedIsYearPicked && storedYearPicked) {
-      this.updateYear(JSON.parse(storedYearPicked));
-    }
-
-    const storedSchedule = localStorage.getItem("schedule");
-    if (!storedSchedule) {
-      localStorage.setItem("schedule", JSON.stringify(this.schedule));
-    } else {
-      this.schedule = JSON.parse(storedSchedule);
-    }
-  },
-  watch: {
-    isYearPicked() {
-      localStorage.setItem("isYearPicked", JSON.stringify(this.isYearPicked));
-    },
-    yearPicked() {
-      localStorage.setItem("yearPicked", JSON.stringify(this.yearPicked));
-    },
-    schedule: {
-      handler: function () {
-        localStorage.setItem("schedule", JSON.stringify(this.schedule));
-      },
-      deep: true,
-    },
-  },
 };
 </script>
 
 <template>
-  <div class="overflow-hidden min-h-screen bg-tertiary-s">
+  <div class="overflow-hidden min-h-screen pb-20">
     <YearPicked v-if="!isYearPicked" @updateYear="updateYear($event)" />
     <div v-else class="flex flex-col mt-20 h-4/5 justify-start">
       <div class="flex items-center w-full">
         <ErrorToast :errorMessage="errorMessage" @close="closeError" />
       </div>
 
-      <div class="mx-4">
+      <div class="mx-4 flex flex-col w-full items-center justify-center">
         <h1 class="text-4xl mb-3 font-bold text-secondary-s">
           Schedule Builder
         </h1>
-        <div class="flex flex-col w-full justify-start mb-2">
+        <div class="flex flex-col w-full items-center justify-center mb-2">
           <h1 class="text-2xl font-bold text-secondary-s">
             {{ yearPicked }} Year Schedule
           </h1>
