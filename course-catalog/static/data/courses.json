@@ -1435,7 +1435,7 @@
     "ap": true,
     "honors": false,
     "mandatoryCourse": false,
-    "doublePeriod": false,
+    "doublePeriod": true,
     "prerequisites": [],
     "codes": ["SBS21X"]
   },
@@ -1467,7 +1467,7 @@
     "ap": true,
     "honors": false,
     "mandatoryCourse": false,
-    "doublePeriod": false,
+    "doublePeriod": true,
     "prerequisites": [],
     "codes": ["SCS21X"]
   },
@@ -1579,7 +1579,7 @@
     "ap": true,
     "honors": false,
     "mandatoryCourse": false,
-    "doublePeriod": false,
+    "doublePeriod": true,
     "prerequisites": [],
     "codes": ["SPS21X1"]
   },
@@ -1595,7 +1595,7 @@
     "ap": true,
     "honors": false,
     "mandatoryCourse": false,
-    "doublePeriod": false,
+    "doublePeriod": true,
     "prerequisites": [],
     "codes": ["SPS21X2"]
   },
@@ -1611,7 +1611,7 @@
     "ap": true,
     "honors": false,
     "mandatoryCourse": false,
-    "doublePeriod": false,
+    "doublePeriod": true,
     "prerequisites": [],
     "codes": ["SPS21XC"]
   },
