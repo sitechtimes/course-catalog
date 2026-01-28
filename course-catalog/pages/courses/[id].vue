@@ -98,7 +98,6 @@ export default {
 }
 #button {
   margin-top: 2rem;
-  transition: 0.4s;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 20px;
