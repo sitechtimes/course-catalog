@@ -1,29 +1,22 @@
-<script lang="ts">
+<script setup lang="ts">
+
 import { useCourseStore } from "~~/store/store";
 import SubjectType from "../../components/course-cards/SubjectType.vue";
 import CourseType from "../../components/course-cards/CourseType.vue";
-export default {
-  components: {
-    SubjectType,
-    CourseType,
-  },
-  data() {
-    return {
-      courses: useCourseStore().courses,
-      course: Object,
-    };
-  },
-  computed: {
-    getCourse() {
-      return this.courses.find((course) => {
-        return course.id == this.$route.params.id;
-      });
-    },
-  },
-  mounted() {
-    this.course = this.getCourse;
-  },
-};
+
+const route = useRoute();
+const courses = ref(useCourseStore().courses);
+const course = ref<any>({});
+
+const getCourse = computed(() => {
+  return courses.value.find((c) => {
+    return c.id == route.params.id;
+  });
+});
+
+onMounted(() => {
+  course.value = getCourse.value;
+});
 </script>
 
 <template>

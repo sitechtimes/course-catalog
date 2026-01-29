@@ -1,251 +1,248 @@
-<script lang="ts">
+<script setup lang="ts">
 import YearPicked from "~/components/mobile-builder/YearPicker.vue";
 import Schedule from "~/components/mobile-builder/Schedule.vue";
 import CoursesModal from "~/components/mobile-builder/CoursesModal.vue";
 import ErrorToast from "~/components/mobile-builder/ErrorToast.vue";
 import CourseRequirements from "~/components/mobile-builder/CourseRequirements.vue";
-import course from "~~/interface/course";
+import type course from "~~/interface/course";
 import { useCourseStore } from "~/store/store";
-import draggable from "vuedraggable";
 
-export default {
-  components: {
-    YearPicked,
-    Schedule,
-    CoursesModal,
-    ErrorToast,
-    CourseRequirements,
-  },
-  data() {
-    return {
-      yearPicked: "",
-      isYearPicked: false,
-      showCourseModal: false,
-      schedule: [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        { name: "Lunch", subject: "LUNCH" },
-        {},
-        {},
-      ],
-      requirements: {},
-      errorMessage: "",
-      courses: useCourseStore().courses,
-    };
-  },
-  methods: {
-    updateYear(year: any) {
-      this.yearPicked = year;
-      if (year == "Freshman") {
-        ["Russian", "AP World History", "English", "Chemistry"].forEach((x) => {
-          Object.assign(
-            this.schedule.find((period) => period.name == undefined),
-            this.courses.find((course) => course.name == x),
-          );
-        });
-      } else if (year == "Sophomore") {
-        ["English", "AP World History"].forEach((x) => {
-          Object.assign(
-            this.schedule.find((period) => period.name == undefined),
-            this.courses.find((course) => course.name == x),
-          );
+interface Course {
+  name?: string;
+  subject?: string;
+  doublePeriod?: boolean;
+  [key: string]: any;
+}
 
-          this.requirements = {
-            "7 Academic Periods": false,
-            English: true,
-            "AP Global": true,
-            Math: false,
-            Physics: false,
-            Russian: false,
-            CAD: false,
-            "Physical Education": false,
-            Lunch: true,
-          };
-        });
-      } else if (year == "Junior") {
-        this.requirements = {
-          "7 Academic Periods": false,
-          English: false,
-          "AP US History": false,
-          Science: false,
-          Math: false,
-          Russian: false,
-          "Physical Education": false,
-          Lunch: true,
-        };
-      } else {
-        this.requirements = {
-          "7 Academic Periods:": false,
-          English: false,
-          "Social Studies": false,
-          Math: false,
-          "Physical Education": false,
-        };
-      }
+const yearPicked = ref("");
+const isYearPicked = ref(false);
+const showCourseModal = ref(false);
+const schedule = ref<Course[]>([
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  { name: "Lunch", subject: "LUNCH" },
+  {},
+  {},
+]);
+const requirements = ref<Record<string, boolean>>({});
+const errorMessage = ref("");
+const courses = ref(useCourseStore().courses);
 
-      this.isYearPicked = true;
-    },
-    showCoursesModal() {
-      this.showCourseModal = !this.showCourseModal;
-    },
-    addCourse(x) {
-      this.showCourseModal = !this.showCourseModal;
-      if (this.schedule.find((period) => period.name == x.name)) {
-        return (this.errorMessage = "Class is already in the schedule.");
-      }
-
-      // Count current academic periods, counting double period courses as 2
-      let academicPeriods = 0;
-      this.schedule.forEach((period) => {
-        if (period.name && period.subject !== "LUNCH") {
-          academicPeriods += period.doublePeriod ? 2 : 1;
-        }
-      });
-
-      const periodsToAdd = x.doublePeriod ? 2 : 1;
-      if (academicPeriods + periodsToAdd > 8) {
-        return (this.errorMessage = "Cannot exceed 8 academic periods.");
-      }
-
-      const emptyIndex = this.schedule.findIndex(
-        (period) => period.name == undefined,
+const updateYear = (year: string) => {
+  yearPicked.value = year;
+  if (year == "Freshman") {
+    ["Russian", "AP World History", "English", "Chemistry"].forEach((x) => {
+      Object.assign(
+        schedule.value.find((period) => period.name == undefined),
+        courses.value.find((course) => course.name == x),
+      );
+    });
+  } else if (year == "Sophomore") {
+    ["English", "AP World History"].forEach((x) => {
+      Object.assign(
+        schedule.value.find((period) => period.name == undefined),
+        courses.value.find((course) => course.name == x),
       );
 
-      if (emptyIndex === -1) {
-        return (this.errorMessage = "No free periods available.");
-      }
+      requirements.value = {
+        "7 Academic Periods": false,
+        English: true,
+        "AP Global": true,
+        Math: false,
+        Physics: false,
+        Russian: false,
+        CAD: false,
+        "Physical Education": false,
+        Lunch: true,
+      };
+    });
+  } else if (year == "Junior") {
+    requirements.value = {
+      "7 Academic Periods": false,
+      English: false,
+      "AP US History": false,
+      Science: false,
+      Math: false,
+      Russian: false,
+      "Physical Education": false,
+      Lunch: true,
+    };
+  } else {
+    requirements.value = {
+      "7 Academic Periods:": false,
+      English: false,
+      "Social Studies": false,
+      Math: false,
+      "Physical Education": false,
+    };
+  }
 
-      if (x.doublePeriod) {
-        if (emptyIndex >= this.schedule.length - 1) {
-          return (this.errorMessage =
-            "Not enough consecutive periods for this double-period class.");
-        }
+  isYearPicked.value = true;
+};
 
-        if (this.schedule[emptyIndex + 1].name !== undefined) {
-          return (this.errorMessage =
-            "The next period is already taken. Cannot add double-period class.");
-        }
-      }
+const showCoursesModal = () => {
+  showCourseModal.value = !showCourseModal.value;
+};
 
-      Object.assign(this.schedule[emptyIndex], x);
+const addCourse = (x: Course) => {
+  showCourseModal.value = !showCourseModal.value;
+  if (schedule.value.find((period) => period.name == x.name)) {
+    return (errorMessage.value = "Class is already in the schedule.");
+  }
 
-      if (x.doublePeriod) {
-        this.schedule.splice(emptyIndex + 1, 1);
-      }
+  // Count current academic periods, counting double period courses as 2
+  let academicPeriods = 0;
+  schedule.value.forEach((period) => {
+    if (period.name && period.subject !== "LUNCH") {
+      academicPeriods += period.doublePeriod ? 2 : 1;
+    }
+  });
 
-      this.updateRequirements(x, "add");
-      this.checkAcademicPeriods();
-    },
-    removeCourse(x) {
-      if (x.name == "Lunch" && this.yearPicked != "Senior") {
-        return (this.errorMessage = "Lunch is a required period.");
-      }
+  const periodsToAdd = x.doublePeriod ? 2 : 1;
+  if (academicPeriods + periodsToAdd > 8) {
+    return (errorMessage.value = "Cannot exceed 8 academic periods.");
+  }
 
-      if (
-        this.yearPicked == "Freshman" &&
-        [
-          "Russian T1",
-          "AP World History T1",
-          "English T1",
-          "Chemistry T1",
-        ].includes(x.name)
-      ) {
-        return (this.errorMessage = x.name + " is a mandatory class.");
-      } else if (
-        this.yearPicked == "Sophomore" &&
-        ["AP World History T3", "English T3"].includes(x.name)
-      ) {
-        return (this.errorMessage = x.name + " is a mandatory class.");
-      }
+  const emptyIndex = schedule.value.findIndex(
+    (period) => period.name == undefined,
+  );
 
-      // If it's a double period course, add back the empty slot we removed
-      if (x.doublePeriod) {
-        const index = this.schedule.indexOf(x);
-        if (index !== -1) {
-          Object.assign(this.schedule[index], {
-            name: undefined,
-            subject: undefined,
-          });
-          this.schedule.splice(index + 1, 0, {});
-        }
-      } else {
-        const index = this.schedule.indexOf(x);
-        if (index !== -1) {
-          Object.assign(this.schedule[index], {
-            name: undefined,
-            subject: undefined,
-          });
-        }
-      }
+  if (emptyIndex === -1) {
+    return (errorMessage.value = "No free periods available.");
+  }
 
-      this.updateRequirements(x, "remove");
-      this.checkAcademicPeriods();
-    },
-    closeError() {
-      this.errorMessage = "";
-    },
-    updateRequirements(x, func) {
-      let status = true;
-      let subject =
-        x.subject.toLowerCase().charAt(0).toUpperCase() +
-        x.subject.toLowerCase().slice(1);
+  if (x.doublePeriod) {
+    if (emptyIndex >= schedule.value.length - 1) {
+      return (errorMessage.value =
+        "Not enough consecutive periods for this double-period class.");
+    }
 
-      if (x.subject == "LANG") {
-        subject = "Russian";
-      } else if (x.subject == "SS") {
-        subject = "History";
-      } else if (x.subject == "PE") {
-        subject = "Physical Education";
-      }
+    if (schedule.value[emptyIndex + 1].name !== undefined) {
+      return (errorMessage.value =
+        "The next period is already taken. Cannot add double-period class.");
+    }
+  }
 
-      if (x.subject == "TECH" || x.subject == "ARTS") {
-        return;
-      }
+  Object.assign(schedule.value[emptyIndex], x);
 
-      if (func == "remove") {
-        status = false;
-      }
+  if (x.doublePeriod) {
+    schedule.value.splice(emptyIndex + 1, 1);
+  }
 
-      // console.log(this.schedule.find((period) => period.name == undefined));
+  updateRequirements(x, "add");
+  checkAcademicPeriods();
+};
 
-      this.requirements[subject] = status;
-    },
-    checkAcademicPeriods() {
-      let academicPeriods = 0;
-      this.schedule.forEach((period) => {
-        if (period.name && period.subject !== "LUNCH") {
-          academicPeriods += period.doublePeriod ? 2 : 1;
-        }
+const removeCourse = (x: Course) => {
+  if (x.name == "Lunch" && yearPicked.value != "Senior") {
+    return (errorMessage.value = "Lunch is a required period.");
+  }
+
+  if (
+    yearPicked.value == "Freshman" &&
+    [
+      "Russian T1",
+      "AP World History T1",
+      "English T1",
+      "Chemistry T1",
+    ].includes(x.name!)
+  ) {
+    return (errorMessage.value = x.name + " is a mandatory class.");
+  } else if (
+    yearPicked.value == "Sophomore" &&
+    ["AP World History T3", "English T3"].includes(x.name!)
+  ) {
+    return (errorMessage.value = x.name + " is a mandatory class.");
+  }
+
+  // If it's a double period course, add back the empty slot we removed
+  if (x.doublePeriod) {
+    const index = schedule.value.indexOf(x);
+    if (index !== -1) {
+      Object.assign(schedule.value[index], {
+        name: undefined,
+        subject: undefined,
       });
+      schedule.value.splice(index + 1, 0, {});
+    }
+  } else {
+    const index = schedule.value.indexOf(x);
+    if (index !== -1) {
+      Object.assign(schedule.value[index], {
+        name: undefined,
+        subject: undefined,
+      });
+    }
+  }
 
-      if (this.requirements["7 Academic Periods"] !== undefined) {
-        this.requirements["7 Academic Periods"] =
-          academicPeriods >= 7 && academicPeriods <= 8;
-      }
-      if (this.requirements["7 Academic Periods:"] !== undefined) {
-        this.requirements["7 Academic Periods:"] =
-          academicPeriods >= 7 && academicPeriods <= 8;
-      }
-    },
-    switchYear() {
-      this.isYearPicked = false;
-      this.schedule = [
-        {},
-        {},
-        {},
-        {},
-        {},
-        {},
-        { name: "Lunch", subject: "LUNCH" },
-        {},
-        {},
-      ];
-    },
-  },
+  updateRequirements(x, "remove");
+  checkAcademicPeriods();
+};
+
+const closeError = () => {
+  errorMessage.value = "";
+};
+
+const updateRequirements = (x: Course, func: string) => {
+  let status = true;
+  let subject =
+    x.subject!.toLowerCase().charAt(0).toUpperCase() +
+    x.subject!.toLowerCase().slice(1);
+
+  if (x.subject == "LANG") {
+    subject = "Russian";
+  } else if (x.subject == "SS") {
+    subject = "History";
+  } else if (x.subject == "PE") {
+    subject = "Physical Education";
+  }
+
+  if (x.subject == "TECH" || x.subject == "ARTS") {
+    return;
+  }
+
+  if (func == "remove") {
+    status = false;
+  }
+
+  requirements.value[subject] = status;
+};
+
+const checkAcademicPeriods = () => {
+  let academicPeriods = 0;
+  schedule.value.forEach((period) => {
+    if (period.name && period.subject !== "LUNCH") {
+      academicPeriods += period.doublePeriod ? 2 : 1;
+    }
+  });
+
+  if (requirements.value["7 Academic Periods"] !== undefined) {
+    requirements.value["7 Academic Periods"] =
+      academicPeriods >= 7 && academicPeriods <= 8;
+  }
+  if (requirements.value["7 Academic Periods:"] !== undefined) {
+    requirements.value["7 Academic Periods:"] =
+      academicPeriods >= 7 && academicPeriods <= 8;
+  }
+};
+
+const switchYear = () => {
+  isYearPicked.value = false;
+  schedule.value = [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    { name: "Lunch", subject: "LUNCH" },
+    {},
+    {},
+  ];
 };
 </script>
 

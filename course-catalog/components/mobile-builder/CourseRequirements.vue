@@ -1,17 +1,12 @@
-<script lang="ts">
-export default {
-  name: "CourseRequirements",
-  data() {
-    return {
-      showRequirements: false,
-    };
-  },
-  props: ["requirements"],
-  methods: {
-    show() {
-      this.showRequirements = !this.showRequirements;
-    },
-  },
+<script setup lang="ts">
+defineProps<{
+  requirements: Record<string, boolean>;
+}>();
+
+const showRequirements = ref(false);
+
+const show = () => {
+  showRequirements.value = !showRequirements.value;
 };
 </script>
 

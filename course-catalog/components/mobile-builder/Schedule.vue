@@ -1,101 +1,116 @@
-<script lang="ts">
-export default {
-  name: "Schedule",
-  props: ["schedule", "year"],
-  data() {
-    return {
-      emojis: [
-        {
-          LANG: "https://em-content.zobj.net/source/apple/354/flag-russia_1f1f7-1f1fa.png",
-          PE: "https://em-content.zobj.net/source/apple/354/person-lifting-weights_1f3cb-fe0f.png",
-          ARTS: "https://em-content.zobj.net/source/apple/354/performing-arts_1f3ad.png",
-          TECH: "https://em-content.zobj.net/source/apple/354/laptop_1f4bb.png",
-          SS: "https://em-content.zobj.net/source/apple/354/scroll_1f4dc.png",
-          ENGLISH:
-            "https://em-content.zobj.net/source/apple/354/books_1f4da.png",
-          SCIENCE:
-            "https://em-content.zobj.net/source/apple/354/atom-symbol_269b-fe0f.png",
-          MATH: "https://em-content.zobj.net/source/apple/354/abacus_1f9ee.png",
-          LUNCH:
-            "https://em-content.zobj.net/source/apple/354/fork-and-knife-with-plate_1f37d-fe0f.png",
-        },
-      ],
-      draggingIndex: -1,
-      dropIndex: -1,
-      dragIndex: null,
-      initialY: 0,
-      translateY: 0,
-    };
-  },
-  methods: {
-    dragStart(index) {
-      this.draggingIndex = index;
-    },
-    dragEnter(index) {
-      this.dropIndex = index;
-    },
-    dragEnd() {
-      this.draggingIndex = -1;
-      this.dropIndex = -1;
-    },
-    touchStart(index) {
-      this.dragIndex = index;
-      this.initialY = event.touches[0].clientY;
-    },
-    touchMove(event) {
-      if (this.dragIndex !== null) {
-        const touchY = event.touches[0].clientY;
-        const diffY = touchY - this.initialY;
-        const moveUp = diffY < 0;
-        const index = this.dragIndex;
+<script setup lang="ts">
+interface Course {
+  name?: string;
+  subject?: string;
+  doublePeriod?: boolean;
+}
 
-        if (
-          (moveUp && index > 0) ||
-          (!moveUp && index < this.schedule.length - 1)
-        ) {
-          this.translateY = diffY;
-          const newPosition = Math.round(diffY / 100);
-          const newIndex = index + newPosition;
+const props = defineProps<{
+  schedule: Course[];
+  year: string;
+}>();
 
-          if (newIndex !== index) {
-            const draggedItem = this.schedule[this.dragIndex];
-            this.schedule.splice(this.dragIndex, 1);
-            this.schedule.splice(newIndex, 0, draggedItem);
-            this.dragIndex = newIndex;
-            this.initialY = touchY;
-          }
-        }
-      }
-    },
-    touchEnd() {
-      if (this.dragIndex !== null) {
-        this.dragIndex = null;
-        this.translateY = 0;
-      }
-    },
-    handleDrop(index) {
-      if (this.draggingIndex !== -1 && this.dropIndex !== -1) {
-        const draggedItem = this.schedule[this.draggingIndex];
-        this.schedule.splice(this.draggingIndex, 1);
-        this.schedule.splice(index, 0, draggedItem);
+const emit = defineEmits<{
+  (e: "removeCourse", course: Course): void;
+  (e: "showCoursesModal"): void;
+}>();
 
-        this.draggingIndex = -1;
-        this.dropIndex = -1;
-      }
-    },
+const emojis = ref([
+  {
+    LANG: "https://em-content.zobj.net/source/apple/354/flag-russia_1f1f7-1f1fa.png",
+    PE: "https://em-content.zobj.net/source/apple/354/person-lifting-weights_1f3cb-fe0f.png",
+    ARTS: "https://em-content.zobj.net/source/apple/354/performing-arts_1f3ad.png",
+    TECH: "https://em-content.zobj.net/source/apple/354/laptop_1f4bb.png",
+    SS: "https://em-content.zobj.net/source/apple/354/scroll_1f4dc.png",
+    ENGLISH: "https://em-content.zobj.net/source/apple/354/books_1f4da.png",
+    SCIENCE:
+      "https://em-content.zobj.net/source/apple/354/atom-symbol_269b-fe0f.png",
+    MATH: "https://em-content.zobj.net/source/apple/354/abacus_1f9ee.png",
+    LUNCH:
+      "https://em-content.zobj.net/source/apple/354/fork-and-knife-with-plate_1f37d-fe0f.png",
   },
-  mounted() {
-    document.addEventListener("touchmove", this.touchMove, {
-      capture: true,
-      passive: false,
-    });
-  },
-  beforeDestroy() {
-    document.removeEventListener("touchmove", this.touchMove, {
-      capture: true,
-    });
-  },
+]);
+
+const draggingIndex = ref(-1);
+const dropIndex = ref(-1);
+const dragIndex = ref<number | null>(null);
+const initialY = ref(0);
+const translateY = ref(0);
+
+const dragStart = (index: number) => {
+  draggingIndex.value = index;
 };
+
+const dragEnter = (index: number) => {
+  dropIndex.value = index;
+};
+
+const dragEnd = () => {
+  draggingIndex.value = -1;
+  dropIndex.value = -1;
+};
+
+const touchStart = (index: number, event: TouchEvent) => {
+  dragIndex.value = index;
+  initialY.value = event.touches[0].clientY;
+};
+
+const touchMove = (event: TouchEvent) => {
+  if (dragIndex.value !== null) {
+    const touchY = event.touches[0].clientY;
+    const diffY = touchY - initialY.value;
+    const moveUp = diffY < 0;
+    const index = dragIndex.value;
+
+    if (
+      (moveUp && index > 0) ||
+      (!moveUp && index < props.schedule.length - 1)
+    ) {
+      translateY.value = diffY;
+      const newPosition = Math.round(diffY / 100);
+      const newIndex = index + newPosition;
+
+      if (newIndex !== index) {
+        const draggedItem = props.schedule[dragIndex.value];
+        props.schedule.splice(dragIndex.value, 1);
+        props.schedule.splice(newIndex, 0, draggedItem);
+        dragIndex.value = newIndex;
+        initialY.value = touchY;
+      }
+    }
+  }
+};
+
+const touchEnd = () => {
+  if (dragIndex.value !== null) {
+    dragIndex.value = null;
+    translateY.value = 0;
+  }
+};
+
+const handleDrop = (index: number) => {
+  if (draggingIndex.value !== -1 && dropIndex.value !== -1) {
+    const draggedItem = props.schedule[draggingIndex.value];
+    props.schedule.splice(draggingIndex.value, 1);
+    props.schedule.splice(index, 0, draggedItem);
+
+    draggingIndex.value = -1;
+    dropIndex.value = -1;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener("touchmove", touchMove, {
+    capture: true,
+    passive: false,
+  });
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("touchmove", touchMove, {
+    capture: true,
+  });
+});
 </script>
 
 <template>
@@ -119,7 +134,7 @@ export default {
           @dragover.prevent
           @drop="handleDrop(index)"
           @dragend="dragEnd"
-          @touchstart="touchStart(index)"
+          @touchstart="touchStart(index, $event)"
           @touchend="touchEnd"
         >
           <div
@@ -138,7 +153,7 @@ export default {
               </div>
               <div
                 class="cursor-pointer rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-gray-500/50"
-                @click="this.$emit('removeCourse', schedule[index])"
+                @click="emit('removeCourse', schedule[index])"
               >
                 <img
                   src="/icons/close.svg"
@@ -158,7 +173,7 @@ export default {
           >
             <div class="card-free">
               <p class="text-base font-semibold text-gray-500">Free Period</p>
-              <button class="btn-add" @click="this.$emit('showCoursesModal')">
+              <button class="btn-add" @click="emit('showCoursesModal')">
                 <img
                   src="/icons/add.svg"
                   alt="Add"

@@ -64,80 +64,48 @@
 
 <script setup lang="ts">
 import DownArrow from "../icons/DownArrow.vue";
-import { defineComponent } from "vue";
-import { ref } from "vue";
 import { useCourseStore } from "~~/store/store";
-const name = ref("courseSort");
-const input = ref("");
-const props = ["title"];
+
+defineProps<{
+  title?: string;
+}>();
+
 const courses = ref(useCourseStore().courses);
 const selected = ref("Sort By");
 const isOpen = ref(false);
 const subject = ref("Subject");
 const atoz = ref("Course Name (A-Z)");
 const ztoa = ref("Course Name (Z-A)");
-// components: {
-//   DownArrow,
-// },
-// props: ["title"],
-// data() {
-//   return {
-//     // name: "courseSort",
-//     courses: useCourseStore().courses,
-//     selected: "Sort By",
-//     isOpen: false,
-//     input: ref(""),
-//   };
-// },
 
-const SubjectSort = computed(() => {
-  function compare(a, b) {
+const SubjectSort = () => {
+  function compare(a: any, b: any) {
     if (a.subject < b.subject) return -1;
     if (a.subject > b.subject) return 1;
     return 0;
   }
-  /*                      if (a.subject != "OTHER") {
-                        if (a.subject < b.subject)
-                        return -1;
-                     }
-                    if (a.subject === "OTHER")
-                        return 1;
-                        return 0; */
-  let sortshow = document.getElementById("sortshow");
-  sortshow.innerHTML = "Subject";
-  return courses.value.sort(compare);
-});
+  selected.value = "Subject";
+  courses.value.sort(compare);
+};
 
-const IncNameSort = computed(() => {
-  function compare(a, b) {
+const IncNameSort = () => {
+  function compare(a: any, b: any) {
     if (a.name < b.name) return -1;
     if (a.name > b.name) return 1;
     return 0;
   }
-  let sortshow = document.getElementById("sortshow");
-  sortshow.innerHTML = "Course Name (A-Z)";
-  return courses.value.sort(compare);
-});
-const DecNameSort = computed(() => {
-  function compare(a, b) {
+  selected.value = "Course Name (A-Z)";
+  courses.value.sort(compare);
+};
+
+const DecNameSort = () => {
+  function compare(a: any, b: any) {
     if (a.name > b.name) return -1;
     if (a.name < b.name) return 1;
     return 0;
   }
-  let sortshow = document.getElementById("sortshow");
-  sortshow.innerHTML = "Course Name (Z-A)";
-  return courses.value.sort(compare);
-});
-function show() {
-  onMounted(() => {
-    return {
-      name,
-      input,
-      props,
-      isOpen,
-    };
-  });
-}
+  selected.value = "Course Name (Z-A)";
+  courses.value.sort(compare);
+};
 </script>
 
 <style scoped>

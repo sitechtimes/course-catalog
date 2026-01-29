@@ -1,16 +1,12 @@
-<script lang="ts">
-export default {
-  name: "YearPicker",
-  data() {
-    return {
-      years: ["Freshman", "Sophomore", "Junior", "Senior"],
-    };
-  },
-  methods: {
-    yearPicked(year: String) {
-      this.$emit("updateYear", year);
-    },
-  },
+<script setup lang="ts">
+const years = ["Freshman", "Sophomore", "Junior", "Senior"];
+
+const emit = defineEmits<{
+  (e: "updateYear", year: string): void;
+}>();
+
+const yearPicked = (year: string) => {
+  emit("updateYear", year);
 };
 </script>
 

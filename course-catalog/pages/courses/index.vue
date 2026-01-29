@@ -1,34 +1,18 @@
-<script lang="ts">
+<script setup lang="ts">
+
 import { useCourseStore } from "~~/store/store";
-import { ref } from "vue";
 import SortComponent from "../../components/catalog-search/SortComponent.vue";
 import SearchBar from "../../components/catalog-search/SearchBar.vue";
 import CourseCard from "../../components/course-cards/CourseCard.vue";
-export default {
-  components: {
-    SearchBar,
-    SortComponent,
-    CourseCard,
-  },
-  data() {
-    return {
-      courses: useCourseStore().courses,
-      input: ref(""),
-    };
-  },
-  computed: {
-    filteredList() {
-      return this.courses.filter((course) => {
-        return (
-          course.name.toLowerCase().indexOf(this.input.toLowerCase()) != -1
-        );
-      });
-    },
-  },
-  mounted() {
-    this.filteredList;
-  },
-};
+
+const courses = ref(useCourseStore().courses);
+const input = ref("");
+
+const filteredList = computed(() => {
+  return courses.value.filter((course) => {
+    return course.name.toLowerCase().indexOf(input.value.toLowerCase()) != -1;
+  });
+});
 </script>
 
 <template>
