@@ -16,15 +16,16 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import SearchButton from "~/components/icons/SearchButton.vue";
-export default {
-  components: {
-    SearchButton,
-  },
-  props: ["modelValue"],
-  emits: ["update:modelValue"],
-};
+
+defineProps<{
+  modelValue: string;
+}>();
+
+defineEmits<{
+  (e: 'update:modelValue', value: string): void;
+}>();
 </script>
 <style scoped>
 #search-input {

@@ -1,9 +1,11 @@
-<script lang="ts">
-export default {
-    name: 'ErrorToast',
-    props: ['errorMessage']
-}
+<script setup lang="ts">
+defineProps<{
+  errorMessage: string;
+}>();
 
+const emit = defineEmits<{
+  (e: 'close'): void;
+}>();
 </script>
 
 <template>
@@ -13,7 +15,7 @@ export default {
                 <p class="text-sm opacity-90">{{ errorMessage }}</p>
             </div>
 
-            <button class="w-fit px-4 border-slate-50 border rounded-lg h-8 text-sm" @click="this.$emit('close')">Close</button>
+            <button class="w-fit px-4 border-slate-50 border rounded-lg h-8 text-sm" @click="emit('close')">Close</button>
         </div>
     </div>
 </template>
